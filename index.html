@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wildlife observations across Australia</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5/build/vega.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5/build/vega-lite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6/build/vega-embed.min.js"></script>
+  <style>
+    body { margin: 0; padding: 32px 20px; background: #f7fafc; color: #203a32; font: 16px/1.6 Arial, sans-serif; }
+    main { max-width: 850px; margin: auto; }
+    .map-scroll { overflow-x: auto; }
+    .vega-bindings { padding: 12px 0; }
+    select { max-width: 100%; padding: 8px; border: 1px solid #b6c5bc; border-radius: 4px; background: white; }
+    .note { font-size: 13px; color: #52606d; }
+    .error { color: #a12c2c; }
+    section + section { margin-top: 48px; padding-top: 24px; border-top: 1px solid #d9e2dc; }
+  </style>
+</head>
+<body>
+  <main>
+    <section aria-label="Observation point map">
+    <p>Each point represents a wildlife observation contributed by a member of the public. Together, these sightings reveal where people encounter wildlife across Australia.</p>
+    <div class="map-scroll">
+      <div id="map" role="figure" aria-label="Map of sightings of the 10 most frequently recorded mammal species across Australia"></div>
+    </div>
+    <p class="note">This dot map shows 4,271 observations of the 10 most frequently recorded mammal species in this dataset, ranked by record count. Each species has a distinct colour; use the dropdown to isolate one species. Some coordinates are obscured in the source. Sightings reflect where people record wildlife, rather than a complete survey of animal populations.</p>
+    <p id="error" class="error" role="alert" hidden></p>
+    </section>
+    <section aria-label="Binned observation map">
+      <p>Wildlife observations are not evenly distributed. Some places attract far more records than others.</p>
+      <div class="map-scroll">
+        <div id="hotspot-map" role="figure" aria-label="Wildlife observation counts aggregated into geographic grid cells across Australia"></div>
+      </div>
+      <p>Hotspots may reflect both wildlife presence and where people are more likely to observe and report animals.</p>
+      <p class="note">Each coloured square is a spatial bin containing the records within its boundaries. Change the bin size to explore broader or finer patterns. Colours show discrete count ranges: 1–4, 5–19, 20–49, 50–199, 200–499 and 500+ observations. Only cells with observations are coloured. Grid sizes are measured in degrees; their physical area varies with latitude. These are record counts, rather than counts of individual animals.</p>
+      <p id="hotspot-error" class="error" role="alert" hidden></p>
+    </section>
+  </main>
+  <script>
+    function showMap(target, specification, errorTarget) {
+      return vegaEmbed(target, specification, { actions: false, renderer: 'canvas' })
+      .catch(error => {
+        const message = document.querySelector(errorTarget);
+        message.textContent = `The map could not load: ${error.message}. Serve this folder with a local web server and check your internet connection.`;
+        message.hidden = false;
+      });
+    }
+    showMap('#map', 'DotMap.vg.json', '#error');
+    showMap('#hotspot-map', 'HotspotMap.vl.json', '#hotspot-error');
+  </script>
+</body>
+</html>

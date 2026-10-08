@@ -1,0 +1,223 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Individual sightings of the 10 mammal species with the most geolocated observations in the supplied dataset. Species are ranked by record count, rather than population size.",
+  "title": {
+    "text": "Australia’s 10 Most Frequently Recorded Species",
+    "subtitle": [
+      "Top 10 mammal species by observation count in this dataset",
+      "Choose a species below; hover over a point for sighting details."
+    ],
+    "anchor": "start",
+    "offset": 20
+  },
+  "width": 800,
+  "height": 650,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      136,
+      -36
+    ],
+    "scale": 570
+  },
+  "params": [
+    {
+      "name": "selectedSpecies",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "name": "Species: ",
+        "options": [
+          null,
+          "Koala",
+          "Platypus",
+          "Grey-headed Flying-fox",
+          "Greater Glider",
+          "European Rabbit",
+          "Quokka",
+          "Tasmanian Devil",
+          "Spotted-tailed Quoll",
+          "Australian Sea Lion",
+          "Eastern Quoll"
+        ],
+        "labels": [
+          "All top 10 species",
+          "Koala",
+          "Platypus",
+          "Grey-headed Flying-fox",
+          "Greater Glider",
+          "European Rabbit",
+          "Quokka",
+          "Tasmanian Devil",
+          "Spotted-tailed Quoll",
+          "Australian Sea Lion",
+          "Eastern Quoll"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8ede5",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/observations-794195.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "latitude": "number",
+            "longitude": "number",
+            "observed_on": "date"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.latitude) && isValid(datum.longitude) && datum.latitude >= -90 && datum.latitude <= 90 && datum.longitude >= -180 && datum.longitude <= 180"
+        },
+        {
+          "calculate": "datum.common_name || datum.scientific_name || datum.species_guess || 'Unknown species'",
+          "as": "species"
+        },
+        {
+          "filter": {
+            "field": "species",
+            "oneOf": [
+              "Koala",
+              "Platypus",
+              "Grey-headed Flying-fox",
+              "Greater Glider",
+              "European Rabbit",
+              "Quokka",
+              "Tasmanian Devil",
+              "Spotted-tailed Quoll",
+              "Australian Sea Lion",
+              "Eastern Quoll"
+            ]
+          }
+        },
+        {
+          "filter": "selectedSpecies == null || datum.species == selectedSpecies"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 30,
+        "opacity": 0.6,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.25,
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "species",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Koala",
+              "Platypus",
+              "Grey-headed Flying-fox",
+              "Greater Glider",
+              "European Rabbit",
+              "Quokka",
+              "Tasmanian Devil",
+              "Spotted-tailed Quoll",
+              "Australian Sea Lion",
+              "Eastern Quoll"
+            ],
+            "scheme": "tableau10"
+          },
+          "legend": {
+            "title": "Top 10 species (most recorded first)",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 2,
+            "symbolType": "circle",
+            "symbolSize": 70,
+            "symbolOpacity": 0.6,
+            "symbolLimit": 10,
+            "labelLimit": 0,
+            "labelFontSize": 12,
+            "columnPadding": 20,
+            "rowPadding": 4,
+            "offset": 16
+          }
+        },
+        "tooltip": [
+          {
+            "field": "species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "scientific_name",
+            "type": "nominal",
+            "title": "Scientific name"
+          },
+          {
+            "field": "observed_on",
+            "type": "temporal",
+            "title": "Observed",
+            "format": "%d %b %Y"
+          },
+          {
+            "field": "place_guess",
+            "type": "nominal",
+            "title": "Location"
+          },
+          {
+            "field": "latitude",
+            "type": "quantitative",
+            "title": "Latitude",
+            "format": ".4f"
+          },
+          {
+            "field": "longitude",
+            "type": "quantitative",
+            "title": "Longitude",
+            "format": ".4f"
+          },
+          {
+            "field": "coordinates_obscured",
+            "type": "nominal",
+            "title": "Coordinates obscured"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#f7fafc",
+    "view": {
+      "stroke": null
+    },
+    "font": "Arial",
+    "title": {
+      "fontSize": 24,
+      "subtitleFontSize": 13,
+      "subtitleColor": "#52606d",
+      "color": "#203a32"
+    }
+  }
+}
