@@ -1,0 +1,675 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "100% stacked seasonal bars showing geographic distribution of Orange-bellied Parrot occurrence records by state. Source: Dataset/orange_bellied_parrot_cleaned.csv (5,942 PRESENT records). All years pooled. Use month when present; recover missing months from complete eventDate (81 records recovered; no conflicting months). Exclude 3,565 records without a usable month and 12 additional month-known records without stateProvince. The remaining 2,365 records have reported years spanning 1845–2026. No coordinate filter or deduplication is applied. Each bar is normalized by its own seasonal total, using stateProvince as supplied. Australian seasons: Summer Dec–Feb, Autumn Mar–May, Winter Jun–Aug, Spring Sep–Nov. Seasonal shares describe occurrence recording, not abundance or tracked migration. Highlighting does not change counts or denominators.",
+  "width": 760,
+  "height": 280,
+  "padding": 16,
+  "background": "#f7fafc",
+  "title": {
+    "text": "How does the parrot’s geographic distribution change by season?",
+    "subtitle": [
+      "Orange-bellied Parrot · 2,365 month-known, state-assigned records · All years pooled",
+      "Each season totals 100%. Hover for details; click a state to keep it highlighted."
+    ],
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 21,
+    "color": "#243447",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#52606d",
+    "offset": 60
+  },
+  "signals": [
+    {
+      "name": "hoveredRegion",
+      "value": null,
+      "on": [
+        {
+          "events": "@bars:mouseover, @legendSymbols:mouseover, @legendLabels:mouseover",
+          "update": "datum.region"
+        },
+        {
+          "events": "@bars:mouseout, @legendSymbols:mouseout, @legendLabels:mouseout",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "selectedRegion",
+      "value": null,
+      "on": [
+        {
+          "events": "@bars:click, @legendSymbols:click, @legendLabels:click",
+          "update": "selectedRegion === datum.region ? null : datum.region"
+        },
+        {
+          "events": "window:keydown[event.key === 'Escape'], @reset:click",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "activeRegion",
+      "update": "hoveredRegion != null ? hoveredRegion : selectedRegion"
+    }
+  ],
+  "data": [
+    {
+      "name": "regionCounts",
+      "values": [
+        {
+          "season": "Summer",
+          "seasonOrder": 0,
+          "region": "Tasmania",
+          "regionOrder": 0,
+          "count": 230
+        },
+        {
+          "season": "Summer",
+          "seasonOrder": 0,
+          "region": "Victoria",
+          "regionOrder": 1,
+          "count": 70
+        },
+        {
+          "season": "Summer",
+          "seasonOrder": 0,
+          "region": "South Australia",
+          "regionOrder": 2,
+          "count": 19
+        },
+        {
+          "season": "Summer",
+          "seasonOrder": 0,
+          "region": "New South Wales",
+          "regionOrder": 3,
+          "count": 3
+        },
+        {
+          "season": "Autumn",
+          "seasonOrder": 1,
+          "region": "Tasmania",
+          "regionOrder": 0,
+          "count": 488
+        },
+        {
+          "season": "Autumn",
+          "seasonOrder": 1,
+          "region": "Victoria",
+          "regionOrder": 1,
+          "count": 390
+        },
+        {
+          "season": "Autumn",
+          "seasonOrder": 1,
+          "region": "South Australia",
+          "regionOrder": 2,
+          "count": 49
+        },
+        {
+          "season": "Autumn",
+          "seasonOrder": 1,
+          "region": "New South Wales",
+          "regionOrder": 3,
+          "count": 5
+        },
+        {
+          "season": "Winter",
+          "seasonOrder": 2,
+          "region": "Tasmania",
+          "regionOrder": 0,
+          "count": 38
+        },
+        {
+          "season": "Winter",
+          "seasonOrder": 2,
+          "region": "Victoria",
+          "regionOrder": 1,
+          "count": 496
+        },
+        {
+          "season": "Winter",
+          "seasonOrder": 2,
+          "region": "South Australia",
+          "regionOrder": 2,
+          "count": 220
+        },
+        {
+          "season": "Winter",
+          "seasonOrder": 2,
+          "region": "New South Wales",
+          "regionOrder": 3,
+          "count": 18
+        },
+        {
+          "season": "Spring",
+          "seasonOrder": 3,
+          "region": "Tasmania",
+          "regionOrder": 0,
+          "count": 88
+        },
+        {
+          "season": "Spring",
+          "seasonOrder": 3,
+          "region": "Victoria",
+          "regionOrder": 1,
+          "count": 206
+        },
+        {
+          "season": "Spring",
+          "seasonOrder": 3,
+          "region": "South Australia",
+          "regionOrder": 2,
+          "count": 42
+        },
+        {
+          "season": "Spring",
+          "seasonOrder": 3,
+          "region": "New South Wales",
+          "regionOrder": 3,
+          "count": 3
+        }
+      ],
+      "transform": [
+        {
+          "type": "joinaggregate",
+          "groupby": [
+            "season"
+          ],
+          "fields": [
+            "count"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "as": [
+            "total"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.count / datum.total",
+          "as": "share"
+        },
+        {
+          "type": "stack",
+          "groupby": [
+            "season"
+          ],
+          "field": "count",
+          "sort": {
+            "field": "regionOrder",
+            "order": "ascending"
+          },
+          "offset": "normalize",
+          "as": [
+            "x0",
+            "x1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "seasonTotals",
+      "source": "regionCounts",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "season",
+            "seasonOrder"
+          ],
+          "fields": [
+            "count"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "as": [
+            "total"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "regions",
+      "values": [
+        {
+          "region": "Tasmania",
+          "order": 0
+        },
+        {
+          "region": "Victoria",
+          "order": 1
+        },
+        {
+          "region": "South Australia",
+          "order": 2
+        },
+        {
+          "region": "New South Wales",
+          "order": 3
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": [
+        0,
+        1
+      ],
+      "range": "width",
+      "zero": true,
+      "nice": false
+    },
+    {
+      "name": "y",
+      "type": "band",
+      "domain": {
+        "data": "seasonTotals",
+        "field": "season",
+        "sort": {
+          "op": "min",
+          "field": "seasonOrder",
+          "order": "ascending"
+        }
+      },
+      "range": "height",
+      "paddingInner": 0.25,
+      "paddingOuter": 0.12
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Tasmania",
+        "Victoria",
+        "South Australia",
+        "New South Wales"
+      ],
+      "range": [
+        "#7A3E65",
+        "#56733C",
+        "#E3B34F",
+        "#A65B35"
+      ]
+    }
+  ],
+  "axes": [
+    {
+      "orient": "bottom",
+      "scale": "x",
+      "title": "Share of each season’s occurrence records",
+      "format": ".0%",
+      "values": [
+        0,
+        0.25,
+        0.5,
+        0.75,
+        1
+      ],
+      "grid": true,
+      "gridColor": "#e3e9ef",
+      "domain": false,
+      "tickColor": "#c9d4df",
+      "labelColor": "#52606d",
+      "titleColor": "#243447",
+      "titlePadding": 14
+    },
+    {
+      "orient": "left",
+      "scale": "y",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 12,
+      "labelLimit": 230,
+      "labelFontSize": 12,
+      "labelColor": "#243447",
+      "encode": {
+        "labels": {
+          "update": {
+            "text": {
+              "signal": "datum.value + ' (' + ['Dec–Feb', 'Mar–May', 'Jun–Aug', 'Sep–Nov'][indexof(domain('y'), datum.value)] + ')'"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "name": "bars",
+      "type": "rect",
+      "from": {
+        "data": "regionCounts"
+      },
+      "encode": {
+        "enter": {
+          "cursor": {
+            "value": "pointer"
+          }
+        },
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "x0"
+          },
+          "x2": {
+            "scale": "x",
+            "field": "x1"
+          },
+          "y": {
+            "scale": "y",
+            "field": "season"
+          },
+          "height": {
+            "signal": "bandwidth('y')"
+          },
+          "fill": {
+            "scale": "color",
+            "field": "region"
+          },
+          "fillOpacity": {
+            "signal": "activeRegion == null || activeRegion === datum.region ? 1 : 0.2"
+          },
+          "stroke": {
+            "value": "#f7fafc"
+          },
+          "strokeWidth": {
+            "value": 1
+          },
+          "tooltip": {
+            "signal": "{'Species': 'Orange-bellied Parrot', 'Season': datum.season, 'State': datum.region, 'Share of seasonal records': format(datum.share, '.1%'), 'State records this season': format(datum.count, ',d'), 'Season total': format(datum.total, ',d'), 'Period': 'All years pooled'}"
+          },
+          "description": {
+            "signal": "datum.season + ', ' + datum.region + ': ' + format(datum.share, '.1%') + ', ' + datum.count + ' records'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "regionCounts"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('x', (datum.x0 + datum.x1) / 2)"
+          },
+          "y": {
+            "scale": "y",
+            "field": "season",
+            "band": 0.5
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "signal": "datum.share >= 0.05 ? format(datum.share, '.1%') : ''"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "signal": "datum.region === 'South Australia' ? '#243447' : '#ffffff'"
+          },
+          "opacity": {
+            "signal": "activeRegion == null || activeRegion === datum.region ? 1 : 0.2"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "seasonTotals"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 12"
+          },
+          "y": {
+            "scale": "y",
+            "field": "season",
+            "band": 0.5
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "text": {
+            "signal": "'n = ' + format(datum.total, ',d')"
+          }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "legendSymbols",
+      "from": {
+        "data": "regions"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "[0, 170, 320, 515][datum.order]"
+          },
+          "y": {
+            "value": -30
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "opacity": {
+            "signal": "activeRegion == null || activeRegion === datum.region ? 1 : 0.3"
+          },
+          "shape": {
+            "value": "square"
+          },
+          "size": {
+            "value": 120
+          },
+          "fill": {
+            "scale": "color",
+            "field": "region"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "legendLabels",
+      "from": {
+        "data": "regions"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "[0, 170, 320, 515][datum.order] + 12"
+          },
+          "y": {
+            "value": -30
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "opacity": {
+            "signal": "activeRegion == null || activeRegion === datum.region ? 1 : 0.3"
+          },
+          "text": {
+            "field": "region"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#243447"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "reset",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width"
+          },
+          "y": {
+            "value": -30
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "value": "Reset"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#7A3E65"
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 65"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "text": {
+            "value": "Australian seasons · State assignments use stateProvince · All years pooled (1845–2026)"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 82"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "text": {
+            "value": "Excluded: 3,565 records without a usable month; 12 additional records without a state."
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 99"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "text": {
+            "value": "81 missing months recovered from full observation dates. Shares reflect recording activity, not abundance."
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 116"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "text": {
+            "value": "Source: Dataset/orange_bellied_parrot_cleaned.csv"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Arial",
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    }
+  }
+}

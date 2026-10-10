@@ -1,0 +1,47 @@
+:root { color-scheme: light; --ink: #243447; --muted: #52606d; --green: #245b49; --line: #dce4de; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f5f7f3; color: var(--ink); font-family: Arial, sans-serif; line-height: 1.6; }
+.hero { padding: 72px max(24px, calc((100vw - 1240px) / 2)); background: #e7eee5; border-bottom: 1px solid var(--line); }
+.eyebrow { margin: 0 0 14px; color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; }
+h1 { margin: 0 0 24px; font-family: Georgia, serif; font-size: clamp(40px, 5vw, 70px); font-weight: 400; line-height: 1.1; letter-spacing: -1.5px; }
+.intro { max-width: 720px; margin: 0; font-size: 19px; color: var(--muted); }
+.toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding: 18px max(24px, calc((100vw - 1240px) / 2)); background: white; border-bottom: 1px solid var(--line); }
+nav { display: flex; flex-wrap: wrap; gap: 18px; }
+a { color: var(--green); text-underline-offset: 4px; }
+nav a { font-size: 14px; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+.menu-toggle { display: flex; align-items: center; gap: 9px; cursor: pointer; font-size: 14px; font-weight: 700; }
+.menu-toggle input { width: 18px; height: 18px; accent-color: var(--green); }
+.menu-toggle span { letter-spacing: 2px; }
+.species-selection { flex-basis: 100%; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 14px; }
+.species-selection button { padding: 5px 10px; border: 1px solid var(--line); border-radius: 5px; background: #f5f7f3; color: var(--green); font: inherit; cursor: pointer; }
+main { max-width: 1288px; margin: auto; padding: 20px 24px 64px; }
+.page-status { color: var(--muted); font-size: 14px; }
+section { padding-top: 48px; scroll-margin-top: 24px; }
+h2 { margin: 0 0 16px; font-family: Georgia, serif; font-size: clamp(26px, 3vw, 36px); font-weight: 400; line-height: 1.25; }
+.story { max-width: 820px; margin: 0 0 28px; color: var(--muted); font-size: 17px; }
+.chart-card { position: relative; margin: 0 0 24px; padding: 24px; background: white; border: 1px solid var(--line); border-radius: 12px; }
+h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin: 0 0 22px; padding-right: 40px; font-size: 15px; color: var(--green); }
+h3 span { font-size: 13px; font-weight: 400; color: var(--muted); }
+.chart-scroll { overflow-x: auto; padding: 0; }
+.chart { min-height: 100px; }
+/* Keep menus in the card heading instead of reserving an empty chart column. */
+.chart-card .chart.vega-embed { position: static; display: block; width: max-content; margin-inline: auto; padding: 0; }
+.chart.vega-embed > details { position: absolute; top: 24px; right: 24px; }
+.chart.vega-embed .chart-wrapper > svg, .chart.vega-embed .chart-wrapper > canvas { display: block; }
+.vega-embed summary { opacity: 1 !important; }
+/* Hide menus without recreating views or resetting interactive signals. */
+body.hide-chart-actions .vega-embed > details { display: none !important; }
+.vega-bindings { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-top: 18px; font-size: 14px; }
+.vega-bindings:empty { display: none; }
+.vega-bind { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.vega-bind select { max-width: 100%; padding: 6px 9px; background: #f5f7f3; border: 1px solid #bac7bd; border-radius: 5px; color: var(--ink); font: inherit; }
+.chart-note { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+.notice { padding: 18px 22px; background: #e7eee5; border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; }
+.chart-error { margin: 0; color: #9c3327; }
+footer { margin-top: 56px; padding: 32px; background: #e7eee5; border-radius: 12px; }
+footer p { max-width: 800px; }
+:focus-visible { outline: 3px solid #b27935; outline-offset: 4px; }
+@media (max-width: 600px) { .hero { padding: 42px 20px; } main { padding-inline: 12px; } .toolbar { padding: 16px 20px; } .chart-card { padding: 16px; } .chart.vega-embed > details { top: 16px; right: 16px; } section { padding-top: 36px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

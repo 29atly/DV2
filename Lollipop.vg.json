@@ -1,0 +1,1214 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Most recorded mammal species in Dataset/observations-794195.csv. All 6,460 species-level observations across 155 species are aggregated and embedded. Subspecies are combined with their parent species using the first two scientific-name components; one genus-only record (Nekrolagus) is excluded. Counts include all dates and records regardless of coordinates. Top N is selected by count descending with scientific name breaking ties, then displayed in the selected sort order. Counts measure recording activity, not animal abundance. Lollipop heads are embedded cartoon SVG animal portraits for all Top 15 species; portrait centres mark the observation counts and their size is constant. Species colours match the ten-species palette in BumpChart.vg.json; species selection and observation counts are unchanged.",
+  "width": 760,
+  "height": {
+    "signal": "length(data(\"topSpecies\")) * 34"
+  },
+  "padding": 16,
+  "background": "#f7fafc",
+  "title": {
+    "text": "Which species are recorded most often?",
+    "subtitle": [
+      "6,460 mammal observations · 155 species · All observation dates",
+      "Choose Top 5 or 10; sort changes the display order of those species."
+    ],
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 22,
+    "color": "#243447",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#52606d",
+    "offset": 20
+  },
+  "signals": [
+    {
+      "name": "topN",
+      "value": 10,
+      "bind": {
+        "input": "select",
+        "options": [
+          5,
+          10
+        ],
+        "labels": [
+          "Top 5",
+          "Top 10"
+        ],
+        "name": "Species shown: "
+      }
+    },
+    {
+      "name": "sortOrder",
+      "value": "Descending",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Descending",
+          "Ascending"
+        ],
+        "name": "Sort by observations: "
+      }
+    },
+    {
+      "name": "hoveredSpecies",
+      "value": null,
+      "on": [
+        {
+          "events": "@stems:mouseover, @dots:mouseover, @counts:mouseover",
+          "update": "datum.scientific_name"
+        },
+        {
+          "events": "@stems:mouseout, @dots:mouseout, @counts:mouseout",
+          "update": "null"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "speciesCounts",
+      "values": [
+        {
+          "scientific_name": "Phascolarctos cinereus",
+          "species": "Koala",
+          "count": 1978,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48ZWxsaXBzZSBjeD0iMTMiIGN5PSIyMyIgcng9IjExIiByeT0iMTIiIGZpbGw9IiNhYWI0YzUiIC8+PGVsbGlwc2UgY3g9IjUxIiBjeT0iMjMiIHJ4PSIxMSIgcnk9IjEyIiBmaWxsPSIjYWFiNGM1IiAvPjxlbGxpcHNlIGN4PSIxMyIgY3k9IjIzIiByeD0iNiIgcnk9IjciIGZpbGw9IiNmN2RmYzMiIC8+PGVsbGlwc2UgY3g9IjUxIiBjeT0iMjMiIHJ4PSI2IiByeT0iNyIgZmlsbD0iI2Y3ZGZjMyIgLz48ZWxsaXBzZSBjeD0iMzIiIGN5PSIzNSIgcng9IjIzIiByeT0iMjMiIGZpbGw9IiNhYWI0YzUiIC8+PGVsbGlwc2UgY3g9IjMyIiBjeT0iNDUiIHJ4PSIxNCIgcnk9IjEwIiBmaWxsPSIjZjdkZmMzIiAvPjxjaXJjbGUgY3g9IjIyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGNpcmNsZSBjeD0iNDIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjQxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48ZWxsaXBzZSBjeD0iMTUiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PGVsbGlwc2UgY3g9IjQ5IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjQxIiByeD0iNiIgcnk9IjkiIGZpbGw9IiMzYzM1NDAiIC8+PC9zdmc+"
+        },
+        {
+          "scientific_name": "Ornithorhynchus anatinus",
+          "species": "Platypus",
+          "count": 679,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48ZWxsaXBzZSBjeD0iMzIiIGN5PSIzNSIgcng9IjIzIiByeT0iMjMiIGZpbGw9IiNhYzgyNjQiIC8+PGVsbGlwc2UgY3g9IjMyIiBjeT0iNDUiIHJ4PSIxNCIgcnk9IjEwIiBmaWxsPSIjZjdkZmMzIiAvPjxjaXJjbGUgY3g9IjIyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGNpcmNsZSBjeD0iNDIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjQxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48ZWxsaXBzZSBjeD0iMTUiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PGVsbGlwc2UgY3g9IjQ5IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjQ0IiByeD0iMTciIHJ5PSI3IiBmaWxsPSIjZDJhYjY2IiAvPjwvc3ZnPg=="
+        },
+        {
+          "scientific_name": "Pteropus poliocephalus",
+          "species": "Grey-headed Flying-fox",
+          "count": 525,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDEyIDI3IEwgMTAgNSBRIDI2IDcgMjggMjIiIGZpbGw9IiNiNGE5YTAiIC8+PHBhdGggZD0iTSAzNiAyMiBRIDM4IDcgNTQgNSBMIDUyIDI3IiBmaWxsPSIjYjRhOWEwIiAvPjxwYXRoIGQ9Ik0gMTYgMjIgTCAxNSAxMSBMIDI0IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxwYXRoIGQ9Ik0gNDAgMjIgTCA0OSAxMSBMIDQ4IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjM1IiByeD0iMjMiIHJ5PSIyMyIgZmlsbD0iI2I0YTlhMCIgLz48cGF0aCBkPSJNIDEzIDI4IEwgMjIgMjMgTCAyOSAzMyBMIDIzIDM3IFoiIGZpbGw9IiM2YzU1NGEiIC8+PHBhdGggZD0iTSA1MSAyOCBMIDQyIDIzIEwgMzUgMzMgTCA0MSAzNyBaIiBmaWxsPSIjNmM1NTRhIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjQ1IiByeD0iMTQiIHJ5PSIxMCIgZmlsbD0iI2Y3ZGZjMyIgLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSI0MSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGVsbGlwc2UgY3g9IjE1IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48cGF0aCBkPSJNIDI4IDQxIFEgMzIgMzggMzYgNDEgTCAzMiA0NSBaIiBmaWxsPSIjNDYzYjQwIiAvPjxwYXRoIGQ9Ik0gMzIgNDUgTCAzMiA0OCBNIDI0IDQ4IFEgMjggNTMgMzIgNDggUSAzNiA1MyA0MCA0OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDUzZDQzIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgLz48L3N2Zz4="
+        },
+        {
+          "scientific_name": "Petauroides volans",
+          "species": "Greater Glider",
+          "count": 239,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48ZWxsaXBzZSBjeD0iMTUiIGN5PSIyMCIgcng9IjkiIHJ5PSIxMCIgZmlsbD0iI2MzYjZjZSIgLz48ZWxsaXBzZSBjeD0iNDkiIGN5PSIyMCIgcng9IjkiIHJ5PSIxMCIgZmlsbD0iI2MzYjZjZSIgLz48ZWxsaXBzZSBjeD0iMTUiIGN5PSIyMCIgcng9IjQiIHJ5PSI1IiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjIwIiByeD0iNCIgcnk9IjUiIGZpbGw9IiNmN2RmYzMiIC8+PGVsbGlwc2UgY3g9IjMyIiBjeT0iMzUiIHJ4PSIyMyIgcnk9IjIzIiBmaWxsPSIjYzNiNmNlIiAvPjxwYXRoIGQ9Ik0gMjkgMTMgTCAzNSAxMyBMIDM0IDMyIEwgMzAgMzIgWiIgZmlsbD0iIzYxNTQ2NCIgLz48ZWxsaXBzZSBjeD0iMzIiIGN5PSI0NSIgcng9IjE0IiByeT0iMTAiIGZpbGw9IiNmN2RmYzMiIC8+PGNpcmNsZSBjeD0iMjIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjIxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iNDEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxlbGxpcHNlIGN4PSIxNSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48ZWxsaXBzZSBjeD0iNDkiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PHBhdGggZD0iTSAyOCA0MSBRIDMyIDM4IDM2IDQxIEwgMzIgNDUgWiIgZmlsbD0iIzQ2M2I0MCIgLz48cGF0aCBkPSJNIDMyIDQ1IEwgMzIgNDggTSAyNCA0OCBRIDI4IDUzIDMyIDQ4IFEgMzYgNTMgNDAgNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ1M2Q0MyIgc3Ryb2tlLXdpZHRoPSIxLjciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+PC9zdmc+"
+        },
+        {
+          "scientific_name": "Dasyurus maculatus",
+          "species": "Spotted-tailed Quoll",
+          "count": 237,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDEyIDI3IEwgMTAgNSBRIDI2IDcgMjggMjIiIGZpbGw9IiNhZDg0NWYiIC8+PHBhdGggZD0iTSAzNiAyMiBRIDM4IDcgNTQgNSBMIDUyIDI3IiBmaWxsPSIjYWQ4NDVmIiAvPjxwYXRoIGQ9Ik0gMTYgMjIgTCAxNSAxMSBMIDI0IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxwYXRoIGQ9Ik0gNDAgMjIgTCA0OSAxMSBMIDQ4IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjM1IiByeD0iMjMiIHJ5PSIyMyIgZmlsbD0iI2FkODQ1ZiIgLz48Y2lyY2xlIGN4PSIxOCIgY3k9IjI0IiByPSIyLjYiIGZpbGw9IiNmZmYyZDgiIC8+PGNpcmNsZSBjeD0iNDYiIGN5PSIyNCIgcj0iMi42IiBmaWxsPSIjZmZmMmQ4IiAvPjxjaXJjbGUgY3g9IjI1IiBjeT0iMTciIHI9IjIuNiIgZmlsbD0iI2ZmZjJkOCIgLz48Y2lyY2xlIGN4PSIzOSIgY3k9IjE3IiByPSIyLjYiIGZpbGw9IiNmZmYyZDgiIC8+PGNpcmNsZSBjeD0iMTMiIGN5PSIzOCIgcj0iMi42IiBmaWxsPSIjZmZmMmQ4IiAvPjxjaXJjbGUgY3g9IjUxIiBjeT0iMzgiIHI9IjIuNiIgZmlsbD0iI2ZmZjJkOCIgLz48ZWxsaXBzZSBjeD0iMzIiIGN5PSI0NSIgcng9IjE0IiByeT0iMTAiIGZpbGw9IiNmN2RmYzMiIC8+PGNpcmNsZSBjeD0iMjIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjIxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iNDEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxlbGxpcHNlIGN4PSIxNSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48ZWxsaXBzZSBjeD0iNDkiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PHBhdGggZD0iTSAyOCA0MSBRIDMyIDM4IDM2IDQxIEwgMzIgNDUgWiIgZmlsbD0iIzQ2M2I0MCIgLz48cGF0aCBkPSJNIDMyIDQ1IEwgMzIgNDggTSAyNCA0OCBRIDI4IDUzIDMyIDQ4IFEgMzYgNTMgNDAgNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ1M2Q0MyIgc3Ryb2tlLXdpZHRoPSIxLjciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+PC9zdmc+"
+        },
+        {
+          "scientific_name": "Oryctolagus cuniculus",
+          "species": "European Rabbit",
+          "count": 176,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48ZWxsaXBzZSBjeD0iMjIiIGN5PSIxOCIgcng9IjciIHJ5PSIxNiIgZmlsbD0iI2Q2YzRhZSIgLz48ZWxsaXBzZSBjeD0iNDIiIGN5PSIxOCIgcng9IjciIHJ5PSIxNiIgZmlsbD0iI2Q2YzRhZSIgLz48ZWxsaXBzZSBjeD0iMjIiIGN5PSIxNyIgcng9IjMiIHJ5PSIxMCIgZmlsbD0iI2U3YWJiMSIgLz48ZWxsaXBzZSBjeD0iNDIiIGN5PSIxNyIgcng9IjMiIHJ5PSIxMCIgZmlsbD0iI2U3YWJiMSIgLz48ZWxsaXBzZSBjeD0iMzIiIGN5PSIzNSIgcng9IjIzIiByeT0iMjMiIGZpbGw9IiNkNmM0YWUiIC8+PGVsbGlwc2UgY3g9IjMyIiBjeT0iNDUiIHJ4PSIxNCIgcnk9IjEwIiBmaWxsPSIjZjdkZmMzIiAvPjxjaXJjbGUgY3g9IjIyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGNpcmNsZSBjeD0iNDIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjQxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48ZWxsaXBzZSBjeD0iMTUiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PGVsbGlwc2UgY3g9IjQ5IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxwYXRoIGQ9Ik0gMjggNDEgUSAzMiAzOCAzNiA0MSBMIDMyIDQ1IFoiIGZpbGw9IiM0NjNiNDAiIC8+PHBhdGggZD0iTSAzMiA0NSBMIDMyIDQ4IE0gMjQgNDggUSAyOCA1MyAzMiA0OCBRIDM2IDUzIDQwIDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NTNkNDMiIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjwvc3ZnPg=="
+        },
+        {
+          "scientific_name": "Setonix brachyurus",
+          "species": "Quokka",
+          "count": 155,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48ZWxsaXBzZSBjeD0iMTUiIGN5PSIyMCIgcng9IjkiIHJ5PSIxMCIgZmlsbD0iI2JiOWI3MSIgLz48ZWxsaXBzZSBjeD0iNDkiIGN5PSIyMCIgcng9IjkiIHJ5PSIxMCIgZmlsbD0iI2JiOWI3MSIgLz48ZWxsaXBzZSBjeD0iMTUiIGN5PSIyMCIgcng9IjQiIHJ5PSI1IiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjIwIiByeD0iNCIgcnk9IjUiIGZpbGw9IiNmN2RmYzMiIC8+PGVsbGlwc2UgY3g9IjMyIiBjeT0iMzUiIHJ4PSIyMyIgcnk9IjIzIiBmaWxsPSIjYmI5YjcxIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjQ1IiByeD0iMTQiIHJ5PSIxMCIgZmlsbD0iI2Y3ZGZjMyIgLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSI0MSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGVsbGlwc2UgY3g9IjE1IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48cGF0aCBkPSJNIDI4IDQxIFEgMzIgMzggMzYgNDEgTCAzMiA0NSBaIiBmaWxsPSIjNDYzYjQwIiAvPjxwYXRoIGQ9Ik0gMzIgNDUgTCAzMiA0OCBNIDI0IDQ4IFEgMjggNTMgMzIgNDggUSAzNiA1MyA0MCA0OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDUzZDQzIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgLz48L3N2Zz4="
+        },
+        {
+          "scientific_name": "Sarcophilus harrisii",
+          "species": "Tasmanian Devil",
+          "count": 153,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48ZWxsaXBzZSBjeD0iMTUiIGN5PSIyMCIgcng9IjkiIHJ5PSIxMCIgZmlsbD0iIzY0NjQ3NyIgLz48ZWxsaXBzZSBjeD0iNDkiIGN5PSIyMCIgcng9IjkiIHJ5PSIxMCIgZmlsbD0iIzY0NjQ3NyIgLz48ZWxsaXBzZSBjeD0iMTUiIGN5PSIyMCIgcng9IjQiIHJ5PSI1IiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjIwIiByeD0iNCIgcnk9IjUiIGZpbGw9IiNmN2RmYzMiIC8+PGVsbGlwc2UgY3g9IjMyIiBjeT0iMzUiIHJ4PSIyMyIgcnk9IjIzIiBmaWxsPSIjNjQ2NDc3IiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjQ1IiByeD0iMTQiIHJ5PSIxMCIgZmlsbD0iI2Y3ZGZjMyIgLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSI0MSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGVsbGlwc2UgY3g9IjE1IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48cGF0aCBkPSJNIDI4IDQxIFEgMzIgMzggMzYgNDEgTCAzMiA0NSBaIiBmaWxsPSIjNDYzYjQwIiAvPjxwYXRoIGQ9Ik0gMzIgNDUgTCAzMiA0OCBNIDI0IDQ4IFEgMjggNTMgMzIgNDggUSAzNiA1MyA0MCA0OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDUzZDQzIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgLz48L3N2Zz4="
+        },
+        {
+          "scientific_name": "Neophoca cinerea",
+          "species": "Australian Sea Lion",
+          "count": 123,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48ZWxsaXBzZSBjeD0iMzIiIGN5PSIzNSIgcng9IjIzIiByeT0iMjMiIGZpbGw9IiNiY2FhODMiIC8+PGVsbGlwc2UgY3g9IjMyIiBjeT0iNDUiIHJ4PSIxNCIgcnk9IjEwIiBmaWxsPSIjZjdkZmMzIiAvPjxjaXJjbGUgY3g9IjIyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGNpcmNsZSBjeD0iNDIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjQxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48ZWxsaXBzZSBjeD0iMTUiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PGVsbGlwc2UgY3g9IjQ5IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxwYXRoIGQ9Ik0gMjggNDEgUSAzMiAzOCAzNiA0MSBMIDMyIDQ1IFoiIGZpbGw9IiM0NjNiNDAiIC8+PHBhdGggZD0iTSAzMiA0NSBMIDMyIDQ4IE0gMjQgNDggUSAyOCA1MyAzMiA0OCBRIDM2IDUzIDQwIDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NTNkNDMiIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjxwYXRoIGQ9Ik0gMjEgNDMgTCA4IDQwIE0gMjEgNDYgTCA3IDQ3IE0gNDMgNDMgTCA1NiA0MCBNIDQzIDQ2IEwgNTcgNDciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ1M2Q0MyIgc3Ryb2tlLXdpZHRoPSIxLjciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+PC9zdmc+"
+        },
+        {
+          "scientific_name": "Dasyurus viverrinus",
+          "species": "Eastern Quoll",
+          "count": 119,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDEyIDI3IEwgMTAgNSBRIDI2IDcgMjggMjIiIGZpbGw9IiNiZmEyN2MiIC8+PHBhdGggZD0iTSAzNiAyMiBRIDM4IDcgNTQgNSBMIDUyIDI3IiBmaWxsPSIjYmZhMjdjIiAvPjxwYXRoIGQ9Ik0gMTYgMjIgTCAxNSAxMSBMIDI0IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxwYXRoIGQ9Ik0gNDAgMjIgTCA0OSAxMSBMIDQ4IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjM1IiByeD0iMjMiIHJ5PSIyMyIgZmlsbD0iI2JmYTI3YyIgLz48Y2lyY2xlIGN4PSIxOCIgY3k9IjI0IiByPSIyLjYiIGZpbGw9IiNmZmYyZDgiIC8+PGNpcmNsZSBjeD0iNDYiIGN5PSIyNCIgcj0iMi42IiBmaWxsPSIjZmZmMmQ4IiAvPjxjaXJjbGUgY3g9IjI1IiBjeT0iMTciIHI9IjIuNiIgZmlsbD0iI2ZmZjJkOCIgLz48Y2lyY2xlIGN4PSIzOSIgY3k9IjE3IiByPSIyLjYiIGZpbGw9IiNmZmYyZDgiIC8+PGNpcmNsZSBjeD0iMTMiIGN5PSIzOCIgcj0iMi42IiBmaWxsPSIjZmZmMmQ4IiAvPjxjaXJjbGUgY3g9IjUxIiBjeT0iMzgiIHI9IjIuNiIgZmlsbD0iI2ZmZjJkOCIgLz48ZWxsaXBzZSBjeD0iMzIiIGN5PSI0NSIgcng9IjE0IiByeT0iMTAiIGZpbGw9IiNmN2RmYzMiIC8+PGNpcmNsZSBjeD0iMjIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjIxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iNDEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxlbGxpcHNlIGN4PSIxNSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48ZWxsaXBzZSBjeD0iNDkiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PHBhdGggZD0iTSAyOCA0MSBRIDMyIDM4IDM2IDQxIEwgMzIgNDUgWiIgZmlsbD0iIzQ2M2I0MCIgLz48cGF0aCBkPSJNIDMyIDQ1IEwgMzIgNDggTSAyNCA0OCBRIDI4IDUzIDMyIDQ4IFEgMzYgNTMgNDAgNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ1M2Q0MyIgc3Ryb2tlLXdpZHRoPSIxLjciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+PC9zdmc+"
+        },
+        {
+          "scientific_name": "Pteropus conspicillatus",
+          "species": "Spectacled Flying-fox",
+          "count": 107,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDEyIDI3IEwgMTAgNSBRIDI2IDcgMjggMjIiIGZpbGw9IiNiMjk1NzMiIC8+PHBhdGggZD0iTSAzNiAyMiBRIDM4IDcgNTQgNSBMIDUyIDI3IiBmaWxsPSIjYjI5NTczIiAvPjxwYXRoIGQ9Ik0gMTYgMjIgTCAxNSAxMSBMIDI0IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxwYXRoIGQ9Ik0gNDAgMjIgTCA0OSAxMSBMIDQ4IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjM1IiByeD0iMjMiIHJ5PSIyMyIgZmlsbD0iI2IyOTU3MyIgLz48cGF0aCBkPSJNIDEzIDI4IEwgMjIgMjMgTCAyOSAzMyBMIDIzIDM3IFoiIGZpbGw9IiM2YzU1NGEiIC8+PHBhdGggZD0iTSA1MSAyOCBMIDQyIDIzIEwgMzUgMzMgTCA0MSAzNyBaIiBmaWxsPSIjNmM1NTRhIiAvPjxjaXJjbGUgY3g9IjIyIiBjeT0iMzQiIHI9IjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2YxZGZiYiIgc3Ryb2tlLXdpZHRoPSI0IiAvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMzQiIHI9IjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2YxZGZiYiIgc3Ryb2tlLXdpZHRoPSI0IiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjQ1IiByeD0iMTQiIHJ5PSIxMCIgZmlsbD0iI2Y3ZGZjMyIgLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSI0MSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGVsbGlwc2UgY3g9IjE1IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48cGF0aCBkPSJNIDI4IDQxIFEgMzIgMzggMzYgNDEgTCAzMiA0NSBaIiBmaWxsPSIjNDYzYjQwIiAvPjxwYXRoIGQ9Ik0gMzIgNDUgTCAzMiA0OCBNIDI0IDQ4IFEgMjggNTMgMzIgNDggUSAzNiA1MyA0MCA0OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDUzZDQzIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgLz48L3N2Zz4="
+        },
+        {
+          "scientific_name": "Myrmecobius fasciatus",
+          "species": "Numbat",
+          "count": 103,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDEyIDI3IEwgMTAgNSBRIDI2IDcgMjggMjIiIGZpbGw9IiNjNDk3NjgiIC8+PHBhdGggZD0iTSAzNiAyMiBRIDM4IDcgNTQgNSBMIDUyIDI3IiBmaWxsPSIjYzQ5NzY4IiAvPjxwYXRoIGQ9Ik0gMTYgMjIgTCAxNSAxMSBMIDI0IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxwYXRoIGQ9Ik0gNDAgMjIgTCA0OSAxMSBMIDQ4IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjM1IiByeD0iMjMiIHJ5PSIyMyIgZmlsbD0iI2M0OTc2OCIgLz48cGF0aCBkPSJNIDExIDMyIEwgMjUgMjYgTCAyNyAzMiBMIDEyIDM3IFoiIGZpbGw9IiM2NDUyNDciIC8+PHBhdGggZD0iTSA1MyAzMiBMIDM5IDI2IEwgMzcgMzIgTCA1MiAzNyBaIiBmaWxsPSIjNjQ1MjQ3IiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjQ1IiByeD0iMTQiIHJ5PSIxMCIgZmlsbD0iI2Y3ZGZjMyIgLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iMjEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxjaXJjbGUgY3g9IjQyIiBjeT0iMzQiIHI9IjMuNyIgZmlsbD0iIzMwMmQzNCIgLz48Y2lyY2xlIGN4PSI0MSIgY3k9IjMyLjciIHI9IjEuMiIgZmlsbD0id2hpdGUiIC8+PGVsbGlwc2UgY3g9IjE1IiBjeT0iNDIiIHJ4PSI0IiByeT0iMiIgZmlsbD0iI2U5YTNhOCIgb3BhY2l0eT0iLjY1IiAvPjxlbGxpcHNlIGN4PSI0OSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48cGF0aCBkPSJNIDI4IDQxIFEgMzIgMzggMzYgNDEgTCAzMiA0NSBaIiBmaWxsPSIjNDYzYjQwIiAvPjxwYXRoIGQ9Ik0gMzIgNDUgTCAzMiA0OCBNIDI0IDQ4IFEgMjggNTMgMzIgNDggUSAzNiA1MyA0MCA0OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDUzZDQzIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgLz48L3N2Zz4="
+        },
+        {
+          "scientific_name": "Megaptera novaeangliae",
+          "species": "Humpback Whale",
+          "count": 95,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDE0IDI2IFEgOSAxMiA0IDE4IFEgNyAzMCAxNiAzMSIgZmlsbD0iIzYzOGFiOCIgLz48cGF0aCBkPSJNIDQ3IDI1IFEgNTYgMTMgNjEgMjAgTCA1NSAzMCBMIDYxIDM5IFEgNTAgNDEgNDYgMzMiIGZpbGw9IiM3NzlmYzUiIC8+PGVsbGlwc2UgY3g9IjMwIiBjeT0iMzEiIHJ4PSIyMyIgcnk9IjE3IiBmaWxsPSIjNzc5ZmM1IiAvPjxwYXRoIGQ9Ik0gMjcgNDAgUSAzNCA0OCA0MiA0NSBRIDM4IDM3IDMzIDM1IiBmaWxsPSIjNzc5ZmM1IiAvPjxwYXRoIGQ9Ik0gMjEgMTQgUSAyMCA0IDE2IDYgTSAyMSAxNCBRIDI1IDQgMjggNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDUzZDQzIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjI5IiByPSIzLjIiIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iMjAiIGN5PSIyOCIgcj0iMSIgZmlsbD0id2hpdGUiIC8+PHBhdGggZD0iTSAxMyAzNyBRIDE5IDQyIDI1IDM3IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NTNkNDMiIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjwvc3ZnPg=="
+        },
+        {
+          "scientific_name": "Tursiops aduncus",
+          "species": "Indo-Pacific Bottlenose Dolphin",
+          "count": 88,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDEyIDMwIFEgOSAyNCAzIDI5IFEgMSAzMyAxMiAzNyBMIDIwIDQ0IFEgMzggNTIgNTAgMzcgTCA2MCAyOCBMIDU0IDI3IFEgNTEgMTcgMzkgMTUgTCAzNCA1IEwgMjYgMTUgUSAxNyAxNiAxMiAzMCIgZmlsbD0iIzhjYjZjOSIgLz48cGF0aCBkPSJNIDI3IDM5IFEgMzQgNTIgMzkgNDQgTCAzNSAzNCIgZmlsbD0iIzhjYjZjOSIgLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjI5IiByPSIzLjIiIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iMjAiIGN5PSIyOCIgcj0iMSIgZmlsbD0id2hpdGUiIC8+PHBhdGggZD0iTSAxMyAzNyBRIDE5IDQyIDI1IDM3IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NTNkNDMiIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjwvc3ZnPg=="
+        },
+        {
+          "scientific_name": "Perameles gunnii",
+          "species": "Eastern Barred Bandicoot",
+          "count": 86,
+          "headImage": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cGF0aCBkPSJNIDEyIDI3IEwgMTAgNSBRIDI2IDcgMjggMjIiIGZpbGw9IiNiY2E3OGYiIC8+PHBhdGggZD0iTSAzNiAyMiBRIDM4IDcgNTQgNSBMIDUyIDI3IiBmaWxsPSIjYmNhNzhmIiAvPjxwYXRoIGQ9Ik0gMTYgMjIgTCAxNSAxMSBMIDI0IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxwYXRoIGQ9Ik0gNDAgMjIgTCA0OSAxMSBMIDQ4IDIyIiBmaWxsPSIjZjdkZmMzIiAvPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjM1IiByeD0iMjMiIHJ5PSIyMyIgZmlsbD0iI2JjYTc4ZiIgLz48ZWxsaXBzZSBjeD0iMzIiIGN5PSI0NSIgcng9IjE0IiByeT0iMTAiIGZpbGw9IiNmN2RmYzMiIC8+PGNpcmNsZSBjeD0iMjIiIGN5PSIzNCIgcj0iMy43IiBmaWxsPSIjMzAyZDM0IiAvPjxjaXJjbGUgY3g9IjIxIiBjeT0iMzIuNyIgcj0iMS4yIiBmaWxsPSJ3aGl0ZSIgLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjM0IiByPSIzLjciIGZpbGw9IiMzMDJkMzQiIC8+PGNpcmNsZSBjeD0iNDEiIGN5PSIzMi43IiByPSIxLjIiIGZpbGw9IndoaXRlIiAvPjxlbGxpcHNlIGN4PSIxNSIgY3k9IjQyIiByeD0iNCIgcnk9IjIiIGZpbGw9IiNlOWEzYTgiIG9wYWNpdHk9Ii42NSIgLz48ZWxsaXBzZSBjeD0iNDkiIGN5PSI0MiIgcng9IjQiIHJ5PSIyIiBmaWxsPSIjZTlhM2E4IiBvcGFjaXR5PSIuNjUiIC8+PHBhdGggZD0iTSAyOCA0MSBRIDMyIDM4IDM2IDQxIEwgMzIgNDUgWiIgZmlsbD0iIzQ2M2I0MCIgLz48cGF0aCBkPSJNIDMyIDQ1IEwgMzIgNDggTSAyNCA0OCBRIDI4IDUzIDMyIDQ4IFEgMzYgNTMgNDAgNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ1M2Q0MyIgc3Ryb2tlLXdpZHRoPSIxLjciIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+PC9zdmc+"
+        },
+        {
+          "scientific_name": "Phascogale tapoatafa",
+          "species": "Brush-tailed Phascogale",
+          "count": 84
+        },
+        {
+          "scientific_name": "Petaurus australis",
+          "species": "Yellow-bellied Glider",
+          "count": 72
+        },
+        {
+          "scientific_name": "Rusa timorensis",
+          "species": "Javan Rusa",
+          "count": 68
+        },
+        {
+          "scientific_name": "Petrogale lateralis",
+          "species": "Black-flanked Rock Wallaby",
+          "count": 65
+        },
+        {
+          "scientific_name": "Dendrolagus lumholtzi",
+          "species": "Lumholtz's Tree Kangaroo",
+          "count": 60
+        },
+        {
+          "scientific_name": "Sousa sahulensis",
+          "species": "Australian Humpback Dolphin",
+          "count": 56
+        },
+        {
+          "scientific_name": "Mirounga leonina",
+          "species": "Southern Elephant Seal",
+          "count": 55
+        },
+        {
+          "scientific_name": "Isoodon fusciventer",
+          "species": "Quenda",
+          "count": 50
+        },
+        {
+          "scientific_name": "Dasyurus hallucatus",
+          "species": "Northern Quoll",
+          "count": 47
+        },
+        {
+          "scientific_name": "Petrogale penicillata",
+          "species": "Brush-tailed Rock Wallaby",
+          "count": 47
+        },
+        {
+          "scientific_name": "Potorous tridactylus",
+          "species": "Long-nosed Potoroo",
+          "count": 44
+        },
+        {
+          "scientific_name": "Dasyurus geoffroii",
+          "species": "Western Quoll",
+          "count": 41
+        },
+        {
+          "scientific_name": "Pseudochirops archeri",
+          "species": "Green Ringtail",
+          "count": 40
+        },
+        {
+          "scientific_name": "Eubalaena australis",
+          "species": "Southern Right Whale",
+          "count": 39
+        },
+        {
+          "scientific_name": "Arctocephalus forsteri",
+          "species": "Long-nosed Fur Seal",
+          "count": 34
+        },
+        {
+          "scientific_name": "Cercartetus nana",
+          "species": "Eastern Pygmy Possum",
+          "count": 34
+        },
+        {
+          "scientific_name": "Antechinus flavipes",
+          "species": "Yellow-footed Antechinus",
+          "count": 32
+        },
+        {
+          "scientific_name": "Petaurus norfolcensis",
+          "species": "Squirrel Glider",
+          "count": 32
+        },
+        {
+          "scientific_name": "Pseudocheirus occidentalis",
+          "species": "Western Ring-tailed Possum",
+          "count": 31
+        },
+        {
+          "scientific_name": "Trichosurus vulpecula",
+          "species": "Common Brushtail Possum",
+          "count": 31
+        },
+        {
+          "scientific_name": "Tachyglossus aculeatus",
+          "species": "Short-beaked Echidna",
+          "count": 30
+        },
+        {
+          "scientific_name": "Petrogale mareeba",
+          "species": "Mareeba Rock Wallaby",
+          "count": 26
+        },
+        {
+          "scientific_name": "Canis familiaris",
+          "species": "Canis familiaris",
+          "count": 25
+        },
+        {
+          "scientific_name": "Rusa unicolor",
+          "species": "Sambar",
+          "count": 25
+        },
+        {
+          "scientific_name": "Dugong dugon",
+          "species": "Dugong",
+          "count": 24
+        },
+        {
+          "scientific_name": "Macroderma gigas",
+          "species": "Ghost Bat",
+          "count": 23
+        },
+        {
+          "scientific_name": "Macrotis lagotis",
+          "species": "Greater Bilby",
+          "count": 20
+        },
+        {
+          "scientific_name": "Arctocephalus pusillus",
+          "species": "Brown Fur Seal",
+          "count": 19
+        },
+        {
+          "scientific_name": "Bettongia ogilbyi",
+          "species": "Woylie",
+          "count": 18
+        },
+        {
+          "scientific_name": "Gymnobelideus leadbeateri",
+          "species": "Leadbeater's Possum",
+          "count": 16
+        },
+        {
+          "scientific_name": "Hemibelideus lemuroides",
+          "species": "Lemuroid Ring-tailed Possum",
+          "count": 15
+        },
+        {
+          "scientific_name": "Bettongia gaimardi",
+          "species": "Eastern Bettong",
+          "count": 13
+        },
+        {
+          "scientific_name": "Physeter macrocephalus",
+          "species": "Sperm Whale",
+          "count": 13
+        },
+        {
+          "scientific_name": "Dendrolagus bennettianus",
+          "species": "Bennett's Tree Kangaroo",
+          "count": 12
+        },
+        {
+          "scientific_name": "Sminthopsis crassicaudata",
+          "species": "Fat-tailed Dunnart",
+          "count": 12
+        },
+        {
+          "scientific_name": "Isoodon obesulus",
+          "species": "Isoodon obesulus",
+          "count": 11
+        },
+        {
+          "scientific_name": "Lasiorhinus latifrons",
+          "species": "Southern Hairy-nosed Wombat",
+          "count": 11
+        },
+        {
+          "scientific_name": "Orcaella heinsohni",
+          "species": "Australian Snubfin Dolphin",
+          "count": 10
+        },
+        {
+          "scientific_name": "Petrogale burbidgei",
+          "species": "Monjon",
+          "count": 10
+        },
+        {
+          "scientific_name": "Axis porcinus",
+          "species": "Indochinese Hog Deer",
+          "count": 9
+        },
+        {
+          "scientific_name": "Bettongia lesueur",
+          "species": "Burrowing Bettong",
+          "count": 9
+        },
+        {
+          "scientific_name": "Hydromys chrysogaster",
+          "species": "Rakali",
+          "count": 9
+        },
+        {
+          "scientific_name": "Onychogalea fraenata",
+          "species": "Bridled Nail-tail Wallaby",
+          "count": 9
+        },
+        {
+          "scientific_name": "Petrogale xanthopus",
+          "species": "Yellow-footed Rock Wallaby",
+          "count": 9
+        },
+        {
+          "scientific_name": "Pseudomys novaehollandiae",
+          "species": "New Holland Mouse",
+          "count": 8
+        },
+        {
+          "scientific_name": "Sminthopsis murina",
+          "species": "Common Dunnart",
+          "count": 8
+        },
+        {
+          "scientific_name": "Bettongia tropica",
+          "species": "Northern Bettong",
+          "count": 7
+        },
+        {
+          "scientific_name": "Mastacomys fuscus",
+          "species": "Broad-toothed Mouse",
+          "count": 7
+        },
+        {
+          "scientific_name": "Orcinus orca",
+          "species": "Orca",
+          "count": 7
+        },
+        {
+          "scientific_name": "Rhinolophus achilles",
+          "species": "Queensland Horseshoe Bat",
+          "count": 7
+        },
+        {
+          "scientific_name": "Thylacinus cynocephalus",
+          "species": "Thylacine",
+          "count": 7
+        },
+        {
+          "scientific_name": "Aepyprymnus rufescens",
+          "species": "Rufous Bettong",
+          "count": 6
+        },
+        {
+          "scientific_name": "Burramys parvus",
+          "species": "Mountain Pygmy Possum",
+          "count": 6
+        },
+        {
+          "scientific_name": "Dasyuroides byrnei",
+          "species": "Kowari",
+          "count": 6
+        },
+        {
+          "scientific_name": "Mesembriomys gouldii",
+          "species": "Black-footed Tree Rat",
+          "count": 6
+        },
+        {
+          "scientific_name": "Osphranter bernardus",
+          "species": "Black Wallaroo",
+          "count": 6
+        },
+        {
+          "scientific_name": "Petrogale sharmani",
+          "species": "Mount Claro Rock Wallaby",
+          "count": 6
+        },
+        {
+          "scientific_name": "Pseudorca crassidens",
+          "species": "False Killer Whale",
+          "count": 6
+        },
+        {
+          "scientific_name": "Notamacropus parma",
+          "species": "Parma Wallaby",
+          "count": 5
+        },
+        {
+          "scientific_name": "Notomys fuscus",
+          "species": "Dusky Hopping Mouse",
+          "count": 5
+        },
+        {
+          "scientific_name": "Pseudochirulus cinereus",
+          "species": "Daintree River Ring-tailed Possum",
+          "count": 5
+        },
+        {
+          "scientific_name": "Pseudomys australis",
+          "species": "Plains Mouse",
+          "count": 5
+        },
+        {
+          "scientific_name": "Wyulda squamicaudata",
+          "species": "Scaly-tailed Possum",
+          "count": 5
+        },
+        {
+          "scientific_name": "Balaenoptera musculus",
+          "species": "Blue Whale",
+          "count": 4
+        },
+        {
+          "scientific_name": "Lasiorhinus krefftii",
+          "species": "Northern Hairy-nosed Wombat",
+          "count": 4
+        },
+        {
+          "scientific_name": "Ningaui yvonneae",
+          "species": "Southern Ningaui",
+          "count": 4
+        },
+        {
+          "scientific_name": "Petrogale purpureicollis",
+          "species": "Purple-necked Rock Wallaby",
+          "count": 4
+        },
+        {
+          "scientific_name": "Phascogale calurus",
+          "species": "Red-tailed Phascogale",
+          "count": 4
+        },
+        {
+          "scientific_name": "Sminthopsis leucopus",
+          "species": "White-footed Dunnart",
+          "count": 4
+        },
+        {
+          "scientific_name": "Arctocephalus tropicalis",
+          "species": "Subantarctic Fur Seal",
+          "count": 3
+        },
+        {
+          "scientific_name": "Hipposideros diadema",
+          "species": "Diadem Roundleaf Bat",
+          "count": 3
+        },
+        {
+          "scientific_name": "Hipposideros semoni",
+          "species": "Semon's Roundleaf Bat",
+          "count": 3
+        },
+        {
+          "scientific_name": "Hydrurga leptonyx",
+          "species": "Leopard Seal",
+          "count": 3
+        },
+        {
+          "scientific_name": "Leporillus conditor",
+          "species": "Greater Stick-nest Rat",
+          "count": 3
+        },
+        {
+          "scientific_name": "Perameles bougainville",
+          "species": "Western Barred Bandicoot",
+          "count": 3
+        },
+        {
+          "scientific_name": "Petaurus gracilis",
+          "species": "Mahogany Glider",
+          "count": 3
+        },
+        {
+          "scientific_name": "Pseudomys chapmani",
+          "species": "Pilbara Pebble Mouse",
+          "count": 3
+        },
+        {
+          "scientific_name": "Saccolaimus flaviventris",
+          "species": "Yellow-bellied Pouched Bat",
+          "count": 3
+        },
+        {
+          "scientific_name": "Scoteanax rueppellii",
+          "species": "Greater Broad-nosed Bat",
+          "count": 3
+        },
+        {
+          "scientific_name": "Taphozous australis",
+          "species": "Coastal Tomb Bat",
+          "count": 3
+        },
+        {
+          "scientific_name": "Acinonyx jubatus",
+          "species": "Cheetah",
+          "count": 2
+        },
+        {
+          "scientific_name": "Antechinus minimus",
+          "species": "Antechinus minimus",
+          "count": 2
+        },
+        {
+          "scientific_name": "Balaenoptera borealis",
+          "species": "Sei Whale",
+          "count": 2
+        },
+        {
+          "scientific_name": "Bos javanicus",
+          "species": "Banteng",
+          "count": 2
+        },
+        {
+          "scientific_name": "Chalinolobus dwyeri",
+          "species": "Large-eared Pied Bat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Chalinolobus picatus",
+          "species": "Little Pied Bat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Conilurus penicillatus",
+          "species": "Brush-tailed Rabbit-rat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Equus ferus",
+          "species": "Equus ferus",
+          "count": 2
+        },
+        {
+          "scientific_name": "Isoodon auratus",
+          "species": "Golden Bandicoot",
+          "count": 2
+        },
+        {
+          "scientific_name": "Kogia breviceps",
+          "species": "Pygmy Sperm Whale",
+          "count": 2
+        },
+        {
+          "scientific_name": "Lagorchestes hirsutus",
+          "species": "Rufous Hare Wallaby",
+          "count": 2
+        },
+        {
+          "scientific_name": "Miniopterus australis",
+          "species": "Little Bent-winged Bat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Notomys cervinus",
+          "species": "Fawn Hopping Mouse",
+          "count": 2
+        },
+        {
+          "scientific_name": "Nyctophilus sherrini",
+          "species": "Tasmanian Long-eared Bat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Petrogale godmani",
+          "species": "Godman's Rock Wallaby",
+          "count": 2
+        },
+        {
+          "scientific_name": "Phoniscus papuensis",
+          "species": "Golden-tipped Bat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Potorous gilbertii",
+          "species": "Gilbert's Potoroo",
+          "count": 2
+        },
+        {
+          "scientific_name": "Pseudomys shortridgei",
+          "species": "Heath Mouse",
+          "count": 2
+        },
+        {
+          "scientific_name": "Saccolaimus saccolaimus",
+          "species": "Bare-rumped Sheath-tailed Bat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Sminthopsis douglasi",
+          "species": "Julia Creek Dunnart",
+          "count": 2
+        },
+        {
+          "scientific_name": "Sminthopsis psammophila",
+          "species": "Sandhill Dunnart",
+          "count": 2
+        },
+        {
+          "scientific_name": "Vombatus ursinus",
+          "species": "Bare-nosed Wombat",
+          "count": 2
+        },
+        {
+          "scientific_name": "Antechinus arktos",
+          "species": "Black-tailed Antechinus",
+          "count": 1
+        },
+        {
+          "scientific_name": "Antechinus vandycki",
+          "species": "Tasman Peninsula Dusky Antechinus",
+          "count": 1
+        },
+        {
+          "scientific_name": "Balaenoptera acutorostrata",
+          "species": "Common Minke Whale",
+          "count": 1
+        },
+        {
+          "scientific_name": "Balaenoptera bonaerensis",
+          "species": "Antarctic Minke Whale",
+          "count": 1
+        },
+        {
+          "scientific_name": "Ceratotherium simum",
+          "species": "White Rhinoceros",
+          "count": 1
+        },
+        {
+          "scientific_name": "Cercartetus concinnus",
+          "species": "Western Pygmy Possum",
+          "count": 1
+        },
+        {
+          "scientific_name": "Dasycercus blythi",
+          "species": "Spinifex Mulgara",
+          "count": 1
+        },
+        {
+          "scientific_name": "Dendrolagus goodfellowi",
+          "species": "Goodfellow's Tree Kangaroo",
+          "count": 1
+        },
+        {
+          "scientific_name": "Equus quagga",
+          "species": "Plains Zebra",
+          "count": 1
+        },
+        {
+          "scientific_name": "Falsistrellus tasmaniensis",
+          "species": "Eastern False Pipistrelle",
+          "count": 1
+        },
+        {
+          "scientific_name": "Helarctos malayanus",
+          "species": "Sun Bear",
+          "count": 1
+        },
+        {
+          "scientific_name": "Hippopotamus amphibius",
+          "species": "Common Hippopotamus",
+          "count": 1
+        },
+        {
+          "scientific_name": "Hipposideros inornatus",
+          "species": "Arnhem Roundleaf Bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Hipposideros stenotis",
+          "species": "Narrow-eared Roundleaf Bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Lagorchestes leporides",
+          "species": "Eastern Hare Wallaby",
+          "count": 1
+        },
+        {
+          "scientific_name": "Lagostrophus fasciatus",
+          "species": "Banded Hare Wallaby",
+          "count": 1
+        },
+        {
+          "scientific_name": "Mesembriomys macrurus",
+          "species": "Golden-backed Tree Rat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Myotis macropus",
+          "species": "Southern Myotis",
+          "count": 1
+        },
+        {
+          "scientific_name": "Notomys aquilo",
+          "species": "Northern Hopping Mouse",
+          "count": 1
+        },
+        {
+          "scientific_name": "Notoryctes typhlops",
+          "species": "Central Desert Marsupial Mole",
+          "count": 1
+        },
+        {
+          "scientific_name": "Nyctimene robinsoni",
+          "species": "Queensland Tube-nosed Fruit Bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Nyctophilus bifax",
+          "species": "Eastern Long-eared Bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Panthera leo",
+          "species": "Lion",
+          "count": 1
+        },
+        {
+          "scientific_name": "Petrogale coenensis",
+          "species": "Cape York Rock Wallaby",
+          "count": 1
+        },
+        {
+          "scientific_name": "Planigale gilesi",
+          "species": "Giles' Planigale",
+          "count": 1
+        },
+        {
+          "scientific_name": "Pseudantechinus mimulus",
+          "species": "Carpentarian Pseudantechinus",
+          "count": 1
+        },
+        {
+          "scientific_name": "Pseudomys gouldii",
+          "species": "Shark Bay Mouse",
+          "count": 1
+        },
+        {
+          "scientific_name": "Rhinoceros unicornis",
+          "species": "Indian Rhinoceros",
+          "count": 1
+        },
+        {
+          "scientific_name": "Rhinonicteris aurantia",
+          "species": "Orange Leaf-nosed Bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Saccolaimus mixtus",
+          "species": "Papuan Pouched Bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Setirostris eleryi",
+          "species": "Bristle-faced free-tailed bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Sminthopsis macroura",
+          "species": "Stripe-faced Dunnart",
+          "count": 1
+        },
+        {
+          "scientific_name": "Syconycteris australis",
+          "species": "Southern Blossom Bat",
+          "count": 1
+        },
+        {
+          "scientific_name": "Thylogale stigmatica",
+          "species": "Red-legged Pademelon",
+          "count": 1
+        },
+        {
+          "scientific_name": "Trachypithecus francoisi",
+          "species": "François' Lutung",
+          "count": 1
+        },
+        {
+          "scientific_name": "Ursus maritimus",
+          "species": "Polar Bear",
+          "count": 1
+        },
+        {
+          "scientific_name": "Xeromys myoides",
+          "species": "Water Mouse",
+          "count": 1
+        },
+        {
+          "scientific_name": "Zyzomys pedunculatus",
+          "species": "Central Rock Rat",
+          "count": 1
+        }
+      ],
+      "transform": [
+        {
+          "type": "window",
+          "sort": {
+            "field": [
+              "count",
+              "scientific_name"
+            ],
+            "order": [
+              "descending",
+              "ascending"
+            ]
+          },
+          "ops": [
+            "row_number"
+          ],
+          "as": [
+            "rank"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "topSpecies",
+      "source": "speciesCounts",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.rank <= topN"
+        },
+        {
+          "type": "formula",
+          "expr": "sortOrder === 'Ascending' ? datum.count : -datum.count",
+          "as": "sortKey"
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": [
+              "sortKey",
+              "scientific_name"
+            ],
+            "order": [
+              "ascending",
+              "ascending"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": {
+        "data": "speciesCounts",
+        "field": "count"
+      },
+      "range": "width",
+      "zero": true,
+      "nice": true
+    },
+    {
+      "name": "y",
+      "type": "band",
+      "domain": {
+        "data": "topSpecies",
+        "field": "scientific_name",
+        "sort": {
+          "op": "min",
+          "field": "sortKey",
+          "order": "ascending"
+        }
+      },
+      "range": "height",
+      "padding": 0.4
+    },
+    {
+      "name": "speciesColor",
+      "type": "ordinal",
+      "domain": [
+        "Koala",
+        "Platypus",
+        "Grey-headed Flying-fox",
+        "Greater Glider",
+        "Spotted-tailed Quoll",
+        "European Rabbit",
+        "Quokka",
+        "Tasmanian Devil",
+        "Eastern Barred Bandicoot",
+        "Numbat",
+        "Australian Sea Lion",
+        "Eastern Quoll"
+      ],
+      "range": [
+        "#365B85",
+        "#B65C30",
+        "#2A8576",
+        "#885BA6",
+        "#AD4770",
+        "#86701D",
+        "#397FAD",
+        "#6D6B70",
+        "#C17A24",
+        "#5146A0",
+        "#6f3c91",
+        "#bab0ab"
+      ],
+      "unknown": "#7cacc6"
+    }
+  ],
+  "axes": [
+    {
+      "orient": "bottom",
+      "scale": "x",
+      "title": "Number of observation records",
+      "format": ",d",
+      "tickCount": 5,
+      "grid": true,
+      "gridColor": "#e3e9ef",
+      "domain": false,
+      "tickColor": "#c9d4df",
+      "labelColor": "#52606d",
+      "titleColor": "#243447",
+      "titlePadding": 14
+    },
+    {
+      "orient": "left",
+      "scale": "y",
+      "domain": false,
+      "ticks": false,
+      "labelPadding": 12,
+      "labelLimit": 280,
+      "labelColor": "#243447",
+      "labelFontSize": 12,
+      "encode": {
+        "labels": {
+          "update": {
+            "text": {
+              "signal": "data('topSpecies')[indexof(domain('y'), datum.value)].species"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "name": "stems",
+      "type": "rule",
+      "from": {
+        "data": "topSpecies"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x",
+            "value": 0
+          },
+          "strokeWidth": {
+            "value": 3
+          }
+        },
+        "update": {
+          "x2": {
+            "scale": "x",
+            "field": "count"
+          },
+          "y": {
+            "scale": "y",
+            "field": "scientific_name",
+            "band": 0.5
+          },
+          "stroke": {
+            "scale": "speciesColor",
+            "field": "species"
+          },
+          "tooltip": {
+            "signal": "{'Species': datum.species, 'Scientific name': datum.scientific_name, 'Observations': format(datum.count, ',d'), 'Share of species-level records': format(datum.count / 6460, '.1%'), 'Overall rank': datum.rank}"
+          },
+          "strokeWidth": {
+            "signal": "hoveredSpecies === datum.scientific_name ? 4 : 3"
+          }
+        }
+      }
+    },
+    {
+      "name": "dots",
+      "type": "image",
+      "from": {
+        "data": "topSpecies"
+      },
+      "encode": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        },
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "count"
+          },
+          "y": {
+            "scale": "y",
+            "field": "scientific_name",
+            "band": 0.5
+          },
+          "url": {
+            "field": "headImage"
+          },
+          "width": {
+            "signal": "hoveredSpecies === datum.scientific_name ? 34 : 30"
+          },
+          "height": {
+            "signal": "hoveredSpecies === datum.scientific_name ? 34 : 30"
+          },
+          "tooltip": {
+            "signal": "{'Species': datum.species, 'Scientific name': datum.scientific_name, 'Observations': format(datum.count, ',d'), 'Share of species-level records': format(datum.count / 6460, '.1%'), 'Overall rank': datum.rank}"
+          },
+          "description": {
+            "signal": "'Illustrated ' + datum.species + ', ' + format(datum.count, ',d') + ' observations'"
+          }
+        }
+      }
+    },
+    {
+      "name": "counts",
+      "type": "text",
+      "from": {
+        "data": "topSpecies"
+      },
+      "encode": {
+        "enter": {
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "dx": {
+            "value": 23
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#243447"
+          }
+        },
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "count"
+          },
+          "y": {
+            "scale": "y",
+            "field": "scientific_name",
+            "band": 0.5
+          },
+          "text": {
+            "signal": "format(datum.count, ',d')"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 0
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        },
+        "update": {
+          "y": {
+            "signal": "height + 66"
+          },
+          "text": {
+            "value": "Observation counts reflect recording activity, not animal abundance."
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 0
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        },
+        "update": {
+          "y": {
+            "signal": "height + 83"
+          },
+          "text": {
+            "value": "Source: observations-794195.csv · Subspecies combined · 1 genus-only record excluded"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Arial",
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial"
+    }
+  }
+}

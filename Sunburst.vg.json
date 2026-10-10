@@ -1,0 +1,1106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Zoomable sunburst using exactly the 4,271 observations for the 10 species embedded in DotMap.vg.json. Broad mammal group → taxonomic order → species. Species counts are aggregated directly from DotMap observations, including its coordinate and species selection. Higher taxonomy matched by genus to the Mammal Diversity Database, https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/master/_data/mdd.csv (retrieved 2026-10-10); input scientific names retained. Internal counts are zero to avoid double counting. Counts reflect recording activity, not animal abundance. Click groups or orders to focus; click centre to return to parent; Escape resets. All data embedded. Species leaves use the shared BumpChart species colours; internal rings retain broad-group colours.",
+  "width": 960,
+  "height": 680,
+  "padding": 16,
+  "background": "#f7fafc",
+  "title": {
+    "text": "How Are Mammal Observations Distributed?",
+    "subtitle": [
+      "Broad groups → taxonomic orders → species",
+      "4,271 observations · 10 selected species · Click a group or order to zoom · Click centre to go back"
+    ],
+    "anchor": "start",
+    "fontSize": 22,
+    "color": "#243447",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#52606d",
+    "offset": 18
+  },
+  "signals": [
+    {
+      "name": "focus",
+      "value": "all",
+      "on": [
+        {
+          "events": "@segments:click, @childLabels:click",
+          "update": "datum.children > 0 ? datum.id : focus"
+        },
+        {
+          "events": "@centre:click",
+          "update": "focus === 'all' ? 'all' : data('focusNode')[0].parent"
+        },
+        {
+          "events": "view:keydown[event.key === 'Escape']",
+          "update": "'all'"
+        }
+      ]
+    },
+    {
+      "name": "hovered",
+      "value": null,
+      "on": [
+        {
+          "events": "@segments:mouseover, @childLabels:mouseover",
+          "update": "datum.id"
+        },
+        {
+          "events": "@segments:mouseout, @childLabels:mouseout",
+          "update": "null"
+        },
+        {
+          "events": {
+            "signal": "focus"
+          },
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "current",
+      "update": "data('focusNode')[0]"
+    },
+    {
+      "name": "hole",
+      "value": 72
+    },
+    {
+      "name": "radius",
+      "value": 275
+    },
+    {
+      "name": "ring",
+      "update": "(radius - hole) / (3 - current.depth)"
+    },
+    {
+      "name": "detail",
+      "update": "hovered ? data('hoverNode')[0] : current"
+    }
+  ],
+  "data": [
+    {
+      "name": "taxonomy",
+      "values": [
+        {
+          "id": "all",
+          "parent": null,
+          "label": "All selected mammals",
+          "level": "Dataset",
+          "count": 0,
+          "path": "All selected mammals",
+          "total": 4271,
+          "speciesCount": 10
+        },
+        {
+          "id": "Marsupials",
+          "parent": "all",
+          "label": "Marsupials",
+          "group": "Marsupials",
+          "level": "Broad group",
+          "count": 0,
+          "path": "All selected mammals → Marsupials",
+          "total": 2768,
+          "speciesCount": 6
+        },
+        {
+          "id": "order:Dasyuromorphia",
+          "parent": "Marsupials",
+          "label": "Dasyuromorphia",
+          "group": "Marsupials",
+          "level": "Order",
+          "count": 0,
+          "path": "Marsupials → Dasyuromorphia",
+          "total": 396,
+          "speciesCount": 3
+        },
+        {
+          "id": "species:Dasyurus maculatus",
+          "parent": "order:Dasyuromorphia",
+          "label": "Spotted-tailed Quoll",
+          "scientific": "Dasyurus maculatus",
+          "group": "Marsupials",
+          "level": "Species",
+          "count": 124,
+          "path": "Marsupials → Dasyuromorphia → Spotted-tailed Quoll",
+          "total": 124,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Dasyurus viverrinus",
+          "parent": "order:Dasyuromorphia",
+          "label": "Eastern Quoll",
+          "scientific": "Dasyurus viverrinus",
+          "group": "Marsupials",
+          "level": "Species",
+          "count": 119,
+          "path": "Marsupials → Dasyuromorphia → Eastern Quoll",
+          "total": 119,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Sarcophilus harrisii",
+          "parent": "order:Dasyuromorphia",
+          "label": "Tasmanian Devil",
+          "scientific": "Sarcophilus harrisii",
+          "group": "Marsupials",
+          "level": "Species",
+          "count": 153,
+          "path": "Marsupials → Dasyuromorphia → Tasmanian Devil",
+          "total": 153,
+          "speciesCount": 1
+        },
+        {
+          "id": "order:Diprotodontia",
+          "parent": "Marsupials",
+          "label": "Diprotodontia",
+          "group": "Marsupials",
+          "level": "Order",
+          "count": 0,
+          "path": "Marsupials → Diprotodontia",
+          "total": 2372,
+          "speciesCount": 3
+        },
+        {
+          "id": "species:Petauroides volans",
+          "parent": "order:Diprotodontia",
+          "label": "Greater Glider",
+          "scientific": "Petauroides volans",
+          "group": "Marsupials",
+          "level": "Species",
+          "count": 239,
+          "path": "Marsupials → Diprotodontia → Greater Glider",
+          "total": 239,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Phascolarctos cinereus",
+          "parent": "order:Diprotodontia",
+          "label": "Koala",
+          "scientific": "Phascolarctos cinereus",
+          "group": "Marsupials",
+          "level": "Species",
+          "count": 1978,
+          "path": "Marsupials → Diprotodontia → Koala",
+          "total": 1978,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Setonix brachyurus",
+          "parent": "order:Diprotodontia",
+          "label": "Quokka",
+          "scientific": "Setonix brachyurus",
+          "group": "Marsupials",
+          "level": "Species",
+          "count": 155,
+          "path": "Marsupials → Diprotodontia → Quokka",
+          "total": 155,
+          "speciesCount": 1
+        },
+        {
+          "id": "Placental mammals",
+          "parent": "all",
+          "label": "Placental mammals",
+          "group": "Placental mammals",
+          "level": "Broad group",
+          "count": 0,
+          "path": "All selected mammals → Placental mammals",
+          "total": 824,
+          "speciesCount": 3
+        },
+        {
+          "id": "order:Carnivora",
+          "parent": "Placental mammals",
+          "label": "Carnivora",
+          "group": "Placental mammals",
+          "level": "Order",
+          "count": 0,
+          "path": "Placental mammals → Carnivora",
+          "total": 123,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Neophoca cinerea",
+          "parent": "order:Carnivora",
+          "label": "Australian Sea Lion",
+          "scientific": "Neophoca cinerea",
+          "group": "Placental mammals",
+          "level": "Species",
+          "count": 123,
+          "path": "Placental mammals → Carnivora → Australian Sea Lion",
+          "total": 123,
+          "speciesCount": 1
+        },
+        {
+          "id": "order:Chiroptera",
+          "parent": "Placental mammals",
+          "label": "Chiroptera",
+          "group": "Placental mammals",
+          "level": "Order",
+          "count": 0,
+          "path": "Placental mammals → Chiroptera",
+          "total": 525,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Pteropus poliocephalus",
+          "parent": "order:Chiroptera",
+          "label": "Grey-headed Flying-fox",
+          "scientific": "Pteropus poliocephalus",
+          "group": "Placental mammals",
+          "level": "Species",
+          "count": 525,
+          "path": "Placental mammals → Chiroptera → Grey-headed Flying-fox",
+          "total": 525,
+          "speciesCount": 1
+        },
+        {
+          "id": "order:Lagomorpha",
+          "parent": "Placental mammals",
+          "label": "Lagomorpha",
+          "group": "Placental mammals",
+          "level": "Order",
+          "count": 0,
+          "path": "Placental mammals → Lagomorpha",
+          "total": 176,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Oryctolagus cuniculus",
+          "parent": "order:Lagomorpha",
+          "label": "European Rabbit",
+          "scientific": "Oryctolagus cuniculus",
+          "group": "Placental mammals",
+          "level": "Species",
+          "count": 176,
+          "path": "Placental mammals → Lagomorpha → European Rabbit",
+          "total": 176,
+          "speciesCount": 1
+        },
+        {
+          "id": "Monotremes",
+          "parent": "all",
+          "label": "Monotremes",
+          "group": "Monotremes",
+          "level": "Broad group",
+          "count": 0,
+          "path": "All selected mammals → Monotremes",
+          "total": 679,
+          "speciesCount": 1
+        },
+        {
+          "id": "order:Monotremata",
+          "parent": "Monotremes",
+          "label": "Monotremata",
+          "group": "Monotremes",
+          "level": "Order",
+          "count": 0,
+          "path": "Monotremes → Monotremata",
+          "total": 679,
+          "speciesCount": 1
+        },
+        {
+          "id": "species:Ornithorhynchus anatinus",
+          "parent": "order:Monotremata",
+          "label": "Platypus",
+          "scientific": "Ornithorhynchus anatinus",
+          "group": "Monotremes",
+          "level": "Species",
+          "count": 679,
+          "path": "Monotremes → Monotremata → Platypus",
+          "total": 679,
+          "speciesCount": 1
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "source": "taxonomy",
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "partition",
+          "field": "count",
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+          "size": [
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "focusNode",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.id === focus"
+        }
+      ]
+    },
+    {
+      "name": "hoverNode",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.id === hovered"
+        }
+      ]
+    },
+    {
+      "name": "visible",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth > current.depth && datum.x0 >= current.x0 - 1e-10 && datum.x1 <= current.x1 + 1e-10"
+        },
+        {
+          "type": "formula",
+          "expr": "2 * PI * (datum.x0 - current.x0) / (current.x1 - current.x0)",
+          "as": "start"
+        },
+        {
+          "type": "formula",
+          "expr": "2 * PI * (datum.x1 - current.x0) / (current.x1 - current.x0)",
+          "as": "end"
+        },
+        {
+          "type": "formula",
+          "expr": "hole + (datum.depth - current.depth - 1) * ring",
+          "as": "inner"
+        },
+        {
+          "type": "formula",
+          "expr": "hole + (datum.depth - current.depth) * ring",
+          "as": "outer"
+        },
+        {
+          "type": "formula",
+          "expr": "(datum.start + datum.end) / 2",
+          "as": "mid"
+        }
+      ]
+    },
+    {
+      "name": "children",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.parent === focus"
+        },
+        {
+          "type": "window",
+          "sort": {
+            "field": [
+              "total",
+              "label"
+            ],
+            "order": [
+              "descending",
+              "ascending"
+            ]
+          },
+          "ops": [
+            "row_number"
+          ],
+          "as": [
+            "rank"
+          ]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.rank <= 12"
+        }
+      ]
+    },
+    {
+      "name": "groupLegend",
+      "values": [
+        {
+          "group": "Marsupials",
+          "x": 16
+        },
+        {
+          "group": "Placental mammals",
+          "x": 240
+        },
+        {
+          "group": "Monotremes",
+          "x": 505
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "groupColor",
+      "type": "ordinal",
+      "domain": [
+        "Marsupials",
+        "Placental mammals",
+        "Monotremes"
+      ],
+      "range": [
+        "#006F95",
+        "#A00097",
+        "#8A6900"
+      ]
+    },
+    {
+      "name": "orderColor",
+      "type": "ordinal",
+      "domain": [
+        "Marsupials",
+        "Placental mammals",
+        "Monotremes"
+      ],
+      "range": [
+        "#40A9CE",
+        "#CA65C5",
+        "#C5A431"
+      ]
+    },
+    {
+      "name": "leafColor",
+      "type": "ordinal",
+      "domain": [
+        "Marsupials",
+        "Placental mammals",
+        "Monotremes"
+      ],
+      "range": [
+        "#B5E4F2",
+        "#EEC6EC",
+        "#F3E4A1"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "breadcrumb",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 16
+          },
+          "y": {
+            "value": 24
+          },
+          "text": {
+            "signal": "current.path"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "limit": {
+            "value": 920
+          }
+        }
+      }
+    },
+    {
+      "name": "segments",
+      "type": "arc",
+      "from": {
+        "data": "visible"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 305
+          },
+          "y": {
+            "value": 335
+          },
+          "startAngle": {
+            "field": "start"
+          },
+          "endAngle": {
+            "field": "end"
+          },
+          "innerRadius": {
+            "field": "inner"
+          },
+          "outerRadius": {
+            "field": "outer"
+          },
+          "fill": {
+            "signal": "scale(datum.depth === 1 ? 'groupColor' : datum.depth === 2 ? 'orderColor' : 'leafColor', datum.group)"
+          },
+          "fillOpacity": {
+            "value": 1
+          },
+          "stroke": {
+            "signal": "hovered === datum.id ? '#243447' : '#ffffff'"
+          },
+          "strokeWidth": {
+            "signal": "hovered === datum.id ? 2.5 : 1"
+          },
+          "padAngle": {
+            "value": 0.003
+          },
+          "cursor": {
+            "signal": "datum.children > 0 ? 'pointer' : 'default'"
+          },
+          "tooltip": {
+            "signal": "{'Name': datum.label, 'Level': datum.level, 'Scientific name': datum.scientific || '—', 'Observations': format(datum.total, ',d'), 'Share of current view': format(datum.total / current.total, '.1%'), 'Species': datum.speciesCount, 'Action': datum.children > 0 ? 'Click to zoom' : 'Species observation records'}"
+          },
+          "description": {
+            "signal": "datum.path + ': ' + format(datum.total, ',d') + ' observations'"
+          }
+        }
+      }
+    },
+    {
+      "name": "arcLabels",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "visible"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 305
+          },
+          "y": {
+            "value": 335
+          },
+          "theta": {
+            "field": "mid"
+          },
+          "radius": {
+            "signal": "(datum.inner + datum.outer) / 2"
+          },
+          "angle": {
+            "signal": "datum.mid * 180 / PI + (datum.mid > PI / 2 && datum.mid < 3 * PI / 2 ? 180 : 0)"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "field": "label"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "signal": "datum.children > 0 ? 'bold' : 'normal'"
+          },
+          "fill": {
+            "signal": "datum.depth === 1 ? '#ffffff' : '#243447'"
+          },
+          "limit": {
+            "signal": "min(130, (datum.end - datum.start) * (datum.inner + datum.outer) / 2 - 12)"
+          },
+          "opacity": {
+            "signal": "(datum.end - datum.start) * (datum.inner + datum.outer) / 2 > 65 ? 1 : 0"
+          }
+        }
+      }
+    },
+    {
+      "name": "centre",
+      "type": "arc",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 305
+          },
+          "y": {
+            "value": 335
+          },
+          "startAngle": {
+            "value": 0
+          },
+          "endAngle": {
+            "signal": "2 * PI"
+          },
+          "innerRadius": {
+            "value": 0
+          },
+          "outerRadius": {
+            "signal": "hole - 2"
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "stroke": {
+            "value": "#dce4ed"
+          },
+          "cursor": {
+            "signal": "focus === 'all' ? 'default' : 'pointer'"
+          },
+          "tooltip": {
+            "signal": "focus === 'all' ? 'All selected mammal observations' : 'Return to ' + current.parent"
+          }
+        }
+      }
+    },
+    {
+      "name": "centreCount",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 305
+          },
+          "y": {
+            "value": 327
+          },
+          "text": {
+            "signal": "format(current.total, ',d')"
+          },
+          "fontSize": {
+            "value": 22
+          },
+          "fill": {
+            "value": "#ffffff"
+          },
+          "align": {
+            "value": "center"
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    },
+    {
+      "name": "centreCaption",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 305
+          },
+          "y": {
+            "value": 350
+          },
+          "text": {
+            "value": "observations"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#F1F4F8"
+          },
+          "align": {
+            "value": "center"
+          }
+        }
+      }
+    },
+    {
+      "name": "centreBack",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 305
+          },
+          "y": {
+            "value": 370
+          },
+          "text": {
+            "signal": "focus === 'all' ? 'All selected' : '↑ Go back'"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#F1F4F8"
+          },
+          "align": {
+            "value": "center"
+          }
+        }
+      }
+    },
+    {
+      "name": "detailTitle",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 615
+          },
+          "y": {
+            "value": 86
+          },
+          "text": {
+            "signal": "detail.label"
+          },
+          "fontSize": {
+            "value": 18
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "limit": {
+            "value": 330
+          }
+        }
+      }
+    },
+    {
+      "name": "detailLevel",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 615
+          },
+          "y": {
+            "value": 111
+          },
+          "text": {
+            "signal": "detail.level + (detail.scientific ? ' · ' + detail.scientific : '')"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "limit": {
+            "value": 330
+          }
+        }
+      }
+    },
+    {
+      "name": "detailCount",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 615
+          },
+          "y": {
+            "value": 147
+          },
+          "text": {
+            "signal": "format(detail.total, ',d') + ' observations'"
+          },
+          "fontSize": {
+            "value": 22
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    },
+    {
+      "name": "detailShare",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 615
+          },
+          "y": {
+            "value": 174
+          },
+          "text": {
+            "signal": "format(detail.total / current.total, '.1%') + ' of current view · ' + detail.speciesCount + ' species'"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "name": "listTitle",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 615
+          },
+          "y": {
+            "value": 218
+          },
+          "text": {
+            "signal": "current.depth === 0 ? 'Broad groups' : current.depth === 1 ? 'Taxonomic orders' : 'Species'"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
+        }
+      }
+    },
+    {
+      "name": "childLabels",
+      "type": "text",
+      "from": {
+        "data": "children"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 615
+          },
+          "y": {
+            "signal": "244 + (datum.rank - 1) * 26"
+          },
+          "text": {
+            "field": "label"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "scale": "groupColor",
+            "field": "group"
+          },
+          "fontWeight": {
+            "signal": "hovered === datum.id ? 'bold' : 'normal'"
+          },
+          "limit": {
+            "value": 245
+          },
+          "cursor": {
+            "signal": "datum.children > 0 ? 'pointer' : 'default'"
+          },
+          "tooltip": {
+            "signal": "{'Name': datum.label, 'Observations': format(datum.total, ',d'), 'Share of current view': format(datum.total / current.total, '.1%')}"
+          }
+        }
+      }
+    },
+    {
+      "name": "childCounts",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "children"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 944
+          },
+          "y": {
+            "signal": "244 + (datum.rank - 1) * 26"
+          },
+          "align": {
+            "value": "right"
+          },
+          "text": {
+            "signal": "format(datum.total, ',d')"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "name": "listNote",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 615
+          },
+          "y": {
+            "value": 564
+          },
+          "text": {
+            "value": "Up to 12 largest entries shown; hover arcs for all species."
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "limit": {
+            "value": 330
+          }
+        }
+      }
+    },
+    {
+      "name": "instructions",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 16
+          },
+          "y": {
+            "value": 632
+          },
+          "text": {
+            "value": "Click a broad group, order, or list entry to zoom. Click the centre to go up one level; Escape resets."
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "name": "footnote",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 16
+          },
+          "y": {
+            "value": 655
+          },
+          "text": {
+            "value": "Colour families identify mammal groups; lighter shades show orders and species. Counts reflect recording activity."
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "name": "source",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 16
+          },
+          "y": {
+            "value": 675
+          },
+          "text": {
+            "value": "Source: DotMap.vg.json embedded observations · Higher taxonomy: Mammal Diversity Database (matched by genus)."
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "name": "groupLegendSymbols",
+      "type": "symbol",
+      "from": {
+        "data": "groupLegend"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "value": 48
+          },
+          "shape": {
+            "value": "square"
+          },
+          "size": {
+            "value": 100
+          },
+          "fill": {
+            "scale": "groupColor",
+            "field": "group"
+          }
+        }
+      }
+    },
+    {
+      "name": "groupLegendLabels",
+      "type": "text",
+      "from": {
+        "data": "groupLegend"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.x + 12"
+          },
+          "y": {
+            "value": 48
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "field": "group"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#243447"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Arial"
+  }
+}

@@ -1,0 +1,1460 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Streamgraph of wildlife observation composition in 2017–2026, using the same top ten species and 4,139 source records as StackedArea.vg.json. Source: Dataset/observations-794195.csv. Species selected by full-source observation count; subspecies combined by the first two scientific-name components. Includes records without coordinates. Zero-count species-years retained. Annual counts use observation dates. A centered stack gives a streamgraph: band thickness represents observation count; vertical band position has no numeric meaning. Monotone interpolation smoothly connects the recorded annual values; curves between years are visual interpolation, not additional observations. Tooltip shares use the total of the displayed ten species in the given year. Hover or click bands or legend to highlight; click again, Clear highlight, or Escape clears selection. 2026 is incomplete through 6 October. Counts reflect recording activity, not animal abundance. Drag the annual-total overview below the chart to select an inclusive observation-year range; use Reset to restore 2017–2026. Legend totals cover the full period. Species colours match the ten-species palette in BumpChart.vg.json; species selection and observation counts are unchanged.",
+  "width": 760,
+  "height": 400,
+  "padding": 16,
+  "background": "#f7fafc",
+  "title": {
+    "text": "How does wildlife observation composition change over the years?",
+    "subtitle": [
+      "Streamgraph · 4,139 observations · 2017–2026 · Top 10 species",
+      "Band thickness shows observation counts. Drag the year overview below to focus on years."
+    ],
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 21,
+    "color": "#243447",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#52606d",
+    "offset": 20
+  },
+  "signals": [
+    {
+      "name": "minYear",
+      "value": 2017
+    },
+    {
+      "name": "maxYear",
+      "value": 2026
+    },
+    {
+      "name": "yearRange",
+      "value": [
+        2017,
+        2026
+      ],
+      "on": [
+        {
+          "events": "@brushTarget:mousedown",
+          "update": "[round(clamp(invert('overviewX', x()), minYear, maxYear)), round(clamp(invert('overviewX', x()), minYear, maxYear))]"
+        },
+        {
+          "events": "[@brushTarget:mousedown, window:mouseup] > window:mousemove!",
+          "update": "[min(brushAnchor, round(clamp(invert('overviewX', x()), minYear, maxYear))), max(brushAnchor, round(clamp(invert('overviewX', x()), minYear, maxYear)))]"
+        },
+        {
+          "events": "@resetYears:click",
+          "update": "[minYear, maxYear]"
+        }
+      ]
+    },
+    {
+      "name": "brushAnchor",
+      "value": 2017,
+      "on": [
+        {
+          "events": "@brushTarget:mousedown",
+          "update": "round(clamp(invert('overviewX', x()), minYear, maxYear))"
+        }
+      ]
+    },
+    {
+      "name": "hoveredSpecies",
+      "value": null,
+      "on": [
+        {
+          "events": "@speciesAreas:mouseover, @yearPoints:mouseover, @legendSymbols:mouseover, @legendLabels:mouseover",
+          "update": "datum.species"
+        },
+        {
+          "events": "@speciesAreas:mouseout, @yearPoints:mouseout, @legendSymbols:mouseout, @legendLabels:mouseout",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "selectedSpecies",
+      "value": null,
+      "on": [
+        {
+          "events": "@speciesAreas:click, @yearPoints:click, @legendSymbols:click, @legendLabels:click",
+          "update": "selectedSpecies == datum.species ? null : datum.species"
+        },
+        {
+          "events": "@clearHighlight:click",
+          "update": "null"
+        },
+        {
+          "events": "window:keydown[event.key === 'Escape']",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "activeSpecies",
+      "update": "hoveredSpecies != null ? hoveredSpecies : selectedSpecies"
+    }
+  ],
+  "data": [
+    {
+      "name": "annualCounts",
+      "values": [
+        {
+          "year": 2017,
+          "species": "Koala",
+          "count": 25,
+          "order": 0
+        },
+        {
+          "year": 2017,
+          "species": "Platypus",
+          "count": 11,
+          "order": 1
+        },
+        {
+          "year": 2017,
+          "species": "Grey-headed Flying-fox",
+          "count": 15,
+          "order": 2
+        },
+        {
+          "year": 2017,
+          "species": "Greater Glider",
+          "count": 3,
+          "order": 3
+        },
+        {
+          "year": 2017,
+          "species": "Spotted-tailed Quoll",
+          "count": 3,
+          "order": 4
+        },
+        {
+          "year": 2017,
+          "species": "European Rabbit",
+          "count": 1,
+          "order": 5
+        },
+        {
+          "year": 2017,
+          "species": "Quokka",
+          "count": 5,
+          "order": 6
+        },
+        {
+          "year": 2017,
+          "species": "Tasmanian Devil",
+          "count": 6,
+          "order": 7
+        },
+        {
+          "year": 2017,
+          "species": "Australian Sea Lion",
+          "count": 5,
+          "order": 8
+        },
+        {
+          "year": 2017,
+          "species": "Eastern Quoll",
+          "count": 1,
+          "order": 9
+        },
+        {
+          "year": 2018,
+          "species": "Koala",
+          "count": 30,
+          "order": 0
+        },
+        {
+          "year": 2018,
+          "species": "Platypus",
+          "count": 16,
+          "order": 1
+        },
+        {
+          "year": 2018,
+          "species": "Grey-headed Flying-fox",
+          "count": 9,
+          "order": 2
+        },
+        {
+          "year": 2018,
+          "species": "Greater Glider",
+          "count": 8,
+          "order": 3
+        },
+        {
+          "year": 2018,
+          "species": "Spotted-tailed Quoll",
+          "count": 5,
+          "order": 4
+        },
+        {
+          "year": 2018,
+          "species": "European Rabbit",
+          "count": 9,
+          "order": 5
+        },
+        {
+          "year": 2018,
+          "species": "Quokka",
+          "count": 8,
+          "order": 6
+        },
+        {
+          "year": 2018,
+          "species": "Tasmanian Devil",
+          "count": 4,
+          "order": 7
+        },
+        {
+          "year": 2018,
+          "species": "Australian Sea Lion",
+          "count": 9,
+          "order": 8
+        },
+        {
+          "year": 2018,
+          "species": "Eastern Quoll",
+          "count": 8,
+          "order": 9
+        },
+        {
+          "year": 2019,
+          "species": "Koala",
+          "count": 36,
+          "order": 0
+        },
+        {
+          "year": 2019,
+          "species": "Platypus",
+          "count": 20,
+          "order": 1
+        },
+        {
+          "year": 2019,
+          "species": "Grey-headed Flying-fox",
+          "count": 39,
+          "order": 2
+        },
+        {
+          "year": 2019,
+          "species": "Greater Glider",
+          "count": 10,
+          "order": 3
+        },
+        {
+          "year": 2019,
+          "species": "Spotted-tailed Quoll",
+          "count": 18,
+          "order": 4
+        },
+        {
+          "year": 2019,
+          "species": "European Rabbit",
+          "count": 12,
+          "order": 5
+        },
+        {
+          "year": 2019,
+          "species": "Quokka",
+          "count": 7,
+          "order": 6
+        },
+        {
+          "year": 2019,
+          "species": "Tasmanian Devil",
+          "count": 9,
+          "order": 7
+        },
+        {
+          "year": 2019,
+          "species": "Australian Sea Lion",
+          "count": 6,
+          "order": 8
+        },
+        {
+          "year": 2019,
+          "species": "Eastern Quoll",
+          "count": 3,
+          "order": 9
+        },
+        {
+          "year": 2020,
+          "species": "Koala",
+          "count": 96,
+          "order": 0
+        },
+        {
+          "year": 2020,
+          "species": "Platypus",
+          "count": 26,
+          "order": 1
+        },
+        {
+          "year": 2020,
+          "species": "Grey-headed Flying-fox",
+          "count": 42,
+          "order": 2
+        },
+        {
+          "year": 2020,
+          "species": "Greater Glider",
+          "count": 12,
+          "order": 3
+        },
+        {
+          "year": 2020,
+          "species": "Spotted-tailed Quoll",
+          "count": 17,
+          "order": 4
+        },
+        {
+          "year": 2020,
+          "species": "European Rabbit",
+          "count": 11,
+          "order": 5
+        },
+        {
+          "year": 2020,
+          "species": "Quokka",
+          "count": 6,
+          "order": 6
+        },
+        {
+          "year": 2020,
+          "species": "Tasmanian Devil",
+          "count": 17,
+          "order": 7
+        },
+        {
+          "year": 2020,
+          "species": "Australian Sea Lion",
+          "count": 2,
+          "order": 8
+        },
+        {
+          "year": 2020,
+          "species": "Eastern Quoll",
+          "count": 26,
+          "order": 9
+        },
+        {
+          "year": 2021,
+          "species": "Koala",
+          "count": 110,
+          "order": 0
+        },
+        {
+          "year": 2021,
+          "species": "Platypus",
+          "count": 54,
+          "order": 1
+        },
+        {
+          "year": 2021,
+          "species": "Grey-headed Flying-fox",
+          "count": 48,
+          "order": 2
+        },
+        {
+          "year": 2021,
+          "species": "Greater Glider",
+          "count": 43,
+          "order": 3
+        },
+        {
+          "year": 2021,
+          "species": "Spotted-tailed Quoll",
+          "count": 23,
+          "order": 4
+        },
+        {
+          "year": 2021,
+          "species": "European Rabbit",
+          "count": 11,
+          "order": 5
+        },
+        {
+          "year": 2021,
+          "species": "Quokka",
+          "count": 4,
+          "order": 6
+        },
+        {
+          "year": 2021,
+          "species": "Tasmanian Devil",
+          "count": 12,
+          "order": 7
+        },
+        {
+          "year": 2021,
+          "species": "Australian Sea Lion",
+          "count": 12,
+          "order": 8
+        },
+        {
+          "year": 2021,
+          "species": "Eastern Quoll",
+          "count": 3,
+          "order": 9
+        },
+        {
+          "year": 2022,
+          "species": "Koala",
+          "count": 322,
+          "order": 0
+        },
+        {
+          "year": 2022,
+          "species": "Platypus",
+          "count": 82,
+          "order": 1
+        },
+        {
+          "year": 2022,
+          "species": "Grey-headed Flying-fox",
+          "count": 40,
+          "order": 2
+        },
+        {
+          "year": 2022,
+          "species": "Greater Glider",
+          "count": 24,
+          "order": 3
+        },
+        {
+          "year": 2022,
+          "species": "Spotted-tailed Quoll",
+          "count": 17,
+          "order": 4
+        },
+        {
+          "year": 2022,
+          "species": "European Rabbit",
+          "count": 14,
+          "order": 5
+        },
+        {
+          "year": 2022,
+          "species": "Quokka",
+          "count": 22,
+          "order": 6
+        },
+        {
+          "year": 2022,
+          "species": "Tasmanian Devil",
+          "count": 11,
+          "order": 7
+        },
+        {
+          "year": 2022,
+          "species": "Australian Sea Lion",
+          "count": 6,
+          "order": 8
+        },
+        {
+          "year": 2022,
+          "species": "Eastern Quoll",
+          "count": 3,
+          "order": 9
+        },
+        {
+          "year": 2023,
+          "species": "Koala",
+          "count": 320,
+          "order": 0
+        },
+        {
+          "year": 2023,
+          "species": "Platypus",
+          "count": 117,
+          "order": 1
+        },
+        {
+          "year": 2023,
+          "species": "Grey-headed Flying-fox",
+          "count": 79,
+          "order": 2
+        },
+        {
+          "year": 2023,
+          "species": "Greater Glider",
+          "count": 27,
+          "order": 3
+        },
+        {
+          "year": 2023,
+          "species": "Spotted-tailed Quoll",
+          "count": 29,
+          "order": 4
+        },
+        {
+          "year": 2023,
+          "species": "European Rabbit",
+          "count": 37,
+          "order": 5
+        },
+        {
+          "year": 2023,
+          "species": "Quokka",
+          "count": 20,
+          "order": 6
+        },
+        {
+          "year": 2023,
+          "species": "Tasmanian Devil",
+          "count": 17,
+          "order": 7
+        },
+        {
+          "year": 2023,
+          "species": "Australian Sea Lion",
+          "count": 11,
+          "order": 8
+        },
+        {
+          "year": 2023,
+          "species": "Eastern Quoll",
+          "count": 14,
+          "order": 9
+        },
+        {
+          "year": 2024,
+          "species": "Koala",
+          "count": 451,
+          "order": 0
+        },
+        {
+          "year": 2024,
+          "species": "Platypus",
+          "count": 138,
+          "order": 1
+        },
+        {
+          "year": 2024,
+          "species": "Grey-headed Flying-fox",
+          "count": 120,
+          "order": 2
+        },
+        {
+          "year": 2024,
+          "species": "Greater Glider",
+          "count": 49,
+          "order": 3
+        },
+        {
+          "year": 2024,
+          "species": "Spotted-tailed Quoll",
+          "count": 38,
+          "order": 4
+        },
+        {
+          "year": 2024,
+          "species": "European Rabbit",
+          "count": 33,
+          "order": 5
+        },
+        {
+          "year": 2024,
+          "species": "Quokka",
+          "count": 33,
+          "order": 6
+        },
+        {
+          "year": 2024,
+          "species": "Tasmanian Devil",
+          "count": 25,
+          "order": 7
+        },
+        {
+          "year": 2024,
+          "species": "Australian Sea Lion",
+          "count": 17,
+          "order": 8
+        },
+        {
+          "year": 2024,
+          "species": "Eastern Quoll",
+          "count": 23,
+          "order": 9
+        },
+        {
+          "year": 2025,
+          "species": "Koala",
+          "count": 315,
+          "order": 0
+        },
+        {
+          "year": 2025,
+          "species": "Platypus",
+          "count": 124,
+          "order": 1
+        },
+        {
+          "year": 2025,
+          "species": "Grey-headed Flying-fox",
+          "count": 58,
+          "order": 2
+        },
+        {
+          "year": 2025,
+          "species": "Greater Glider",
+          "count": 32,
+          "order": 3
+        },
+        {
+          "year": 2025,
+          "species": "Spotted-tailed Quoll",
+          "count": 44,
+          "order": 4
+        },
+        {
+          "year": 2025,
+          "species": "European Rabbit",
+          "count": 35,
+          "order": 5
+        },
+        {
+          "year": 2025,
+          "species": "Quokka",
+          "count": 21,
+          "order": 6
+        },
+        {
+          "year": 2025,
+          "species": "Tasmanian Devil",
+          "count": 25,
+          "order": 7
+        },
+        {
+          "year": 2025,
+          "species": "Australian Sea Lion",
+          "count": 18,
+          "order": 8
+        },
+        {
+          "year": 2025,
+          "species": "Eastern Quoll",
+          "count": 14,
+          "order": 9
+        },
+        {
+          "year": 2026,
+          "species": "Koala",
+          "count": 191,
+          "order": 0
+        },
+        {
+          "year": 2026,
+          "species": "Platypus",
+          "count": 54,
+          "order": 1
+        },
+        {
+          "year": 2026,
+          "species": "Grey-headed Flying-fox",
+          "count": 44,
+          "order": 2
+        },
+        {
+          "year": 2026,
+          "species": "Greater Glider",
+          "count": 22,
+          "order": 3
+        },
+        {
+          "year": 2026,
+          "species": "Spotted-tailed Quoll",
+          "count": 31,
+          "order": 4
+        },
+        {
+          "year": 2026,
+          "species": "European Rabbit",
+          "count": 4,
+          "order": 5
+        },
+        {
+          "year": 2026,
+          "species": "Quokka",
+          "count": 10,
+          "order": 6
+        },
+        {
+          "year": 2026,
+          "species": "Tasmanian Devil",
+          "count": 12,
+          "order": 7
+        },
+        {
+          "year": 2026,
+          "species": "Australian Sea Lion",
+          "count": 17,
+          "order": 8
+        },
+        {
+          "year": 2026,
+          "species": "Eastern Quoll",
+          "count": 13,
+          "order": 9
+        }
+      ]
+    },
+    {
+      "name": "legendEntries",
+      "values": [
+        {
+          "species": "Koala",
+          "order": 0,
+          "total": 1896
+        },
+        {
+          "species": "Platypus",
+          "order": 1,
+          "total": 642
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "order": 2,
+          "total": 494
+        },
+        {
+          "species": "Greater Glider",
+          "order": 3,
+          "total": 230
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "order": 4,
+          "total": 225
+        },
+        {
+          "species": "European Rabbit",
+          "order": 5,
+          "total": 167
+        },
+        {
+          "species": "Quokka",
+          "order": 6,
+          "total": 136
+        },
+        {
+          "species": "Tasmanian Devil",
+          "order": 7,
+          "total": 138
+        },
+        {
+          "species": "Australian Sea Lion",
+          "order": 8,
+          "total": 103
+        },
+        {
+          "species": "Eastern Quoll",
+          "order": 9,
+          "total": 108
+        }
+      ]
+    },
+    {
+      "name": "focusedCounts",
+      "source": "annualCounts",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.year >= yearRange[0] && datum.year <= yearRange[1]"
+        },
+        {
+          "type": "joinaggregate",
+          "groupby": [
+            "year"
+          ],
+          "fields": [
+            "count"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "as": [
+            "yearTotal"
+          ]
+        },
+        {
+          "type": "stack",
+          "groupby": [
+            "year"
+          ],
+          "field": "count",
+          "sort": {
+            "field": "order",
+            "order": "ascending"
+          },
+          "as": [
+            "y0",
+            "y1"
+          ],
+          "offset": "center"
+        }
+      ]
+    },
+    {
+      "name": "yearTotals",
+      "source": "annualCounts",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "year"
+          ],
+          "fields": [
+            "count"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "as": [
+            "total"
+          ]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": {
+        "signal": "[yearRange[0] - 0.5, yearRange[1] + 0.5]"
+      },
+      "range": "width",
+      "zero": false,
+      "nice": false
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {
+        "data": "focusedCounts",
+        "fields": [
+          "y0",
+          "y1"
+        ]
+      },
+      "range": "height",
+      "zero": true,
+      "nice": false
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Koala",
+        "Platypus",
+        "Grey-headed Flying-fox",
+        "Greater Glider",
+        "Spotted-tailed Quoll",
+        "European Rabbit",
+        "Quokka",
+        "Tasmanian Devil",
+        "Eastern Barred Bandicoot",
+        "Numbat",
+        "Australian Sea Lion",
+        "Eastern Quoll"
+      ],
+      "range": [
+        "#365B85",
+        "#B65C30",
+        "#2A8576",
+        "#885BA6",
+        "#AD4770",
+        "#86701D",
+        "#397FAD",
+        "#6D6B70",
+        "#C17A24",
+        "#5146A0",
+        "#6f3c91",
+        "#bab0ab"
+      ]
+    },
+    {
+      "name": "overviewX",
+      "type": "linear",
+      "domain": [
+        2017,
+        2026
+      ],
+      "range": "width",
+      "zero": false
+    },
+    {
+      "name": "overviewY",
+      "type": "linear",
+      "domain": {
+        "data": "yearTotals",
+        "field": "total"
+      },
+      "range": [
+        {
+          "signal": "height + 140"
+        },
+        {
+          "signal": "height + 90"
+        }
+      ],
+      "zero": true,
+      "nice": true
+    }
+  ],
+  "axes": [
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "title": "Observation year",
+      "format": "d",
+      "labelOverlap": true,
+      "domain": false,
+      "tickColor": "#c9d4df",
+      "labelColor": "#52606d",
+      "titleColor": "#243447",
+      "titlePadding": 14,
+      "tickCount": {
+        "signal": "min(10, yearRange[1] - yearRange[0] + 1)"
+      },
+      "tickMinStep": 1
+    },
+    {
+      "scale": "overviewX",
+      "orient": "bottom",
+      "offset": 140,
+      "format": "d",
+      "tickCount": 8,
+      "labelOverlap": true,
+      "title": null,
+      "values": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "domain": false,
+      "tickColor": "#c9d4df",
+      "labelColor": "#52606d"
+    }
+  ],
+  "marks": [
+    {
+      "name": "series",
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "seriesData",
+          "data": "focusedCounts",
+          "groupby": "species"
+        }
+      },
+      "marks": [
+        {
+          "name": "speciesAreas",
+          "type": "area",
+          "encode": {
+            "update": {
+              "x": {
+                "scale": "x",
+                "field": "year"
+              },
+              "y": {
+                "scale": "y",
+                "field": "y1"
+              },
+              "y2": {
+                "scale": "y",
+                "field": "y0"
+              },
+              "fill": {
+                "scale": "color",
+                "field": "species"
+              },
+              "fillOpacity": {
+                "signal": "activeSpecies == null || activeSpecies == datum.species ? 1 : 0.16"
+              },
+              "stroke": {
+                "value": "#f7fafc"
+              },
+              "strokeWidth": {
+                "value": 0.5
+              },
+              "cursor": {
+                "value": "pointer"
+              },
+              "tooltip": {
+                "signal": "{'Species': datum.species, 'Year': datum.year, 'Observations': datum.count, 'Top 10 species in year': datum.yearTotal, 'Share of top 10 in year': datum.yearTotal ? format(datum.count / datum.yearTotal, '.1%') : 'No observations'}"
+              },
+              "interpolate": {
+                "value": "monotone"
+              },
+              "description": {
+                "signal": "datum.species + ', ' + datum.year + ': ' + datum.count + ' observations, ' + format(datum.count / datum.yearTotal, '.1%') + ' of the top ten species'"
+              }
+            }
+          },
+          "from": {
+            "data": "seriesData"
+          },
+          "sort": {
+            "field": "datum.year"
+          }
+        }
+      ]
+    },
+    {
+      "name": "yearPoints",
+      "type": "symbol",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "year"
+          },
+          "y": {
+            "signal": "scale('y', (datum.y0 + datum.y1) / 2)"
+          },
+          "size": {
+            "value": 65
+          },
+          "fill": {
+            "scale": "color",
+            "field": "species"
+          },
+          "opacity": {
+            "signal": "yearRange[0] == yearRange[1] ? (activeSpecies == null || activeSpecies == datum.species ? 1 : 0.16) : 0"
+          },
+          "stroke": {
+            "value": "#f7fafc"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "{'Species': datum.species, 'Year': datum.year, 'Observations': datum.count, 'Top 10 species in year': datum.yearTotal, 'Share of top 10 in year': datum.yearTotal ? format(datum.count / datum.yearTotal, '.1%') : 'No observations'}"
+          }
+        }
+      },
+      "from": {
+        "data": "focusedCounts"
+      }
+    },
+    {
+      "name": "legendTitle",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 24"
+          },
+          "y": {
+            "value": 4
+          },
+          "text": {
+            "value": "Species · click to highlight"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "fontSize": {
+            "value": 13
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "name": "legendSymbols",
+      "type": "symbol",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 30"
+          },
+          "y": {
+            "signal": "30 + datum.order * 27"
+          },
+          "shape": {
+            "value": "square"
+          },
+          "size": {
+            "value": 110
+          },
+          "fill": {
+            "scale": "color",
+            "field": "species"
+          },
+          "opacity": {
+            "signal": "activeSpecies == null || activeSpecies == datum.species ? 1 : 0.16"
+          },
+          "stroke": {
+            "signal": "selectedSpecies == datum.species ? '#243447' : 'transparent'"
+          },
+          "strokeWidth": {
+            "value": 2
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "{'Species': datum.species, 'Observations (2017–2026)': datum.total}"
+          }
+        }
+      },
+      "from": {
+        "data": "legendEntries"
+      }
+    },
+    {
+      "name": "legendLabels",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 44"
+          },
+          "y": {
+            "signal": "30 + datum.order * 27"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "field": "species"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "opacity": {
+            "signal": "activeSpecies == null || activeSpecies == datum.species ? 1 : 0.16"
+          },
+          "fontWeight": {
+            "signal": "selectedSpecies == datum.species ? 'bold' : 'normal'"
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      },
+      "from": {
+        "data": "legendEntries"
+      }
+    },
+    {
+      "name": "clearHighlight",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 24"
+          },
+          "y": {
+            "value": 343
+          },
+          "text": {
+            "value": "Clear highlight"
+          },
+          "fill": {
+            "value": "#3366a6"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      }
+    },
+    {
+      "name": "scopeNote",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 220"
+          },
+          "text": {
+            "value": "2026 is incomplete through 6 October. Counts reflect recording activity, not animal abundance."
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 180"
+          },
+          "text": {
+            "value": "Band thickness = annual observation count · Vertical position has no numeric meaning"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 200"
+          },
+          "text": {
+            "value": "Source: Dataset/observations-794195.csv · Subspecies combined · Shares refer to the displayed top 10 species"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "name": "focusLabel",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 70"
+          },
+          "text": {
+            "signal": "'Focus: ' + yearRange[0] + '–' + yearRange[1] + ' · Drag below to select years'"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#243447"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "name": "overview",
+      "type": "area",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "overviewX",
+            "field": "year"
+          },
+          "y": {
+            "scale": "overviewY",
+            "field": "total"
+          },
+          "y2": {
+            "signal": "height + 140"
+          },
+          "fill": {
+            "value": "#8fa6bb"
+          }
+        }
+      },
+      "interactive": false,
+      "sort": {
+        "field": "datum.year"
+      },
+      "from": {
+        "data": "yearTotals"
+      }
+    },
+    {
+      "name": "brushSelection",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('overviewX', yearRange[0])"
+          },
+          "x2": {
+            "signal": "scale('overviewX', yearRange[1])"
+          },
+          "y": {
+            "signal": "height + 90"
+          },
+          "y2": {
+            "signal": "height + 140"
+          },
+          "fill": {
+            "value": "#3366a6"
+          },
+          "fillOpacity": {
+            "value": 0.16
+          },
+          "stroke": {
+            "value": "#3366a6"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "name": "brushEdge0",
+      "type": "rule",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('overviewX', yearRange[0])"
+          },
+          "y": {
+            "signal": "height + 90"
+          },
+          "y2": {
+            "signal": "height + 140"
+          },
+          "stroke": {
+            "value": "#3366a6"
+          },
+          "strokeWidth": {
+            "value": 2
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "name": "brushEdge1",
+      "type": "rule",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('overviewX', yearRange[1])"
+          },
+          "y": {
+            "signal": "height + 90"
+          },
+          "y2": {
+            "signal": "height + 140"
+          },
+          "stroke": {
+            "value": "#3366a6"
+          },
+          "strokeWidth": {
+            "value": 2
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "name": "brushTarget",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "width": {
+            "signal": "width"
+          },
+          "y": {
+            "signal": "height + 90"
+          },
+          "height": {
+            "value": 50
+          },
+          "fill": {
+            "value": "transparent"
+          },
+          "cursor": {
+            "value": "crosshair"
+          }
+        }
+      }
+    },
+    {
+      "name": "resetYears",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 24"
+          },
+          "y": {
+            "signal": "height + 108"
+          },
+          "text": {
+            "value": "Reset to 2017–2026"
+          },
+          "fill": {
+            "value": "#3366a6"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "text": {
+      "font": "Arial"
+    },
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelColor": "#52606d",
+      "titleColor": "#243447",
+      "titlePadding": 12,
+      "domainColor": "#bac7d3",
+      "tickColor": "#bac7d3"
+    }
+  }
+}

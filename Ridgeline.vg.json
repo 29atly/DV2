@@ -1,0 +1,1987 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Monthly observation ridgelines for the ten most recorded mammal species in Dataset/observations-794195.csv (top ten selected across all source dates). Observation dates from 2016–2025 are pooled, excluding incomplete 2026. Subspecies are combined using the first two scientific-name components, matching Lollipop.vg.json. Includes records without coordinates. All 12 months are filled for each species. Heights show monthly counts divided by that species total, on one shared percentage scale. Monotone curves connect monthly values; no kernel density estimation is applied. Rows follow full-source species rank. Southern hemisphere meteorological seasons are shown. Hover monthly cells for exact counts and shares; click a cell or species label to toggle highlighting. Counts measure recording activity, not animal abundance or nationwide sampling. Species colours match the ten-species palette in BumpChart.vg.json; species selection and observation counts are unchanged.",
+  "width": 720,
+  "height": 580,
+  "padding": 16,
+  "background": "#f7fafc",
+  "title": {
+    "text": "When Are Australia's Mammals Most Frequently Observed?",
+    "subtitle": [
+      "Top 10 recorded species · 3,798 observations · 2016–2025 pooled",
+      "Hover for monthly counts and shares; click a species to keep it highlighted."
+    ],
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 22,
+    "color": "#243447",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#52606d",
+    "offset": 24
+  },
+  "signals": [
+    {
+      "name": "hoveredSpecies",
+      "value": null,
+      "on": [
+        {
+          "events": "@monthTargets:mouseover, @speciesLabels:mouseover",
+          "update": "datum.species"
+        },
+        {
+          "events": "@monthTargets:mouseout, @speciesLabels:mouseout",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "selectedSpecies",
+      "value": null,
+      "on": [
+        {
+          "events": "@monthTargets:click, @speciesLabels:click",
+          "update": "selectedSpecies == datum.species ? null : datum.species"
+        },
+        {
+          "events": "@resetHighlight:click",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "activeSpecies",
+      "update": "hoveredSpecies != null ? hoveredSpecies : selectedSpecies"
+    }
+  ],
+  "data": [
+    {
+      "name": "monthly",
+      "values": [
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 1,
+          "monthName": "January",
+          "count": 145,
+          "total": 1725,
+          "share": 0.08405797101449275,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 2,
+          "monthName": "February",
+          "count": 101,
+          "total": 1725,
+          "share": 0.058550724637681156,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 3,
+          "monthName": "March",
+          "count": 106,
+          "total": 1725,
+          "share": 0.06144927536231884,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 4,
+          "monthName": "April",
+          "count": 116,
+          "total": 1725,
+          "share": 0.0672463768115942,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 5,
+          "monthName": "May",
+          "count": 103,
+          "total": 1725,
+          "share": 0.059710144927536235,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 6,
+          "monthName": "June",
+          "count": 135,
+          "total": 1725,
+          "share": 0.0782608695652174,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 7,
+          "monthName": "July",
+          "count": 121,
+          "total": 1725,
+          "share": 0.07014492753623189,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 8,
+          "monthName": "August",
+          "count": 154,
+          "total": 1725,
+          "share": 0.08927536231884058,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 9,
+          "monthName": "September",
+          "count": 189,
+          "total": 1725,
+          "share": 0.10956521739130434,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 10,
+          "monthName": "October",
+          "count": 210,
+          "total": 1725,
+          "share": 0.12173913043478261,
+          "isPeak": true
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 11,
+          "monthName": "November",
+          "count": 191,
+          "total": 1725,
+          "share": 0.11072463768115942,
+          "isPeak": false
+        },
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "month": 12,
+          "monthName": "December",
+          "count": 154,
+          "total": 1725,
+          "share": 0.08927536231884058,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 1,
+          "monthName": "January",
+          "count": 32,
+          "total": 601,
+          "share": 0.05324459234608985,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 2,
+          "monthName": "February",
+          "count": 39,
+          "total": 601,
+          "share": 0.064891846921797,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 3,
+          "monthName": "March",
+          "count": 30,
+          "total": 601,
+          "share": 0.04991680532445923,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 4,
+          "monthName": "April",
+          "count": 34,
+          "total": 601,
+          "share": 0.056572379367720464,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 5,
+          "monthName": "May",
+          "count": 42,
+          "total": 601,
+          "share": 0.06988352745424292,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 6,
+          "monthName": "June",
+          "count": 42,
+          "total": 601,
+          "share": 0.06988352745424292,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 7,
+          "monthName": "July",
+          "count": 60,
+          "total": 601,
+          "share": 0.09983361064891846,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 8,
+          "monthName": "August",
+          "count": 95,
+          "total": 601,
+          "share": 0.15806988352745424,
+          "isPeak": true
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 9,
+          "monthName": "September",
+          "count": 86,
+          "total": 601,
+          "share": 0.14309484193011648,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 10,
+          "monthName": "October",
+          "count": 52,
+          "total": 601,
+          "share": 0.08652246256239601,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 11,
+          "monthName": "November",
+          "count": 39,
+          "total": 601,
+          "share": 0.064891846921797,
+          "isPeak": false
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "month": 12,
+          "monthName": "December",
+          "count": 50,
+          "total": 601,
+          "share": 0.08319467554076539,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 1,
+          "monthName": "January",
+          "count": 37,
+          "total": 461,
+          "share": 0.08026030368763558,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 2,
+          "monthName": "February",
+          "count": 41,
+          "total": 461,
+          "share": 0.08893709327548807,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 3,
+          "monthName": "March",
+          "count": 42,
+          "total": 461,
+          "share": 0.0911062906724512,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 4,
+          "monthName": "April",
+          "count": 47,
+          "total": 461,
+          "share": 0.1019522776572668,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 5,
+          "monthName": "May",
+          "count": 34,
+          "total": 461,
+          "share": 0.0737527114967462,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 6,
+          "monthName": "June",
+          "count": 30,
+          "total": 461,
+          "share": 0.0650759219088937,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 7,
+          "monthName": "July",
+          "count": 26,
+          "total": 461,
+          "share": 0.05639913232104121,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 8,
+          "monthName": "August",
+          "count": 36,
+          "total": 461,
+          "share": 0.07809110629067245,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 9,
+          "monthName": "September",
+          "count": 24,
+          "total": 461,
+          "share": 0.052060737527114966,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 10,
+          "monthName": "October",
+          "count": 48,
+          "total": 461,
+          "share": 0.10412147505422993,
+          "isPeak": false
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 11,
+          "monthName": "November",
+          "count": 57,
+          "total": 461,
+          "share": 0.12364425162689804,
+          "isPeak": true
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "month": 12,
+          "monthName": "December",
+          "count": 39,
+          "total": 461,
+          "share": 0.08459869848156182,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 1,
+          "monthName": "January",
+          "count": 26,
+          "total": 209,
+          "share": 0.12440191387559808,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 2,
+          "monthName": "February",
+          "count": 15,
+          "total": 209,
+          "share": 0.07177033492822966,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 3,
+          "monthName": "March",
+          "count": 11,
+          "total": 209,
+          "share": 0.05263157894736842,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 4,
+          "monthName": "April",
+          "count": 20,
+          "total": 209,
+          "share": 0.09569377990430622,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 5,
+          "monthName": "May",
+          "count": 15,
+          "total": 209,
+          "share": 0.07177033492822966,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 6,
+          "monthName": "June",
+          "count": 10,
+          "total": 209,
+          "share": 0.04784688995215311,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 7,
+          "monthName": "July",
+          "count": 21,
+          "total": 209,
+          "share": 0.10047846889952153,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 8,
+          "monthName": "August",
+          "count": 12,
+          "total": 209,
+          "share": 0.05741626794258373,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 9,
+          "monthName": "September",
+          "count": 27,
+          "total": 209,
+          "share": 0.1291866028708134,
+          "isPeak": true
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 10,
+          "monthName": "October",
+          "count": 10,
+          "total": 209,
+          "share": 0.04784688995215311,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 11,
+          "monthName": "November",
+          "count": 22,
+          "total": 209,
+          "share": 0.10526315789473684,
+          "isPeak": false
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "month": 12,
+          "monthName": "December",
+          "count": 20,
+          "total": 209,
+          "share": 0.09569377990430622,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 1,
+          "monthName": "January",
+          "count": 21,
+          "total": 198,
+          "share": 0.10606060606060606,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 2,
+          "monthName": "February",
+          "count": 15,
+          "total": 198,
+          "share": 0.07575757575757576,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 3,
+          "monthName": "March",
+          "count": 11,
+          "total": 198,
+          "share": 0.05555555555555555,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 4,
+          "monthName": "April",
+          "count": 26,
+          "total": 198,
+          "share": 0.13131313131313133,
+          "isPeak": true
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 5,
+          "monthName": "May",
+          "count": 15,
+          "total": 198,
+          "share": 0.07575757575757576,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 6,
+          "monthName": "June",
+          "count": 14,
+          "total": 198,
+          "share": 0.0707070707070707,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 7,
+          "monthName": "July",
+          "count": 19,
+          "total": 198,
+          "share": 0.09595959595959595,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 8,
+          "monthName": "August",
+          "count": 14,
+          "total": 198,
+          "share": 0.0707070707070707,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 9,
+          "monthName": "September",
+          "count": 17,
+          "total": 198,
+          "share": 0.08585858585858586,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 10,
+          "monthName": "October",
+          "count": 12,
+          "total": 198,
+          "share": 0.06060606060606061,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 11,
+          "monthName": "November",
+          "count": 18,
+          "total": 198,
+          "share": 0.09090909090909091,
+          "isPeak": false
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "month": 12,
+          "monthName": "December",
+          "count": 16,
+          "total": 198,
+          "share": 0.08080808080808081,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 1,
+          "monthName": "January",
+          "count": 18,
+          "total": 167,
+          "share": 0.10778443113772455,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 2,
+          "monthName": "February",
+          "count": 17,
+          "total": 167,
+          "share": 0.10179640718562874,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 3,
+          "monthName": "March",
+          "count": 11,
+          "total": 167,
+          "share": 0.0658682634730539,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 4,
+          "monthName": "April",
+          "count": 9,
+          "total": 167,
+          "share": 0.05389221556886228,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 5,
+          "monthName": "May",
+          "count": 10,
+          "total": 167,
+          "share": 0.059880239520958084,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 6,
+          "monthName": "June",
+          "count": 4,
+          "total": 167,
+          "share": 0.023952095808383235,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 7,
+          "monthName": "July",
+          "count": 13,
+          "total": 167,
+          "share": 0.07784431137724551,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 8,
+          "monthName": "August",
+          "count": 13,
+          "total": 167,
+          "share": 0.07784431137724551,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 9,
+          "monthName": "September",
+          "count": 11,
+          "total": 167,
+          "share": 0.0658682634730539,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 10,
+          "monthName": "October",
+          "count": 22,
+          "total": 167,
+          "share": 0.1317365269461078,
+          "isPeak": false
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 11,
+          "monthName": "November",
+          "count": 25,
+          "total": 167,
+          "share": 0.1497005988023952,
+          "isPeak": true
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "month": 12,
+          "monthName": "December",
+          "count": 14,
+          "total": 167,
+          "share": 0.08383233532934131,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 1,
+          "monthName": "January",
+          "count": 8,
+          "total": 128,
+          "share": 0.0625,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 2,
+          "monthName": "February",
+          "count": 10,
+          "total": 128,
+          "share": 0.078125,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 3,
+          "monthName": "March",
+          "count": 7,
+          "total": 128,
+          "share": 0.0546875,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 4,
+          "monthName": "April",
+          "count": 9,
+          "total": 128,
+          "share": 0.0703125,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 5,
+          "monthName": "May",
+          "count": 9,
+          "total": 128,
+          "share": 0.0703125,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 6,
+          "monthName": "June",
+          "count": 6,
+          "total": 128,
+          "share": 0.046875,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 7,
+          "monthName": "July",
+          "count": 11,
+          "total": 128,
+          "share": 0.0859375,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 8,
+          "monthName": "August",
+          "count": 13,
+          "total": 128,
+          "share": 0.1015625,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 9,
+          "monthName": "September",
+          "count": 17,
+          "total": 128,
+          "share": 0.1328125,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 10,
+          "monthName": "October",
+          "count": 18,
+          "total": 128,
+          "share": 0.140625,
+          "isPeak": true
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 11,
+          "monthName": "November",
+          "count": 11,
+          "total": 128,
+          "share": 0.0859375,
+          "isPeak": false
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "month": 12,
+          "monthName": "December",
+          "count": 9,
+          "total": 128,
+          "share": 0.0703125,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 1,
+          "monthName": "January",
+          "count": 29,
+          "total": 127,
+          "share": 0.2283464566929134,
+          "isPeak": true
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 2,
+          "monthName": "February",
+          "count": 23,
+          "total": 127,
+          "share": 0.18110236220472442,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 3,
+          "monthName": "March",
+          "count": 12,
+          "total": 127,
+          "share": 0.09448818897637795,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 4,
+          "monthName": "April",
+          "count": 4,
+          "total": 127,
+          "share": 0.031496062992125984,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 5,
+          "monthName": "May",
+          "count": 5,
+          "total": 127,
+          "share": 0.03937007874015748,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 6,
+          "monthName": "June",
+          "count": 5,
+          "total": 127,
+          "share": 0.03937007874015748,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 7,
+          "monthName": "July",
+          "count": 6,
+          "total": 127,
+          "share": 0.047244094488188976,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 8,
+          "monthName": "August",
+          "count": 4,
+          "total": 127,
+          "share": 0.031496062992125984,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 9,
+          "monthName": "September",
+          "count": 7,
+          "total": 127,
+          "share": 0.05511811023622047,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 10,
+          "monthName": "October",
+          "count": 7,
+          "total": 127,
+          "share": 0.05511811023622047,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 11,
+          "monthName": "November",
+          "count": 15,
+          "total": 127,
+          "share": 0.11811023622047244,
+          "isPeak": false
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "month": 12,
+          "monthName": "December",
+          "count": 10,
+          "total": 127,
+          "share": 0.07874015748031496,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 1,
+          "monthName": "January",
+          "count": 6,
+          "total": 87,
+          "share": 0.06896551724137931,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 2,
+          "monthName": "February",
+          "count": 13,
+          "total": 87,
+          "share": 0.14942528735632185,
+          "isPeak": true
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 3,
+          "monthName": "March",
+          "count": 7,
+          "total": 87,
+          "share": 0.08045977011494253,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 4,
+          "monthName": "April",
+          "count": 10,
+          "total": 87,
+          "share": 0.11494252873563218,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 5,
+          "monthName": "May",
+          "count": 5,
+          "total": 87,
+          "share": 0.05747126436781609,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 6,
+          "monthName": "June",
+          "count": 4,
+          "total": 87,
+          "share": 0.04597701149425287,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 7,
+          "monthName": "July",
+          "count": 7,
+          "total": 87,
+          "share": 0.08045977011494253,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 8,
+          "monthName": "August",
+          "count": 1,
+          "total": 87,
+          "share": 0.011494252873563218,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 9,
+          "monthName": "September",
+          "count": 5,
+          "total": 87,
+          "share": 0.05747126436781609,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 10,
+          "monthName": "October",
+          "count": 12,
+          "total": 87,
+          "share": 0.13793103448275862,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 11,
+          "monthName": "November",
+          "count": 7,
+          "total": 87,
+          "share": 0.08045977011494253,
+          "isPeak": false
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "month": 12,
+          "monthName": "December",
+          "count": 10,
+          "total": 87,
+          "share": 0.11494252873563218,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 1,
+          "monthName": "January",
+          "count": 27,
+          "total": 95,
+          "share": 0.28421052631578947,
+          "isPeak": true
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 2,
+          "monthName": "February",
+          "count": 15,
+          "total": 95,
+          "share": 0.15789473684210525,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 3,
+          "monthName": "March",
+          "count": 12,
+          "total": 95,
+          "share": 0.12631578947368421,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 4,
+          "monthName": "April",
+          "count": 4,
+          "total": 95,
+          "share": 0.042105263157894736,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 5,
+          "monthName": "May",
+          "count": 1,
+          "total": 95,
+          "share": 0.010526315789473684,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 6,
+          "monthName": "June",
+          "count": 11,
+          "total": 95,
+          "share": 0.11578947368421053,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 7,
+          "monthName": "July",
+          "count": 3,
+          "total": 95,
+          "share": 0.031578947368421054,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 8,
+          "monthName": "August",
+          "count": 1,
+          "total": 95,
+          "share": 0.010526315789473684,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 9,
+          "monthName": "September",
+          "count": 3,
+          "total": 95,
+          "share": 0.031578947368421054,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 10,
+          "monthName": "October",
+          "count": 3,
+          "total": 95,
+          "share": 0.031578947368421054,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 11,
+          "monthName": "November",
+          "count": 5,
+          "total": 95,
+          "share": 0.05263157894736842,
+          "isPeak": false
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "month": 12,
+          "monthName": "December",
+          "count": 10,
+          "total": 95,
+          "share": 0.10526315789473684,
+          "isPeak": false
+        }
+      ]
+    },
+    {
+      "name": "species",
+      "values": [
+        {
+          "species": "Koala",
+          "scientific_name": "Phascolarctos cinereus",
+          "order": 0,
+          "total": 1725,
+          "peakMonths": "Oct"
+        },
+        {
+          "species": "Platypus",
+          "scientific_name": "Ornithorhynchus anatinus",
+          "order": 1,
+          "total": 601,
+          "peakMonths": "Aug"
+        },
+        {
+          "species": "Grey-headed Flying-fox",
+          "scientific_name": "Pteropus poliocephalus",
+          "order": 2,
+          "total": 461,
+          "peakMonths": "Nov"
+        },
+        {
+          "species": "Greater Glider",
+          "scientific_name": "Petauroides volans",
+          "order": 3,
+          "total": 209,
+          "peakMonths": "Sep"
+        },
+        {
+          "species": "Spotted-tailed Quoll",
+          "scientific_name": "Dasyurus maculatus",
+          "order": 4,
+          "total": 198,
+          "peakMonths": "Apr"
+        },
+        {
+          "species": "European Rabbit",
+          "scientific_name": "Oryctolagus cuniculus",
+          "order": 5,
+          "total": 167,
+          "peakMonths": "Nov"
+        },
+        {
+          "species": "Quokka",
+          "scientific_name": "Setonix brachyurus",
+          "order": 6,
+          "total": 128,
+          "peakMonths": "Oct"
+        },
+        {
+          "species": "Tasmanian Devil",
+          "scientific_name": "Sarcophilus harrisii",
+          "order": 7,
+          "total": 127,
+          "peakMonths": "Jan"
+        },
+        {
+          "species": "Australian Sea Lion",
+          "scientific_name": "Neophoca cinerea",
+          "order": 8,
+          "total": 87,
+          "peakMonths": "Feb"
+        },
+        {
+          "species": "Eastern Quoll",
+          "scientific_name": "Dasyurus viverrinus",
+          "order": 9,
+          "total": 95,
+          "peakMonths": "Jan"
+        }
+      ]
+    },
+    {
+      "name": "seasons",
+      "values": [
+        {
+          "start": 0.5,
+          "end": 2.5,
+          "label": "Summer",
+          "fill": "#fff0d9"
+        },
+        {
+          "start": 2.5,
+          "end": 5.5,
+          "label": "Autumn",
+          "fill": "#f6e7e0"
+        },
+        {
+          "start": 5.5,
+          "end": 8.5,
+          "label": "Winter",
+          "fill": "#e5edf7"
+        },
+        {
+          "start": 8.5,
+          "end": 11.5,
+          "label": "Spring",
+          "fill": "#e9f1e5"
+        },
+        {
+          "start": 11.5,
+          "end": 12.5,
+          "label": "Summer",
+          "fill": "#fff0d9"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": [
+        0.5,
+        12.5
+      ],
+      "range": "width",
+      "zero": false,
+      "nice": false
+    },
+    {
+      "name": "amplitude",
+      "type": "linear",
+      "domain": [
+        0,
+        0.3
+      ],
+      "range": [
+        0,
+        76
+      ],
+      "zero": true,
+      "nice": false
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Koala",
+        "Platypus",
+        "Grey-headed Flying-fox",
+        "Greater Glider",
+        "Spotted-tailed Quoll",
+        "European Rabbit",
+        "Quokka",
+        "Tasmanian Devil",
+        "Eastern Barred Bandicoot",
+        "Numbat",
+        "Australian Sea Lion",
+        "Eastern Quoll"
+      ],
+      "range": [
+        "#365B85",
+        "#B65C30",
+        "#2A8576",
+        "#885BA6",
+        "#AD4770",
+        "#86701D",
+        "#397FAD",
+        "#6D6B70",
+        "#C17A24",
+        "#5146A0",
+        "#6f3c91",
+        "#bab0ab"
+      ]
+    }
+  ],
+  "axes": [
+    {
+      "orient": "bottom",
+      "scale": "x",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "labelPadding": 10,
+      "tickSize": 0,
+      "domainColor": "#c9d3df",
+      "labelColor": "#52606d",
+      "title": "Observation month",
+      "titleColor": "#243447",
+      "titlePadding": 16,
+      "encode": {
+        "labels": {
+          "update": {
+            "text": {
+              "signal": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value-1]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "start"
+          },
+          "x2": {
+            "scale": "x",
+            "field": "end"
+          },
+          "y": {
+            "value": -4
+          },
+          "y2": {
+            "signal": "height"
+          },
+          "fill": {
+            "field": "fill"
+          },
+          "opacity": {
+            "value": 0.45
+          }
+        }
+      },
+      "from": {
+        "data": "seasons"
+      },
+      "interactive": false
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('x', (datum.start + datum.end)/2)"
+          },
+          "y": {
+            "value": 6
+          },
+          "text": {
+            "field": "label"
+          },
+          "align": {
+            "value": "center"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657381"
+          }
+        }
+      },
+      "from": {
+        "data": "seasons"
+      },
+      "interactive": false
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "x2": {
+            "signal": "width"
+          },
+          "y": {
+            "signal": "74 + datum.order * 55"
+          },
+          "stroke": {
+            "value": "#c9d3df"
+          },
+          "strokeWidth": {
+            "value": 0.7
+          }
+        }
+      },
+      "from": {
+        "data": "species"
+      },
+      "interactive": false
+    },
+    {
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "ridge",
+          "data": "monthly",
+          "groupby": "species"
+        }
+      },
+      "marks": [
+        {
+          "type": "area",
+          "encode": {
+            "update": {
+              "x": {
+                "scale": "x",
+                "field": "month"
+              },
+              "y": {
+                "signal": "74 + datum.order * 55 - scale('amplitude', datum.share)"
+              },
+              "y2": {
+                "signal": "74 + datum.order * 55"
+              },
+              "fill": {
+                "scale": "color",
+                "field": "species"
+              },
+              "fillOpacity": {
+                "value": 0.72
+              },
+              "stroke": {
+                "scale": "color",
+                "field": "species"
+              },
+              "strokeWidth": {
+                "value": 1.7
+              },
+              "opacity": {
+                "signal": "activeSpecies == null || activeSpecies == datum.species ? 1 : 0.18"
+              },
+              "interpolate": {
+                "value": "monotone"
+              }
+            }
+          },
+          "from": {
+            "data": "ridge"
+          },
+          "sort": {
+            "field": "datum.month"
+          },
+          "interactive": false
+        }
+      ]
+    },
+    {
+      "type": "symbol",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "month"
+          },
+          "y": {
+            "signal": "74 + datum.order * 55 - scale('amplitude', datum.share)"
+          },
+          "size": {
+            "signal": "datum.isPeak ? 36 : 18"
+          },
+          "fill": {
+            "scale": "color",
+            "field": "species"
+          },
+          "stroke": {
+            "value": "#f7fafc"
+          },
+          "strokeWidth": {
+            "value": 1
+          },
+          "opacity": {
+            "signal": "datum.isPeak || activeSpecies == datum.species ? 1 : 0"
+          }
+        }
+      },
+      "from": {
+        "data": "monthly"
+      },
+      "interactive": false
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": -14
+          },
+          "y": {
+            "signal": "74 + datum.order * 55 - 8"
+          },
+          "text": {
+            "field": "species"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "fontWeight": {
+            "signal": "activeSpecies == datum.species ? 'bold' : 'normal'"
+          },
+          "opacity": {
+            "signal": "activeSpecies == null || activeSpecies == datum.species ? 1 : 0.18"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "{'Species': datum.species, 'Scientific name': datum.scientific_name, 'Observations (2016–2025)': datum.total, 'Peak month(s)': datum.peakMonths}"
+          }
+        }
+      },
+      "from": {
+        "data": "species"
+      },
+      "name": "speciesLabels"
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 14"
+          },
+          "y": {
+            "signal": "74 + datum.order * 55 - 8"
+          },
+          "text": {
+            "signal": "format(datum.total, ',') + ' obs. · ' + datum.peakMonths"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "opacity": {
+            "signal": "activeSpecies == null || activeSpecies == datum.species ? 1 : 0.18"
+          }
+        }
+      },
+      "from": {
+        "data": "species"
+      },
+      "interactive": false
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('x', datum.month - 0.5)"
+          },
+          "x2": {
+            "signal": "scale('x', datum.month + 0.5)"
+          },
+          "y": {
+            "signal": "20 + datum.order * 55"
+          },
+          "y2": {
+            "signal": "74 + datum.order * 55"
+          },
+          "fill": {
+            "value": "transparent"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "{'Species': datum.species, 'Scientific name': datum.scientific_name, 'Month': datum.monthName, 'Observations': datum.count, 'Share of species observations': format(datum.share, '.1%'), 'Species total (2016–2025)': datum.total}"
+          }
+        }
+      },
+      "from": {
+        "data": "monthly"
+      },
+      "name": "monthTargets"
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width + 14"
+          },
+          "y": {
+            "value": 6
+          },
+          "text": {
+            "value": "TOTAL · PEAK MONTH"
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "fill": {
+            "value": "#657381"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 76"
+          },
+          "text": {
+            "value": "Height = monthly share of each species’ records, on a shared scale. Dots mark peak months."
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 96"
+          },
+          "text": {
+            "value": "Source: supplied mammal observations · Complete years pooled · Recording activity, not animal abundance."
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width"
+          },
+          "y": {
+            "value": -20
+          },
+          "text": {
+            "value": "Clear highlight"
+          },
+          "align": {
+            "value": "right"
+          },
+          "fill": {
+            "value": "#365B85"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "opacity": {
+            "signal": "selectedSpecies != null ? 1 : 0"
+          }
+        }
+      },
+      "name": "resetHighlight"
+    }
+  ],
+  "config": {
+    "text": {
+      "font": "Arial"
+    },
+    "axis": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
+  }
+}

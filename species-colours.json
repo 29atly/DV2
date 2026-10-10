@@ -1,0 +1,52 @@
+[
+  {
+    "scientific_name": "Phascolarctos cinereus",
+    "species": "Koala",
+    "colour": "#365B85"
+  },
+  {
+    "scientific_name": "Ornithorhynchus anatinus",
+    "species": "Platypus",
+    "colour": "#B65C30"
+  },
+  {
+    "scientific_name": "Pteropus poliocephalus",
+    "species": "Grey-headed Flying-fox",
+    "colour": "#2A8576"
+  },
+  {
+    "scientific_name": "Petauroides volans",
+    "species": "Greater Glider",
+    "colour": "#885BA6"
+  },
+  {
+    "scientific_name": "Dasyurus maculatus",
+    "species": "Spotted-tailed Quoll",
+    "colour": "#AD4770"
+  },
+  {
+    "scientific_name": "Oryctolagus cuniculus",
+    "species": "European Rabbit",
+    "colour": "#86701D"
+  },
+  {
+    "scientific_name": "Setonix brachyurus",
+    "species": "Quokka",
+    "colour": "#397FAD"
+  },
+  {
+    "scientific_name": "Sarcophilus harrisii",
+    "species": "Tasmanian Devil",
+    "colour": "#6D6B70"
+  },
+  {
+    "scientific_name": "Perameles gunnii",
+    "species": "Eastern Barred Bandicoot",
+    "colour": "#C17A24"
+  },
+  {
+    "scientific_name": "Myrmecobius fasciatus",
+    "species": "Numbat",
+    "colour": "#5146A0"
+  }
+]

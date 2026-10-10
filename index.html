@@ -1,54 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wildlife observations across Australia</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5/build/vega.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5/build/vega-lite.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6/build/vega-embed.min.js"></script>
-  <style>
-    body { margin: 0; padding: 32px 20px; background: #f7fafc; color: #203a32; font: 16px/1.6 Arial, sans-serif; }
-    main { max-width: 850px; margin: auto; }
-    .map-scroll { overflow-x: auto; }
-    .vega-bindings { padding: 12px 0; }
-    select { max-width: 100%; padding: 8px; border: 1px solid #b6c5bc; border-radius: 4px; background: white; }
-    .note { font-size: 13px; color: #52606d; }
-    .error { color: #a12c2c; }
-    section + section { margin-top: 48px; padding-top: 24px; border-top: 1px solid #d9e2dc; }
-  </style>
+  <title>Australia’s wildlife through citizen science</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/vega@5.33.0/build/vega.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
+  <script defer src="charts.js"></script>
 </head>
 <body>
+  <header class="hero">
+    <p class="eyebrow">Australia · Citizen science · Wildlife observations</p>
+    <h1>Every sighting tells<br>a bigger story.</h1>
+    <p class="intro">Explore where Australia’s wildlife is recorded, which species attract attention, and how observation patterns change through the years and seasons.</p>
+  </header>
+
+  <div class="toolbar">
+    <nav aria-label="Story sections">
+      <a href="#geography">Where</a><a href="#species">What</a><a href="#time">When</a><a href="#seasons">Seasons</a><a href="#parrot">Parrot case study</a><a href="#networks">Connections</a><a href="#diversity">Diversity</a>
+    </nav>
+    <label class="menu-toggle"><input id="show-actions" type="checkbox" checked> Show chart menus <span aria-hidden="true">•••</span></label>
+    <div class="species-selection"><span id="species-highlight" role="status">Species highlight: All species</span><button id="clear-species" type="button" hidden>Clear species highlight</button></div>
+  </div>
+
   <main>
-    <section aria-label="Observation point map">
-    <p>Each point represents a wildlife observation contributed by a member of the public. Together, these sightings reveal where people encounter wildlife across Australia.</p>
-    <div class="map-scroll">
-      <div id="map" role="figure" aria-label="Map of sightings of the 10 most frequently recorded mammal species across Australia"></div>
-    </div>
-    <p class="note">This dot map shows 4,271 observations of the 10 most frequently recorded mammal species in this dataset, ranked by record count. Each species has a distinct colour; use the dropdown to isolate one species. Some coordinates are obscured in the source. Sightings reflect where people record wildlife, rather than a complete survey of animal populations.</p>
-    <p id="error" class="error" role="alert" hidden></p>
+    <p id="page-status" class="page-status" role="status">Loading 11 interactive charts…</p>
+    <noscript><p class="notice">Enable JavaScript to view the interactive charts.</p></noscript>
+
+    <section id="geography" aria-labelledby="geography-title">
+      <p class="eyebrow">01 / Where</p>
+      <h2 id="geography-title">Where is Australia’s wildlife being recorded?</h2>
+      <p class="story">Wildlife recording activity is heavily concentrated along Australia’s eastern and south-eastern coasts. The Brisbane–Gold Coast region alone contains <strong>1,275 records (19.7%)</strong>, while Melbourne forms another visible cluster. Among the 10 selected mammals, <strong>Queensland records the most observations (1,922)</strong>, followed by Victoria and New South Wales. These hotspots reflect both wildlife presence and where citizen scientists are most active; they do not necessarily indicate more animals.</p>
+      <article class="chart-card"><h3>Binned map <span>Recording hotspots</span></h3><div class="chart-scroll"><div class="chart" id="bin-map" data-spec="BinMap.vg.json" aria-label="Binned map of wildlife observations"></div></div></article>
+      <article class="chart-card"><h3>Dot map <span>Individual observations</span></h3><div class="chart-scroll"><div class="chart" id="dot-map" data-spec="DotMap.vg.json" aria-label="Map of mammal observation locations"></div></div></article>
     </section>
-    <section aria-label="Binned observation map">
-      <p>Wildlife observations are not evenly distributed. Some places attract far more records than others.</p>
-      <div class="map-scroll">
-        <div id="hotspot-map" role="figure" aria-label="Wildlife observation counts aggregated into geographic grid cells across Australia"></div>
-      </div>
-      <p>Hotspots may reflect both wildlife presence and where people are more likely to observe and report animals.</p>
-      <p class="note">Each coloured square is a spatial bin containing the records within its boundaries. Change the bin size to explore broader or finer patterns. Colours show discrete count ranges: 1–4, 5–19, 20–49, 50–199, 200–499 and 500+ observations. Only cells with observations are coloured. Grid sizes are measured in degrees; their physical area varies with latitude. These are record counts, rather than counts of individual animals.</p>
-      <p id="hotspot-error" class="error" role="alert" hidden></p>
+
+    <section id="species" aria-labelledby="species-title">
+      <p class="eyebrow">02 / What</p>
+      <h2 id="species-title">Which species dominate the records?</h2>
+      <p class="story">Observation activity is highly uneven between species. <strong>Koalas lead with 1,978 records</strong>, far ahead of Platypus (679) and Grey-headed Flying-fox (525). Among the top 10 species, <strong>Koalas alone account for 45.1% of observations</strong>, showing how strongly a single species can dominate the citizen-science record.</p>
+      <article class="chart-card"><h3>Lollipop chart <span>Species rankings</span></h3><div class="chart-scroll"><div class="chart" id="lollipop" data-spec="Lollipop.vg.json" aria-label="Ranking of mammal observation counts"></div></div></article>
+      <article class="chart-card"><h3>Waffle chart <span>Share among the top ten mammals</span></h3><div class="chart-scroll"><div class="chart" id="waffle" data-spec="Waffle.vg.json" aria-label="Share of observations among top ten mammals"></div></div></article>
+      <p class="notice">Frequently recorded does not necessarily mean most abundant in the wild. These records reflect both wildlife presence and human recording activity.</p>
     </section>
+
+    <section id="time" aria-labelledby="time-title">
+      <p class="eyebrow">03 / When</p>
+      <h2 id="time-title">Have the same species always dominated?</h2>
+      <p class="story">The leading species are remarkably stable: <strong>Koala, Platypus and Grey-headed Flying-fox remain first, second and third from 2021–2025</strong>. Greater movement occurs among the lower-ranked species, with animals such as the European Rabbit, Quokka and Tasmanian Devil changing positions over time. The longer-term streamgraph also shows recording activity expanding strongly toward <strong>2024</strong>, while the relative contribution of individual species changes across years.</p>
+      <article class="chart-card"><h3>Bump chart <span>Changing ranks · 2021–2025</span></h3><div class="chart-scroll"><div class="chart" id="bump" data-spec="BumpChart.vg.json" aria-label="Annual mammal species rankings"></div></div></article>
+      <article class="chart-card"><h3>Streamgraph <span>Changing composition · 2017–2026</span></h3><div class="chart-scroll"><div class="chart" id="streamgraph" data-spec="Streamgraph.vg.json" aria-label="Composition of mammal observations over time"></div></div><p class="chart-note">2026 is incomplete and should not be compared directly with completed years.</p></article>
+    </section>
+
+    <section id="seasons" aria-labelledby="seasons-title">
+      <p class="eyebrow">04 / Seasons</p>
+      <h2 id="seasons-title">Does wildlife recording change with the seasons?</h2>
+      <p class="story">Different mammals show distinct seasonal recording patterns. Koala observations peak around <strong>October</strong>, Platypus in <strong>August</strong>, Grey-headed Flying-fox in <strong>November</strong>, while the Spotted-tailed Quoll peaks earlier in <strong>April</strong>. These differences suggest that when species are recorded depends strongly on season, although the patterns may reflect both animal behaviour and changes in human observation activity.</p>
+      <article class="chart-card"><h3>Ridgeline chart <span>Monthly recording patterns</span></h3><div class="chart-scroll"><div class="chart" id="ridgeline" data-spec="Ridgeline.vg.json" aria-label="Monthly recording patterns for mammal species"></div></div></article>
+    </section>
+
+    <section id="parrot" aria-labelledby="parrot-title">
+      <p class="eyebrow">05 / A seasonal case study</p>
+      <h2 id="parrot-title">Following the Orange-bellied Parrot through the seasons</h2>
+      <p class="story">Orange-bellied Parrot records show a striking seasonal geographic shift. In summer, <strong>71.4% of records are from Tasmania</strong>, but by winter Tasmania contributes only a small share, while <strong>Victoria accounts for 64.2%</strong> and <strong>South Australia for 28.5%</strong>. In spring, Victoria remains dominant at <strong>60.8%</strong>, while Tasmania’s share rises again to <strong>26.0%</strong>.</p>
+      <article class="chart-card"><h3>Choropleth map <span>Monthly distribution across LGAs</span></h3><p class="story">Highlight a range on the line graph, then slide the highlighted window through different months. Watch how recorded locations shift from Tasmania towards South Australia and Victoria, with some observations in New South Wales—a pattern consistent with the parrot’s seasonal migration. Choose a state or local government area from the selector, or click an LGA on the map, to zoom in and explore its monthly records. Choose “All recorded states” to return to the full view.</p><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Monthly geographic distribution of Orange-bellied Parrot observations"></div></div></article>
+      <article class="chart-card"><h3>100% stacked bar chart <span>Seasonal share by state</span></h3><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="Seasonal state shares of Orange-bellied Parrot observations"></div></div></article>
+      <p class="story">Together with the monthly choropleth, these seasonal shares reveal a clear redistribution of recorded locations between Tasmania and mainland Australia, showing <strong>movement patterns consistent with seasonal migration</strong>. Citizen-science observations can help reveal these patterns over time, although the records alone do not prove that individual birds migrated.</p>
+    </section>
+
+    <section id="networks" aria-labelledby="networks-title">
+      <p class="eyebrow">06 / Connections</p>
+      <h2 id="networks-title">Different species tell different geographic stories</h2>
+      <p class="story">The five most-recorded mammals have very different geographic footprints. <strong>Queensland receives the largest overall flow with 1,918 observations</strong>, followed by Victoria (735) and New South Wales (571). Koala records dominate the Queensland flow, while other species are distributed more broadly across multiple states, showing that Australia’s citizen-science record varies substantially by both species and location.</p>
+      <article class="chart-card"><h3>Sankey diagram <span>Species → states and territories</span></h3><div class="chart-scroll"><div class="chart" id="sankey" data-spec="Sankey.vg.json" aria-label="Connections between mammal species and Australian states"></div></div></article>
+    </section>
+
+    <section id="diversity" aria-labelledby="diversity-title">
+      <p class="eyebrow">07 / Diversity</p>
+      <h2 id="diversity-title">What does the citizen-science record contain?</h2>
+      <p class="story">The taxonomic structure of the selected mammals is also uneven. <strong>Marsupials dominate with 2,768 of 4,271 observations</strong>, compared with 824 placental mammal and 679 monotreme observations. Much of this dominance is driven by the large number of Koala records, showing how individual species can strongly influence the apparent composition of citizen-science datasets.</p>
+      <article class="chart-card"><h3>Sunburst chart <span>Groups → orders → species</span></h3><div class="chart-scroll"><div class="chart" id="sunburst" data-spec="Sunburst.vg.json" aria-label="Taxonomic structure of selected mammal observations"></div></div></article>
+    </section>
+
+    <footer><h2>From individual sightings to a broader picture.</h2><p>From individual sightings to national patterns, citizen science reveals where Australian wildlife is recorded, which species dominate, and how observations change across years and seasons. However, recording frequency reflects both wildlife presence and human participation, so these patterns should not be interpreted as direct measures of animal abundance.</p><a href="#">Back to top ↑</a></footer>
   </main>
-  <script>
-    function showMap(target, specification, errorTarget) {
-      return vegaEmbed(target, specification, { actions: false, renderer: 'canvas' })
-      .catch(error => {
-        const message = document.querySelector(errorTarget);
-        message.textContent = `The map could not load: ${error.message}. Serve this folder with a local web server and check your internet connection.`;
-        message.hidden = false;
-      });
-    }
-    showMap('#map', 'DotMap.vg.json', '#error');
-    showMap('#hotspot-map', 'HotspotMap.vl.json', '#hotspot-error');
-  </script>
 </body>
 </html>
