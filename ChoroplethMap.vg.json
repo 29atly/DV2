@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs and pooled by calendar month. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All historic observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default shows all recorded regions in southern Australia. The State dropdown offers an overview and four recorded states; selecting a state or clicking a recorded LGA filters the charts to that state and fits the map. The line chart is a single unstacked series. Without a timeframe highlight, each calendar month shows average observations across distinct recorded years in the selected state, including zero months within those years. Map fills show the mean of the twelve monthly averages. Draw a highlight for raw counts, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. The area chart shows the largest seven LGAs and Other LGAs. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states.",
   "width": 850,
-  "height": 900,
+  "height": 860,
   "padding": 16,
   "background": "#f7fafc",
   "title": {
@@ -15,7 +15,10 @@
     "fontSize": 22,
     "color": "#243447",
     "subtitleColor": "#52606d",
-    "offset": 18
+    "offset": 16,
+    "subtitlePadding": 6,
+    "subtitleFontSize": 12,
+    "subtitleLineHeight": 16
   },
   "signals": [
     {
@@ -169,7 +172,7 @@
             "type": "wheel",
             "consume": true,
             "filter": [
-              "y() >= 40 && y() <= 460 && x() >= 0 && x() <= 850"
+              "y() >= 0 && y() <= 420 && x() >= 0 && x() <= 850"
             ]
           },
           "update": "clamp(zoom * pow(1.001, -event.deltaY * pow(16, event.deltaMode)), 300, 120000)"
@@ -897420,21 +897423,6 @@
       }
     }
   ],
-  "legends": [
-    {
-      "fill": "observationColor",
-      "title": {
-        "signal": "brushRange ? 'Observations' : 'age'"
-      },
-      "orient": "none",
-      "legendX": 690,
-      "legendY": 76,
-      "type": "gradient",
-      "direction": "vertical",
-      "gradientLength": 150,
-      "format": ",~f"
-    }
-  ],
   "marks": [
     {
       "name": "mapPanel",
@@ -897442,7 +897430,7 @@
       "encode": {
         "update": {
           "y": {
-            "value": 40
+            "value": 0
           },
           "width": {
             "value": 850
@@ -897651,7 +897639,7 @@
             "value": 0
           },
           "y": {
-            "value": 480
+            "value": 440
           },
           "text": {
             "value": "Grey = 0 observations · Dimmed LGAs are outside the selected location · Click an LGA to select it"
@@ -897678,7 +897666,7 @@
             "value": 0
           },
           "y": {
-            "value": 510
+            "value": 470
           },
           "text": {
             "signal": "(brushRange ? 'Monthly observation counts · ' : 'Average observations by calendar month · ') + regionLabel"
@@ -897705,7 +897693,7 @@
             "value": 0
           },
           "y": {
-            "value": 531
+            "value": 491
           },
           "text": {
             "value": "Select a state or LGA to explore its trend. Highlight the line chart to filter a time period."
@@ -897731,7 +897719,7 @@
             "value": 50
           },
           "y": {
-            "value": 550
+            "value": 510
           },
           "width": {
             "value": 600
@@ -897802,7 +897790,7 @@
           "orient": "left",
           "scale": "countY",
           "title": {
-            "signal": "brushRange ? 'Observations' : 'Average / year'"
+            "signal": "brushRange ? 'Observations' : 'Avg. observations / year'"
           },
           "grid": true,
           "gridScale": "monthX",
@@ -898090,7 +898078,7 @@
             "value": 0
           },
           "y": {
-            "value": 687
+            "value": 647
           },
           "text": {
             "signal": "'Local government area contributions · ' + (brushRange ? 'Observation counts · ' : 'Calendar-month averages · ') + regionLabel"
@@ -898116,7 +898104,7 @@
             "value": 50
           },
           "y": {
-            "value": 710
+            "value": 670
           },
           "width": {
             "value": 600
@@ -898187,7 +898175,7 @@
           "orient": "left",
           "scale": "countY",
           "title": {
-            "signal": "brushRange ? 'Observations' : 'Average / year'"
+            "signal": "brushRange ? 'Observations' : 'Avg. observations / year'"
           },
           "grid": true,
           "gridScale": "monthX",
@@ -898340,7 +898328,7 @@
             "value": 0
           },
           "y": {
-            "value": 887
+            "value": 847
           },
           "text": {
             "signal": "'1,790 mapped records · ' + recordedYearCount + ' recorded years in selected place · 0 records without year excluded from averages'"
@@ -898366,7 +898354,7 @@
             "value": 690
           },
           "y": {
-            "value": 657
+            "value": 617
           },
           "text": {
             "value": "Show averages"

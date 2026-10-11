@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Readability rationale: Charts involving multiple lines or flows use a limited selection of the most observed species (typically 5–6), while ranking and hierarchical charts can accommodate larger selections (typically 10–15). Maps can retain all species within their selected dataset where aggregation or filtering prevents clutter. This Sankey shows the top five species by observation count among the ten mammals selected in DotMap.vg.json. Sankey showing only the five most recorded species among the 10 selected mammals in DotMap.vg.json: Koala, Platypus, Grey-headed Flying-fox, Greater Glider, European Rabbit. Species ranked by all-date geolocated observation count, not conservation importance. Both stages sum to 3,597 observations. State assignments copied from DotMap, including Offshore / unspecified. State totals and connections include only these five species. Ribbon and node heights use a uniform 0.14734500973033082 pixels per observation. Species colours match DotMap. All data and layout embedded. Hover or click to highlight; click again, Reset highlight, or Escape to clear. Counts reflect recording activity, not migration or animal abundance. Species colours match the ten-species palette in BumpChart.vg.json; species selection and observation counts are unchanged.",
+  "description": "Readability rationale: Charts involving multiple lines or flows use a limited selection of the most observed species (typically 5–6), while ranking and hierarchical charts can accommodate larger selections (typically 10–15). Maps can retain all species within their selected dataset where aggregation or filtering prevents clutter. This Sankey shows the top five species by observation count among the ten mammals selected in DotMap.vg.json. Sankey showing only the five most recorded species among the 10 selected mammals in DotMap.vg.json: Koala, Platypus, Grey-headed Flying-fox, Greater Glider, European Rabbit. Species ranked by 2017–2026 geolocated observation count, not conservation importance. Both stages sum to 3,429 observations. State assignments copied from DotMap, including Offshore / unspecified. State totals and connections include only these five species. Ribbon and node heights use a uniform 0.15456401283172938 pixels per observation. Species colours match DotMap. All data and layout embedded. Hover or click to highlight; click again, Reset highlight, or Escape to clear. Counts reflect recording activity, not migration or animal abundance. Species colours match the ten-species palette in BumpChart.vg.json; species selection is retained; counts use the selected observation years. ACT, Western Australia, Northern Territory and Offshore / unspecified are combined as Others (55 observations); their species flows are summed. Grouped-location breakdowns are retained in tooltips. Totals and the shared ribbon-height scale are preserved. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
   "width": 1100,
   "height": 788,
   "padding": 16,
@@ -8,15 +8,17 @@
   "title": {
     "text": "Where Are the Five Most Recorded Mammal Species Observed?",
     "subtitle": [
-      "Species → state / territory · Top 5 most observed species in the DotMap selection",
-      "To maintain readability, this flow chart shows five species · 3,597 observations · Ribbon width shows observation count"
+      "Species → state / territory · Top 5 most observed species in the DotMap selection · 2017–2026",
+      "To maintain readability, this flow chart shows five species · 3,429 observations · Ribbon width shows observation count"
     ],
     "anchor": "start",
     "fontSize": 22,
     "color": "#243447",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
-    "offset": 18
+    "offset": 16,
+    "subtitlePadding": 6,
+    "subtitleLineHeight": 16
   },
   "signals": [
     {
@@ -65,16 +67,15 @@
           "column": 0,
           "x": 290,
           "y": 102.0,
-          "y2": 393.44842924659434,
-          "count": 1978,
+          "y2": 395.0533683289589,
+          "count": 1896,
           "keys": [
             "species:Koala",
             "state:Queensland",
             "state:Victoria",
             "state:New South Wales",
             "state:South Australia",
-            "state:Western Australia",
-            "state:Australian Capital Territory"
+            "state:Others"
           ]
         },
         {
@@ -85,18 +86,17 @@
           "level": "Species",
           "column": 0,
           "x": 290,
-          "y": 413.44842924659434,
-          "y2": 513.495690853489,
-          "count": 679,
+          "y": 415.0533683289589,
+          "y2": 514.2834645669292,
+          "count": 642,
           "keys": [
             "species:Platypus",
             "state:Queensland",
             "state:Victoria",
             "state:New South Wales",
-            "state:Tasmania",
             "state:South Australia",
-            "state:Australian Capital Territory",
-            "state:Offshore / unspecified"
+            "state:Tasmania",
+            "state:Others"
           ]
         },
         {
@@ -107,16 +107,16 @@
           "level": "Species",
           "column": 0,
           "x": 290,
-          "y": 533.495690853489,
-          "y2": 610.8518209619127,
-          "count": 525,
+          "y": 534.2834645669292,
+          "y2": 610.6380869058034,
+          "count": 494,
           "keys": [
             "species:Grey-headed Flying-fox",
             "state:Queensland",
             "state:Victoria",
             "state:New South Wales",
             "state:South Australia",
-            "state:Australian Capital Territory"
+            "state:Others"
           ]
         },
         {
@@ -127,15 +127,15 @@
           "level": "Species",
           "column": 0,
           "x": 290,
-          "y": 630.8518209619127,
-          "y2": 666.0672782874618,
-          "count": 239,
+          "y": 630.6380869058034,
+          "y2": 666.1878098571012,
+          "count": 230,
           "keys": [
             "species:Greater Glider",
             "state:Queensland",
             "state:Victoria",
             "state:New South Wales",
-            "state:Australian Capital Territory"
+            "state:Others"
           ]
         },
         {
@@ -146,20 +146,17 @@
           "level": "Species",
           "column": 0,
           "x": 290,
-          "y": 686.0672782874618,
+          "y": 686.1878098571012,
           "y2": 712.0,
-          "count": 176,
+          "count": 167,
           "keys": [
             "species:European Rabbit",
             "state:Queensland",
             "state:Victoria",
             "state:New South Wales",
-            "state:Tasmania",
             "state:South Australia",
-            "state:Western Australia",
-            "state:Australian Capital Territory",
-            "state:Northern Territory",
-            "state:Offshore / unspecified"
+            "state:Tasmania",
+            "state:Others"
           ]
         },
         {
@@ -170,12 +167,12 @@
           "level": "State / territory",
           "column": 1,
           "x": 870,
-          "y": 62.0,
-          "y2": 344.6077286627745,
-          "count": 1918,
+          "y": 92.0,
+          "y2": 381.65296004666084,
+          "count": 1874,
           "keys": [
-            "species:Koala",
             "state:Queensland",
+            "species:Koala",
             "species:Platypus",
             "species:Grey-headed Flying-fox",
             "species:Greater Glider",
@@ -190,12 +187,12 @@
           "level": "State / territory",
           "column": 1,
           "x": 870,
-          "y": 364.6077286627745,
-          "y2": 472.90631081456763,
-          "count": 735,
+          "y": 401.65296004666084,
+          "y2": 506.1382327209099,
+          "count": 676,
           "keys": [
-            "species:Koala",
             "state:Victoria",
+            "species:Koala",
             "species:Platypus",
             "species:Grey-headed Flying-fox",
             "species:Greater Glider",
@@ -210,12 +207,12 @@
           "level": "State / territory",
           "column": 1,
           "x": 870,
-          "y": 492.90631081456763,
-          "y2": 577.0403113705866,
-          "count": 571,
+          "y": 526.1382327209099,
+          "y2": 607.9025955088947,
+          "count": 529,
           "keys": [
-            "species:Koala",
             "state:New South Wales",
+            "species:Koala",
             "species:Platypus",
             "species:Grey-headed Flying-fox",
             "species:Greater Glider",
@@ -230,12 +227,12 @@
           "level": "State / territory",
           "column": 1,
           "x": 870,
-          "y": 597.0403113705866,
-          "y2": 622.8256880733944,
-          "count": 175,
+          "y": 627.9025955088947,
+          "y2": 653.7147856517935,
+          "count": 167,
           "keys": [
-            "species:Koala",
             "state:South Australia",
+            "species:Koala",
             "species:Platypus",
             "species:Grey-headed Flying-fox",
             "species:European Rabbit"
@@ -249,84 +246,35 @@
           "level": "State / territory",
           "column": 1,
           "x": 870,
-          "y": 642.8256880733944,
-          "y2": 662.5699193772588,
-          "count": 134,
+          "y": 673.7147856517935,
+          "y2": 693.4989792942548,
+          "count": 128,
           "keys": [
-            "species:Platypus",
             "state:Tasmania",
+            "species:Platypus",
             "species:European Rabbit"
           ]
         },
         {
-          "id": "state:Australian Capital Territory",
-          "key": "state:Australian Capital Territory",
-          "label": "ACT",
-          "name": "Australian Capital Territory",
+          "id": "state:Others",
+          "key": "state:Others",
+          "label": "Others",
+          "name": "Others",
           "level": "State / territory",
           "column": 1,
           "x": 870,
-          "y": 682.5699193772588,
-          "y2": 689.347789824854,
-          "count": 46,
+          "y": 713.4989792942548,
+          "y2": 721.9999999999999,
+          "count": 55,
           "keys": [
+            "state:Others",
             "species:Koala",
-            "state:Australian Capital Territory",
             "species:Platypus",
             "species:Grey-headed Flying-fox",
             "species:Greater Glider",
             "species:European Rabbit"
-          ]
-        },
-        {
-          "id": "state:Western Australia",
-          "key": "state:Western Australia",
-          "label": "Western Australia",
-          "name": "Western Australia",
-          "level": "State / territory",
-          "column": 1,
-          "x": 870,
-          "y": 709.347789824854,
-          "y2": 711.4106199610786,
-          "count": 14,
-          "keys": [
-            "species:Koala",
-            "state:Western Australia",
-            "species:European Rabbit"
-          ]
-        },
-        {
-          "id": "state:Northern Territory",
-          "key": "state:Northern Territory",
-          "label": "Northern Territory",
-          "name": "Northern Territory",
-          "level": "State / territory",
-          "column": 1,
-          "x": 870,
-          "y": 731.4106199610786,
-          "y2": 731.5579649708089,
-          "count": 1,
-          "keys": [
-            "species:European Rabbit",
-            "state:Northern Territory"
-          ]
-        },
-        {
-          "id": "state:Offshore / unspecified",
-          "key": "state:Offshore / unspecified",
-          "label": "Offshore / unspecified",
-          "name": "Offshore / unspecified",
-          "level": "State / territory",
-          "column": 1,
-          "x": 870,
-          "y": 751.5579649708089,
-          "y2": 751.9999999999999,
-          "count": 3,
-          "keys": [
-            "species:Platypus",
-            "state:Offshore / unspecified",
-            "species:European Rabbit"
-          ]
+          ],
+          "members": "Australian Capital Territory (40); Northern Territory (1); Offshore / unspecified (3); Western Australia (11)"
         }
       ]
     },
@@ -338,135 +286,121 @@
           "scientific": "Phascolarctos cinereus",
           "source": "Koala",
           "target": "Queensland",
-          "count": 1329,
-          "share": 0.6718907987866531,
+          "count": 1314,
+          "share": 0.6930379746835443,
           "shareLabel": "Share of species",
           "key": "species:Koala",
           "keys": [
             "species:Koala",
             "state:Queensland"
           ],
-          "path": "M308,102.0C589,102.0 589,62.0 870,62.0L870,257.82151793160966C589,257.82151793160966 589,297.82151793160966 308,297.82151793160966Z"
+          "path": "M308,102.0C589,102.0 589,92.0 870,92.0L870,295.09711286089237C589,295.09711286089237 589,305.09711286089237 308,305.09711286089237Z"
         },
         {
           "species": "Koala",
           "scientific": "Phascolarctos cinereus",
           "source": "Koala",
           "target": "Victoria",
-          "count": 370,
-          "share": 0.1870576339737108,
+          "count": 325,
+          "share": 0.17141350210970463,
           "shareLabel": "Share of species",
           "key": "species:Koala",
           "keys": [
             "species:Koala",
             "state:Victoria"
           ],
-          "path": "M308,297.82151793160966C589,297.82151793160966 589,364.6077286627745 870,364.6077286627745L870,419.1253822629969C589,419.1253822629969 589,352.33917153183205 308,352.33917153183205Z"
+          "path": "M308,305.09711286089237C589,305.09711286089237 589,401.65296004666084 870,401.65296004666084L870,451.8862642169729C589,451.8862642169729 589,355.33041703120443 308,355.33041703120443Z"
         },
         {
           "species": "Koala",
           "scientific": "Phascolarctos cinereus",
           "source": "Koala",
           "target": "New South Wales",
-          "count": 150,
-          "share": 0.07583417593528817,
+          "count": 138,
+          "share": 0.07278481012658228,
           "shareLabel": "Share of species",
           "key": "species:Koala",
           "keys": [
             "species:Koala",
             "state:New South Wales"
           ],
-          "path": "M308,352.33917153183205C589,352.33917153183205 589,492.90631081456763 870,492.90631081456763L870,515.0080622741173C589,515.0080622741173 589,374.4409229913817 308,374.4409229913817Z"
+          "path": "M308,355.33041703120443C589,355.33041703120443 589,526.1382327209099 870,526.1382327209099L870,547.4680664916885C589,547.4680664916885 589,376.66025080198307 308,376.66025080198307Z"
         },
         {
           "species": "Koala",
           "scientific": "Phascolarctos cinereus",
           "source": "Koala",
           "target": "South Australia",
-          "count": 123,
-          "share": 0.0621840242669363,
+          "count": 116,
+          "share": 0.06118143459915612,
           "shareLabel": "Share of species",
           "key": "species:Koala",
           "keys": [
             "species:Koala",
             "state:South Australia"
           ],
-          "path": "M308,374.4409229913817C589,374.4409229913817 589,597.0403113705866 870,597.0403113705866L870,615.1637475674172C589,615.1637475674172 589,392.5643591882124 308,392.5643591882124Z"
+          "path": "M308,376.66025080198307C589,376.66025080198307 589,627.9025955088947 870,627.9025955088947L870,645.8320209973754C589,645.8320209973754 589,394.5896762904637 308,394.5896762904637Z"
         },
         {
           "species": "Koala",
           "scientific": "Phascolarctos cinereus",
           "source": "Koala",
-          "target": "Australian Capital Territory",
-          "count": 2,
-          "share": 0.0010111223458038423,
+          "target": "Others",
+          "count": 3,
+          "share": 0.0015822784810126582,
           "shareLabel": "Share of species",
           "key": "species:Koala",
           "keys": [
             "species:Koala",
-            "state:Australian Capital Territory"
+            "state:Others"
           ],
-          "path": "M308,392.5643591882124C589,392.5643591882124 589,682.5699193772588 870,682.5699193772588L870,682.8646093967194C589,682.8646093967194 589,392.8590492076731 308,392.8590492076731Z"
-        },
-        {
-          "species": "Koala",
-          "scientific": "Phascolarctos cinereus",
-          "source": "Koala",
-          "target": "Western Australia",
-          "count": 4,
-          "share": 0.0020222446916076846,
-          "shareLabel": "Share of species",
-          "key": "species:Koala",
-          "keys": [
-            "species:Koala",
-            "state:Western Australia"
-          ],
-          "path": "M308,392.8590492076731C589,392.8590492076731 589,709.347789824854 870,709.347789824854L870,709.9371698637754C589,709.9371698637754 589,393.4484292465944 308,393.4484292465944Z"
+          "path": "M308,394.5896762904637C589,394.5896762904637 589,713.4989792942548 870,713.4989792942548L870,713.96267133275C589,713.96267133275 589,395.05336832895887 308,395.05336832895887Z",
+          "members": "Australian Capital Territory (1); Western Australia (2)"
         },
         {
           "species": "Platypus",
           "scientific": "Ornithorhynchus anatinus",
           "source": "Platypus",
           "target": "Queensland",
-          "count": 375,
-          "share": 0.5522827687776142,
+          "count": 355,
+          "share": 0.5529595015576324,
           "shareLabel": "Share of species",
           "key": "species:Platypus",
           "keys": [
             "species:Platypus",
             "state:Queensland"
           ],
-          "path": "M308,413.44842924659434C589,413.44842924659434 589,257.82151793160966 870,257.82151793160966L870,313.07589658048374C589,313.07589658048374 589,468.7028078954684 308,468.7028078954684Z"
+          "path": "M308,415.0533683289589C589,415.0533683289589 589,295.09711286089237 870,295.09711286089237L870,349.9673374161563C589,349.9673374161563 589,469.92359288422284 308,469.92359288422284Z"
         },
         {
           "species": "Platypus",
           "scientific": "Ornithorhynchus anatinus",
           "source": "Platypus",
           "target": "Victoria",
-          "count": 80,
-          "share": 0.11782032400589101,
+          "count": 73,
+          "share": 0.11370716510903427,
           "shareLabel": "Share of species",
           "key": "species:Platypus",
           "keys": [
             "species:Platypus",
             "state:Victoria"
           ],
-          "path": "M308,468.7028078954684C589,468.7028078954684 589,419.1253822629969 870,419.1253822629969L870,430.91298304142333C589,430.91298304142333 589,480.4904086738949 308,480.4904086738949Z"
+          "path": "M308,469.92359288422284C589,469.92359288422284 589,451.8862642169729 870,451.8862642169729L870,463.16943715368916C589,463.16943715368916 589,481.2067658209391 308,481.2067658209391Z"
         },
         {
           "species": "Platypus",
           "scientific": "Ornithorhynchus anatinus",
           "source": "Platypus",
           "target": "New South Wales",
-          "count": 91,
-          "share": 0.13402061855670103,
+          "count": 90,
+          "share": 0.14018691588785046,
           "shareLabel": "Share of species",
           "key": "species:Platypus",
           "keys": [
             "species:Platypus",
             "state:New South Wales"
           ],
-          "path": "M308,480.4904086738949C589,480.4904086738949 589,515.0080622741173 870,515.0080622741173L870,528.4164581595774C589,528.4164581595774 589,493.89880455935497 308,493.89880455935497Z"
+          "path": "M308,481.2067658209391C589,481.2067658209391 589,547.4680664916885 870,547.4680664916885L870,561.3788276465442C589,561.3788276465442 589,495.11752697579476 308,495.11752697579476Z"
         },
         {
           "species": "Platypus",
@@ -474,104 +408,90 @@
           "source": "Platypus",
           "target": "South Australia",
           "count": 4,
-          "share": 0.005891016200294551,
+          "share": 0.006230529595015576,
           "shareLabel": "Share of species",
           "key": "species:Platypus",
           "keys": [
             "species:Platypus",
             "state:South Australia"
           ],
-          "path": "M308,493.89880455935497C589,493.89880455935497 589,615.1637475674172 870,615.1637475674172L870,615.7531276063386C589,615.7531276063386 589,494.4881845982763 308,494.4881845982763Z"
+          "path": "M308,495.11752697579476C589,495.11752697579476 589,645.8320209973754 870,645.8320209973754L870,646.4502770487023C589,646.4502770487023 589,495.73578302712167 308,495.73578302712167Z"
         },
         {
           "species": "Platypus",
           "scientific": "Ornithorhynchus anatinus",
           "source": "Platypus",
           "target": "Tasmania",
-          "count": 109,
-          "share": 0.16053019145802652,
+          "count": 103,
+          "share": 0.16043613707165108,
           "shareLabel": "Share of species",
           "key": "species:Platypus",
           "keys": [
             "species:Platypus",
             "state:Tasmania"
           ],
-          "path": "M308,494.4881845982763C589,494.4881845982763 589,642.8256880733944 870,642.8256880733944L870,658.8862941340004C589,658.8862941340004 589,510.54879065888235 308,510.54879065888235Z"
+          "path": "M308,495.73578302712167C589,495.73578302712167 589,673.7147856517935 870,673.7147856517935L870,689.6348789734616C589,689.6348789734616 589,511.6558763487898 308,511.6558763487898Z"
         },
         {
           "species": "Platypus",
           "scientific": "Ornithorhynchus anatinus",
           "source": "Platypus",
-          "target": "Australian Capital Territory",
-          "count": 19,
-          "share": 0.027982326951399118,
+          "target": "Others",
+          "count": 17,
+          "share": 0.0264797507788162,
           "shareLabel": "Share of species",
           "key": "species:Platypus",
           "keys": [
             "species:Platypus",
-            "state:Australian Capital Territory"
+            "state:Others"
           ],
-          "path": "M308,510.54879065888235C589,510.54879065888235 589,682.8646093967194 870,682.8646093967194L870,685.6641645815957C589,685.6641645815957 589,513.3483458437587 308,513.3483458437587Z"
-        },
-        {
-          "species": "Platypus",
-          "scientific": "Ornithorhynchus anatinus",
-          "source": "Platypus",
-          "target": "Offshore / unspecified",
-          "count": 1,
-          "share": 0.0014727540500736377,
-          "shareLabel": "Share of species",
-          "key": "species:Platypus",
-          "keys": [
-            "species:Platypus",
-            "state:Offshore / unspecified"
-          ],
-          "path": "M308,513.3483458437587C589,513.3483458437587 589,751.5579649708089 870,751.5579649708089L870,751.7053099805393C589,751.7053099805393 589,513.495690853489 308,513.495690853489Z"
+          "path": "M308,511.6558763487898C589,511.6558763487898 589,713.96267133275 870,713.96267133275L870,716.5902595508894C589,716.5902595508894 589,514.2834645669292 308,514.2834645669292Z",
+          "members": "Australian Capital Territory (16); Offshore / unspecified (1)"
         },
         {
           "species": "Grey-headed Flying-fox",
           "scientific": "Pteropus poliocephalus",
           "source": "Grey-headed Flying-fox",
           "target": "Queensland",
-          "count": 75,
-          "share": 0.14285714285714285,
+          "count": 71,
+          "share": 0.1437246963562753,
           "shareLabel": "Share of species",
           "key": "species:Grey-headed Flying-fox",
           "keys": [
             "species:Grey-headed Flying-fox",
             "state:Queensland"
           ],
-          "path": "M308,533.495690853489C589,533.495690853489 589,313.07589658048374 870,313.07589658048374L870,324.12677231025856C589,324.12677231025856 589,544.5465665832638 308,544.5465665832638Z"
+          "path": "M308,534.2834645669292C589,534.2834645669292 589,349.9673374161563 870,349.9673374161563L870,360.94138232720906C589,360.94138232720906 589,545.257509477982 308,545.257509477982Z"
         },
         {
           "species": "Grey-headed Flying-fox",
           "scientific": "Pteropus poliocephalus",
           "source": "Grey-headed Flying-fox",
           "target": "Victoria",
-          "count": 188,
-          "share": 0.3580952380952381,
+          "count": 185,
+          "share": 0.37449392712550605,
           "shareLabel": "Share of species",
           "key": "species:Grey-headed Flying-fox",
           "keys": [
             "species:Grey-headed Flying-fox",
             "state:Victoria"
           ],
-          "path": "M308,544.5465665832638C589,544.5465665832638 589,430.91298304142333 870,430.91298304142333L870,458.61384487072553C589,458.61384487072553 589,572.247428412566 308,572.247428412566Z"
+          "path": "M308,545.257509477982C589,545.257509477982 589,463.16943715368916 870,463.16943715368916L870,491.7637795275591C589,491.7637795275591 589,573.851851851852 308,573.851851851852Z"
         },
         {
           "species": "Grey-headed Flying-fox",
           "scientific": "Pteropus poliocephalus",
           "source": "Grey-headed Flying-fox",
           "target": "New South Wales",
-          "count": 225,
-          "share": 0.42857142857142855,
+          "count": 202,
+          "share": 0.4089068825910931,
           "shareLabel": "Share of species",
           "key": "species:Grey-headed Flying-fox",
           "keys": [
             "species:Grey-headed Flying-fox",
             "state:New South Wales"
           ],
-          "path": "M308,572.247428412566C589,572.247428412566 589,528.4164581595774 870,528.4164581595774L870,561.5690853489018C589,561.5690853489018 589,605.4000556018905 308,605.4000556018905Z"
+          "path": "M308,573.851851851852C589,573.851851851852 589,561.3788276465442 870,561.3788276465442L870,592.6007582385536C589,592.6007582385536 589,605.0737824438613 308,605.0737824438613Z"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -579,89 +499,91 @@
           "source": "Grey-headed Flying-fox",
           "target": "South Australia",
           "count": 33,
-          "share": 0.06285714285714286,
+          "share": 0.06680161943319839,
           "shareLabel": "Share of species",
           "key": "species:Grey-headed Flying-fox",
           "keys": [
             "species:Grey-headed Flying-fox",
             "state:South Australia"
           ],
-          "path": "M308,605.4000556018905C589,605.4000556018905 589,615.7531276063386 870,615.7531276063386L870,620.6155129274395C589,620.6155129274395 589,610.2624409229913 308,610.2624409229913Z"
+          "path": "M308,605.0737824438613C589,605.0737824438613 589,646.4502770487023 870,646.4502770487023L870,651.5508894721494C589,651.5508894721494 589,610.1743948673084 308,610.1743948673084Z"
         },
         {
           "species": "Grey-headed Flying-fox",
           "scientific": "Pteropus poliocephalus",
           "source": "Grey-headed Flying-fox",
-          "target": "Australian Capital Territory",
-          "count": 4,
-          "share": 0.007619047619047619,
+          "target": "Others",
+          "count": 3,
+          "share": 0.006072874493927126,
           "shareLabel": "Share of species",
           "key": "species:Grey-headed Flying-fox",
           "keys": [
             "species:Grey-headed Flying-fox",
-            "state:Australian Capital Territory"
+            "state:Others"
           ],
-          "path": "M308,610.2624409229913C589,610.2624409229913 589,685.6641645815957 870,685.6641645815957L870,686.2535446205171C589,686.2535446205171 589,610.8518209619127 308,610.8518209619127Z"
+          "path": "M308,610.1743948673084C589,610.1743948673084 589,716.5902595508894 870,716.5902595508894L870,717.0539515893846C589,717.0539515893846 589,610.6380869058036 308,610.6380869058036Z",
+          "members": "Australian Capital Territory (3)"
         },
         {
           "species": "Greater Glider",
           "scientific": "Petauroides volans",
           "source": "Greater Glider",
           "target": "Queensland",
-          "count": 133,
-          "share": 0.5564853556485355,
+          "count": 128,
+          "share": 0.5565217391304348,
           "shareLabel": "Share of species",
           "key": "species:Greater Glider",
           "keys": [
             "species:Greater Glider",
             "state:Queensland"
           ],
-          "path": "M308,630.8518209619127C589,630.8518209619127 589,324.12677231025856 870,324.12677231025856L870,343.72365860439254C589,343.72365860439254 589,650.4487072560468 308,650.4487072560468Z"
+          "path": "M308,630.6380869058034C589,630.6380869058034 589,360.94138232720906 870,360.94138232720906L870,380.72557596967044C589,380.72557596967044 589,650.4222805482648 308,650.4222805482648Z"
         },
         {
           "species": "Greater Glider",
           "scientific": "Petauroides volans",
           "source": "Greater Glider",
           "target": "Victoria",
-          "count": 40,
-          "share": 0.16736401673640167,
+          "count": 39,
+          "share": 0.16956521739130434,
           "shareLabel": "Share of species",
           "key": "species:Greater Glider",
           "keys": [
             "species:Greater Glider",
             "state:Victoria"
           ],
-          "path": "M308,650.4487072560468C589,650.4487072560468 589,458.61384487072553 870,458.61384487072553L870,464.5076452599388C589,464.5076452599388 589,656.34250764526 308,656.34250764526Z"
+          "path": "M308,650.4222805482648C589,650.4222805482648 589,491.7637795275591 870,491.7637795275591L870,497.79177602799655C589,497.79177602799655 589,656.4502770487022 308,656.4502770487022Z"
         },
         {
           "species": "Greater Glider",
           "scientific": "Petauroides volans",
           "source": "Greater Glider",
           "target": "New South Wales",
-          "count": 64,
-          "share": 0.26778242677824265,
+          "count": 61,
+          "share": 0.26521739130434785,
           "shareLabel": "Share of species",
           "key": "species:Greater Glider",
           "keys": [
             "species:Greater Glider",
             "state:New South Wales"
           ],
-          "path": "M308,656.34250764526C589,656.34250764526 589,561.5690853489018 870,561.5690853489018L870,570.9991659716429C589,570.9991659716429 589,665.7725882680011 308,665.7725882680011Z"
+          "path": "M308,656.4502770487022C589,656.4502770487022 589,592.6007582385536 870,592.6007582385536L870,602.029163021289C589,602.029163021289 589,665.8786818314377 308,665.8786818314377Z"
         },
         {
           "species": "Greater Glider",
           "scientific": "Petauroides volans",
           "source": "Greater Glider",
-          "target": "Australian Capital Territory",
+          "target": "Others",
           "count": 2,
-          "share": 0.008368200836820083,
+          "share": 0.008695652173913044,
           "shareLabel": "Share of species",
           "key": "species:Greater Glider",
           "keys": [
             "species:Greater Glider",
-            "state:Australian Capital Territory"
+            "state:Others"
           ],
-          "path": "M308,665.7725882680011C589,665.7725882680011 589,686.2535446205171 870,686.2535446205171L870,686.5482346399777C589,686.5482346399777 589,666.0672782874617 308,666.0672782874617Z"
+          "path": "M308,665.8786818314377C589,665.8786818314377 589,717.0539515893846 870,717.0539515893846L870,717.363079615048C589,717.363079615048 589,666.1878098571011 308,666.1878098571011Z",
+          "members": "Australian Capital Territory (2)"
         },
         {
           "species": "European Rabbit",
@@ -669,59 +591,59 @@
           "source": "European Rabbit",
           "target": "Queensland",
           "count": 6,
-          "share": 0.03409090909090909,
+          "share": 0.03592814371257485,
           "shareLabel": "Share of species",
           "key": "species:European Rabbit",
           "keys": [
             "species:European Rabbit",
             "state:Queensland"
           ],
-          "path": "M308,686.0672782874618C589,686.0672782874618 589,343.72365860439254 870,343.72365860439254L870,344.60772866277455C589,344.60772866277455 589,686.9513483458438 308,686.9513483458438Z"
+          "path": "M308,686.1878098571012C589,686.1878098571012 589,380.72557596967044 870,380.72557596967044L870,381.65296004666084C589,381.65296004666084 589,687.1151939340916 308,687.1151939340916Z"
         },
         {
           "species": "European Rabbit",
           "scientific": "Oryctolagus cuniculus",
           "source": "European Rabbit",
           "target": "Victoria",
-          "count": 57,
-          "share": 0.32386363636363635,
+          "count": 54,
+          "share": 0.32335329341317365,
           "shareLabel": "Share of species",
           "key": "species:European Rabbit",
           "keys": [
             "species:European Rabbit",
             "state:Victoria"
           ],
-          "path": "M308,686.9513483458438C589,686.9513483458438 589,464.5076452599388 870,464.5076452599388L870,472.90631081456763C589,472.90631081456763 589,695.3500139004727 308,695.3500139004727Z"
+          "path": "M308,687.1151939340916C589,687.1151939340916 589,497.79177602799655 870,497.79177602799655L870,506.1382327209099C589,506.1382327209099 589,695.461650627005 308,695.461650627005Z"
         },
         {
           "species": "European Rabbit",
           "scientific": "Oryctolagus cuniculus",
           "source": "European Rabbit",
           "target": "New South Wales",
-          "count": 41,
-          "share": 0.23295454545454544,
+          "count": 38,
+          "share": 0.2275449101796407,
           "shareLabel": "Share of species",
           "key": "species:European Rabbit",
           "keys": [
             "species:European Rabbit",
             "state:New South Wales"
           ],
-          "path": "M308,695.3500139004727C589,695.3500139004727 589,570.9991659716429 870,570.9991659716429L870,577.0403113705864C589,577.0403113705864 589,701.3911592994162 308,701.3911592994162Z"
+          "path": "M308,695.461650627005C589,695.461650627005 589,602.029163021289 870,602.029163021289L870,607.9025955088947C589,607.9025955088947 589,701.3350831146107 308,701.3350831146107Z"
         },
         {
           "species": "European Rabbit",
           "scientific": "Oryctolagus cuniculus",
           "source": "European Rabbit",
           "target": "South Australia",
-          "count": 15,
-          "share": 0.08522727272727272,
+          "count": 14,
+          "share": 0.08383233532934131,
           "shareLabel": "Share of species",
           "key": "species:European Rabbit",
           "keys": [
             "species:European Rabbit",
             "state:South Australia"
           ],
-          "path": "M308,701.3911592994162C589,701.3911592994162 589,620.6155129274395 870,620.6155129274395L870,622.8256880733944C589,622.8256880733944 589,703.6013344453712 308,703.6013344453712Z"
+          "path": "M308,701.3350831146107C589,701.3350831146107 589,651.5508894721494 870,651.5508894721494L870,653.7147856517936C589,653.7147856517936 589,703.4989792942549 308,703.4989792942549Z"
         },
         {
           "species": "European Rabbit",
@@ -729,74 +651,30 @@
           "source": "European Rabbit",
           "target": "Tasmania",
           "count": 25,
-          "share": 0.14204545454545456,
+          "share": 0.1497005988023952,
           "shareLabel": "Share of species",
           "key": "species:European Rabbit",
           "keys": [
             "species:European Rabbit",
             "state:Tasmania"
           ],
-          "path": "M308,703.6013344453712C589,703.6013344453712 589,658.8862941340004 870,658.8862941340004L870,662.5699193772587C589,662.5699193772587 589,707.2849596886294 308,707.2849596886294Z"
+          "path": "M308,703.4989792942549C589,703.4989792942549 589,689.6348789734616 870,689.6348789734616L870,693.4989792942548C589,693.4989792942548 589,707.3630796150482 308,707.3630796150482Z"
         },
         {
           "species": "European Rabbit",
           "scientific": "Oryctolagus cuniculus",
           "source": "European Rabbit",
-          "target": "Australian Capital Territory",
-          "count": 19,
-          "share": 0.10795454545454546,
+          "target": "Others",
+          "count": 30,
+          "share": 0.17964071856287425,
           "shareLabel": "Share of species",
           "key": "species:European Rabbit",
           "keys": [
             "species:European Rabbit",
-            "state:Australian Capital Territory"
+            "state:Others"
           ],
-          "path": "M308,707.2849596886294C589,707.2849596886294 589,686.5482346399777 870,686.5482346399777L870,689.3477898248541C589,689.3477898248541 589,710.0845148735058 308,710.0845148735058Z"
-        },
-        {
-          "species": "European Rabbit",
-          "scientific": "Oryctolagus cuniculus",
-          "source": "European Rabbit",
-          "target": "Western Australia",
-          "count": 10,
-          "share": 0.056818181818181816,
-          "shareLabel": "Share of species",
-          "key": "species:European Rabbit",
-          "keys": [
-            "species:European Rabbit",
-            "state:Western Australia"
-          ],
-          "path": "M308,710.0845148735058C589,710.0845148735058 589,709.9371698637754 870,709.9371698637754L870,711.4106199610786C589,711.4106199610786 589,711.557964970809 308,711.557964970809Z"
-        },
-        {
-          "species": "European Rabbit",
-          "scientific": "Oryctolagus cuniculus",
-          "source": "European Rabbit",
-          "target": "Northern Territory",
-          "count": 1,
-          "share": 0.005681818181818182,
-          "shareLabel": "Share of species",
-          "key": "species:European Rabbit",
-          "keys": [
-            "species:European Rabbit",
-            "state:Northern Territory"
-          ],
-          "path": "M308,711.557964970809C589,711.557964970809 589,731.4106199610786 870,731.4106199610786L870,731.5579649708089C589,731.5579649708089 589,711.7053099805394 308,711.7053099805394Z"
-        },
-        {
-          "species": "European Rabbit",
-          "scientific": "Oryctolagus cuniculus",
-          "source": "European Rabbit",
-          "target": "Offshore / unspecified",
-          "count": 2,
-          "share": 0.011363636363636364,
-          "shareLabel": "Share of species",
-          "key": "species:European Rabbit",
-          "keys": [
-            "species:European Rabbit",
-            "state:Offshore / unspecified"
-          ],
-          "path": "M308,711.7053099805394C589,711.7053099805394 589,751.7053099805393 870,751.7053099805393L870,751.9999999999999C589,751.9999999999999 589,712.0 308,712.0Z"
+          "path": "M308,707.3630796150482C589,707.3630796150482 589,717.363079615048 870,717.363079615048L870,721.9999999999999C589,721.9999999999999 589,712.0 308,712.0Z",
+          "members": "Australian Capital Territory (18); Northern Territory (1); Offshore / unspecified (2); Western Australia (9)"
         }
       ]
     },
@@ -902,7 +780,7 @@
             "signal": "!active || indexof(datum.keys, active) >= 0 ? 0.4 : 0.05"
           },
           "tooltip": {
-            "signal": "{'From': datum.source, 'To': datum.target, 'Species': datum.species, 'Scientific name': datum.scientific, 'Observations': format(datum.count, ',d'), 'Share of source': format(datum.share, '.1%')}"
+            "signal": "merge({'From': datum.source, 'To': datum.target, 'Species': datum.species, 'Scientific name': datum.scientific, 'Observations': format(datum.count, ',d'), 'Share of source': format(datum.share, '.1%')}, datum.members ? {'Includes': datum.members} : {})"
           },
           "description": {
             "signal": "datum.source + ' → ' + datum.target + ': ' + datum.count + ' observations'"
@@ -940,7 +818,7 @@
             "value": "pointer"
           },
           "tooltip": {
-            "signal": "{'Name': datum.name, 'Stage': datum.level, 'Observations': format(datum.count, ',d'), 'Share of top-five records': format(datum.count / 3597, '.1%'), 'Action': 'Click to highlight connections'}"
+            "signal": "merge({'Name': datum.name, 'Stage': datum.level, 'Observations': format(datum.count, ',d'), 'Share of top-five records': format(datum.count / 3429, '.1%'), 'Action': 'Click to highlight connections'}, datum.members ? {'Includes': datum.members} : {})"
           },
           "description": {
             "signal": "datum.name + ': ' + datum.count + ' observations'"
@@ -987,7 +865,7 @@
             "value": "pointer"
           },
           "tooltip": {
-            "signal": "{'Name': datum.name, 'Observations': format(datum.count, ',d'), 'Share of top-five records': format(datum.count / 3597, '.1%')}"
+            "signal": "merge({'Name': datum.name, 'Observations': format(datum.count, ',d'), 'Share of top-five records': format(datum.count / 3429, '.1%')}, datum.members ? {'Includes': datum.members} : {})"
           }
         }
       }
@@ -1050,5 +928,25 @@
   ],
   "config": {
     "font": "Arial"
+  },
+  "usermeta": {
+    "observationWindow": {
+      "source": "Dataset/observations-794195.csv",
+      "dateField": "observed_on",
+      "years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "yearCount": 10,
+      "includesPartialLatestYear": true
+    }
   }
 }

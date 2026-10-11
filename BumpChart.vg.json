@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Annual observation ranks among the ten most recorded mammal species in 2021–2025, selected by total records in that period from Dataset/observations-794195.csv. Subspecies are merged using the first two scientific-name components; genus-only records are excluded. Annual ranks are ordinal: descending observation count, with scientific name ascending breaking ties. Zero observations are retained and shown as hollow points. Counts reflect reporting activity, not animal abundance. Aggregated counts are embedded for standalone use. Species colours are shared across mammal charts. Eastern Barred Bandicoot is amber and Numbat is indigo; background strokes separate trajectory crossings without changing ranks.",
+  "description": "Annual observation ranks among the ten most recorded mammal species in 2022–2026, selected by total records in that period from Dataset/observations-794195.csv. Subspecies are merged using the first two scientific-name components; genus-only records are excluded. Annual ranks are ordinal: descending observation count, with scientific name ascending breaking ties. Zero observations are retained and shown as hollow points. Counts reflect reporting activity, not animal abundance. Aggregated counts are embedded for standalone use. Species colours are shared across mammal charts. Eastern Barred Bandicoot is amber and Numbat is indigo; background strokes separate trajectory crossings without changing ranks. Uses the 5 most recent available observation years (2022–2026), including partial 2026.",
   "width": 760,
   "height": 440,
   "padding": 16,
@@ -8,7 +8,7 @@
   "title": {
     "text": "Which species rise or fall in observation ranking?",
     "subtitle": [
-      "Top 10 mammals by total observations, 2021–2025 · Rank within these 10 species",
+      "Top 10 mammals by total observations, 2022–2026 · Rank within these 10 species",
       "Hover over a path, point or species label to follow its ranking across years."
     ],
     "anchor": "start",
@@ -18,7 +18,9 @@
     "subtitleFont": "Arial",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
-    "offset": 24
+    "offset": 16,
+    "subtitlePadding": 6,
+    "subtitleLineHeight": 16
   },
   "signals": [
     {
@@ -40,12 +42,6 @@
     {
       "name": "annualCounts",
       "values": [
-        {
-          "scientific_name": "Phascolarctos cinereus",
-          "species": "Koala",
-          "year": 2021,
-          "count": 110
-        },
         {
           "scientific_name": "Phascolarctos cinereus",
           "species": "Koala",
@@ -71,10 +67,10 @@
           "count": 315
         },
         {
-          "scientific_name": "Ornithorhynchus anatinus",
-          "species": "Platypus",
-          "year": 2021,
-          "count": 54
+          "scientific_name": "Phascolarctos cinereus",
+          "species": "Koala",
+          "year": 2026,
+          "count": 191
         },
         {
           "scientific_name": "Ornithorhynchus anatinus",
@@ -101,10 +97,10 @@
           "count": 124
         },
         {
-          "scientific_name": "Pteropus poliocephalus",
-          "species": "Grey-headed Flying-fox",
-          "year": 2021,
-          "count": 48
+          "scientific_name": "Ornithorhynchus anatinus",
+          "species": "Platypus",
+          "year": 2026,
+          "count": 54
         },
         {
           "scientific_name": "Pteropus poliocephalus",
@@ -131,40 +127,10 @@
           "count": 58
         },
         {
-          "scientific_name": "Petauroides volans",
-          "species": "Greater Glider",
-          "year": 2021,
-          "count": 43
-        },
-        {
-          "scientific_name": "Petauroides volans",
-          "species": "Greater Glider",
-          "year": 2022,
-          "count": 24
-        },
-        {
-          "scientific_name": "Petauroides volans",
-          "species": "Greater Glider",
-          "year": 2023,
-          "count": 27
-        },
-        {
-          "scientific_name": "Petauroides volans",
-          "species": "Greater Glider",
-          "year": 2024,
-          "count": 49
-        },
-        {
-          "scientific_name": "Petauroides volans",
-          "species": "Greater Glider",
-          "year": 2025,
-          "count": 32
-        },
-        {
-          "scientific_name": "Dasyurus maculatus",
-          "species": "Spotted-tailed Quoll",
-          "year": 2021,
-          "count": 23
+          "scientific_name": "Pteropus poliocephalus",
+          "species": "Grey-headed Flying-fox",
+          "year": 2026,
+          "count": 44
         },
         {
           "scientific_name": "Dasyurus maculatus",
@@ -191,10 +157,40 @@
           "count": 44
         },
         {
-          "scientific_name": "Oryctolagus cuniculus",
-          "species": "European Rabbit",
-          "year": 2021,
-          "count": 11
+          "scientific_name": "Dasyurus maculatus",
+          "species": "Spotted-tailed Quoll",
+          "year": 2026,
+          "count": 31
+        },
+        {
+          "scientific_name": "Petauroides volans",
+          "species": "Greater Glider",
+          "year": 2022,
+          "count": 24
+        },
+        {
+          "scientific_name": "Petauroides volans",
+          "species": "Greater Glider",
+          "year": 2023,
+          "count": 27
+        },
+        {
+          "scientific_name": "Petauroides volans",
+          "species": "Greater Glider",
+          "year": 2024,
+          "count": 49
+        },
+        {
+          "scientific_name": "Petauroides volans",
+          "species": "Greater Glider",
+          "year": 2025,
+          "count": 32
+        },
+        {
+          "scientific_name": "Petauroides volans",
+          "species": "Greater Glider",
+          "year": 2026,
+          "count": 22
         },
         {
           "scientific_name": "Oryctolagus cuniculus",
@@ -221,9 +217,9 @@
           "count": 35
         },
         {
-          "scientific_name": "Setonix brachyurus",
-          "species": "Quokka",
-          "year": 2021,
+          "scientific_name": "Oryctolagus cuniculus",
+          "species": "European Rabbit",
+          "year": 2026,
           "count": 4
         },
         {
@@ -251,10 +247,10 @@
           "count": 21
         },
         {
-          "scientific_name": "Sarcophilus harrisii",
-          "species": "Tasmanian Devil",
-          "year": 2021,
-          "count": 12
+          "scientific_name": "Setonix brachyurus",
+          "species": "Quokka",
+          "year": 2026,
+          "count": 10
         },
         {
           "scientific_name": "Sarcophilus harrisii",
@@ -281,10 +277,40 @@
           "count": 25
         },
         {
-          "scientific_name": "Perameles gunnii",
-          "species": "Eastern Barred Bandicoot",
-          "year": 2021,
-          "count": 6
+          "scientific_name": "Sarcophilus harrisii",
+          "species": "Tasmanian Devil",
+          "year": 2026,
+          "count": 12
+        },
+        {
+          "scientific_name": "Myrmecobius fasciatus",
+          "species": "Numbat",
+          "year": 2022,
+          "count": 8
+        },
+        {
+          "scientific_name": "Myrmecobius fasciatus",
+          "species": "Numbat",
+          "year": 2023,
+          "count": 19
+        },
+        {
+          "scientific_name": "Myrmecobius fasciatus",
+          "species": "Numbat",
+          "year": 2024,
+          "count": 20
+        },
+        {
+          "scientific_name": "Myrmecobius fasciatus",
+          "species": "Numbat",
+          "year": 2025,
+          "count": 22
+        },
+        {
+          "scientific_name": "Myrmecobius fasciatus",
+          "species": "Numbat",
+          "year": 2026,
+          "count": 8
         },
         {
           "scientific_name": "Perameles gunnii",
@@ -311,34 +337,10 @@
           "count": 13
         },
         {
-          "scientific_name": "Myrmecobius fasciatus",
-          "species": "Numbat",
-          "year": 2021,
-          "count": 2
-        },
-        {
-          "scientific_name": "Myrmecobius fasciatus",
-          "species": "Numbat",
-          "year": 2022,
-          "count": 8
-        },
-        {
-          "scientific_name": "Myrmecobius fasciatus",
-          "species": "Numbat",
-          "year": 2023,
-          "count": 19
-        },
-        {
-          "scientific_name": "Myrmecobius fasciatus",
-          "species": "Numbat",
-          "year": 2024,
-          "count": 20
-        },
-        {
-          "scientific_name": "Myrmecobius fasciatus",
-          "species": "Numbat",
-          "year": 2025,
-          "count": 22
+          "scientific_name": "Perameles gunnii",
+          "species": "Eastern Barred Bandicoot",
+          "year": 2026,
+          "count": 4
         }
       ]
     },
@@ -376,7 +378,7 @@
       "transform": [
         {
           "type": "filter",
-          "expr": "datum.year == 2025"
+          "expr": "datum.year == 2026"
         }
       ]
     },
@@ -402,11 +404,11 @@
       "name": "x",
       "type": "point",
       "domain": [
-        2021,
         2022,
         2023,
         2024,
-        2025
+        2025,
+        2026
       ],
       "range": "width",
       "padding": 0.1
@@ -807,6 +809,21 @@
       "titleFont": "Arial",
       "labelFontSize": 12,
       "titleFontSize": 13
+    }
+  },
+  "usermeta": {
+    "observationWindow": {
+      "source": "Dataset/observations-794195.csv",
+      "dateField": "observed_on",
+      "years": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "yearCount": 5,
+      "includesPartialLatestYear": true
     }
   }
 }

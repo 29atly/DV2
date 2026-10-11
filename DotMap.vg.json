@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Individual geolocated wildlife observations for the 10 selected species from observations-794195.csv. Each dot represents one record. Observations and Australian state boundaries are embedded; no scripts or external data files are required. State boundaries: https://github.com/rowanhogan/australian-states. Recorded coordinates may be obscured and observations do not measure animal population size. Click a species colour or name in the legend to filter the map; click it again or Show all species to clear that filter. The state dropdown lists regions with records for the selected species; changing species resets the state filter. The map includes all observation dates. State assignments use recorded coordinates within the embedded boundaries, falling back to explicit state names or abbreviations in the location field. Offshore or unassigned records remain available under Offshore / unspecified. Map callouts label the three states or territories with the highest observation counts under the current filters, anchored at representative positions inside each region. Offshore / unspecified records are excluded from this ranking. Callouts outside the visible map extent are hidden when panning or zooming. Species colours match the ten-species palette in BumpChart.vg.json; species selection and observation counts are unchanged.",
+  "description": "Individual geolocated wildlife observations for the 10 selected species from observations-794195.csv. Each dot represents one record. Observations and Australian state boundaries are embedded; no scripts or external data files are required. State boundaries: https://github.com/rowanhogan/australian-states. Recorded coordinates may be obscured and observations do not measure animal population size. Click a species colour or name in the legend to filter the map; click it again or Show all species to clear that filter. The state dropdown lists regions with records for the selected species; changing species resets the state filter. The map includes observation dates in 2017–2026. State assignments use recorded coordinates within the embedded boundaries, falling back to explicit state names or abbreviations in the location field. Offshore or unassigned records remain available under Offshore / unspecified. Map callouts label the three states or territories with the highest observation counts under the current filters, anchored at representative positions inside each region. Offshore / unspecified records are excluded from this ranking. Callouts outside the visible map extent are hidden when panning or zooming. Species colours match the ten-species palette in BumpChart.vg.json; species selection is retained; counts use the selected observation years. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
   "width": 800,
   "height": 580,
   "padding": 16,
@@ -8,17 +8,20 @@
   "title": {
     "text": "Where are wildlife observations recorded?",
     "subtitle": [
+      "4,034 observations · 2017–2026",
       "Click a species in the legend to filter; choose a state to narrow the records.",
       "Scroll over the map to zoom · Drag the map to pan · Click Reset view to re-centre"
     ],
     "anchor": "start",
-    "offset": 18,
+    "offset": 16,
     "font": "Arial",
     "fontSize": 24,
     "color": "#243447",
     "subtitleFont": "Arial",
-    "subtitleFontSize": 13,
-    "subtitleColor": "#52606d"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#52606d",
+    "subtitlePadding": 6,
+    "subtitleLineHeight": 16
   },
   "signals": [
     {
@@ -95889,318 +95892,12 @@
       "values": [
         {
           "species": "Grey-headed Flying-fox",
-          "observed_on": "2007-01-02",
-          "location": "Royal Botanic Gardens, Sydney, New South Wales, Australia",
-          "latitude": -33.8647722973,
-          "longitude": 151.2168167276,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "European Rabbit",
-          "observed_on": "2012-12-01",
-          "location": "Bibra Lake, Perth, WA, Australia",
-          "latitude": -32.0933110169,
-          "longitude": 115.8249078533,
-          "coordinates_obscured": false,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2009-02-23",
-          "location": "University of Sydney, Sydney Australia",
-          "latitude": -33.8863062188,
-          "longitude": 151.1939334869,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2005-11-06",
-          "location": "Western Australia, AU",
-          "latitude": -32.0033322897,
-          "longitude": 115.4774787069,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2012-12-04",
-          "location": "Narawntapu National Park, Tasmania",
-          "latitude": -41.11,
-          "longitude": 146.64,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2014-02-14",
-          "location": "St. Helens, Tasmania, Australia",
-          "latitude": -41.415221,
-          "longitude": 148.240923,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "European Rabbit",
-          "observed_on": "2014-08-01",
-          "location": "Acton Park, Canberra, ACT, AU",
-          "latitude": -35.286291,
-          "longitude": 149.124599,
-          "coordinates_obscured": false,
-          "state": "Australian Capital Territory"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "1983-06-07",
-          "location": "Phillip Island, Victoria, Australia",
-          "latitude": -38.515,
-          "longitude": 145.19,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2013-01-31",
-          "location": "Waite Arboretum, SA",
-          "latitude": -34.967365,
-          "longitude": 138.630003,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2014-11-11",
-          "location": "Healesville Sanctuary, Melbourne, Australia",
-          "latitude": -37.683583,
-          "longitude": 145.529966,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2014-11-23",
-          "location": "Colac-Otway - South, Great Otway, AU-VI, AU",
-          "latitude": -38.85,
-          "longitude": 143.51667,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2015-08-22",
-          "location": "Western Australia, AU",
-          "latitude": -31.9252308041,
-          "longitude": 115.4551124612,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2015-12-30",
-          "location": "Seal Bay, Kangaroo Island, South Australia ",
-          "latitude": -35.993163,
-          "longitude": 137.318161,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2016-02-15",
-          "location": "Tidbinbilla, ACT",
-          "latitude": -35.46427,
-          "longitude": 148.907581,
-          "coordinates_obscured": false,
-          "state": "Australian Capital Territory"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-03-04",
-          "location": "Tinonee Cemetery",
-          "latitude": -31.938124,
-          "longitude": 152.401469,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-03-19",
-          "location": "Mountain lagoon ",
-          "latitude": -33.443976,
-          "longitude": 150.638469,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-04-01",
-          "location": "Wingham Brush Reserve",
-          "latitude": -31.871535,
-          "longitude": 152.381305,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2014-08-22",
-          "location": "Western Australia, AU",
-          "latitude": -31.8286600125,
-          "longitude": 115.5354107876,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2012-11-04",
-          "location": "Mount molloy",
-          "latitude": -16.67356,
-          "longitude": 145.32972,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-04-20",
-          "location": "bimbi park, Cape otway, Victoria",
-          "latitude": -38.835496,
-          "longitude": 143.513026,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2007-11-19",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.9399228,
-          "longitude": 151.1574236168,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2015-10-01",
-          "location": "9 Lynn St Sassafras VIC 3787",
-          "latitude": -37.866979593,
-          "longitude": 145.3617123887,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-02-04",
-          "location": "Lorne VIC 3232, Australia",
-          "latitude": -38.53796,
-          "longitude": 143.92433,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-02-24",
-          "location": "Centennial Park, Sydney, New South Wales, Australia",
-          "latitude": -33.9000567396,
-          "longitude": 151.2364089489,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2012-05-20",
-          "location": "Jenolan Caves, , NSW, AU",
-          "latitude": -33.8194396216,
-          "longitude": 150.0249515625,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-09-23",
-          "location": "near power pole 721007",
-          "latitude": -33.7860061714,
-          "longitude": 150.0260353088,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-09-28",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.89942,
-          "longitude": 151.2359116667,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-10-12",
-          "location": "Tinonee NSW 2430, Australia",
-          "latitude": -31.9315485777,
-          "longitude": 152.4146853252,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "European Rabbit",
-          "observed_on": "2016-10-26",
-          "location": "Mosman, AU-NS, AU",
-          "latitude": -33.8098939858,
-          "longitude": 151.2438418765,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-11-15",
-          "location": "New South Wales, AU",
-          "latitude": -33.8959484785,
-          "longitude": 150.9490025906,
-          "coordinates_obscured": true,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Spotted-tailed Quoll",
-          "observed_on": "2016-11-19",
-          "location": "Circular Head, AU-TS, AU",
-          "latitude": -41.20099958,
-          "longitude": 144.90682766,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-11-17",
-          "location": "Colac-Otway - South, AU-VI, AU",
-          "latitude": -38.8268364086,
-          "longitude": 143.5244707451,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2007-12-03",
-          "location": "Rhyll, Victoria, Australia",
-          "latitude": -38.47,
-          "longitude": 145.267,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
           "observed_on": "2017-01-24",
           "location": "Queensland, AU",
           "latitude": -26.9312982838,
           "longitude": 152.8316936485,
           "coordinates_obscured": true,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-04-05",
-          "location": "Victoria, AU",
-          "latitude": -38.7726488861,
-          "longitude": 143.2718727748,
-          "coordinates_obscured": true,
-          "state": "Victoria"
         },
         {
           "species": "Platypus",
@@ -96210,15 +95907,6 @@
           "longitude": 146.7194558,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2003-02-01",
-          "location": "Western Australia, AU",
-          "latitude": -32.0400982482,
-          "longitude": 115.4808088966,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -96262,33 +95950,6 @@
           "location": "Minbun QLD 4886, Australia",
           "latitude": -17.4650111424,
           "longitude": 145.5898761749,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "1992-05-04",
-          "location": "Cape Woolamai VIC 3925, Australia",
-          "latitude": -38.5529983943,
-          "longitude": 145.3511810303,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2016-11-04",
-          "location": "1519 Loongana Rd, Loongana TAS 7315, Australia",
-          "latitude": -41.413702,
-          "longitude": 145.976178,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2016-10-23",
-          "location": "Glen Allyn QLD 4885, Australia",
-          "latitude": -17.33999,
-          "longitude": 145.65118,
           "coordinates_obscured": false,
           "state": "Queensland"
         },
@@ -96383,15 +96044,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Koala",
-          "observed_on": "2010-06-04",
-          "location": "Phillip Island, Victoria, Australia",
-          "latitude": -38.4898703,
-          "longitude": 145.2038278,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
           "species": "Tasmanian Devil",
           "observed_on": "2017-11-22",
           "location": "Circular Head, AU-TS, AU",
@@ -96401,92 +96053,11 @@
           "state": "Tasmania"
         },
         {
-          "species": "Tasmanian Devil",
-          "observed_on": "2012-01-05",
-          "location": "1519 Loongana Rd, Loongana TAS 7315, Australia",
-          "latitude": -41.413702,
-          "longitude": 145.976178,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Eastern Quoll",
-          "observed_on": "2013-01-22",
-          "location": "Cradle Mountain TAS 7306, Australia",
-          "latitude": -41.59,
-          "longitude": 145.9325,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2012-01-09",
-          "location": "South Australia, Australia",
-          "latitude": -35.989952,
-          "longitude": 137.344207,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-12-01",
-          "location": "Tower Hill Wildlife Reserve",
-          "latitude": -38.3188776851,
-          "longitude": 142.3635032773,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2005-04-20",
-          "location": "Kangaroo Island, South Australia, Australia",
-          "latitude": -35.992859,
-          "longitude": 137.351261,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2013-08-29",
-          "location": "Lysterfield VIC 3156, Australia",
-          "latitude": -37.9417999904,
-          "longitude": 145.3008842468,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "European Rabbit",
-          "observed_on": "2016-11-25",
-          "location": "Batemans Bay",
-          "latitude": -35.702267,
-          "longitude": 150.184057,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2013-09-17",
-          "location": "Western Australia, AU",
-          "latitude": -32.004146739,
-          "longitude": 115.471877422,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Australian Sea Lion",
           "observed_on": "2018-02-01",
           "location": "Grindal Island, South Australia 5607, Australia",
           "latitude": -34.9126382,
           "longitude": 136.033676,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2008-12-15",
-          "location": "South Australia, Australia",
-          "latitude": -34.081206,
-          "longitude": 138.256073,
           "coordinates_obscured": false,
           "state": "South Australia"
         },
@@ -96509,15 +96080,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Australian Sea Lion",
-          "observed_on": "2008-12-15",
-          "location": "Snug Cove, De Mole River SA 5223, Australia",
-          "latitude": -35.698524,
-          "longitude": 136.8169994,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
           "species": "Koala",
           "observed_on": "2018-04-05",
           "location": "Victoria, AU",
@@ -96534,15 +96096,6 @@
           "longitude": 150.5258648,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2001-04-01",
-          "location": "Pearson Island, South Australia, Australia",
-          "latitude": -33.9617365,
-          "longitude": 134.2662593,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -96572,15 +96125,6 @@
           "state": "South Australia"
         },
         {
-          "species": "Quokka",
-          "observed_on": "2016-04-01",
-          "location": "Western Australia, AU",
-          "latitude": -32.1479113801,
-          "longitude": 115.5900103087,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Spotted-tailed Quoll",
           "observed_on": "2018-05-03",
           "location": "1732 Lilydale Road, Lilydale, TAS, AU",
@@ -96588,33 +96132,6 @@
           "longitude": 147.2144466667,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2001-04-19",
-          "location": "Pearson Island, South Australia, Australia",
-          "latitude": -33.9617365,
-          "longitude": 134.2662593,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2001-05-03",
-          "location": "South Australia, Australia",
-          "latitude": -33.9567278805,
-          "longitude": 134.272041934,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2013-12-08",
-          "location": "Western Australia, AU",
-          "latitude": -32.0102222777,
-          "longitude": 115.4533264479,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Koala",
@@ -96743,15 +96260,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Quokka",
-          "observed_on": "2015-11-08",
-          "location": "Western Australia, AU",
-          "latitude": -31.9437401763,
-          "longitude": 115.5356100662,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Koala",
           "observed_on": "2018-01-01",
           "location": "8 Chelsea Square, Inverloch, VIC, AU",
@@ -96851,15 +96359,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Tasmanian Devil",
-          "observed_on": "2012-04-03",
-          "location": "Loongana TAS 7315, Australia",
-          "latitude": -41.4136942834,
-          "longitude": 145.9760421749,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Greater Glider",
           "observed_on": "2018-12-06",
           "location": "Queensland, AU",
@@ -96923,33 +96422,6 @@
           "state": "Tasmania"
         },
         {
-          "species": "Koala",
-          "observed_on": "2015-01-16",
-          "location": "Townsville, QLD, Australien",
-          "latitude": -19.1266005422,
-          "longitude": 146.868928728,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2010-04-23",
-          "location": "217 Kildare Rd, Doonside NSW 2767, Australia",
-          "latitude": -33.76583,
-          "longitude": 150.884248,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-10-23",
-          "location": "Tower Hill VIC 3283, Australia",
-          "latitude": -38.3178212754,
-          "longitude": 142.3604106903,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2019-01-15",
           "location": "Canberra Central, ACT, Australia",
@@ -96984,33 +96456,6 @@
           "longitude": 142.485219859,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2005-07-22",
-          "location": "Phillip Island",
-          "latitude": -38.4865103621,
-          "longitude": 145.187521829,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2010-10-01",
-          "location": "Western Australia, AU",
-          "latitude": -32.1468909388,
-          "longitude": 115.5529961393,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2014-12-06",
-          "location": "Hopkins Island, Pt Lincoln, SA",
-          "latitude": -34.9575327366,
-          "longitude": 136.06302601,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -97121,15 +96566,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Tasmanian Devil",
-          "observed_on": "2007-08-03",
-          "location": "Tasmania, AU",
-          "latitude": -42.819727595,
-          "longitude": 147.7199096836,
-          "coordinates_obscured": true,
-          "state": "Tasmania"
-        },
-        {
           "species": "European Rabbit",
           "observed_on": "2019-03-01",
           "location": "Summerlands VIC 3922, Australia",
@@ -97202,33 +96638,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Eastern Quoll",
-          "observed_on": "2015-11-07",
-          "location": "Poimena Car Park, Blue Tier, Weldborough TAS 7264, Australia",
-          "latitude": -41.199319,
-          "longitude": 148.004656,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Eastern Quoll",
-          "observed_on": "2013-03-20",
-          "location": "Mount Rothwell Road, Little River VIC, Australia",
-          "latitude": -37.8873158,
-          "longitude": 144.4397385,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2013-02-22",
-          "location": "65 Barreenong Road, Cottles Bridge VIC 3099, Australia",
-          "latitude": -37.607336471,
-          "longitude": 145.213375047,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
           "species": "Quokka",
           "observed_on": "2019-06-01",
           "location": "Western Australia, AU",
@@ -97265,15 +96674,6 @@
           "state": "Western Australia"
         },
         {
-          "species": "Tasmanian Devil",
-          "observed_on": "2001-02-02",
-          "location": "Arthurs Lake TAS 7030, Australia",
-          "latitude": -41.9330086351,
-          "longitude": 146.929505471,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2019-06-29",
           "location": "Mortlake, Mortlake NSW 2137, Australia",
@@ -97299,15 +96699,6 @@
           "longitude": 137.3194122314,
           "coordinates_obscured": false,
           "state": "South Australia"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-12-23",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.8052383333,
-          "longitude": 150.99909,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Greater Glider",
@@ -97360,15 +96751,6 @@
           "location": "Randwick NSW 2031, Australia",
           "latitude": -33.9160412147,
           "longitude": 151.2370151281,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2014-03-29",
-          "location": "Deua NSW 2537, Australie",
-          "latitude": -35.8837922771,
-          "longitude": 149.8317067523,
           "coordinates_obscured": false,
           "state": "New South Wales"
         },
@@ -97508,15 +96890,6 @@
           "state": "Queensland"
         },
         {
-          "species": "European Rabbit",
-          "observed_on": "2016-07-20",
-          "location": "NSW 2620 Wamboin CC84CLV",
-          "latitude": -35.24611,
-          "longitude": 149.29111,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2018-10-25",
           "location": "Melbourne VIC, Australia",
@@ -97632,15 +97005,6 @@
           "longitude": 147.1857507783,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2010-05-05",
-          "location": "Urliup NSW 2484, Australia",
-          "latitude": -28.25761,
-          "longitude": 153.401603,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Koala",
@@ -97823,15 +97187,6 @@
           "state": "Tasmania"
         },
         {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2005-08-21",
-          "location": "Sydney",
-          "latitude": -33.86882,
-          "longitude": 151.209296,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Koala",
           "observed_on": "2019-12-29",
           "location": "Magnetic Island, Horseshoe Bay, QLD, AU",
@@ -97902,15 +97257,6 @@
           "longitude": 145.558850192,
           "coordinates_obscured": true,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2011-03-03",
-          "location": "Cape Otway Victoria 3233, Australien",
-          "latitude": -38.8051228714,
-          "longitude": 143.5234140283,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -98010,15 +97356,6 @@
           "longitude": 150.6008365918,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2009-09-27",
-          "location": "Seal Bay SA 5223, Australia",
-          "latitude": -35.9941961983,
-          "longitude": 137.3175951831,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Greater Glider",
@@ -98336,24 +97673,6 @@
           "state": "Tasmania"
         },
         {
-          "species": "Spotted-tailed Quoll",
-          "observed_on": "2009-04-30",
-          "location": "Loongana TAS 7315, Australia",
-          "latitude": -41.3955034273,
-          "longitude": 145.9359205653,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2009-12-24",
-          "location": "Tasmania, AU",
-          "latitude": -41.5743384446,
-          "longitude": 145.9607285795,
-          "coordinates_obscured": true,
-          "state": "Tasmania"
-        },
-        {
           "species": "Koala",
           "observed_on": "2020-02-29",
           "location": "Mt Gravatt Outlook Reserve, Mount Gravatt, QLD, AU",
@@ -98553,15 +97872,6 @@
         },
         {
           "species": "Greater Glider",
-          "observed_on": "2013-03-15",
-          "location": "Queensland, AU",
-          "latitude": -27.4013131814,
-          "longitude": 152.9653835921,
-          "coordinates_obscured": true,
-          "state": "Queensland"
-        },
-        {
-          "species": "Greater Glider",
           "observed_on": "2017-09-14",
           "location": "Queensland, AU",
           "latitude": -27.1550907258,
@@ -98577,15 +97887,6 @@
           "longitude": 152.9674815574,
           "coordinates_obscured": true,
           "state": "Queensland"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2015-01-05",
-          "location": "Western Australia, AU",
-          "latitude": -32.122275284,
-          "longitude": 115.5323487772,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Koala",
@@ -98615,24 +97916,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2005-11-15",
-          "location": "Canberra Central, ACT, Australia",
-          "latitude": -35.2567151043,
-          "longitude": 149.1280462777,
-          "coordinates_obscured": false,
-          "state": "Australian Capital Territory"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2014-05-12",
-          "location": "Bells Beach, Bells Beach, VIC, AU",
-          "latitude": -38.3671956359,
-          "longitude": 144.2837490766,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
           "species": "Koala",
           "observed_on": "2020-04-18",
           "location": "Range Road W, Pages Flat, SA, AU",
@@ -98640,15 +97923,6 @@
           "longitude": 138.5532516848,
           "coordinates_obscured": false,
           "state": "South Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2004-07-07",
-          "location": "Mackay, QLD, Australia",
-          "latitude": -20.9119358151,
-          "longitude": 149.4315493754,
-          "coordinates_obscured": false,
-          "state": "Queensland"
         },
         {
           "species": "Koala",
@@ -98748,24 +98022,6 @@
           "longitude": 151.2115190833,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2015-09-11",
-          "location": "Melbourne VIC, Australia",
-          "latitude": -37.7552513328,
-          "longitude": 145.1125499107,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2010-10-15",
-          "location": "Broken River QLD 4757, Australia",
-          "latitude": -21.1679346151,
-          "longitude": 148.5050723348,
-          "coordinates_obscured": false,
-          "state": "Queensland"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -98876,15 +98132,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Australian Sea Lion",
-          "observed_on": "2010-05-04",
-          "location": "Western Australia, AU",
-          "latitude": -30.2474666037,
-          "longitude": 114.8904080748,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Koala",
           "observed_on": "2020-06-01",
           "location": "Moorooka, Brisbane QLD, Australia",
@@ -98901,15 +98148,6 @@
           "longitude": 152.8030209289,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-01-19",
-          "location": "Leongatha VIC 3953, Australia",
-          "latitude": -38.4904711521,
-          "longitude": 145.9410008043,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -99147,15 +98385,6 @@
         },
         {
           "species": "Grey-headed Flying-fox",
-          "observed_on": "2006-04-12",
-          "location": "Sídney Nueva Gales del Sur, Australia",
-          "latitude": -33.8688197,
-          "longitude": 151.2092955,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
           "observed_on": "2020-07-09",
           "location": "Sydney NSW, Australia",
           "latitude": -34.042940704,
@@ -99171,15 +98400,6 @@
           "longitude": 144.37935,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2016-11-05",
-          "location": "Arthurs Lake TAS 7030, Australia",
-          "latitude": -42.0485797436,
-          "longitude": 146.9589869729,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
         },
         {
           "species": "Koala",
@@ -99236,15 +98456,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2006-03-27",
-          "location": "Broken River QLD 4757, Australia",
-          "latitude": -21.1645705,
-          "longitude": 148.5058262,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Koala",
           "observed_on": "2020-01-26",
           "location": "Yankalilla, SA, AU",
@@ -99295,15 +98506,6 @@
           "location": "Western Australia, AU",
           "latitude": -32.0319882666,
           "longitude": 115.4836021333,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2015-08-30",
-          "location": "Western Australia, AU",
-          "latitude": -32.0082763262,
-          "longitude": 115.458410339,
           "coordinates_obscured": true,
           "state": "Western Australia"
         },
@@ -99362,15 +98564,6 @@
           "state": "Australian Capital Territory"
         },
         {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2006-07-05",
-          "location": "Mrs Macquaries Rd, Sydney NSW 2000, Australie",
-          "latitude": -33.8668542,
-          "longitude": 151.2174159,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Koala",
           "observed_on": "2020-02-22",
           "location": "Adelaide SA, Australia",
@@ -99389,15 +98582,6 @@
           "state": "Australian Capital Territory"
         },
         {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2007-08-23",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.8647183776,
-          "longitude": 151.2165646313,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2020-08-31",
           "location": "Kokoda Street, Darra, QLD, AU",
@@ -99414,15 +98598,6 @@
           "longitude": 147.3180190269,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2008-08-31",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.9749687742,
-          "longitude": 151.0190963745,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -99642,15 +98817,6 @@
         },
         {
           "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-11-26",
-          "location": "Glen Aplin QLD 4381, Australie",
-          "latitude": -28.7525385313,
-          "longitude": 151.8611048006,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
           "observed_on": "2020-09-27",
           "location": "Doveton VIC 3177, Australia",
           "latitude": -37.9768957046,
@@ -99695,15 +98861,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Quokka",
-          "observed_on": "2007-02-26",
-          "location": "Western Australia, AU",
-          "latitude": -32.1750566021,
-          "longitude": 115.5453674423,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2020-10-09",
           "location": "Brisbane QLD, Australia",
@@ -99720,15 +98877,6 @@
           "longitude": 151.1185345556,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2009-01-04",
-          "location": "Apollo Bay, VIC, AU",
-          "latitude": -38.7476498427,
-          "longitude": 143.5920867903,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -99821,15 +98969,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2016-10-13",
-          "location": "Yungaburra QLD 4884, Australia",
-          "latitude": -17.2702746462,
-          "longitude": 145.5829753785,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Koala",
           "observed_on": "2020-09-27",
           "location": "Raymond Island, VIC 3880, Australia",
@@ -99864,33 +99003,6 @@
           "longitude": 145.262755,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2008-02-02",
-          "location": "Esperance, AU-WA, AU",
-          "latitude": -33.9779545713,
-          "longitude": 121.9467459557,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2015-12-25",
-          "location": "Mueller College, Brisbane QLD, Australia",
-          "latitude": -27.2105696992,
-          "longitude": 153.0635654551,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2006-06-07",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.8647738791,
-          "longitude": 151.2164527828,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Platypus",
@@ -99929,15 +99041,6 @@
           "state": "Australian Capital Territory"
         },
         {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2011-10-01",
-          "location": "Cooyar QLD 4402, Australia",
-          "latitude": -26.9335581362,
-          "longitude": 151.8787819547,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Koala",
           "observed_on": "2020-11-07",
           "location": "Brisbane QLD, Australia",
@@ -99954,15 +99057,6 @@
           "longitude": 152.7788533333,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2008-11-08",
-          "location": "Loongana TAS 7315, Australia",
-          "latitude": -41.4108606,
-          "longitude": 145.9629284,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
         },
         {
           "species": "Greater Glider",
@@ -100026,15 +99120,6 @@
           "longitude": 153.0357704949,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Spotted-tailed Quoll",
-          "observed_on": "2014-07-02",
-          "location": "Morton National Park",
-          "latitude": -35.279868,
-          "longitude": 150.338752,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Tasmanian Devil",
@@ -100123,15 +99208,6 @@
           "location": "Sydney NSW, Australia",
           "latitude": -33.9004375303,
           "longitude": 151.2367266666,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2011-03-30",
-          "location": "Sydney Nouvelle-Galles du Sud, Australie",
-          "latitude": -33.8621999366,
-          "longitude": 151.2172999529,
           "coordinates_obscured": false,
           "state": "New South Wales"
         },
@@ -100496,15 +99572,6 @@
           "state": "Tasmania"
         },
         {
-          "species": "Australian Sea Lion",
-          "observed_on": "2005-11-25",
-          "location": "Esperance, AU-WA, AU",
-          "latitude": -33.9193430672,
-          "longitude": 121.9561947718,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2021-01-21",
           "location": "Endeavour Street, West Ryde, NSW, AU",
@@ -100568,15 +99635,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Eastern Quoll",
-          "observed_on": "2010-12-11",
-          "location": "Great Bay TAS 7150, Australien",
-          "latitude": -43.2392374125,
-          "longitude": 147.3686152465,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2021-01-25",
           "location": "Darley Road, Leichhardt, NSW, AU",
@@ -100593,15 +99651,6 @@
           "longitude": 149.1092938429,
           "coordinates_obscured": false,
           "state": "Australian Capital Territory"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-05-27",
-          "location": "Melbourne VIC, Australia",
-          "latitude": -37.7979372143,
-          "longitude": 145.004735688,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -100757,15 +99806,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2016-09-28",
-          "location": "Tyenna TAS 7140, Australia",
-          "latitude": -42.7340040101,
-          "longitude": 146.6618014341,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Spotted-tailed Quoll",
           "observed_on": "2021-01-23",
           "location": "Boonoo Boonoo, Tenterfield, New South Wales, Australia",
@@ -100780,15 +99820,6 @@
           "location": "Boorook NSW 2372, Australia",
           "latitude": -28.8425924722,
           "longitude": 152.1515802686,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Greater Glider",
-          "observed_on": "2015-01-03",
-          "location": "Cockwhy NSW 2539, Australia",
-          "latitude": -35.5359928816,
-          "longitude": 150.3412871768,
           "coordinates_obscured": false,
           "state": "New South Wales"
         },
@@ -100854,33 +99885,6 @@
           "longitude": 146.7319033333,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2008-01-12",
-          "location": "Yungaburra QLD 4884, Australia",
-          "latitude": -17.271111,
-          "longitude": 145.583056,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Eastern Quoll",
-          "observed_on": "2008-02-06",
-          "location": "Cradle Mountain TAS 7306, Australia",
-          "latitude": -41.5932601095,
-          "longitude": 145.9283983401,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2016-11-07",
-          "location": "Lamington National Park",
-          "latitude": -28.2166557566,
-          "longitude": 153.1499997899,
-          "coordinates_obscured": false,
-          "state": "Queensland"
         },
         {
           "species": "European Rabbit",
@@ -100987,33 +99991,6 @@
           "location": "Sydney NSW, Australia",
           "latitude": -33.8870316141,
           "longitude": 151.193441314,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2003-03-03",
-          "location": "4057 Cradle Mountain Rd, Cradle Mountain TAS 7306, Australien",
-          "latitude": -41.5834664,
-          "longitude": 145.9368494,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2003-04-02",
-          "location": "eungella national park",
-          "latitude": -21.16791,
-          "longitude": 148.505172,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-10-30",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.8255008799,
-          "longitude": 151.0905754847,
           "coordinates_obscured": false,
           "state": "New South Wales"
         },
@@ -101297,15 +100274,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Koala",
-          "observed_on": "2004-05-15",
-          "location": "Kangaroo Island, South Australia, Australia",
-          "latitude": -35.7752426,
-          "longitude": 137.2142417,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2021-03-31",
           "location": "Penguin TAS 7316, Australia",
@@ -101313,15 +100281,6 @@
           "longitude": 146.068685338,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2010-09-19",
-          "location": "Seal Bay Aquatic Reserve, Seal Bay, SA, AU",
-          "latitude": -35.9960876615,
-          "longitude": 137.3204304582,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Australian Sea Lion",
@@ -101442,30 +100401,12 @@
         },
         {
           "species": "Platypus",
-          "observed_on": "2001-10-10",
-          "location": "The Basin, VIC, AU",
-          "latitude": -37.8541681091,
-          "longitude": 145.3172365668,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Platypus",
           "observed_on": "2021-05-03",
           "location": "Noosa Hinterland, Lake Macdonald, QLD, AU",
           "latitude": -26.4122094735,
           "longitude": 152.9314392171,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "1935-12-31",
-          "location": "South East Point, Wilsons Promontory VIC 3960, Australia",
-          "latitude": -39.1295004,
-          "longitude": 146.4245533,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -101502,15 +100443,6 @@
           "longitude": 153.401371755,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2015-03-26",
-          "location": "Tasmania, AU",
-          "latitude": -41.0956538668,
-          "longitude": 147.3425245168,
-          "coordinates_obscured": true,
-          "state": "Tasmania"
         },
         {
           "species": "Koala",
@@ -101610,15 +100542,6 @@
           "longitude": 153.3167416667,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2016-07-23",
-          "location": "Sunbury VIC 3429, Australia",
-          "latitude": -37.5460731561,
-          "longitude": 144.7391990691,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Greater Glider",
@@ -101738,15 +100661,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Australian Sea Lion",
-          "observed_on": "2008-05-06",
-          "location": "Lake Tabourie NSW 2539, Austrália",
-          "latitude": -35.4432931828,
-          "longitude": 150.4061418772,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Spotted-tailed Quoll",
           "observed_on": "2019-07-10",
           "location": "Shoalhaven - Pt B, AU-NS, AU",
@@ -101762,15 +100676,6 @@
           "latitude": -36.6050764743,
           "longitude": 149.8454011443,
           "coordinates_obscured": true,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2013-12-25",
-          "location": "Sydney NSW, Australia",
-          "latitude": -33.8641796151,
-          "longitude": 151.2165498734,
-          "coordinates_obscured": false,
           "state": "New South Wales"
         },
         {
@@ -101963,15 +100868,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Eastern Quoll",
-          "observed_on": "2015-04-03",
-          "location": "North Bruny TAS 7150, Australia",
-          "latitude": -43.1192903438,
-          "longitude": 147.3307961766,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Koala",
           "observed_on": "2021-08-03",
           "location": "Lagonda Drive, Windsor Gardens, SA, AU",
@@ -101979,15 +100875,6 @@
           "longitude": 138.656205,
           "coordinates_obscured": false,
           "state": "South Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2004-04-13",
-          "location": "Clunes NSW 2480, Australien",
-          "latitude": -28.7395137956,
-          "longitude": 153.3927959855,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Koala",
@@ -102033,15 +100920,6 @@
           "longitude": 145.3686111111,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Eastern Quoll",
-          "observed_on": "2008-12-14",
-          "location": "Cradle Mountain TAS 7306, Australia",
-          "latitude": -41.8305756128,
-          "longitude": 146.0463482503,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
         },
         {
           "species": "Koala",
@@ -102193,15 +101071,6 @@
           "location": "Mudgeeraba QLD 4213, Australia",
           "latitude": -28.1132993709,
           "longitude": 153.3179362491,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2007-08-02",
-          "location": "Back Flagstone Road, Iredale, QLD, AU",
-          "latitude": -27.5631166813,
-          "longitude": 152.1224387253,
           "coordinates_obscured": false,
           "state": "Queensland"
         },
@@ -102366,15 +101235,6 @@
           "longitude": 153.2173034549,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2014-01-15",
-          "location": "Jeeralang Junction VIC 3840, Australia",
-          "latitude": -38.3542734149,
-          "longitude": 146.3865170376,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -102558,15 +101418,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2016-10-08",
-          "location": "Knotts Hill Road, Basket Range, SA, AU",
-          "latitude": -34.93103,
-          "longitude": 138.7604666667,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2021-09-28",
           "location": "Henrys Road, Nyora, VIC, AU",
           "latitude": -38.3511061874,
@@ -102609,15 +101460,6 @@
           "longitude": 147.6545431092,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2015-10-22",
-          "location": "French Island VIC 3921, Australia",
-          "latitude": -38.3808956302,
-          "longitude": 145.2780089217,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Australian Sea Lion",
@@ -102882,15 +101724,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2014-01-31",
-          "location": "Bald Hills QLD 4036, Australia",
-          "latitude": -27.3000413175,
-          "longitude": 153.0419151485,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2018-09-30",
           "location": "Nanango QLD 4615, Australia",
           "latitude": -26.679666,
@@ -102989,15 +101822,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2014-03-07",
-          "location": "New South Wales, AU",
-          "latitude": -33.8631314249,
-          "longitude": 151.1389819854,
-          "coordinates_obscured": true,
-          "state": "New South Wales"
-        },
-        {
           "species": "Koala",
           "observed_on": "2021-11-13",
           "location": "Emerald QLD 4720, Australia",
@@ -103080,15 +101904,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2010-10-21",
-          "location": "Rhyll VIC 3923, Australia",
-          "latitude": -38.4841666667,
-          "longitude": 145.2628333333,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2021-11-26",
           "location": "Groomsville, QLD, AU",
           "latitude": -27.330345,
@@ -103113,15 +101928,6 @@
           "longitude": 152.9927216667,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2012-01-03",
-          "location": "Margate TAS 7054, Australia",
-          "latitude": -43.0537651782,
-          "longitude": 147.2459653898,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
         },
         {
           "species": "Greater Glider",
@@ -103427,15 +102233,6 @@
           "latitude": -28.1221011345,
           "longitude": 151.2958237231,
           "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Greater Glider",
-          "observed_on": "2011-06-23",
-          "location": "Queensland, AU",
-          "latitude": -27.194760328,
-          "longitude": 150.7034865521,
-          "coordinates_obscured": true,
           "state": "Queensland"
         },
         {
@@ -104150,15 +102947,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2014-09-05",
-          "location": "Queensland, Australia",
-          "latitude": -21.1679101,
-          "longitude": 148.5051719,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Koala",
           "observed_on": "2022-02-17",
           "location": "Lake Wivenhoe QLD 4312, Australia",
@@ -104220,15 +103008,6 @@
           "longitude": 133.2721022391,
           "coordinates_obscured": false,
           "state": "South Australia"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2007-02-23",
-          "location": "Thomson VIC 3825, Australia",
-          "latitude": -37.778196321,
-          "longitude": 146.301305546,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -104465,24 +103244,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2010-12-09",
-          "location": "Central Plateau TAS 7304, Australia",
-          "latitude": -41.9078865882,
-          "longitude": 146.9914329075,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2015-01-17",
-          "location": "Yungaburra QLD 4884, Australia",
-          "latitude": -17.2520225096,
-          "longitude": 145.5861078906,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Koala",
           "observed_on": "2022-04-02",
           "location": "Toohey Forest Park, Moorooka, QLD, AU",
@@ -104601,15 +103362,6 @@
         },
         {
           "species": "Platypus",
-          "observed_on": "2014-08-12",
-          "location": "Tidbinbilla, Paddys River ACT, Australia",
-          "latitude": -35.4669540415,
-          "longitude": 148.9071554123,
-          "coordinates_obscured": false,
-          "state": "Australian Capital Territory"
-        },
-        {
-          "species": "Platypus",
           "observed_on": "2021-10-21",
           "location": "Melbourne VIC, Australia",
           "latitude": -37.7527573574,
@@ -104679,15 +103431,6 @@
           "longitude": 151.155992,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2013-11-30",
-          "location": "French Island Victoria 3921, Australie",
-          "latitude": -38.3701008353,
-          "longitude": 145.3168923941,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -105060,15 +103803,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2013-04-27",
-          "location": "Jeeralang Junction VIC 3840, Australia",
-          "latitude": -38.3554347788,
-          "longitude": 146.3872058766,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2022-05-23",
           "location": "Lockyer Waters QLD 4311, Australia",
           "latitude": -27.4577543014,
@@ -105201,15 +103935,6 @@
           "longitude": 147.4051216667,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "1989-10-22",
-          "location": "Morwell National Park, Stringybark Ridge Track, Section H",
-          "latitude": -38.35875,
-          "longitude": 146.38429,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -105995,15 +104720,6 @@
           "state": "Australian Capital Territory"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2016-12-01",
-          "location": "Scottsdale TAS 7260, Australia",
-          "latitude": -41.166147128,
-          "longitude": 147.5225706797,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Koala",
           "observed_on": "2019-03-09",
           "location": "Koala Conservation Reserve, Rhyll, VIC, AU",
@@ -106239,15 +104955,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2012-11-13",
-          "location": "Jeeralang Junction VIC 3840, Australia",
-          "latitude": -38.3546818113,
-          "longitude": 146.387277276,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2022-07-23",
           "location": "Stonehenge Rd, Kooroongarra, QLD, AU",
           "latitude": -28.1034099309,
@@ -106290,15 +104997,6 @@
           "longitude": 153.1278151246,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2014-12-18",
-          "location": "Western Australia, AU",
-          "latitude": -32.033940997,
-          "longitude": 115.6111452015,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Platypus",
@@ -106526,24 +105224,6 @@
           "state": "Queensland"
         },
         {
-          "species": "European Rabbit",
-          "observed_on": "2015-12-27",
-          "location": "Jeeralang Junction VIC 3840, Australia",
-          "latitude": -38.3548702919,
-          "longitude": 146.387829811,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2005-07-24",
-          "location": "Armstrong Creek QLD 4520, Australia",
-          "latitude": -27.2062194902,
-          "longitude": 152.8080676147,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Quokka",
           "observed_on": "2022-08-05",
           "location": "Western Australia, AU",
@@ -106640,24 +105320,6 @@
           "latitude": -27.629598152,
           "longitude": 153.0138165773,
           "coordinates_obscured": true,
-          "state": "Queensland"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2016-06-15",
-          "location": "Eungella National Park, Queensland, Australia",
-          "latitude": -21.1679101,
-          "longitude": 148.5051719,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-06-07",
-          "location": "Mary Caincross Scenic Reserve, Maleny QLD 4552, Australia",
-          "latitude": -26.7776827,
-          "longitude": 152.8805318,
-          "coordinates_obscured": false,
           "state": "Queensland"
         },
         {
@@ -106819,15 +105481,6 @@
           "location": "Octantis St, Brisbane QLD, Australia",
           "latitude": -27.5099633655,
           "longitude": 153.0696077788,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2011-12-25",
-          "location": "Eungella National Park, Dalrymple Heights, QLD, AU",
-          "latitude": -21.0193380103,
-          "longitude": 148.5760803223,
           "coordinates_obscured": false,
           "state": "Queensland"
         },
@@ -107028,15 +105681,6 @@
           "longitude": 153.440945372,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2016-08-20",
-          "location": "Western Australia, AU",
-          "latitude": -34.9642947048,
-          "longitude": 116.9068842186,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Koala",
@@ -107694,24 +106338,6 @@
           "longitude": 150.3999633333,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2014-03-16",
-          "location": "Helidon QLD 4344, Australia",
-          "latitude": -27.5724325515,
-          "longitude": 152.1387926117,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Greater Glider",
-          "observed_on": "2016-05-29",
-          "location": "Queensland, AU",
-          "latitude": -26.7941369274,
-          "longitude": 152.7680176472,
-          "coordinates_obscured": true,
-          "state": "Queensland"
         },
         {
           "species": "Platypus",
@@ -109019,15 +107645,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Koala",
-          "observed_on": "2015-01-19",
-          "location": "Penshurst VIC 3289, Australia",
-          "latitude": -37.8743443294,
-          "longitude": 142.2906909745,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2023-01-27",
           "location": "Edmund St, Vale Park, SA, AU",
@@ -109073,15 +107690,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Eastern Quoll",
-          "observed_on": "2014-01-22",
-          "location": "North Bruny TAS 7150, Australia",
-          "latitude": -43.1167842126,
-          "longitude": 147.356379628,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Greater Glider",
           "observed_on": "2023-01-28",
           "location": "Won Wron VIC 3971, Australia",
@@ -109089,15 +107697,6 @@
           "longitude": 146.7736483333,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "1988-07-12",
-          "location": "Nandowrie QLD 4722, Australia",
-          "latitude": -24.909743,
-          "longitude": 148.041286,
-          "coordinates_obscured": false,
-          "state": "Queensland"
         },
         {
           "species": "European Rabbit",
@@ -109224,15 +107823,6 @@
           "longitude": 151.1545111667,
           "coordinates_obscured": false,
           "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2009-09-22",
-          "location": "Macgillivray SA 5223, Australia",
-          "latitude": -35.7535162023,
-          "longitude": 137.5543812469,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Platypus",
@@ -109568,15 +108158,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Eastern Quoll",
-          "observed_on": "2015-11-25",
-          "location": "trumpeter road north bruny",
-          "latitude": -43.162685,
-          "longitude": 147.388854,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Greater Glider",
           "observed_on": "2021-11-19",
           "location": "Barrington Tops NSW 2422, Australia",
@@ -109874,15 +108455,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Tasmanian Devil",
-          "observed_on": "1999-06-08",
-          "location": "Mungo NSW 2715, Australia",
-          "latitude": -33.6870069703,
-          "longitude": 143.0823374917,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Grey-headed Flying-fox",
           "observed_on": "2022-11-18",
           "location": "Sydney NSW, Australia",
@@ -110163,15 +108735,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "1973-04-28",
-          "location": "2115 Phillip Island Rd, Cowes VIC 3922, Australia",
-          "latitude": -38.5401840582,
-          "longitude": 145.3211997609,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2023-04-22",
           "location": "Tomaree National Park, Fingal Bay, NSW, AU",
           "latitude": -32.7352165177,
@@ -110340,15 +108903,6 @@
           "longitude": 152.9047251154,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2015-10-22",
-          "location": "Kangaroo Island, South Australia, Australia",
-          "latitude": -35.7752426,
-          "longitude": 137.2142417,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Platypus",
@@ -110685,15 +109239,6 @@
         },
         {
           "species": "European Rabbit",
-          "observed_on": "2012-09-30",
-          "location": "Newhaven VIC 3925, Australia",
-          "latitude": -38.5223043825,
-          "longitude": 145.33101378,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "European Rabbit",
           "observed_on": "2023-06-04",
           "location": "Bulahdelah Way, Bulahdelah, NSW, AU",
           "latitude": -32.4090116667,
@@ -110909,15 +109454,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Koala",
-          "observed_on": "2016-09-01",
-          "location": "Tidbinbilla Nature Reserve, ACT, Australia",
-          "latitude": -35.4604350662,
-          "longitude": 148.9061318002,
-          "coordinates_obscured": false,
-          "state": "Australian Capital Territory"
-        },
-        {
           "species": "Greater Glider",
           "observed_on": "2022-09-23",
           "location": "Queensland, AU",
@@ -110943,15 +109479,6 @@
           "longitude": 115.4522435698,
           "coordinates_obscured": true,
           "state": "Western Australia"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2016-11-20",
-          "location": "Seal Bay SA 5223, Australia",
-          "latitude": -35.9946130839,
-          "longitude": 137.3189505562,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Koala",
@@ -111062,15 +109589,6 @@
           "state": "Queensland"
         },
         {
-          "species": "European Rabbit",
-          "observed_on": "2016-02-11",
-          "location": "Gawler East SA 5118, Australia",
-          "latitude": -34.6077641,
-          "longitude": 138.7503418,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2023-07-03",
           "location": "Rewan, QLD, AU",
@@ -111085,15 +109603,6 @@
           "location": "Kandanga Creek, Kandanga, QLD, AU",
           "latitude": -26.385145,
           "longitude": 152.6803133333,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2011-09-27",
-          "location": "Upper Brookfield QLD 4069, Australia",
-          "latitude": -27.4884951626,
-          "longitude": 152.8826687886,
           "coordinates_obscured": false,
           "state": "Queensland"
         },
@@ -111240,15 +109749,6 @@
           "longitude": 145.5238791316,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2008-08-30",
-          "location": "Western Australia, AU",
-          "latitude": -32.0574859816,
-          "longitude": 115.5871529582,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Koala",
@@ -111611,15 +110111,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Tasmanian Devil",
-          "observed_on": "2012-01-07",
-          "location": "West Coast TAS 7321, Australia",
-          "latitude": -41.4048123229,
-          "longitude": 145.3040686484,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Koala",
           "observed_on": "2023-08-12",
           "location": "Lone Pine Koala Sanctuary, Fig Tree Pocket, QLD, AU",
@@ -111690,15 +110181,6 @@
           "longitude": 153.0930931703,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2008-06-14",
-          "location": "Cape Otway VIC 3233, Australia",
-          "latitude": -38.7882708209,
-          "longitude": 143.5361201427,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -111852,15 +110334,6 @@
           "longitude": 136.8090366667,
           "coordinates_obscured": false,
           "state": "South Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2013-11-13",
-          "location": "Victoria, AU",
-          "latitude": -37.1102850391,
-          "longitude": 145.3421628169,
-          "coordinates_obscured": true,
-          "state": "Victoria"
         },
         {
           "species": "Australian Sea Lion",
@@ -112367,15 +110840,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Quokka",
-          "observed_on": "2015-12-31",
-          "location": "Western Australia, AU",
-          "latitude": -31.979387614,
-          "longitude": 115.4216728403,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Koala",
           "observed_on": "2023-09-13",
           "location": "Whiteheads Creek VIC 3660, Australia",
@@ -112662,15 +111126,6 @@
           "longitude": 145.0176315866,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2010-02-03",
-          "location": "Western Australia, AU",
-          "latitude": -32.1389082731,
-          "longitude": 115.4535050013,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Platypus",
@@ -113006,15 +111461,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-12-11",
-          "location": "Sydney Nowa Południowa Walia, Australia",
-          "latitude": -33.8616366299,
-          "longitude": 151.2156470899,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Koala",
           "observed_on": "2023-10-17",
           "location": "French Island National Park, French Island, VIC, AU",
@@ -113148,33 +111594,6 @@
           "longitude": 149.805526788,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2010-09-07",
-          "location": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
-          "latitude": -33.8641859,
-          "longitude": 151.2165708,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2010-09-07",
-          "location": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
-          "latitude": -33.8641859,
-          "longitude": 151.2165708,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2010-09-07",
-          "location": "Mrs Macquaries Rd, Sydney NSW 2000, Australia",
-          "latitude": -33.8641859,
-          "longitude": 151.2165708,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Koala",
@@ -113490,15 +111909,6 @@
           "longitude": 145.0896300216,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2007-11-11",
-          "location": "Sydney New South Wales, Australien",
-          "latitude": -33.8631151184,
-          "longitude": 151.2163999777,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -114021,15 +112431,6 @@
           "longitude": 153.1027014562,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-05-28",
-          "location": "Belair SA 5052, Australia",
-          "latitude": -35.0086979594,
-          "longitude": 138.652031418,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Koala",
@@ -115689,66 +114090,12 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2015-03-08",
-          "location": "Armidale Dumaresq Bal, AU-NS, AU",
-          "latitude": -30.5090235107,
-          "longitude": 151.652276431,
-          "coordinates_obscured": true,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2015-03-07",
-          "location": "Armidale Dumaresq Bal, AU-NS, AU",
-          "latitude": -30.5033836373,
-          "longitude": 151.636894833,
-          "coordinates_obscured": true,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-10-23",
-          "location": "Armidale Dumaresq Bal, AU-NS, AU",
-          "latitude": -30.4954658212,
-          "longitude": 151.7664945488,
-          "coordinates_obscured": true,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2018-10-14",
           "location": "Armidale Dumaresq Bal, AU-NS, AU",
           "latitude": -30.5168049994,
           "longitude": 151.6483035037,
           "coordinates_obscured": true,
           "state": "New South Wales"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2016-10-06",
-          "location": "Queensland, AU",
-          "latitude": -21.025965884,
-          "longitude": 148.5452751159,
-          "coordinates_obscured": true,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2013-04-13",
-          "location": "Armidale Dumaresq Bal, AU-NS, AU",
-          "latitude": -30.4803006747,
-          "longitude": 151.6486017038,
-          "coordinates_obscured": true,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Platypus",
-          "observed_on": "2014-07-03",
-          "location": "Queensland, AU",
-          "latitude": -17.3724325303,
-          "longitude": 145.6287626602,
-          "coordinates_obscured": true,
-          "state": "Queensland"
         },
         {
           "species": "Koala",
@@ -116057,15 +114404,6 @@
           "state": "Tasmania"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2010-12-29",
-          "location": "Lake Elizabeth Campground, Great Otway National Park, Forrest VIC 3236, Australie",
-          "latitude": -38.5499718,
-          "longitude": 143.7447728,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
           "species": "Tasmanian Devil",
           "observed_on": "2024-02-17",
           "location": "Lilydale TAS 7268, Australia",
@@ -116091,24 +114429,6 @@
           "longitude": 148.0366891273,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-06-13",
-          "location": "Black Hill VIC 3350, Australie",
-          "latitude": -37.5490678,
-          "longitude": 143.8753165,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-06-13",
-          "location": "Black Hill VIC 3350, Australie",
-          "latitude": -37.5490678,
-          "longitude": 143.8753165,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -116325,15 +114645,6 @@
           "longitude": 138.6883167731,
           "coordinates_obscured": false,
           "state": "South Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2010-12-23",
-          "location": "Френч Айленд Виктория 3921, Австралия",
-          "latitude": -38.379114,
-          "longitude": 145.300985,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -116881,15 +115192,6 @@
           "location": "Buninyong VIC 3357, Australia",
           "latitude": -37.63840337,
           "longitude": 143.90104376,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2013-03-15",
-          "location": "Kew VIC 3101, Australia",
-          "latitude": -37.7963151,
-          "longitude": 145.0181978,
           "coordinates_obscured": false,
           "state": "Victoria"
         },
@@ -117506,15 +115808,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2016-07-13",
-          "location": "Bunya Mountains QLD 4405, Australia",
-          "latitude": -26.8771174817,
-          "longitude": 151.6151692265,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Spotted-tailed Quoll",
           "observed_on": "2024-04-28",
           "location": "Middle Brook NSW 2337, Australia",
@@ -117576,15 +115869,6 @@
           "longitude": 149.1598,
           "coordinates_obscured": false,
           "state": "Australian Capital Territory"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2013-12-03",
-          "location": "Crafers West SA 5152, Australia",
-          "latitude": -35.0091010979,
-          "longitude": 138.6872106045,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Platypus",
@@ -118290,15 +116574,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2006-04-23",
-          "location": "Colac Otway Shire, Separation Creek, VIC, AU",
-          "latitude": -38.6248453076,
-          "longitude": 143.8941848304,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2024-05-30",
           "location": "Great Barrier Reef, Horseshoe Bay, QLD, AU",
           "latitude": -19.1211519843,
@@ -118623,15 +116898,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2013-08-25",
-          "location": "Chichester Dr, Arundel, QLD, AU",
-          "latitude": -27.9387445324,
-          "longitude": 153.3565982759,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2024-06-12",
           "location": "Tillack Park, Mansfield, QLD, AU",
           "latitude": -27.5278912912,
@@ -118773,15 +117039,6 @@
           "longitude": 147.7376011798,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-02-24",
-          "location": "Jeeralang Junction VIC 3840, Australia",
-          "latitude": -38.3543868673,
-          "longitude": 146.3867068816,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -119068,15 +117325,6 @@
           "location": "Kew VIC 3101, Australia",
           "latitude": -37.7929466667,
           "longitude": 145.0170366667,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2015-08-02",
-          "location": "Jeeralang Junction VIC 3840, Australia",
-          "latitude": -38.3547056283,
-          "longitude": 146.3871823727,
           "coordinates_obscured": false,
           "state": "Victoria"
         },
@@ -119412,15 +117660,6 @@
           "longitude": 153.1126866553,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2014-11-30",
-          "location": "Raymond Island VIC 3880, Australie",
-          "latitude": -37.9242884544,
-          "longitude": 147.7308004872,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -120710,15 +118949,6 @@
           "state": "Tasmania"
         },
         {
-          "species": "Koala",
-          "observed_on": "2014-08-23",
-          "location": "Ormiston QLD, Australia",
-          "latitude": -27.5120736,
-          "longitude": 153.2566502,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2024-09-05",
           "location": "Petrie Creek, Nambour, QLD, AU",
@@ -121520,15 +119750,6 @@
           "state": "Victoria"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2016-07-31",
-          "location": "Broken River QLD 4757, Australie",
-          "latitude": -21.1720463976,
-          "longitude": 148.4940849106,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Koala",
           "observed_on": "2024-10-09",
           "location": "Tillack Park, Mansfield, QLD, AU",
@@ -121617,15 +119838,6 @@
           "longitude": 153.1043072141,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2000-01-20",
-          "location": "Cowes Victoria 3922, Australie",
-          "latitude": -38.4870666765,
-          "longitude": 145.2522003088,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -121743,15 +119955,6 @@
           "longitude": 153.2731794317,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2015-10-13",
-          "location": "Anglesea VIC 3230, Australia",
-          "latitude": -38.4073164,
-          "longitude": 144.1859975,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -122301,15 +120504,6 @@
           "longitude": 153.0905320092,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2009-09-23",
-          "location": "Phillip Island, Victoria, Australia",
-          "latitude": -38.4898703,
-          "longitude": 145.2038278,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Quokka",
@@ -122898,15 +121092,6 @@
         },
         {
           "species": "Koala",
-          "observed_on": "2014-10-10",
-          "location": "Tower Hill VIC 3283, Australien",
-          "latitude": -38.32455,
-          "longitude": 142.3701183333,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "Koala",
           "observed_on": "2024-11-25",
           "location": "Lachine Pl, Mansfield, QLD, AU",
           "latitude": -27.53023663,
@@ -123077,15 +121262,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Eastern Quoll",
-          "observed_on": "2008-02-13",
-          "location": "Cradle Mountain TAS 7306, Australia",
-          "latitude": -41.675693006,
-          "longitude": 145.946214905,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2024-09-10",
           "location": "Coral St, Maleny, QLD, AU",
@@ -123156,15 +121332,6 @@
           "longitude": 145.9767138883,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Spotted-tailed Quoll",
-          "observed_on": "1999-05-01",
-          "location": "Point Lookout, Ebor NSW 2453, Australia",
-          "latitude": -30.4833333,
-          "longitude": 152.3833333,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Koala",
@@ -123426,15 +121593,6 @@
           "longitude": 148.1866932224,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2016-03-26",
-          "location": "Fish Creek VIC 3959, Australia",
-          "latitude": -38.7198163968,
-          "longitude": 146.1240334652,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Australian Sea Lion",
@@ -123759,15 +121917,6 @@
           "longitude": 152.0617789775,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-06-12",
-          "location": "Anglesea Skate Ramp, Anglesea, VIC, AU",
-          "latitude": -38.4065282187,
-          "longitude": 144.1881111892,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -124356,15 +122505,6 @@
         },
         {
           "species": "European Rabbit",
-          "observed_on": "2001-10-01",
-          "location": "Toorongo VIC 3833, Australia",
-          "latitude": -37.7390063746,
-          "longitude": 146.1185613879,
-          "coordinates_obscured": false,
-          "state": "Victoria"
-        },
-        {
-          "species": "European Rabbit",
           "observed_on": "2025-01-30",
           "location": "Hunter St, West Rockhampton, QLD, AU",
           "latitude": -23.38017,
@@ -124508,15 +122648,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Quokka",
-          "observed_on": "2014-07-04",
-          "location": "Western Australia, AU",
-          "latitude": -32.0720614146,
-          "longitude": 115.5748902106,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Eastern Quoll",
           "observed_on": "2025-02-07",
           "location": "South Bruny TAS 7150, Australia",
@@ -124551,15 +122682,6 @@
           "longitude": 153.0936250554,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "1983-11-09",
-          "location": "Phillip Island Nature Park, VIC, Australia",
-          "latitude": -38.5525,
-          "longitude": 145.3531,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -125057,15 +123179,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Greater Glider",
-          "observed_on": "2010-05-24",
-          "location": "Duaringa, AU-QL, AU",
-          "latitude": -23.5918844062,
-          "longitude": 149.3123492448,
-          "coordinates_obscured": true,
-          "state": "Queensland"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2024-11-24",
           "location": "Hobart TAS, Australia",
@@ -125174,15 +123287,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2011-11-20",
-          "location": "Witheren QLD 4275, Australia",
-          "latitude": -28.0492927518,
-          "longitude": 153.1885852201,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Quokka",
           "observed_on": "2025-02-28",
           "location": "Western Australia, AU",
@@ -125190,24 +123294,6 @@
           "longitude": 115.5909330659,
           "coordinates_obscured": true,
           "state": "Western Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2008-10-02",
-          "location": "Walter Austin Park, Bollon QLD 4488, Australia",
-          "latitude": -28.0312951456,
-          "longitude": 147.4815837768,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2015-04-18",
-          "location": "Cowes VIC 3922, Australia",
-          "latitude": -38.4936318405,
-          "longitude": 145.2223675065,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Australian Sea Lion",
@@ -125877,24 +123963,6 @@
         },
         {
           "species": "Platypus",
-          "observed_on": "2015-01-08",
-          "location": "Union Bridge Rd, Mole Creek, TAS, AU",
-          "latitude": -41.5146321344,
-          "longitude": 146.3353480957,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Eastern Quoll",
-          "observed_on": "2014-11-27",
-          "location": "North Bruny, TAS, AU",
-          "latitude": -43.1630768501,
-          "longitude": 147.3903130789,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Platypus",
           "observed_on": "2025-02-22",
           "location": "Chatham Valley NSW 2787, Australia",
           "latitude": -33.8221971621,
@@ -126052,15 +124120,6 @@
           "location": "Mansfield, QLD, AU",
           "latitude": -27.530431463,
           "longitude": 153.1050030123,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2011-07-29",
-          "location": "Lakeside QLD 4621, Australia",
-          "latitude": -25.5526632012,
-          "longitude": 152.0652410052,
           "coordinates_obscured": false,
           "state": "Queensland"
         },
@@ -126515,38 +124574,11 @@
           "state": "South Australia"
         },
         {
-          "species": "Koala",
-          "observed_on": "2013-03-23",
-          "location": "Camira QLD 4300, Australia",
-          "latitude": -27.6325619,
-          "longitude": 152.9157778,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Grey-headed Flying-fox",
-          "observed_on": "2009-06-28",
-          "location": "Camira QLD 4300, Australia",
-          "latitude": -27.6325619,
-          "longitude": 152.9157778,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "European Rabbit",
           "observed_on": "2025-05-27",
           "location": "Thargomindah QLD 4492, Australia",
           "latitude": -28.1020887382,
           "longitude": 144.1598856077,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2013-03-23",
-          "location": "Camira QLD 4300, Australia",
-          "latitude": -27.6325619,
-          "longitude": 152.9157778,
           "coordinates_obscured": false,
           "state": "Queensland"
         },
@@ -127136,15 +125168,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Koala",
-          "observed_on": "2014-09-13",
-          "location": "Vinegar Hill QLD 4343, Australia",
-          "latitude": -27.49297,
-          "longitude": 152.2462,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2025-05-25",
           "location": "West Ridgley TAS 7321, Australia",
@@ -127334,15 +125357,6 @@
           "state": "Queensland"
         },
         {
-          "species": "Platypus",
-          "observed_on": "2016-05-17",
-          "location": "Tidbinbilla Nature Reserve, ACT, Australia",
-          "latitude": -35.4670562127,
-          "longitude": 148.906243891,
-          "coordinates_obscured": false,
-          "state": "Australian Capital Territory"
-        },
-        {
           "species": "European Rabbit",
           "observed_on": "2025-07-16",
           "location": "Bega Valley, AU-NS, AU",
@@ -127447,15 +125461,6 @@
           "location": "Tones Road Park, Mansfield, QLD, AU",
           "latitude": -27.5295801838,
           "longitude": 153.1123648626,
-          "coordinates_obscured": false,
-          "state": "Queensland"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2016-02-11",
-          "location": "Homestead QLD, Australia",
-          "latitude": -20.5862305026,
-          "longitude": 145.7543648401,
           "coordinates_obscured": false,
           "state": "Queensland"
         },
@@ -127820,15 +125825,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Quokka",
-          "observed_on": "2014-08-11",
-          "location": "Western Australia, AU",
-          "latitude": -32.1524034134,
-          "longitude": 115.4278985572,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
-        },
-        {
           "species": "Koala",
           "observed_on": "2025-08-21",
           "location": "Horseshoe Bay QLD 4819, Australia",
@@ -127953,15 +125949,6 @@
           "longitude": 147.1137046649,
           "coordinates_obscured": false,
           "state": "Tasmania"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2012-10-18",
-          "location": "Western Australia, AU",
-          "latitude": -30.3639443912,
-          "longitude": 115.1281750678,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Platypus",
@@ -128727,15 +126714,6 @@
           "longitude": 145.1281516626,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Quokka",
-          "observed_on": "2010-08-28",
-          "location": "Western Australia, AU",
-          "latitude": -31.8942224673,
-          "longitude": 115.4555389756,
-          "coordinates_obscured": true,
-          "state": "Western Australia"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -130079,15 +128057,6 @@
           "state": "Tasmania"
         },
         {
-          "species": "Australian Sea Lion",
-          "observed_on": "2015-10-19",
-          "location": "Seal Bay, Australie-Méridionale, Australie",
-          "latitude": -35.993424,
-          "longitude": 137.348263,
-          "coordinates_obscured": false,
-          "state": "South Australia"
-        },
-        {
           "species": "European Rabbit",
           "observed_on": "2025-12-13",
           "location": "HGX5+MG, Warrnambool VIC 3280, Australia",
@@ -130185,15 +128154,6 @@
           "longitude": 153.0829851778,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Greater Glider",
-          "observed_on": "2013-10-07",
-          "location": "Jericho VIC 3825, Australia",
-          "latitude": -37.7094044,
-          "longitude": 146.1411323,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -130669,15 +128629,6 @@
           "location": "Cradle Mountain, TAS, AU",
           "latitude": -41.6403083333,
           "longitude": 145.946105,
-          "coordinates_obscured": false,
-          "state": "Tasmania"
-        },
-        {
-          "species": "Tasmanian Devil",
-          "observed_on": "2013-02-17",
-          "location": "Cradle Mountain TAS 7306澳大利亚",
-          "latitude": -41.6423824003,
-          "longitude": 145.9199565788,
           "coordinates_obscured": false,
           "state": "Tasmania"
         },
@@ -131240,15 +129191,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Koala",
-          "observed_on": "2015-10-17",
-          "location": "Whian Whian NSW 2480, Australia",
-          "latitude": -28.5919118346,
-          "longitude": 153.3768408496,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2026-02-19",
           "location": "Finns Reserve, Templestowe Rd & Union St, Templestowe Lower VIC 3107, Australia",
@@ -131398,15 +129340,6 @@
           "location": "Osborne St, Nowra, NSW, AU",
           "latitude": -34.8728529085,
           "longitude": 150.5985351374,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
-        },
-        {
-          "species": "Greater Glider",
-          "observed_on": "2015-05-15",
-          "location": "Kanangra NSW 2787, Australia",
-          "latitude": -33.9420772759,
-          "longitude": 150.0832570227,
           "coordinates_obscured": false,
           "state": "New South Wales"
         },
@@ -131580,15 +129513,6 @@
           "longitude": 146.871995,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2005-08-05",
-          "location": "Gigoomgan QLD 4620, Australien",
-          "latitude": -25.7976321941,
-          "longitude": 152.1855613936,
-          "coordinates_obscured": false,
-          "state": "Queensland"
         },
         {
           "species": "European Rabbit",
@@ -131886,15 +129810,6 @@
           "longitude": 145.5697002764,
           "coordinates_obscured": false,
           "state": "Victoria"
-        },
-        {
-          "species": "Greater Glider",
-          "observed_on": "2015-08-12",
-          "location": "Queensland, AU",
-          "latitude": -24.2081754217,
-          "longitude": 151.5650997285,
-          "coordinates_obscured": true,
-          "state": "Queensland"
         },
         {
           "species": "Grey-headed Flying-fox",
@@ -132345,15 +130260,6 @@
           "longitude": 136.0625166667,
           "coordinates_obscured": false,
           "state": "Offshore / unspecified"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2004-12-19",
-          "location": "Buninyong VIC 3357, Australia",
-          "latitude": -37.6525477002,
-          "longitude": 143.9265250666,
-          "coordinates_obscured": false,
-          "state": "Victoria"
         },
         {
           "species": "Koala",
@@ -132815,24 +130721,6 @@
           "state": "New South Wales"
         },
         {
-          "species": "Koala",
-          "observed_on": "2008-07-09",
-          "location": "Yanchep, WA, AU",
-          "latitude": -31.5466079603,
-          "longitude": 115.6838115971,
-          "coordinates_obscured": false,
-          "state": "Western Australia"
-        },
-        {
-          "species": "Koala",
-          "observed_on": "2008-07-09",
-          "location": "Yanchep, WA, AU",
-          "latitude": -31.5465893166,
-          "longitude": 115.6837725868,
-          "coordinates_obscured": false,
-          "state": "Western Australia"
-        },
-        {
           "species": "Platypus",
           "observed_on": "2018-11-20",
           "location": "Lake Eacham QLD, Australia",
@@ -133092,15 +130980,6 @@
           "longitude": 153.0921638889,
           "coordinates_obscured": false,
           "state": "Queensland"
-        },
-        {
-          "species": "Greater Glider",
-          "observed_on": "2006-09-18",
-          "location": "Woolgoolga NSW 2456, Australia",
-          "latitude": -30.102394114,
-          "longitude": 153.1724943318,
-          "coordinates_obscured": false,
-          "state": "New South Wales"
         },
         {
           "species": "Koala",
@@ -133830,15 +131709,6 @@
           "longitude": 115.5835015867,
           "coordinates_obscured": true,
           "state": "Western Australia"
-        },
-        {
-          "species": "Australian Sea Lion",
-          "observed_on": "2014-02-21",
-          "location": "Isola dei Canguri, Australia Meridionale, Australia",
-          "latitude": -35.7752426,
-          "longitude": 137.2142417,
-          "coordinates_obscured": false,
-          "state": "South Australia"
         },
         {
           "species": "Koala",
@@ -135450,6 +133320,26 @@
     "legend": {
       "labelFont": "Arial",
       "titleFont": "Arial"
+    }
+  },
+  "usermeta": {
+    "observationWindow": {
+      "source": "Dataset/observations-794195.csv",
+      "dateField": "observed_on",
+      "years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "yearCount": 10,
+      "includesPartialLatestYear": true
     }
   }
 }

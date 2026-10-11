@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Zoomable sunburst using exactly the 4,271 observations for the 10 species embedded in DotMap.vg.json. Broad mammal group → taxonomic order → species. Species counts are aggregated directly from DotMap observations, including its coordinate and species selection. Higher taxonomy matched by genus to the Mammal Diversity Database, https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/master/_data/mdd.csv (retrieved 2026-10-10); input scientific names retained. Internal counts are zero to avoid double counting. Counts reflect recording activity, not animal abundance. Click groups or orders to focus; click centre to return to parent; Escape resets. All data embedded. Species leaves use the shared BumpChart species colours; internal rings retain broad-group colours.",
+  "description": "Zoomable sunburst using exactly the 4,034 observations for the 10 species embedded in DotMap.vg.json. Broad mammal group → taxonomic order → species. Species counts are aggregated directly from DotMap observations, including its coordinate and species selection. Higher taxonomy matched by genus to the Mammal Diversity Database, https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/master/_data/mdd.csv (retrieved 2026-10-10); input scientific names retained. Internal counts are zero to avoid double counting. Counts reflect recording activity, not animal abundance. Click groups or orders to focus; click centre to return to parent; Escape resets. All data embedded. Species leaves use the shared BumpChart species colours; internal rings retain broad-group colours. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
   "width": 960,
   "height": 680,
   "padding": 16,
@@ -9,14 +9,16 @@
     "text": "How Are Mammal Observations Distributed?",
     "subtitle": [
       "Broad groups → taxonomic orders → species",
-      "4,271 observations · 10 selected species · Click a group or order to zoom · Click centre to go back"
+      "2017–2026 · 4,034 observations · 10 selected species · Click a group or order to zoom · Click centre to go back"
     ],
     "anchor": "start",
     "fontSize": 22,
     "color": "#243447",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
-    "offset": 18
+    "offset": 16,
+    "subtitlePadding": 6,
+    "subtitleLineHeight": 16
   },
   "signals": [
     {
@@ -89,7 +91,7 @@
           "level": "Dataset",
           "count": 0,
           "path": "All selected mammals",
-          "total": 4271,
+          "total": 4034,
           "speciesCount": 10
         },
         {
@@ -100,7 +102,7 @@
           "level": "Broad group",
           "count": 0,
           "path": "All selected mammals → Marsupials",
-          "total": 2768,
+          "total": 2628,
           "speciesCount": 6
         },
         {
@@ -111,7 +113,7 @@
           "level": "Order",
           "count": 0,
           "path": "Marsupials → Dasyuromorphia",
-          "total": 396,
+          "total": 366,
           "speciesCount": 3
         },
         {
@@ -121,9 +123,9 @@
           "scientific": "Dasyurus maculatus",
           "group": "Marsupials",
           "level": "Species",
-          "count": 124,
+          "count": 120,
           "path": "Marsupials → Dasyuromorphia → Spotted-tailed Quoll",
-          "total": 124,
+          "total": 120,
           "speciesCount": 1
         },
         {
@@ -133,9 +135,9 @@
           "scientific": "Dasyurus viverrinus",
           "group": "Marsupials",
           "level": "Species",
-          "count": 119,
+          "count": 108,
           "path": "Marsupials → Dasyuromorphia → Eastern Quoll",
-          "total": 119,
+          "total": 108,
           "speciesCount": 1
         },
         {
@@ -145,9 +147,9 @@
           "scientific": "Sarcophilus harrisii",
           "group": "Marsupials",
           "level": "Species",
-          "count": 153,
+          "count": 138,
           "path": "Marsupials → Dasyuromorphia → Tasmanian Devil",
-          "total": 153,
+          "total": 138,
           "speciesCount": 1
         },
         {
@@ -158,7 +160,7 @@
           "level": "Order",
           "count": 0,
           "path": "Marsupials → Diprotodontia",
-          "total": 2372,
+          "total": 2262,
           "speciesCount": 3
         },
         {
@@ -168,9 +170,9 @@
           "scientific": "Petauroides volans",
           "group": "Marsupials",
           "level": "Species",
-          "count": 239,
+          "count": 230,
           "path": "Marsupials → Diprotodontia → Greater Glider",
-          "total": 239,
+          "total": 230,
           "speciesCount": 1
         },
         {
@@ -180,9 +182,9 @@
           "scientific": "Phascolarctos cinereus",
           "group": "Marsupials",
           "level": "Species",
-          "count": 1978,
+          "count": 1896,
           "path": "Marsupials → Diprotodontia → Koala",
-          "total": 1978,
+          "total": 1896,
           "speciesCount": 1
         },
         {
@@ -192,9 +194,9 @@
           "scientific": "Setonix brachyurus",
           "group": "Marsupials",
           "level": "Species",
-          "count": 155,
+          "count": 136,
           "path": "Marsupials → Diprotodontia → Quokka",
-          "total": 155,
+          "total": 136,
           "speciesCount": 1
         },
         {
@@ -205,7 +207,7 @@
           "level": "Broad group",
           "count": 0,
           "path": "All selected mammals → Placental mammals",
-          "total": 824,
+          "total": 764,
           "speciesCount": 3
         },
         {
@@ -216,7 +218,7 @@
           "level": "Order",
           "count": 0,
           "path": "Placental mammals → Carnivora",
-          "total": 123,
+          "total": 103,
           "speciesCount": 1
         },
         {
@@ -226,9 +228,9 @@
           "scientific": "Neophoca cinerea",
           "group": "Placental mammals",
           "level": "Species",
-          "count": 123,
+          "count": 103,
           "path": "Placental mammals → Carnivora → Australian Sea Lion",
-          "total": 123,
+          "total": 103,
           "speciesCount": 1
         },
         {
@@ -239,7 +241,7 @@
           "level": "Order",
           "count": 0,
           "path": "Placental mammals → Chiroptera",
-          "total": 525,
+          "total": 494,
           "speciesCount": 1
         },
         {
@@ -249,9 +251,9 @@
           "scientific": "Pteropus poliocephalus",
           "group": "Placental mammals",
           "level": "Species",
-          "count": 525,
+          "count": 494,
           "path": "Placental mammals → Chiroptera → Grey-headed Flying-fox",
-          "total": 525,
+          "total": 494,
           "speciesCount": 1
         },
         {
@@ -262,7 +264,7 @@
           "level": "Order",
           "count": 0,
           "path": "Placental mammals → Lagomorpha",
-          "total": 176,
+          "total": 167,
           "speciesCount": 1
         },
         {
@@ -272,9 +274,9 @@
           "scientific": "Oryctolagus cuniculus",
           "group": "Placental mammals",
           "level": "Species",
-          "count": 176,
+          "count": 167,
           "path": "Placental mammals → Lagomorpha → European Rabbit",
-          "total": 176,
+          "total": 167,
           "speciesCount": 1
         },
         {
@@ -285,7 +287,7 @@
           "level": "Broad group",
           "count": 0,
           "path": "All selected mammals → Monotremes",
-          "total": 679,
+          "total": 642,
           "speciesCount": 1
         },
         {
@@ -296,7 +298,7 @@
           "level": "Order",
           "count": 0,
           "path": "Monotremes → Monotremata",
-          "total": 679,
+          "total": 642,
           "speciesCount": 1
         },
         {
@@ -306,9 +308,9 @@
           "scientific": "Ornithorhynchus anatinus",
           "group": "Monotremes",
           "level": "Species",
-          "count": 679,
+          "count": 642,
           "path": "Monotremes → Monotremata → Platypus",
-          "total": 679,
+          "total": 642,
           "speciesCount": 1
         }
       ]
@@ -1102,5 +1104,25 @@
   ],
   "config": {
     "font": "Arial"
+  },
+  "usermeta": {
+    "observationWindow": {
+      "source": "Dataset/observations-794195.csv",
+      "dateField": "observed_on",
+      "years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "yearCount": 10,
+      "includesPartialLatestYear": true
+    }
   }
 }

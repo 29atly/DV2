@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Streamgraph of wildlife observation composition in 2017–2026, using the same top ten species and 4,139 source records as StackedArea.vg.json. Source: Dataset/observations-794195.csv. Species selected by full-source observation count; subspecies combined by the first two scientific-name components. Includes records without coordinates. Zero-count species-years retained. Annual counts use observation dates. A centered stack gives a streamgraph: band thickness represents observation count; vertical band position has no numeric meaning. Monotone interpolation smoothly connects the recorded annual values; curves between years are visual interpolation, not additional observations. Tooltip shares use the total of the displayed ten species in the given year. Hover or click bands or legend to highlight; click again, Clear highlight, or Escape clears selection. 2026 is incomplete through 6 October. Counts reflect recording activity, not animal abundance. Drag the annual-total overview below the chart to select an inclusive observation-year range; use Reset to restore 2017–2026. Legend totals cover the full period. Species colours match the ten-species palette in BumpChart.vg.json; species selection and observation counts are unchanged.",
+  "description": "Streamgraph of wildlife observation composition in 2017–2026, showing the top ten species selected within the selected observation years, with 4,139 records in the displayed ten available years. Source: Dataset/observations-794195.csv. Species selected by observation count in the selected years; subspecies combined by the first two scientific-name components. Includes records without coordinates. Zero-count species-years retained. Annual counts use observation dates. A centered stack gives a streamgraph: band thickness represents observation count; vertical band position has no numeric meaning. Monotone interpolation smoothly connects the recorded annual values; curves between years are visual interpolation, not additional observations. Tooltip shares use the total of the displayed ten species in the given year. Hover or click bands or legend to highlight; click again, Clear highlight, or Escape clears selection. Counts reflect recording activity, not animal abundance. Drag the annual-total overview below the chart to select an inclusive observation-year range; use Reset to restore 2017–2026. Legend totals cover the full period. Species colours match the ten-species palette in BumpChart.vg.json; species selection uses the selected years; annual counts and legend totals cover 2017–2026. Three in-chart annotations highlight the 2022 Koala increase, the 2024 annual-total peak, and the 2025 decline; anchors use the current centered stack and annotations hide when their year is outside the focus range. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
   "width": 760,
   "height": 400,
   "padding": 16,
@@ -18,7 +18,9 @@
     "subtitleFont": "Arial",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
-    "offset": 20
+    "offset": 16,
+    "subtitlePadding": 6,
+    "subtitleLineHeight": 16
   },
   "signals": [
     {
@@ -139,26 +141,26 @@
         },
         {
           "year": 2017,
-          "species": "Quokka",
-          "count": 5,
+          "species": "Tasmanian Devil",
+          "count": 6,
           "order": 6
         },
         {
           "year": 2017,
-          "species": "Tasmanian Devil",
-          "count": 6,
-          "order": 7
-        },
-        {
-          "year": 2017,
-          "species": "Australian Sea Lion",
+          "species": "Quokka",
           "count": 5,
-          "order": 8
+          "order": 7
         },
         {
           "year": 2017,
           "species": "Eastern Quoll",
           "count": 1,
+          "order": 8
+        },
+        {
+          "year": 2017,
+          "species": "Australian Sea Lion",
+          "count": 5,
           "order": 9
         },
         {
@@ -199,26 +201,26 @@
         },
         {
           "year": 2018,
-          "species": "Quokka",
-          "count": 8,
+          "species": "Tasmanian Devil",
+          "count": 4,
           "order": 6
         },
         {
           "year": 2018,
-          "species": "Tasmanian Devil",
-          "count": 4,
+          "species": "Quokka",
+          "count": 8,
           "order": 7
-        },
-        {
-          "year": 2018,
-          "species": "Australian Sea Lion",
-          "count": 9,
-          "order": 8
         },
         {
           "year": 2018,
           "species": "Eastern Quoll",
           "count": 8,
+          "order": 8
+        },
+        {
+          "year": 2018,
+          "species": "Australian Sea Lion",
+          "count": 9,
           "order": 9
         },
         {
@@ -259,26 +261,26 @@
         },
         {
           "year": 2019,
-          "species": "Quokka",
-          "count": 7,
+          "species": "Tasmanian Devil",
+          "count": 9,
           "order": 6
         },
         {
           "year": 2019,
-          "species": "Tasmanian Devil",
-          "count": 9,
+          "species": "Quokka",
+          "count": 7,
           "order": 7
-        },
-        {
-          "year": 2019,
-          "species": "Australian Sea Lion",
-          "count": 6,
-          "order": 8
         },
         {
           "year": 2019,
           "species": "Eastern Quoll",
           "count": 3,
+          "order": 8
+        },
+        {
+          "year": 2019,
+          "species": "Australian Sea Lion",
+          "count": 6,
           "order": 9
         },
         {
@@ -319,26 +321,26 @@
         },
         {
           "year": 2020,
-          "species": "Quokka",
-          "count": 6,
+          "species": "Tasmanian Devil",
+          "count": 17,
           "order": 6
         },
         {
           "year": 2020,
-          "species": "Tasmanian Devil",
-          "count": 17,
+          "species": "Quokka",
+          "count": 6,
           "order": 7
-        },
-        {
-          "year": 2020,
-          "species": "Australian Sea Lion",
-          "count": 2,
-          "order": 8
         },
         {
           "year": 2020,
           "species": "Eastern Quoll",
           "count": 26,
+          "order": 8
+        },
+        {
+          "year": 2020,
+          "species": "Australian Sea Lion",
+          "count": 2,
           "order": 9
         },
         {
@@ -379,26 +381,26 @@
         },
         {
           "year": 2021,
-          "species": "Quokka",
-          "count": 4,
+          "species": "Tasmanian Devil",
+          "count": 12,
           "order": 6
         },
         {
           "year": 2021,
-          "species": "Tasmanian Devil",
-          "count": 12,
+          "species": "Quokka",
+          "count": 4,
           "order": 7
-        },
-        {
-          "year": 2021,
-          "species": "Australian Sea Lion",
-          "count": 12,
-          "order": 8
         },
         {
           "year": 2021,
           "species": "Eastern Quoll",
           "count": 3,
+          "order": 8
+        },
+        {
+          "year": 2021,
+          "species": "Australian Sea Lion",
+          "count": 12,
           "order": 9
         },
         {
@@ -439,26 +441,26 @@
         },
         {
           "year": 2022,
-          "species": "Quokka",
-          "count": 22,
+          "species": "Tasmanian Devil",
+          "count": 11,
           "order": 6
         },
         {
           "year": 2022,
-          "species": "Tasmanian Devil",
-          "count": 11,
+          "species": "Quokka",
+          "count": 22,
           "order": 7
-        },
-        {
-          "year": 2022,
-          "species": "Australian Sea Lion",
-          "count": 6,
-          "order": 8
         },
         {
           "year": 2022,
           "species": "Eastern Quoll",
           "count": 3,
+          "order": 8
+        },
+        {
+          "year": 2022,
+          "species": "Australian Sea Lion",
+          "count": 6,
           "order": 9
         },
         {
@@ -499,26 +501,26 @@
         },
         {
           "year": 2023,
-          "species": "Quokka",
-          "count": 20,
+          "species": "Tasmanian Devil",
+          "count": 17,
           "order": 6
         },
         {
           "year": 2023,
-          "species": "Tasmanian Devil",
-          "count": 17,
+          "species": "Quokka",
+          "count": 20,
           "order": 7
-        },
-        {
-          "year": 2023,
-          "species": "Australian Sea Lion",
-          "count": 11,
-          "order": 8
         },
         {
           "year": 2023,
           "species": "Eastern Quoll",
           "count": 14,
+          "order": 8
+        },
+        {
+          "year": 2023,
+          "species": "Australian Sea Lion",
+          "count": 11,
           "order": 9
         },
         {
@@ -559,26 +561,26 @@
         },
         {
           "year": 2024,
-          "species": "Quokka",
-          "count": 33,
+          "species": "Tasmanian Devil",
+          "count": 25,
           "order": 6
         },
         {
           "year": 2024,
-          "species": "Tasmanian Devil",
-          "count": 25,
+          "species": "Quokka",
+          "count": 33,
           "order": 7
-        },
-        {
-          "year": 2024,
-          "species": "Australian Sea Lion",
-          "count": 17,
-          "order": 8
         },
         {
           "year": 2024,
           "species": "Eastern Quoll",
           "count": 23,
+          "order": 8
+        },
+        {
+          "year": 2024,
+          "species": "Australian Sea Lion",
+          "count": 17,
           "order": 9
         },
         {
@@ -619,26 +621,26 @@
         },
         {
           "year": 2025,
-          "species": "Quokka",
-          "count": 21,
+          "species": "Tasmanian Devil",
+          "count": 25,
           "order": 6
         },
         {
           "year": 2025,
-          "species": "Tasmanian Devil",
-          "count": 25,
+          "species": "Quokka",
+          "count": 21,
           "order": 7
-        },
-        {
-          "year": 2025,
-          "species": "Australian Sea Lion",
-          "count": 18,
-          "order": 8
         },
         {
           "year": 2025,
           "species": "Eastern Quoll",
           "count": 14,
+          "order": 8
+        },
+        {
+          "year": 2025,
+          "species": "Australian Sea Lion",
+          "count": 18,
           "order": 9
         },
         {
@@ -679,26 +681,26 @@
         },
         {
           "year": 2026,
-          "species": "Quokka",
-          "count": 10,
+          "species": "Tasmanian Devil",
+          "count": 12,
           "order": 6
         },
         {
           "year": 2026,
-          "species": "Tasmanian Devil",
-          "count": 12,
+          "species": "Quokka",
+          "count": 10,
           "order": 7
-        },
-        {
-          "year": 2026,
-          "species": "Australian Sea Lion",
-          "count": 17,
-          "order": 8
         },
         {
           "year": 2026,
           "species": "Eastern Quoll",
           "count": 13,
+          "order": 8
+        },
+        {
+          "year": 2026,
+          "species": "Australian Sea Lion",
+          "count": 17,
           "order": 9
         }
       ]
@@ -737,24 +739,24 @@
           "total": 167
         },
         {
-          "species": "Quokka",
-          "order": 6,
-          "total": 136
-        },
-        {
           "species": "Tasmanian Devil",
-          "order": 7,
+          "order": 6,
           "total": 138
         },
         {
-          "species": "Australian Sea Lion",
-          "order": 8,
-          "total": 103
+          "species": "Quokka",
+          "order": 7,
+          "total": 136
         },
         {
           "species": "Eastern Quoll",
-          "order": 9,
+          "order": 8,
           "total": 108
+        },
+        {
+          "species": "Australian Sea Lion",
+          "order": 9,
+          "total": 103
         }
       ]
     },
@@ -819,6 +821,41 @@
           ]
         }
       ]
+    },
+    {
+      "name": "insightAnnotations",
+      "source": "focusedCounts",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "(datum.year == 2022 && datum.species == 'Koala') || ((datum.year == 2024 || datum.year == 2025) && datum.order == 9)"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.year == 2022 ? 0 : datum.year == 2024 ? width / 3 + 8 : 2 * width / 3 + 16",
+          "as": "labelX"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.year == 2022 ? '2022 · Koala records surge' : datum.year == 2024 ? '2024 · Most observations' : '2025 · Recording slows'",
+          "as": "heading"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.year == 2022 ? '110 → 322 records from 2021–2022;' : datum.year == 2024 ? '927 records across the top 10;' : '686 records across the top 10;'",
+          "as": "detail"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.year == 2022 ? '59.5% of the top 10 in 2022.' : datum.year == 2024 ? 'Koalas contribute 451 (48.7%).' : '26% fewer than in 2024.'",
+          "as": "detail2"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.year == 2022 ? (datum.y0 + datum.y1) / 2 : datum.y1",
+          "as": "anchorY"
+        }
+      ]
     }
   ],
   "scales": [
@@ -842,7 +879,12 @@
           "y1"
         ]
       },
-      "range": "height",
+      "range": [
+        {
+          "signal": "height"
+        },
+        90
+      ],
       "zero": true,
       "nice": false
     },
@@ -1055,6 +1097,172 @@
       }
     },
     {
+      "name": "insightLeaders",
+      "type": "rule",
+      "interactive": false,
+      "from": {
+        "data": "insightAnnotations"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.labelX + 112"
+          },
+          "y": {
+            "value": 58
+          },
+          "x2": {
+            "scale": "x",
+            "field": "year"
+          },
+          "y2": {
+            "scale": "y",
+            "field": "anchorY"
+          },
+          "stroke": {
+            "value": "#52606d"
+          },
+          "strokeWidth": {
+            "value": 1
+          },
+          "strokeDash": {
+            "value": [
+              3,
+              3
+            ]
+          },
+          "opacity": {
+            "value": 0.6
+          }
+        }
+      }
+    },
+    {
+      "name": "insightAnchors",
+      "type": "symbol",
+      "interactive": false,
+      "from": {
+        "data": "insightAnnotations"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "year"
+          },
+          "y": {
+            "scale": "y",
+            "field": "anchorY"
+          },
+          "size": {
+            "value": 45
+          },
+          "fill": {
+            "value": "#f7fafc"
+          },
+          "stroke": {
+            "value": "#243447"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          }
+        }
+      }
+    },
+    {
+      "name": "insightHeadings",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "insightAnnotations"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "labelX"
+          },
+          "y": {
+            "value": 4
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "text": {
+            "field": "heading"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#243447"
+          }
+        }
+      }
+    },
+    {
+      "name": "insightDetails",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "insightAnnotations"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "labelX"
+          },
+          "y": {
+            "value": 25
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "text": {
+            "field": "detail"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
+      "name": "insightDetailsSecondLine",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "insightAnnotations"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "labelX"
+          },
+          "y": {
+            "value": 40
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "text": {
+            "field": "detail2"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          }
+        }
+      }
+    },
+    {
       "name": "legendTitle",
       "type": "text",
       "encode": {
@@ -1199,7 +1407,7 @@
             "signal": "height + 220"
           },
           "text": {
-            "value": "2026 is incomplete through 6 October. Counts reflect recording activity, not animal abundance."
+            "value": "Ten available years (2017–2026). Counts reflect recording activity, not animal abundance."
           },
           "fontSize": {
             "value": 11
@@ -1455,6 +1663,26 @@
       "titlePadding": 12,
       "domainColor": "#bac7d3",
       "tickColor": "#bac7d3"
+    }
+  },
+  "usermeta": {
+    "observationWindow": {
+      "source": "Dataset/observations-794195.csv",
+      "dateField": "observed_on",
+      "years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "yearCount": 10,
+      "includesPartialLatestYear": true
     }
   }
 }

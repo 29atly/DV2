@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "100% stacked seasonal bars showing geographic distribution of Orange-bellied Parrot occurrence records by state. Source: Dataset/orange_bellied_parrot_cleaned.csv (5,942 PRESENT records). All years pooled. Use month when present; recover missing months from complete eventDate (81 records recovered; no conflicting months). Exclude 3,565 records without a usable month and 12 additional month-known records without stateProvince. The remaining 2,365 records have reported years spanning 1845–2026. No coordinate filter or deduplication is applied. Each bar is normalized by its own seasonal total, using stateProvince as supplied. Australian seasons: Summer Dec–Feb, Autumn Mar–May, Winter Jun–Aug, Spring Sep–Nov. Seasonal shares describe occurrence recording, not abundance or tracked migration. Highlighting does not change counts or denominators.",
+  "description": "100% stacked seasonal bars showing geographic distribution of Orange-bellied Parrot occurrence records by state. Source: Dataset/orange_bellied_parrot_cleaned.csv (5,942 PRESENT records). All years pooled. Use month when present; recover missing months from complete eventDate (81 records recovered; no conflicting months). Exclude 3,565 records without a usable month and 12 additional month-known records without stateProvince. The remaining 2,365 records have reported years spanning 1845–2026. No coordinate filter or deduplication is applied. Each bar is normalized by its own seasonal total, using stateProvince as supplied. Australian seasons: Summer Dec–Feb, Autumn Mar–May, Winter Jun–Aug, Spring Sep–Nov. Seasonal shares describe occurrence recording, not abundance or tracked migration. Highlighting does not change counts or denominators. Interpretation notes below the axis relate the observed summer-to-winter shift to the documented Orange-bellied Parrot migration cycle; occurrence records alone do not track individual birds. Ecological context: NRE Tasmania, About Orange-bellied Parrots.",
   "width": 760,
   "height": 280,
   "padding": 16,
@@ -17,7 +17,9 @@
     "color": "#243447",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
-    "offset": 60
+    "offset": 16,
+    "subtitlePadding": 6,
+    "subtitleLineHeight": 16
   },
   "signals": [
     {
@@ -249,6 +251,41 @@
         {
           "region": "New South Wales",
           "order": 3
+        }
+      ]
+    },
+    {
+      "name": "seasonInsights",
+      "values": [
+        {
+          "column": 0,
+          "heading": "Summer: breeding season",
+          "lines": [
+            "Tasmania leads the summer",
+            "records, consistent with",
+            "breeding in the island’s",
+            "south-west."
+          ]
+        },
+        {
+          "column": 1,
+          "heading": "Autumn: migration",
+          "lines": [
+            "Records span Tasmania and",
+            "the mainland, consistent",
+            "with the parrot’s autumn",
+            "crossing of Bass Strait."
+          ]
+        },
+        {
+          "column": 2,
+          "heading": "Winter: coastal feeding",
+          "lines": [
+            "Victoria and South",
+            "Australia lead winter",
+            "records, matching coastal",
+            "saltmarsh feeding grounds."
+          ]
         }
       ]
     }
@@ -569,7 +606,7 @@
             "value": 0
           },
           "y": {
-            "signal": "height + 65"
+            "signal": "height + 195"
           },
           "baseline": {
             "value": "top"
@@ -595,7 +632,7 @@
             "value": 0
           },
           "y": {
-            "signal": "height + 82"
+            "signal": "height + 212"
           },
           "baseline": {
             "value": "top"
@@ -621,7 +658,7 @@
             "value": 0
           },
           "y": {
-            "signal": "height + 99"
+            "signal": "height + 229"
           },
           "baseline": {
             "value": "top"
@@ -647,7 +684,7 @@
             "value": 0
           },
           "y": {
-            "signal": "height + 116"
+            "signal": "height + 246"
           },
           "baseline": {
             "value": "top"
@@ -660,6 +697,110 @@
           },
           "text": {
             "value": "Source: Dataset/orange_bellied_parrot_cleaned.csv"
+          }
+        }
+      }
+    },
+    {
+      "name": "insightHeadings",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "seasonInsights"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(datum.column + 0.5) * width / 3"
+          },
+          "y": {
+            "signal": "height + 65"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "text": {
+            "field": "heading"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "align": {
+            "value": "center"
+          }
+        }
+      }
+    },
+    {
+      "name": "insightDetails",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "seasonInsights"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(datum.column + 0.5) * width / 3"
+          },
+          "y": {
+            "signal": "height + 86"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "text": {
+            "field": "lines"
+          },
+          "lineHeight": {
+            "value": 16
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#52606d"
+          },
+          "align": {
+            "value": "center"
+          }
+        }
+      }
+    },
+    {
+      "name": "ecologySource",
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 165"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#365B85"
+          },
+          "text": {
+            "value": "Migration and habitat context: NRE Tasmania · About Orange-bellied Parrots ↗"
+          },
+          "href": {
+            "value": "https://nre.tas.gov.au/conservation/threatened-species-and-communities/lists-of-threatened-species/threatened-species-vertebrates/orange-bellied-parrot/about-orange-bellied-parrots"
+          },
+          "cursor": {
+            "value": "pointer"
           }
         }
       }

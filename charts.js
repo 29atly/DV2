@@ -19,6 +19,25 @@ const linkedCharts = {
 
 // Add website-wide selection to the embedded specs without changing their data.
 function linkSpecies(spec, file) {
+  if (spec.title && typeof spec.title === 'object') {
+    spec.title.anchor = 'middle';
+    spec.title.align = 'center';
+    if (spec.title.subtitle) {
+      spec.title.subtitle = [spec.title.subtitle].flat().flatMap(line =>
+        String(line).split(/(?<=[.!?])\s+(?=[A-Z])/)
+      );
+    }
+  }
+  if (file === 'ChoroplethMap.vg.json') {
+    // Also suppress the summary if an older copy of the spec is loaded.
+    spec.marks = spec.marks.filter(mark => mark.name !== 'monthHeading');
+    // Reserve a row for the HTML controls between the map and monthly charts.
+    for (const mark of spec.marks) {
+      const y = mark.encode?.update?.y;
+      if (typeof y?.value === 'number' && y.value >= 470) y.value += 42;
+    }
+    spec.height += 42;
+  }
   const config = linkedCharts[file];
   if (!config) return spec;
   spec.signals ??= [];
@@ -77,8 +96,31 @@ function linkSpecies(spec, file) {
   return spec;
 }
 
+function positionMapControls(chart) {
+  const wrapper = chart.querySelector('.chart-wrapper');
+  const bindings = chart.querySelector('.vega-bindings');
+  const frame = wrapper?.querySelector('.mapFrame');
+  if (!wrapper || !bindings || !frame) return;
+  const controls = document.createElement('div');
+  controls.className = 'choropleth-controls';
+  controls.setAttribute('aria-label', 'Map location and zoom controls');
+  controls.append(bindings);
+  wrapper.append(controls);
+  const position = () => {
+    const map = frame.getBoundingClientRect();
+    const box = wrapper.getBoundingClientRect();
+    controls.style.top = `${map.bottom - box.top + 30}px`;
+    controls.style.left = `${map.left - box.left}px`;
+    controls.style.width = `${map.width}px`;
+  };
+  position();
+  const observer = new ResizeObserver(position);
+  observer.observe(wrapper);
+}
+
 function selectSpecies(species) {
   highlightedSpecies = species;
+  updateSpeciesLegend();
   document.querySelector('#species-highlight').textContent = species ? `Species highlight: ${species}` : 'Species highlight: All species';
   document.querySelector('#clear-species').hidden = species == null;
   // Queue updates outside signal listeners, so the originating Vega pulse finishes first.
@@ -91,6 +133,38 @@ function selectSpecies(species) {
     }
   }).catch(error => console.error('Could not synchronize species highlights', error));
 }
+
+function updateSpeciesLegend() {
+  document.querySelectorAll('.species-button').forEach(button => {
+    const selected = button.dataset.species === highlightedSpecies;
+    button.setAttribute('aria-pressed', String(selected));
+    button.classList.toggle('is-muted', highlightedSpecies != null && !selected);
+  });
+  document.querySelector('#show-all-species').setAttribute('aria-pressed', String(highlightedSpecies == null));
+}
+
+function renderSpeciesLegend(spec) {
+  const entries = spec.data.find(dataset => dataset.name === 'speciesLegendEntries').values;
+  const scale = spec.scales.find(scale => scale.name === 'speciesColor');
+  const container = document.querySelector('#species-legend-buttons');
+  container.replaceChildren();
+  for (const { species } of entries) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'species-button';
+    button.dataset.species = species;
+    const swatch = document.createElement('span');
+    swatch.className = 'species-swatch';
+    swatch.setAttribute('aria-hidden', 'true');
+    swatch.style.backgroundColor = scale.range[scale.domain.indexOf(species)];
+    button.append(swatch, document.createTextNode(species));
+    button.addEventListener('click', () => selectSpecies(highlightedSpecies === species ? null : species));
+    container.append(button);
+  }
+  updateSpeciesLegend();
+}
+
+document.querySelector('#show-all-species').addEventListener('click', () => selectSpecies(null));
 
 document.querySelector('#clear-species').addEventListener('click', () => selectSpecies(null));
 
@@ -135,7 +209,11 @@ async function loadCharts() {
   for (const chart of charts) {
     const file = chart.dataset.spec;
     try {
-      const result = await vegaEmbed(chart, file, {
+      const response = await fetch(file, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Could not fetch ${file}: ${response.status}`);
+      const spec = await response.json();
+      if (file === 'DotMap.vg.json') renderSpeciesLegend(spec);
+      const result = await vegaEmbed(chart, spec, {
         mode: 'vega',
         renderer: 'svg',
         actions: { export: { svg: true, png: true }, source: true, editor: true },
@@ -144,6 +222,7 @@ async function loadCharts() {
         defaultStyle: true,
         patch: spec => linkSpecies(spec, file)
       });
+      if (file === 'ChoroplethMap.vg.json') positionMapControls(chart);
       if (linkedCharts[file]) {
         const speciesNames = new Set();
         for (const dataset of result.spec.data || []) {

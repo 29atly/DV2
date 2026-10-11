@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Recording activity from all 6,461 valid geolocated mammal observations in the supplied dataset. All data are embedded. Geographic bins stay fixed while zooming. Distinct species are counted using taxon ID with name fallback. Counts reflect reporting effort and wildlife presence, not animal abundance; cell area varies with latitude and obscured coordinates can affect assignments. State boundaries: https://github.com/rowanhogan/australian-states. Scroll to zoom, drag to pan, and click Reset view or double-click to reset. Uses Vega for direct map gestures and a visible reset button. Occupied cells are drawn as circles at their geographic centres; circle diameter scales with the cell width and zoom. The observation-count legend uses matching circles. Colour indicates observation counts. A map-centre name annotation sits on the blue ocean beside Australia with a leader line to the selected map centre; it hides when the selected location is offscreen. No circle highlight or default regional callouts. Overview callouts identify Brisbane–Gold Coast and Melbourne recording clusters using fixed regional bounding-box totals. They hide when a map centre is selected or zoom exceeds 1200 to keep the detailed view clear.",
+  "description": "Recording activity from all 6,016 valid geolocated mammal observations in the supplied dataset. Observation dates cover 2017–2026. All data are embedded. Geographic bins stay fixed while zooming. Distinct species are counted using taxon ID with name fallback. Counts reflect reporting effort and wildlife presence, not animal abundance; cell area varies with latitude and obscured coordinates can affect assignments. State boundaries: https://github.com/rowanhogan/australian-states. Scroll to zoom, drag to pan, and click Reset view or double-click to reset. Uses Vega for direct map gestures and a visible reset button. Occupied cells are drawn as circles at their geographic centres; circle diameter scales with the cell width and zoom. The observation-count legend uses matching circles. Colour indicates observation counts. A map-centre name annotation sits on the blue ocean beside Australia with a leader line to the selected map centre; it hides when the selected location is offscreen. No circle highlight or default regional callouts. Overview callouts identify Brisbane–Gold Coast and Melbourne recording clusters using fixed regional bounding-box totals. They hide when a map centre is selected or zoom exceeds 1200 to keep the detailed view clear. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
   "background": "#f7fafc",
   "padding": 16,
   "height": 650,
   "title": {
     "text": "Where is recording activity concentrated?",
     "subtitle": [
-      "All 6,461 wildlife records · Scroll to zoom · Drag to pan",
+      "All 6,016 wildlife records · 2017–2026 · Scroll to zoom · Drag to pan",
       "Click Reset view or double-click the map to return to Australia · Hover for counts"
     ],
     "anchor": "start",
@@ -15,7 +15,9 @@
     "fontSize": 22,
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
-    "offset": 16
+    "offset": 16,
+    "subtitlePadding": 6,
+    "subtitleLineHeight": 16
   },
   "style": "view",
   "data": [
@@ -95760,306 +95762,6 @@
       "name": "source_1",
       "values": [
         {
-          "longitude": 151.2168167276,
-          "latitude": -33.8647722973,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 122.2872654112,
-          "latitude": -18.0499443328,
-          "taxon": "74813"
-        },
-        {
-          "longitude": 115.8249078533,
-          "latitude": -32.0933110169,
-          "taxon": "43151"
-        },
-        {
-          "longitude": 151.1939334869,
-          "latitude": -33.8863062188,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 158.8556149,
-          "latitude": -54.6208115,
-          "taxon": "41729"
-        },
-        {
-          "longitude": 142.0334137242,
-          "latitude": -12.0924170712,
-          "taxon": "41341"
-        },
-        {
-          "longitude": 145.7138889,
-          "latitude": -30.5027778,
-          "taxon": "1370821"
-        },
-        {
-          "longitude": 147.31482,
-          "latitude": -24.80666,
-          "taxon": "40546"
-        },
-        {
-          "longitude": 115.4774787069,
-          "latitude": -32.0033322897,
-          "taxon": "42955"
-        },
-        {
-          "longitude": 113.708443454,
-          "latitude": -25.6193146221,
-          "taxon": "41481"
-        },
-        {
-          "longitude": 146.64,
-          "latitude": -41.11,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 115.3318758308,
-          "latitude": -33.7059739129,
-          "taxon": "74968"
-        },
-        {
-          "longitude": 148.240923,
-          "latitude": -41.415221,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 145.613952,
-          "latitude": -17.361985,
-          "taxon": "42909"
-        },
-        {
-          "longitude": 149.124599,
-          "latitude": -35.286291,
-          "taxon": "43151"
-        },
-        {
-          "longitude": 145.19,
-          "latitude": -38.515,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 138.6311271668,
-          "latitude": -34.8401793255,
-          "taxon": "42149"
-        },
-        {
-          "longitude": 138.630003,
-          "latitude": -34.967365,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.529966,
-          "latitude": -37.683583,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 116.8461483392,
-          "latitude": -32.7709770912,
-          "taxon": "40262"
-        },
-        {
-          "longitude": 116.8999206242,
-          "latitude": -32.6213299919,
-          "taxon": "1670729"
-        },
-        {
-          "longitude": 116.8108709026,
-          "latitude": -32.6364533647,
-          "taxon": "40169"
-        },
-        {
-          "longitude": 116.8453672722,
-          "latitude": -32.6852684645,
-          "taxon": "40262"
-        },
-        {
-          "longitude": 143.51667,
-          "latitude": -38.85,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 116.867679012,
-          "latitude": -32.7709812142,
-          "taxon": "40262"
-        },
-        {
-          "longitude": 158.920252,
-          "latitude": -54.564792,
-          "taxon": "41729"
-        },
-        {
-          "longitude": 145.350041,
-          "latitude": -17.040812,
-          "taxon": "42917"
-        },
-        {
-          "longitude": 145.775348,
-          "latitude": -16.919802,
-          "taxon": "40911"
-        },
-        {
-          "longitude": 145.771256,
-          "latitude": -16.91326,
-          "taxon": "40911"
-        },
-        {
-          "longitude": 115.8745757646,
-          "latitude": -31.8475445001,
-          "taxon": "41326"
-        },
-        {
-          "longitude": 115.4551124612,
-          "latitude": -31.9252308041,
-          "taxon": "42955"
-        },
-        {
-          "longitude": 145.7563347945,
-          "latitude": -17.2693875598,
-          "taxon": "42909"
-        },
-        {
-          "longitude": 137.318161,
-          "latitude": -35.993163,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 148.907581,
-          "latitude": -35.46427,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 152.401469,
-          "latitude": -31.938124,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 150.638469,
-          "latitude": -33.443976,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 152.381305,
-          "latitude": -31.871535,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 145.77086,
-          "latitude": -16.920334,
-          "taxon": "40911"
-        },
-        {
-          "longitude": 115.5354107876,
-          "latitude": -31.8286600125,
-          "taxon": "42955"
-        },
-        {
-          "longitude": 145.32972,
-          "latitude": -16.67356,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 143.513026,
-          "latitude": -38.835496,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 151.1574236168,
-          "latitude": -33.9399228,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 138.170033,
-          "latitude": -33.949947,
-          "taxon": "42931"
-        },
-        {
-          "longitude": 145.3617123887,
-          "latitude": -37.866979593,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 141.31988,
-          "latitude": -33.39017,
-          "taxon": "40262"
-        },
-        {
-          "longitude": 141.31988,
-          "latitude": -33.39017,
-          "taxon": "43325"
-        },
-        {
-          "longitude": 143.92433,
-          "latitude": -38.53796,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 151.2364089489,
-          "latitude": -33.9000567396,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 115.5773206783,
-          "latitude": -32.1119094934,
-          "taxon": "41521"
-        },
-        {
-          "longitude": 115.4602025569,
-          "latitude": -32.0120449445,
-          "taxon": "41521"
-        },
-        {
-          "longitude": 150.0249515625,
-          "latitude": -33.8194396216,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 150.0260353088,
-          "latitude": -33.7860061714,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 151.2359116667,
-          "latitude": -33.89942,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 152.4146853252,
-          "latitude": -31.9315485777,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 151.2438418765,
-          "latitude": -33.8098939858,
-          "taxon": "43151"
-        },
-        {
-          "longitude": 150.9490025906,
-          "latitude": -33.8959484785,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 144.90682766,
-          "latitude": -41.20099958,
-          "taxon": "40166"
-        },
-        {
-          "longitude": 143.5244707451,
-          "latitude": -38.8268364086,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 148.5817624,
-          "latitude": -32.2785846,
-          "taxon": "62628"
-        },
-        {
-          "longitude": 145.267,
-          "latitude": -38.47,
-          "taxon": "42983"
-        },
-        {
           "longitude": 158.9377498627,
           "latitude": -54.4990068574,
           "taxon": "41729"
@@ -96080,24 +95782,9 @@
           "taxon": "40905"
         },
         {
-          "longitude": 143.2718727748,
-          "latitude": -38.7726488861,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 158.941755,
-          "latitude": -54.4988116667,
-          "taxon": "41753"
-        },
-        {
           "longitude": 158.8992869854,
           "latitude": -54.630400204,
           "taxon": "41729"
-        },
-        {
-          "longitude": 153.4626077,
-          "latitude": -27.5323174,
-          "taxon": "575103"
         },
         {
           "longitude": 146.7194558,
@@ -96105,24 +95792,9 @@
           "taxon": "43236"
         },
         {
-          "longitude": 115.4808088966,
-          "latitude": -32.0400982482,
-          "taxon": "42955"
-        },
-        {
-          "longitude": 152.107688,
-          "latitude": -27.258389,
-          "taxon": "42937"
-        },
-        {
           "longitude": 149.896144461,
           "latitude": -36.8422215494,
           "taxon": "40905"
-        },
-        {
-          "longitude": 150.233778767,
-          "latitude": -36.2520038501,
-          "taxon": "41752"
         },
         {
           "longitude": 145.9335166667,
@@ -96160,11 +95832,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 150.240495,
-          "latitude": -35.706475,
-          "taxon": "41566"
-        },
-        {
           "longitude": 150.5425566676,
           "latitude": -35.2497862351,
           "taxon": "346948"
@@ -96177,26 +95844,6 @@
         {
           "longitude": 145.4390931129,
           "latitude": -16.1414751331,
-          "taxon": "40911"
-        },
-        {
-          "longitude": 145.3511810303,
-          "latitude": -38.5529983943,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.976178,
-          "latitude": -41.413702,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 145.65118,
-          "latitude": -17.33999,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 145.774936,
-          "latitude": -16.920195,
           "taxon": "40911"
         },
         {
@@ -96260,11 +95907,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.2038278,
-          "latitude": -38.4898703,
-          "taxon": "42983"
-        },
-        {
           "longitude": 153.0046557723,
           "latitude": -25.9086321341,
           "taxon": "575103"
@@ -96280,26 +95922,6 @@
           "taxon": "40232"
         },
         {
-          "longitude": 145.976178,
-          "latitude": -41.413702,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 158.9336033333,
-          "latitude": -54.503085,
-          "taxon": "41729"
-        },
-        {
-          "longitude": 145.9325,
-          "latitude": -41.59,
-          "taxon": "40167"
-        },
-        {
-          "longitude": 158.9317944444,
-          "latitude": -54.5032833333,
-          "taxon": "41729"
-        },
-        {
           "longitude": 116.9296176618,
           "latitude": -32.8328614297,
           "taxon": "40180"
@@ -96310,53 +95932,8 @@
           "taxon": "40262"
         },
         {
-          "longitude": 137.344207,
-          "latitude": -35.989952,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 142.3635032773,
-          "latitude": -38.3188776851,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 150.510016,
-          "latitude": -23.3790772,
-          "taxon": "41326"
-        },
-        {
-          "longitude": 137.351261,
-          "latitude": -35.992859,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 145.3008842468,
-          "latitude": -37.9417999904,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 147.1568870544,
-          "latitude": -38.1484146396,
-          "taxon": "42165"
-        },
-        {
-          "longitude": 150.184057,
-          "latitude": -35.702267,
-          "taxon": "43151"
-        },
-        {
-          "longitude": 115.471877422,
-          "latitude": -32.004146739,
-          "taxon": "42955"
-        },
-        {
           "longitude": 136.033676,
           "latitude": -34.9126382,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 138.256073,
-          "latitude": -34.081206,
           "taxon": "41759"
         },
         {
@@ -96385,11 +95962,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 136.8169994,
-          "latitude": -35.698524,
-          "taxon": "41759"
-        },
-        {
           "longitude": 144.5577319278,
           "latitude": -37.9777183491,
           "taxon": "42983"
@@ -96398,11 +95970,6 @@
           "longitude": 150.5258648,
           "latitude": -34.7341513,
           "taxon": "40166"
-        },
-        {
-          "longitude": 134.2662593,
-          "latitude": -33.9617365,
-          "taxon": "41759"
         },
         {
           "longitude": 150.6001003712,
@@ -96430,19 +95997,9 @@
           "taxon": "42921"
         },
         {
-          "longitude": 115.5900103087,
-          "latitude": -32.1479113801,
-          "taxon": "42955"
-        },
-        {
           "longitude": 147.2144466667,
           "latitude": -41.26957,
           "taxon": "40166"
-        },
-        {
-          "longitude": 134.2662593,
-          "latitude": -33.9617365,
-          "taxon": "41759"
         },
         {
           "longitude": 133.8848876953,
@@ -96478,26 +96035,6 @@
           "longitude": 145.4649256662,
           "latitude": -16.5252778883,
           "taxon": "40911"
-        },
-        {
-          "longitude": 152.8,
-          "latitude": -27.266667,
-          "taxon": "40179"
-        },
-        {
-          "longitude": 134.272041934,
-          "latitude": -33.9567278805,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 116.956829866,
-          "latitude": -32.6267213271,
-          "taxon": "43325"
-        },
-        {
-          "longitude": 115.4533264479,
-          "latitude": -32.0102222777,
-          "taxon": "42955"
         },
         {
           "longitude": 153.0107630636,
@@ -96620,19 +96157,9 @@
           "taxon": "42996"
         },
         {
-          "longitude": 133.7955913341,
-          "latitude": -23.6854403738,
-          "taxon": "42921"
-        },
-        {
           "longitude": 150.426913783,
           "latitude": -34.4214202642,
           "taxon": "43236"
-        },
-        {
-          "longitude": 115.5356100662,
-          "latitude": -31.9437401763,
-          "taxon": "42955"
         },
         {
           "longitude": 145.7146,
@@ -96698,26 +96225,6 @@
           "longitude": 151.162743249,
           "latitude": -33.7509955043,
           "taxon": "40905"
-        },
-        {
-          "longitude": 153.0161408,
-          "latitude": -25.9038716,
-          "taxon": "575103"
-        },
-        {
-          "longitude": 145.9760421749,
-          "latitude": -41.4136942834,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 145.5861365142,
-          "latitude": -17.3546241581,
-          "taxon": "42909"
-        },
-        {
-          "longitude": 148.165233,
-          "latitude": -23.853509,
-          "taxon": "1473775"
         },
         {
           "longitude": 136.6334562263,
@@ -96805,21 +96312,6 @@
           "taxon": "575103"
         },
         {
-          "longitude": 146.868928728,
-          "latitude": -19.1266005422,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 150.884248,
-          "latitude": -33.76583,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 142.3604106903,
-          "latitude": -38.3178212754,
-          "taxon": "42983"
-        },
-        {
           "longitude": 152.1168433333,
           "latitude": -31.04889,
           "taxon": "42937"
@@ -96878,26 +96370,6 @@
           "longitude": 116.4567748706,
           "latitude": -34.0889352895,
           "taxon": "40262"
-        },
-        {
-          "longitude": 145.187521829,
-          "latitude": -38.4865103621,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 115.5529961393,
-          "latitude": -32.1468909388,
-          "taxon": "42955"
-        },
-        {
-          "longitude": 136.06302601,
-          "latitude": -34.9575327366,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 113.6070494567,
-          "latitude": -25.6495938387,
-          "taxon": "46311"
         },
         {
           "longitude": 138.6023460871,
@@ -97005,11 +96477,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 147.7199096836,
-          "latitude": -42.819727595,
-          "taxon": "40232"
-        },
-        {
           "longitude": 145.1178333333,
           "latitude": -38.51809,
           "taxon": "43151"
@@ -97070,61 +96537,6 @@
           "taxon": "43151"
         },
         {
-          "longitude": 145.2507047,
-          "latitude": -37.6429398,
-          "taxon": "40179"
-        },
-        {
-          "longitude": 148.004656,
-          "latitude": -41.199319,
-          "taxon": "40167"
-        },
-        {
-          "longitude": 119.2125501735,
-          "latitude": -21.3098529732,
-          "taxon": "45207"
-        },
-        {
-          "longitude": 144.4397385,
-          "latitude": -37.8873158,
-          "taxon": "40167"
-        },
-        {
-          "longitude": 144.4397385,
-          "latitude": -37.8873158,
-          "taxon": "42937"
-        },
-        {
-          "longitude": 142.2369225,
-          "latitude": -38.3841733,
-          "taxon": "41342"
-        },
-        {
-          "longitude": 142.1358321,
-          "latitude": -34.2063006,
-          "taxon": "42952"
-        },
-        {
-          "longitude": 115.8596212847,
-          "latitude": -31.9067535752,
-          "taxon": "40169"
-        },
-        {
-          "longitude": 145.213375047,
-          "latitude": -37.607336471,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 113.8459799179,
-          "latitude": -22.1132122504,
-          "taxon": "42921"
-        },
-        {
-          "longitude": 118.3831770584,
-          "latitude": -34.8357893599,
-          "taxon": "1407675"
-        },
-        {
           "longitude": 115.8773788884,
           "latitude": -31.9313452529,
           "taxon": "45292"
@@ -97165,11 +96577,6 @@
           "taxon": "1453436"
         },
         {
-          "longitude": 146.929505471,
-          "latitude": -41.9330086351,
-          "taxon": "40232"
-        },
-        {
           "longitude": 151.1054077148,
           "latitude": -33.8375816345,
           "taxon": "40905"
@@ -97195,16 +96602,6 @@
           "taxon": "42921"
         },
         {
-          "longitude": 139.5115898006,
-          "latitude": -20.7307652273,
-          "taxon": "42927"
-        },
-        {
-          "longitude": 145.5792083133,
-          "latitude": -17.2700262162,
-          "taxon": "42771"
-        },
-        {
           "longitude": 113.6076049349,
           "latitude": -28.7889533097,
           "taxon": "41759"
@@ -97228,11 +96625,6 @@
           "longitude": 138.7498463889,
           "latitude": -35.0994080556,
           "taxon": "40187"
-        },
-        {
-          "longitude": 150.99909,
-          "latitude": -33.8052383333,
-          "taxon": "40905"
         },
         {
           "longitude": 148.2084432505,
@@ -97303,11 +96695,6 @@
           "longitude": 151.2370151281,
           "latitude": -33.9160412147,
           "taxon": "40905"
-        },
-        {
-          "longitude": 149.8317067523,
-          "latitude": -35.8837922771,
-          "taxon": "42983"
         },
         {
           "longitude": 152.8457653672,
@@ -97425,11 +96812,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 149.29111,
-          "latitude": -35.24611,
-          "taxon": "43151"
-        },
-        {
           "longitude": 145.0074701311,
           "latitude": -37.7901595538,
           "taxon": "40905"
@@ -97518,11 +96900,6 @@
           "longitude": 145.2069125761,
           "latitude": -16.4618672266,
           "taxon": "42755"
-        },
-        {
-          "longitude": 153.401603,
-          "latitude": -28.25761,
-          "taxon": "42983"
         },
         {
           "longitude": 145.392845059,
@@ -97655,11 +97032,6 @@
           "taxon": "40232"
         },
         {
-          "longitude": 151.209296,
-          "latitude": -33.86882,
-          "taxon": "40905"
-        },
-        {
           "longitude": 146.86804167,
           "latitude": -19.1287695,
           "taxon": "42983"
@@ -97715,11 +97087,6 @@
           "taxon": "40262"
         },
         {
-          "longitude": 141.1845310021,
-          "latitude": -33.2749744775,
-          "taxon": "1473775"
-        },
-        {
           "longitude": 152.2930483716,
           "latitude": -32.4206674804,
           "taxon": "1583005"
@@ -97733,11 +97100,6 @@
           "longitude": 145.554880333,
           "latitude": -17.1602028563,
           "taxon": "1582994"
-        },
-        {
-          "longitude": 143.5234140283,
-          "latitude": -38.8051228714,
-          "taxon": "42983"
         },
         {
           "longitude": 153.3315509754,
@@ -97865,11 +97227,6 @@
           "taxon": "42803"
         },
         {
-          "longitude": 137.3175951831,
-          "latitude": -35.9941961983,
-          "taxon": "41759"
-        },
-        {
           "longitude": 152.9952495235,
           "latitude": -27.4131687983,
           "taxon": "42783"
@@ -97898,11 +97255,6 @@
           "longitude": 144.9803927669,
           "latitude": -40.9579299789,
           "taxon": "40166"
-        },
-        {
-          "longitude": 132.7339085671,
-          "latitude": -23.6244838179,
-          "taxon": "42921"
         },
         {
           "longitude": 147.3879688684,
@@ -98105,16 +97457,6 @@
           "taxon": "74774"
         },
         {
-          "longitude": 145.9359205653,
-          "latitude": -41.3955034273,
-          "taxon": "40166"
-        },
-        {
-          "longitude": 145.9607285795,
-          "latitude": -41.5743384446,
-          "taxon": "40232"
-        },
-        {
           "longitude": 153.0728445,
           "latitude": -27.54610833,
           "taxon": "42983"
@@ -98135,19 +97477,9 @@
           "taxon": "40905"
         },
         {
-          "longitude": 128.7508975808,
-          "latitude": -15.7567272702,
-          "taxon": "40779"
-        },
-        {
           "longitude": 140.1290961017,
           "latitude": -28.978156166,
           "taxon": "45114"
-        },
-        {
-          "longitude": 116.9530180428,
-          "latitude": -32.6134345951,
-          "taxon": "40262"
         },
         {
           "longitude": 146.8232883333,
@@ -98285,16 +97617,6 @@
           "taxon": "42783"
         },
         {
-          "longitude": 152.9653835921,
-          "latitude": -27.4013131814,
-          "taxon": "42783"
-        },
-        {
-          "longitude": 152.8754535628,
-          "latitude": -27.492734678,
-          "taxon": "40179"
-        },
-        {
           "longitude": 152.8752044299,
           "latitude": -27.1550907258,
           "taxon": "42783"
@@ -98308,21 +97630,6 @@
           "longitude": 115.5650063341,
           "latitude": -32.1276803545,
           "taxon": "41553"
-        },
-        {
-          "longitude": 115.5323487772,
-          "latitude": -32.122275284,
-          "taxon": "42955"
-        },
-        {
-          "longitude": 140.9802214913,
-          "latitude": -37.978571166,
-          "taxon": "43009"
-        },
-        {
-          "longitude": 113.8809124922,
-          "latitude": -21.9287902266,
-          "taxon": "42921"
         },
         {
           "longitude": 153.25161627,
@@ -98350,19 +97657,9 @@
           "taxon": "42983"
         },
         {
-          "longitude": 149.1280462777,
-          "latitude": -35.2567151043,
-          "taxon": "40905"
-        },
-        {
           "longitude": 113.9045143079,
           "latitude": -22.1726541702,
           "taxon": "42921"
-        },
-        {
-          "longitude": 144.2837490766,
-          "latitude": -38.3671956359,
-          "taxon": "42983"
         },
         {
           "longitude": 144.9630576745,
@@ -98373,16 +97670,6 @@
           "longitude": 138.5532516848,
           "latitude": -35.3096400417,
           "taxon": "42983"
-        },
-        {
-          "longitude": 149.4315493754,
-          "latitude": -20.9119358151,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.8614460728,
-          "latitude": -37.8217407162,
-          "taxon": "42742"
         },
         {
           "longitude": 146.603211388,
@@ -98440,11 +97727,6 @@
           "taxon": "45114"
         },
         {
-          "longitude": 140.4521822,
-          "latitude": -24.1218654,
-          "taxon": "43325"
-        },
-        {
           "longitude": 149.1624517384,
           "latitude": -35.3174562479,
           "taxon": "43151"
@@ -98468,21 +97750,6 @@
           "longitude": 139.7604632797,
           "latitude": -36.3818818624,
           "taxon": "75052"
-        },
-        {
-          "longitude": 145.1125499107,
-          "latitude": -37.7552513328,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 145.5881167916,
-          "latitude": -17.1487950374,
-          "taxon": "42995"
-        },
-        {
-          "longitude": 148.5050723348,
-          "latitude": -21.1679346151,
-          "taxon": "43236"
         },
         {
           "longitude": 153.54458667,
@@ -98535,11 +97802,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.268741,
-          "latitude": -38.130303,
-          "taxon": "355856"
-        },
-        {
           "longitude": 146.16407783,
           "latitude": -38.67156167,
           "taxon": "42983"
@@ -98553,11 +97815,6 @@
           "longitude": 151.8896273645,
           "latitude": -24.1952453805,
           "taxon": "45385"
-        },
-        {
-          "longitude": 149.757523,
-          "latitude": -37.555088,
-          "taxon": "40217"
         },
         {
           "longitude": 152.8818943157,
@@ -98590,33 +97847,13 @@
           "taxon": "75053"
         },
         {
-          "longitude": 114.8904080748,
-          "latitude": -30.2474666037,
-          "taxon": "41759"
-        },
-        {
           "longitude": 153.0331184942,
           "latitude": -27.5397708511,
           "taxon": "42983"
         },
         {
-          "longitude": 147.215812598,
-          "latitude": -42.8652154566,
-          "taxon": "40267"
-        },
-        {
-          "longitude": 147.3466433795,
-          "latitude": -42.8619439424,
-          "taxon": "40267"
-        },
-        {
           "longitude": 152.8030209289,
           "latitude": -27.541011778,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.9410008043,
-          "latitude": -38.4904711521,
           "taxon": "42983"
         },
         {
@@ -98815,11 +98052,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 151.2092955,
-          "latitude": -33.8688197,
-          "taxon": "40905"
-        },
-        {
           "longitude": 151.1125308976,
           "latitude": -34.042940704,
           "taxon": "40905"
@@ -98835,11 +98067,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 146.9589869729,
-          "latitude": -42.0485797436,
-          "taxon": "43236"
-        },
-        {
           "longitude": 132.4448787744,
           "latitude": -31.9733082342,
           "taxon": "41724"
@@ -98848,11 +98075,6 @@
           "longitude": 138.8342315331,
           "latitude": -34.6824571609,
           "taxon": "42983"
-        },
-        {
-          "longitude": 132.3937658,
-          "latitude": -13.0922931,
-          "taxon": "1453441"
         },
         {
           "longitude": 153.2797952625,
@@ -98895,11 +98117,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 148.5058262,
-          "latitude": -21.1645705,
-          "taxon": "43236"
-        },
-        {
           "longitude": 138.3699066984,
           "latitude": -35.4660709462,
           "taxon": "42983"
@@ -98908,11 +98125,6 @@
           "longitude": 144.2805022001,
           "latitude": -36.7564097439,
           "taxon": "40905"
-        },
-        {
-          "longitude": 146.125146,
-          "latitude": -18.8527213,
-          "taxon": "43239"
         },
         {
           "longitude": 152.4507517747,
@@ -98950,18 +98162,8 @@
           "taxon": "43236"
         },
         {
-          "longitude": 139.460079,
-          "latitude": -34.521561,
-          "taxon": "40262"
-        },
-        {
           "longitude": 115.4836021333,
           "latitude": -32.0319882666,
-          "taxon": "42955"
-        },
-        {
-          "longitude": 115.458410339,
-          "latitude": -32.0082763262,
           "taxon": "42955"
         },
         {
@@ -99005,11 +98207,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 151.2174159,
-          "latitude": -33.8668542,
-          "taxon": "40905"
-        },
-        {
           "longitude": 138.5802391925,
           "latitude": -35.0365089827,
           "taxon": "42983"
@@ -99025,11 +98222,6 @@
           "taxon": "43151"
         },
         {
-          "longitude": 151.2165646313,
-          "latitude": -33.8647183776,
-          "taxon": "40905"
-        },
-        {
           "longitude": 152.9407452831,
           "latitude": -27.5761236553,
           "taxon": "43236"
@@ -99043,16 +98235,6 @@
           "longitude": 145.9035311233,
           "latitude": -37.8855471684,
           "taxon": "42742"
-        },
-        {
-          "longitude": 148.3288958,
-          "latitude": -36.4316844,
-          "taxon": "42803"
-        },
-        {
-          "longitude": 146.2303820783,
-          "latitude": -38.892228231,
-          "taxon": "45219"
         },
         {
           "longitude": 113.1676761379,
@@ -99075,19 +98257,9 @@
           "taxon": "40167"
         },
         {
-          "longitude": 151.0190963745,
-          "latitude": -33.9749687742,
-          "taxon": "40905"
-        },
-        {
           "longitude": 146.697955188,
           "latitude": -22.364680502,
           "taxon": "43003"
-        },
-        {
-          "longitude": 145.4472365199,
-          "latitude": -37.9130149289,
-          "taxon": "1582993"
         },
         {
           "longitude": 138.6107009277,
@@ -99113,11 +98285,6 @@
           "longitude": 116.9341188167,
           "latitude": -32.7044362865,
           "taxon": "40262"
-        },
-        {
-          "longitude": 145.2944054234,
-          "latitude": -16.5852252519,
-          "taxon": "42755"
         },
         {
           "longitude": 148.5250203178,
@@ -99190,19 +98357,9 @@
           "taxon": "42983"
         },
         {
-          "longitude": 146.1400668559,
-          "latitude": -37.6212000714,
-          "taxon": "75053"
-        },
-        {
           "longitude": 147.083333,
           "latitude": -41.683333,
           "taxon": "40232"
-        },
-        {
-          "longitude": 146.6168099677,
-          "latitude": -38.7119503952,
-          "taxon": "42165"
         },
         {
           "longitude": 153.0798359385,
@@ -99250,21 +98407,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.8793862724,
-          "latitude": -37.8123366317,
-          "taxon": "42742"
-        },
-        {
-          "longitude": 145.9502581093,
-          "latitude": -37.8155182854,
-          "taxon": "42742"
-        },
-        {
-          "longitude": 151.8611048006,
-          "latitude": -28.7525385313,
-          "taxon": "40905"
-        },
-        {
           "longitude": 144.210208949,
           "latitude": -37.759280989,
           "taxon": "40179"
@@ -99300,16 +98442,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 145.3189004249,
-          "latitude": -16.3871457304,
-          "taxon": "40911"
-        },
-        {
-          "longitude": 115.5453674423,
-          "latitude": -32.1750566021,
-          "taxon": "42955"
-        },
-        {
           "longitude": 153.0333866667,
           "latitude": -27.5493766667,
           "taxon": "40905"
@@ -99318,11 +98450,6 @@
           "longitude": 151.1185345556,
           "latitude": -33.8719647778,
           "taxon": "40905"
-        },
-        {
-          "longitude": 143.5920867903,
-          "latitude": -38.7476498427,
-          "taxon": "42983"
         },
         {
           "longitude": 150.2235977724,
@@ -99410,11 +98537,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.5829753785,
-          "latitude": -17.2702746462,
-          "taxon": "43236"
-        },
-        {
           "longitude": 147.7544636,
           "latitude": -37.9087796,
           "taxon": "42983"
@@ -99450,24 +98572,9 @@
           "taxon": "42983"
         },
         {
-          "longitude": 121.9467459557,
-          "latitude": -33.9779545713,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 153.0635654551,
-          "latitude": -27.2105696992,
-          "taxon": "42983"
-        },
-        {
           "longitude": 145.592772051,
           "latitude": -17.5795429281,
           "taxon": "1582994"
-        },
-        {
-          "longitude": 151.2164527828,
-          "latitude": -33.8647738791,
-          "taxon": "40905"
         },
         {
           "longitude": 152.6660742645,
@@ -99500,11 +98607,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 151.8787819547,
-          "latitude": -26.9335581362,
-          "taxon": "40905"
-        },
-        {
           "longitude": 153.3134084639,
           "latitude": -27.9826334472,
           "taxon": "75052"
@@ -99533,11 +98635,6 @@
           "longitude": 151.3160941304,
           "latitude": -33.7412150906,
           "taxon": "346948"
-        },
-        {
-          "longitude": 145.9629284,
-          "latitude": -41.4108606,
-          "taxon": "40232"
         },
         {
           "longitude": 113.7723675139,
@@ -99590,11 +98687,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 150.338752,
-          "latitude": -35.279868,
-          "taxon": "40166"
-        },
-        {
           "longitude": 144.7012033333,
           "latitude": -41.242455,
           "taxon": "40232"
@@ -99640,11 +98732,6 @@
           "taxon": "74968"
         },
         {
-          "longitude": 153.0135233396,
-          "latitude": -25.9022094703,
-          "taxon": "575103"
-        },
-        {
           "longitude": 148.5063546896,
           "latitude": -21.1678545392,
           "taxon": "43236"
@@ -99653,11 +98740,6 @@
           "longitude": 146.3031044696,
           "latitude": -41.228028154,
           "taxon": "43236"
-        },
-        {
-          "longitude": 141.151566024,
-          "latitude": -33.2043593547,
-          "taxon": "1473775"
         },
         {
           "longitude": 153.3102173436,
@@ -99677,11 +98759,6 @@
         {
           "longitude": 151.2367266666,
           "latitude": -33.9004375303,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 151.2172999529,
-          "latitude": -33.8621999366,
           "taxon": "40905"
         },
         {
@@ -99875,11 +98952,6 @@
           "taxon": "40167"
         },
         {
-          "longitude": 158.917021,
-          "latitude": -54.565132,
-          "taxon": "41729"
-        },
-        {
           "longitude": 138.6995999591,
           "latitude": -34.991772065,
           "taxon": "40187"
@@ -99915,16 +98987,6 @@
           "taxon": "40167"
         },
         {
-          "longitude": 145.539833912,
-          "latitude": -17.4373099204,
-          "taxon": "42909"
-        },
-        {
-          "longitude": 145.350655998,
-          "latitude": -17.0418314903,
-          "taxon": "42917"
-        },
-        {
           "longitude": 145.9005829319,
           "latitude": -41.5498797994,
           "taxon": "40167"
@@ -99945,11 +99007,6 @@
           "taxon": "43151"
         },
         {
-          "longitude": 145.7753052083,
-          "latitude": -16.9200248249,
-          "taxon": "40911"
-        },
-        {
           "longitude": 153.2219632518,
           "latitude": -28.3990734406,
           "taxon": "42983"
@@ -99958,11 +99015,6 @@
           "longitude": 151.219988,
           "latitude": -33.828423,
           "taxon": "40905"
-        },
-        {
-          "longitude": 146.603586,
-          "latitude": -41.147872,
-          "taxon": "1583005"
         },
         {
           "longitude": 138.7103388889,
@@ -99998,11 +99050,6 @@
           "longitude": 146.456295,
           "latitude": -41.5509066667,
           "taxon": "40232"
-        },
-        {
-          "longitude": 121.9561947718,
-          "latitude": -33.9193430672,
-          "taxon": "41759"
         },
         {
           "longitude": 145.2219546243,
@@ -100050,11 +99097,6 @@
           "taxon": "40911"
         },
         {
-          "longitude": 147.3686152465,
-          "latitude": -43.2392374125,
-          "taxon": "40167"
-        },
-        {
           "longitude": 151.1504221667,
           "latitude": -33.8762033333,
           "taxon": "40905"
@@ -100078,11 +99120,6 @@
           "longitude": 144.8863525,
           "latitude": -37.0500525,
           "taxon": "40179"
-        },
-        {
-          "longitude": 145.004735688,
-          "latitude": -37.7979372143,
-          "taxon": "40905"
         },
         {
           "longitude": 153.0590083333,
@@ -100113,16 +99150,6 @@
           "longitude": 149.03674,
           "latitude": -35.38141,
           "taxon": "43151"
-        },
-        {
-          "longitude": 149.84545,
-          "latitude": -36.741672,
-          "taxon": "40217"
-        },
-        {
-          "longitude": 149.991842,
-          "latitude": -36.724096,
-          "taxon": "41566"
         },
         {
           "longitude": 147.86252,
@@ -100220,11 +99247,6 @@
           "taxon": "42783"
         },
         {
-          "longitude": 146.6618014341,
-          "latitude": -42.7340040101,
-          "taxon": "43236"
-        },
-        {
           "longitude": 152.1515787333,
           "latitude": -28.8426057117,
           "taxon": "40166"
@@ -100233,11 +99255,6 @@
           "longitude": 152.1515802686,
           "latitude": -28.8425924722,
           "taxon": "40166"
-        },
-        {
-          "longitude": 150.3412871768,
-          "latitude": -35.5359928816,
-          "taxon": "42783"
         },
         {
           "longitude": 151.2761061457,
@@ -100290,29 +99307,9 @@
           "taxon": "40232"
         },
         {
-          "longitude": 145.583056,
-          "latitude": -17.271111,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 145.9283983401,
-          "latitude": -41.5932601095,
-          "taxon": "40167"
-        },
-        {
           "longitude": 144.29779,
           "latitude": -37.80523,
           "taxon": "40179"
-        },
-        {
-          "longitude": 145.778054595,
-          "latitude": -16.9185003759,
-          "taxon": "42909"
-        },
-        {
-          "longitude": 153.1499997899,
-          "latitude": -28.2166557566,
-          "taxon": "43236"
         },
         {
           "longitude": 152.4060539156,
@@ -100395,11 +99392,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 147.2791956425,
-          "latitude": -27.8038270136,
-          "taxon": "43239"
-        },
-        {
           "longitude": 152.9861876019,
           "latitude": -27.2829892413,
           "taxon": "42983"
@@ -100423,21 +99415,6 @@
           "longitude": 145.35057,
           "latitude": -17.0411778333,
           "taxon": "42917"
-        },
-        {
-          "longitude": 145.9368494,
-          "latitude": -41.5834664,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 148.505172,
-          "latitude": -21.16791,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 151.0905754847,
-          "latitude": -33.8255008799,
-          "taxon": "40905"
         },
         {
           "longitude": 151.1315816329,
@@ -100503,16 +99480,6 @@
           "longitude": 153.0706201034,
           "latitude": -27.544112593,
           "taxon": "42983"
-        },
-        {
-          "longitude": 115.9987207642,
-          "latitude": -32.1174094026,
-          "taxon": "1407675"
-        },
-        {
-          "longitude": 145.1927,
-          "latitude": -16.4429,
-          "taxon": "42755"
         },
         {
           "longitude": 148.504098,
@@ -100615,11 +99582,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 149.810742,
-          "latitude": -36.550756,
-          "taxon": "75052"
-        },
-        {
           "longitude": 146.9463438429,
           "latitude": -36.1107561731,
           "taxon": "40905"
@@ -100660,11 +99622,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 148.3471861385,
-          "latitude": -36.504672649,
-          "taxon": "42803"
-        },
-        {
           "longitude": 153.2479850997,
           "latitude": -27.4909035997,
           "taxon": "42983"
@@ -100685,11 +99642,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 137.2142417,
-          "latitude": -35.7752426,
-          "taxon": "42983"
-        },
-        {
           "longitude": 145.2701159567,
           "latitude": -38.1301901055,
           "taxon": "355856"
@@ -100698,11 +99650,6 @@
           "longitude": 146.068685338,
           "latitude": -41.1100983754,
           "taxon": "43236"
-        },
-        {
-          "longitude": 137.3204304582,
-          "latitude": -35.9960876615,
-          "taxon": "41759"
         },
         {
           "longitude": 138.1852078,
@@ -100755,19 +99702,9 @@
           "taxon": "40592"
         },
         {
-          "longitude": 145.5439923793,
-          "latitude": -17.113833269,
-          "taxon": "40170"
-        },
-        {
           "longitude": 145.5781065089,
           "latitude": -17.4982512849,
           "taxon": "1582994"
-        },
-        {
-          "longitude": 145.8037495009,
-          "latitude": -17.3861212127,
-          "taxon": "1583007"
         },
         {
           "longitude": 149.8269404527,
@@ -100805,11 +99742,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 145.3172365668,
-          "latitude": -37.8541681091,
-          "taxon": "43236"
-        },
-        {
           "longitude": 150.6644619632,
           "latitude": -34.9293713703,
           "taxon": "75052"
@@ -100818,11 +99750,6 @@
           "longitude": 152.9314392171,
           "latitude": -26.4122094735,
           "taxon": "43236"
-        },
-        {
-          "longitude": 146.4245533,
-          "latitude": -39.1295004,
-          "taxon": "42983"
         },
         {
           "longitude": 148.2354086611,
@@ -100858,11 +99785,6 @@
           "longitude": 153.401371755,
           "latitude": -28.2604329559,
           "taxon": "42983"
-        },
-        {
-          "longitude": 147.3425245168,
-          "latitude": -41.0956538668,
-          "taxon": "43236"
         },
         {
           "longitude": 153.4005055567,
@@ -100925,16 +99847,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 144.4430836964,
-          "latitude": -37.8943072408,
-          "taxon": "43305"
-        },
-        {
-          "longitude": 144.4430836964,
-          "latitude": -37.8943072408,
-          "taxon": "43000"
-        },
-        {
           "longitude": 144.5137977429,
           "latitude": -17.1707086217,
           "taxon": "40719"
@@ -100953,11 +99865,6 @@
           "longitude": 153.3167416667,
           "latitude": -28.0331722222,
           "taxon": "42983"
-        },
-        {
-          "longitude": 144.7391990691,
-          "latitude": -37.5460731561,
-          "taxon": "43236"
         },
         {
           "longitude": 147.7884931144,
@@ -100983,11 +99890,6 @@
           "longitude": 153.1158661662,
           "latitude": -27.6357232793,
           "taxon": "42783"
-        },
-        {
-          "longitude": 138.5988039896,
-          "latitude": -31.3775221483,
-          "taxon": "40169"
         },
         {
           "longitude": 145.7021034997,
@@ -101040,19 +99942,9 @@
           "taxon": "46311"
         },
         {
-          "longitude": 145.7594733319,
-          "latitude": -16.9007605378,
-          "taxon": "40911"
-        },
-        {
           "longitude": 145.1714311256,
           "latitude": -38.1710567027,
           "taxon": "42983"
-        },
-        {
-          "longitude": 145.6340110991,
-          "latitude": -17.280765865,
-          "taxon": "40911"
         },
         {
           "longitude": 148.4143833333,
@@ -101090,11 +99982,6 @@
           "taxon": "346948"
         },
         {
-          "longitude": 150.4061418772,
-          "latitude": -35.4432931828,
-          "taxon": "41759"
-        },
-        {
           "longitude": 150.4563679054,
           "latitude": -34.6771764401,
           "taxon": "42937"
@@ -101108,11 +99995,6 @@
           "longitude": 149.8454011443,
           "latitude": -36.6050764743,
           "taxon": "43236"
-        },
-        {
-          "longitude": 151.2165498734,
-          "latitude": -33.8641796151,
-          "taxon": "40905"
         },
         {
           "longitude": 152.8729388889,
@@ -101285,11 +100167,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 134.3516871982,
-          "latitude": -33.1741521859,
-          "taxon": "41481"
-        },
-        {
           "longitude": 117.2040908873,
           "latitude": -35.0195278365,
           "taxon": "45292"
@@ -101320,28 +100197,13 @@
           "taxon": "43236"
         },
         {
-          "longitude": 113.6633260429,
-          "latitude": -25.6523641371,
-          "taxon": "41481"
-        },
-        {
           "longitude": 138.5942944444,
           "latitude": -34.9324055556,
           "taxon": "42808"
         },
         {
-          "longitude": 147.3307961766,
-          "latitude": -43.1192903438,
-          "taxon": "40167"
-        },
-        {
           "longitude": 138.656205,
           "latitude": -34.865605,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 153.3927959855,
-          "latitude": -28.7395137956,
           "taxon": "42983"
         },
         {
@@ -101353,11 +100215,6 @@
           "longitude": 152.5286233333,
           "latitude": -26.1827016667,
           "taxon": "42983"
-        },
-        {
-          "longitude": 141.1668166667,
-          "latitude": -33.2162,
-          "taxon": "1473775"
         },
         {
           "longitude": 146.0879234572,
@@ -101378,11 +100235,6 @@
           "longitude": 145.3686111111,
           "latitude": -38.3716666667,
           "taxon": "42983"
-        },
-        {
-          "longitude": 146.0463482503,
-          "latitude": -41.8305756128,
-          "taxon": "40167"
         },
         {
           "longitude": 152.9977355054,
@@ -101480,16 +100332,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 152.1224387253,
-          "latitude": -27.5631166813,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 144.6672338,
-          "latitude": -37.9226863,
-          "taxon": "62628"
-        },
-        {
           "longitude": 151.1347284945,
           "latitude": -34.0827985983,
           "taxon": "75052"
@@ -101530,11 +100372,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 130.9123093939,
-          "latitude": -13.0521037126,
-          "taxon": "40170"
-        },
-        {
           "longitude": 150.5672222222,
           "latitude": -33.6358333333,
           "taxon": "42983"
@@ -101548,11 +100385,6 @@
           "longitude": 132.8177272153,
           "latitude": -12.8555439626,
           "taxon": "1453441"
-        },
-        {
-          "longitude": 130.844076,
-          "latitude": -13.103587,
-          "taxon": "40170"
         },
         {
           "longitude": 149.8040528093,
@@ -101622,11 +100454,6 @@
         {
           "longitude": 153.2173034549,
           "latitude": -27.8523089158,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 146.3865170376,
-          "latitude": -38.3542734149,
           "taxon": "42983"
         },
         {
@@ -101775,11 +100602,6 @@
           "taxon": "42783"
         },
         {
-          "longitude": 138.7604666667,
-          "latitude": -34.93103,
-          "taxon": "42983"
-        },
-        {
           "longitude": 145.6724929066,
           "latitude": -38.3511061874,
           "taxon": "42983"
@@ -101803,11 +100625,6 @@
           "longitude": 147.6545431092,
           "latitude": -42.5345722067,
           "taxon": "40232"
-        },
-        {
-          "longitude": 145.2780089217,
-          "latitude": -38.3808956302,
-          "taxon": "42983"
         },
         {
           "longitude": 137.3190821,
@@ -102035,11 +100852,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 153.0419151485,
-          "latitude": -27.3000413175,
-          "taxon": "42983"
-        },
-        {
           "longitude": 151.99586,
           "latitude": -26.679666,
           "taxon": "42983"
@@ -102105,11 +100917,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 151.1389819854,
-          "latitude": -33.8631314249,
-          "taxon": "40905"
-        },
-        {
           "longitude": 148.1635144883,
           "latitude": -23.5356008055,
           "taxon": "42983"
@@ -102118,11 +100925,6 @@
           "longitude": 150.8836319399,
           "latitude": -24.3032416183,
           "taxon": "42783"
-        },
-        {
-          "longitude": 153.1325243,
-          "latitude": -26.9861003,
-          "taxon": "575103"
         },
         {
           "longitude": 153.1596666667,
@@ -102165,11 +100967,6 @@
           "taxon": "40232"
         },
         {
-          "longitude": 145.2628333333,
-          "latitude": -38.4841666667,
-          "taxon": "42983"
-        },
-        {
           "longitude": 151.9327083333,
           "latitude": -27.330345,
           "taxon": "42983"
@@ -102183,11 +100980,6 @@
           "longitude": 152.9927216667,
           "latitude": -27.822645,
           "taxon": "42983"
-        },
-        {
-          "longitude": 147.2459653898,
-          "latitude": -43.0537651782,
-          "taxon": "40232"
         },
         {
           "longitude": 153.0748357518,
@@ -102405,11 +101197,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 150.7034865521,
-          "latitude": -27.194760328,
-          "taxon": "42783"
-        },
-        {
           "longitude": 152.8243577,
           "latitude": -27.2493165,
           "taxon": "42983"
@@ -102510,11 +101297,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 140.8084833333,
-          "latitude": -37.8388361117,
-          "taxon": "42808"
-        },
-        {
           "longitude": 147.1751228417,
           "latitude": -41.4667378016,
           "taxon": "42988"
@@ -102603,11 +101385,6 @@
           "longitude": 145.656725876,
           "latitude": -37.9787689286,
           "taxon": "924041"
-        },
-        {
-          "longitude": 151.2092955038,
-          "latitude": -33.8685359097,
-          "taxon": "41566"
         },
         {
           "longitude": 145.9770089,
@@ -102935,29 +101712,14 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.1082367,
-          "latitude": -15.2941987,
-          "taxon": "40911"
-        },
-        {
           "longitude": 153.4440681338,
           "latitude": -28.1074069997,
           "taxon": "42983"
         },
         {
-          "longitude": 148.5051719,
-          "latitude": -21.1679101,
-          "taxon": "43236"
-        },
-        {
           "longitude": 152.61334938,
           "latitude": -27.3391593701,
           "taxon": "42983"
-        },
-        {
-          "longitude": 128.6621938586,
-          "latitude": -15.879718297,
-          "taxon": "41326"
         },
         {
           "longitude": 150.7174252337,
@@ -102988,11 +101750,6 @@
           "longitude": 133.2721022391,
           "latitude": -32.4958158115,
           "taxon": "41759"
-        },
-        {
-          "longitude": 146.301305546,
-          "latitude": -37.778196321,
-          "taxon": "43236"
         },
         {
           "longitude": 153.0510439472,
@@ -103190,16 +101947,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 146.9914329075,
-          "latitude": -41.9078865882,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 145.5861078906,
-          "latitude": -17.2520225096,
-          "taxon": "43236"
-        },
-        {
           "longitude": 145.4622522,
           "latitude": -16.4839732,
           "taxon": "40911"
@@ -103310,11 +102057,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 148.9071554123,
-          "latitude": -35.4669540415,
-          "taxon": "43236"
-        },
-        {
           "longitude": 146.7056005122,
           "latitude": -22.3583147739,
           "taxon": "43003"
@@ -103375,19 +102117,9 @@
           "taxon": "41729"
         },
         {
-          "longitude": 145.1923065519,
-          "latitude": -40.8021233113,
-          "taxon": "74890"
-        },
-        {
           "longitude": 150.3003688889,
           "latitude": -35.6659575,
           "taxon": "41481"
-        },
-        {
-          "longitude": 145.3168923941,
-          "latitude": -38.3701008353,
-          "taxon": "42983"
         },
         {
           "longitude": 151.8071502,
@@ -103443,16 +102175,6 @@
           "longitude": 146.5932603915,
           "latitude": -42.6824235655,
           "taxon": "74547"
-        },
-        {
-          "longitude": 152.3876023293,
-          "latitude": -30.5004551652,
-          "taxon": "1583005"
-        },
-        {
-          "longitude": 152.3875808716,
-          "latitude": -30.5004551652,
-          "taxon": "1583005"
         },
         {
           "longitude": 151.2610932256,
@@ -103600,11 +102322,6 @@
           "taxon": "1473775"
         },
         {
-          "longitude": 143.0095108372,
-          "latitude": -22.553943268,
-          "taxon": "40203"
-        },
-        {
           "longitude": 149.2713305556,
           "latitude": -22.6151722222,
           "taxon": "42983"
@@ -103730,11 +102447,6 @@
           "taxon": "41481"
         },
         {
-          "longitude": 145.4769399199,
-          "latitude": -17.1481380345,
-          "taxon": "42917"
-        },
-        {
           "longitude": 153.1560491396,
           "latitude": -27.8675977848,
           "taxon": "42983"
@@ -103743,11 +102455,6 @@
           "longitude": 152.32299667,
           "latitude": -24.88589167,
           "taxon": "43239"
-        },
-        {
-          "longitude": 146.3872058766,
-          "latitude": -38.3554347788,
-          "taxon": "42983"
         },
         {
           "longitude": 152.3869140074,
@@ -103840,29 +102547,9 @@
           "taxon": "40166"
         },
         {
-          "longitude": 146.38429,
-          "latitude": -38.35875,
-          "taxon": "42983"
-        },
-        {
           "longitude": 153.4570651554,
           "latitude": -27.3966460636,
           "taxon": "42983"
-        },
-        {
-          "longitude": 124.96204476,
-          "latitude": -15.042733445,
-          "taxon": "45292"
-        },
-        {
-          "longitude": 124.7968905713,
-          "latitude": -15.2454376747,
-          "taxon": "40170"
-        },
-        {
-          "longitude": 124.6947533794,
-          "latitude": -15.2729860351,
-          "taxon": "43297"
         },
         {
           "longitude": 153.2472959,
@@ -103905,11 +102592,6 @@
           "taxon": "40166"
         },
         {
-          "longitude": 145.2541961555,
-          "latitude": -42.4471118463,
-          "taxon": "74890"
-        },
-        {
           "longitude": 138.6296533333,
           "latitude": -35.459525,
           "taxon": "40187"
@@ -103923,16 +102605,6 @@
           "longitude": 150.8463494632,
           "latitude": -34.4757283398,
           "taxon": "75052"
-        },
-        {
-          "longitude": 125.243354658,
-          "latitude": -17.070312144,
-          "taxon": "40170"
-        },
-        {
-          "longitude": 125.3650490426,
-          "latitude": -17.1668322158,
-          "taxon": "42860"
         },
         {
           "longitude": 153.380603,
@@ -104360,11 +103032,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 138.695301,
-          "latitude": -35.527478,
-          "taxon": "41571"
-        },
-        {
           "longitude": 152.859955,
           "latitude": -26.7611166667,
           "taxon": "43236"
@@ -104415,11 +103082,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 145.4897786963,
-          "latitude": -16.0306093096,
-          "taxon": "42915"
-        },
-        {
           "longitude": 152.7677827142,
           "latitude": -27.6186273251,
           "taxon": "40905"
@@ -104432,11 +103094,6 @@
         {
           "longitude": 148.906943505,
           "latitude": -35.4639144511,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 147.5225706797,
-          "latitude": -41.166147128,
           "taxon": "43236"
         },
         {
@@ -104600,11 +103257,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 146.387277276,
-          "latitude": -38.3546818113,
-          "taxon": "42983"
-        },
-        {
           "longitude": 151.2587960669,
           "latitude": -28.1034099309,
           "taxon": "42983"
@@ -104638,16 +103290,6 @@
           "longitude": 153.1278151246,
           "latitude": -27.5810529903,
           "taxon": "42983"
-        },
-        {
-          "longitude": 115.6111452015,
-          "latitude": -32.033940997,
-          "taxon": "41759"
-        },
-        {
-          "longitude": 116.8993350768,
-          "latitude": -32.7540342415,
-          "taxon": "40262"
         },
         {
           "longitude": 149.8346247698,
@@ -104733,11 +103375,6 @@
           "longitude": 150.0739296433,
           "latitude": -24.957520111,
           "taxon": "43236"
-        },
-        {
-          "longitude": 113.7039579927,
-          "latitude": -25.756498843,
-          "taxon": "41481"
         },
         {
           "longitude": 152.1948873518,
@@ -104840,16 +103477,6 @@
           "taxon": "1407675"
         },
         {
-          "longitude": 146.387829811,
-          "latitude": -38.3548702919,
-          "taxon": "43151"
-        },
-        {
-          "longitude": 152.8080676147,
-          "latitude": -27.2062194902,
-          "taxon": "43236"
-        },
-        {
           "longitude": 115.8117853403,
           "latitude": -31.9640497656,
           "taxon": "41655"
@@ -104895,11 +103522,6 @@
           "taxon": "40187"
         },
         {
-          "longitude": 136.5934814569,
-          "latitude": -13.7236508104,
-          "taxon": "40170"
-        },
-        {
           "longitude": 153.2495257676,
           "latitude": -27.994372515,
           "taxon": "42983"
@@ -104923,16 +103545,6 @@
           "longitude": 151.0801878,
           "latitude": -34.0556273997,
           "taxon": "75052"
-        },
-        {
-          "longitude": 148.5051719,
-          "latitude": -21.1679101,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 152.8805318,
-          "latitude": -26.7776827,
-          "taxon": "40905"
         },
         {
           "longitude": 115.846574083,
@@ -104988,11 +103600,6 @@
           "longitude": 152.9436776933,
           "latitude": -27.3485659582,
           "taxon": "43236"
-        },
-        {
-          "longitude": 149.472779,
-          "latitude": -33.7580963,
-          "taxon": "1583005"
         },
         {
           "longitude": 145.3896333333,
@@ -105090,24 +103697,9 @@
           "taxon": "42983"
         },
         {
-          "longitude": 148.5760803223,
-          "latitude": -21.0193380103,
-          "taxon": "43236"
-        },
-        {
           "longitude": 153.1931068492,
           "latitude": -28.2037650359,
           "taxon": "42983"
-        },
-        {
-          "longitude": 153.0099644192,
-          "latitude": -25.9030996413,
-          "taxon": "575103"
-        },
-        {
-          "longitude": 152.9218730478,
-          "latitude": -25.29228859,
-          "taxon": "575103"
         },
         {
           "longitude": 152.8906916667,
@@ -105260,19 +103852,9 @@
           "taxon": "42983"
         },
         {
-          "longitude": 116.9068842186,
-          "latitude": -34.9642947048,
-          "taxon": "42955"
-        },
-        {
           "longitude": 153.1970966667,
           "latitude": -27.4911416667,
           "taxon": "42983"
-        },
-        {
-          "longitude": 145.666938,
-          "latitude": -17.3844004,
-          "taxon": "42909"
         },
         {
           "longitude": 145.1175455968,
@@ -105403,11 +103985,6 @@
           "longitude": 153.0520045817,
           "latitude": -27.5385142764,
           "taxon": "42983"
-        },
-        {
-          "longitude": 148.3964533333,
-          "latitude": -36.3818466667,
-          "taxon": "42803"
         },
         {
           "longitude": 136.8996883333,
@@ -105835,16 +104412,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 152.1387926117,
-          "latitude": -27.5724325515,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 152.7680176472,
-          "latitude": -26.7941369274,
-          "taxon": "42783"
-        },
-        {
           "longitude": 152.4659746,
           "latitude": -28.3083237,
           "taxon": "43236"
@@ -105868,11 +104435,6 @@
           "longitude": 147.5231482049,
           "latitude": -42.9909704397,
           "taxon": "41729"
-        },
-        {
-          "longitude": 153.0172167012,
-          "latitude": -25.9020035227,
-          "taxon": "575103"
         },
         {
           "longitude": 152.3810202474,
@@ -106630,11 +105192,6 @@
           "taxon": "40170"
         },
         {
-          "longitude": 151.1656723917,
-          "latitude": -33.7098655724,
-          "taxon": "42795"
-        },
-        {
           "longitude": 153.1086955513,
           "latitude": -27.5269899638,
           "taxon": "42983"
@@ -106653,11 +105210,6 @@
           "longitude": 158.9315413,
           "latitude": -54.5015562,
           "taxon": "41752"
-        },
-        {
-          "longitude": 125.2046318943,
-          "latitude": -17.0846850818,
-          "taxon": "42860"
         },
         {
           "longitude": 138.4881293202,
@@ -106703,11 +105255,6 @@
           "longitude": 136.809119,
           "latitude": -35.960489,
           "taxon": "42983"
-        },
-        {
-          "longitude": 138.1484463327,
-          "latitude": -32.7559461979,
-          "taxon": "42808"
         },
         {
           "longitude": 145.7725805556,
@@ -106875,11 +105422,6 @@
           "taxon": "1583030"
         },
         {
-          "longitude": 142.2906909745,
-          "latitude": -37.8743443294,
-          "taxon": "42983"
-        },
-        {
           "longitude": 138.6230166667,
           "latitude": -34.8871116667,
           "taxon": "40905"
@@ -106893,11 +105435,6 @@
           "longitude": 145.2369456387,
           "latitude": -37.974595378,
           "taxon": "40905"
-        },
-        {
-          "longitude": 145.4864733333,
-          "latitude": -17.430305,
-          "taxon": "42771"
         },
         {
           "longitude": 152.860105,
@@ -106935,11 +105472,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 147.356379628,
-          "latitude": -43.1167842126,
-          "taxon": "40167"
-        },
-        {
           "longitude": 146.7736483333,
           "latitude": -38.480928055,
           "taxon": "42783"
@@ -106948,11 +105480,6 @@
           "longitude": 147.2403682931,
           "latitude": -43.1632154421,
           "taxon": "41729"
-        },
-        {
-          "longitude": 148.041286,
-          "latitude": -24.909743,
-          "taxon": "43236"
         },
         {
           "longitude": 145.5739344,
@@ -106973,11 +105500,6 @@
           "longitude": 148.73479597,
           "latitude": -33.2885030943,
           "taxon": "43236"
-        },
-        {
-          "longitude": 153.4255161,
-          "latitude": -27.9572417,
-          "taxon": "41644"
         },
         {
           "longitude": 144.3112198017,
@@ -107088,11 +105610,6 @@
           "longitude": 114.1136660434,
           "latitude": -21.9015784643,
           "taxon": "41566"
-        },
-        {
-          "longitude": 137.5543812469,
-          "latitude": -35.7535162023,
-          "taxon": "42983"
         },
         {
           "longitude": 146.5865266,
@@ -107365,19 +105882,9 @@
           "taxon": "42937"
         },
         {
-          "longitude": 145.5082611111,
-          "latitude": -17.32275,
-          "taxon": "42909"
-        },
-        {
           "longitude": 143.8632822,
           "latitude": -38.6643,
           "taxon": "42983"
-        },
-        {
-          "longitude": 147.388854,
-          "latitude": -43.162685,
-          "taxon": "40167"
         },
         {
           "longitude": 151.601086635,
@@ -107510,11 +106017,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 138.6090087778,
-          "latitude": -31.5265674444,
-          "taxon": "40169"
-        },
-        {
           "longitude": 115.556225394,
           "latitude": -32.1783402584,
           "taxon": "42955"
@@ -107523,11 +106025,6 @@
           "longitude": 145.351181,
           "latitude": -17.0420961,
           "taxon": "42917"
-        },
-        {
-          "longitude": 136.8273667494,
-          "latitude": -35.9707309684,
-          "taxon": "520695"
         },
         {
           "longitude": 148.5062862933,
@@ -107655,11 +106152,6 @@
           "taxon": "40911"
         },
         {
-          "longitude": 143.0823374917,
-          "latitude": -33.6870069703,
-          "taxon": "40232"
-        },
-        {
           "longitude": 142.6996671014,
           "latitude": -31.2284258732,
           "taxon": "45507"
@@ -107728,11 +106220,6 @@
           "longitude": 152.7136056548,
           "latitude": -26.7280607678,
           "taxon": "43236"
-        },
-        {
-          "longitude": 144.2636585311,
-          "latitude": -14.0607031276,
-          "taxon": "46311"
         },
         {
           "longitude": 149.1616997286,
@@ -107915,11 +106402,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 145.3211997609,
-          "latitude": -38.5401840582,
-          "taxon": "42983"
-        },
-        {
           "longitude": 152.1733065884,
           "latitude": -32.7352165177,
           "taxon": "42983"
@@ -108015,11 +106497,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 147.1563889,
-          "latitude": -36.9572222,
-          "taxon": "42803"
-        },
-        {
           "longitude": 144.2848890097,
           "latitude": -37.2646185019,
           "taxon": "42783"
@@ -108050,16 +106527,6 @@
           "taxon": "1583005"
         },
         {
-          "longitude": 136.2777372825,
-          "latitude": -34.5393452555,
-          "taxon": "45507"
-        },
-        {
-          "longitude": 150.6620193383,
-          "latitude": -22.8615219277,
-          "taxon": "40179"
-        },
-        {
           "longitude": 152.7137179056,
           "latitude": -26.7279547911,
           "taxon": "43236"
@@ -108075,19 +106542,9 @@
           "taxon": "45810"
         },
         {
-          "longitude": 144.6588411,
-          "latitude": -18.2006824,
-          "taxon": "42917"
-        },
-        {
           "longitude": 117.6000481615,
           "latitude": -34.7731273702,
           "taxon": "1407675"
-        },
-        {
-          "longitude": 137.2142417,
-          "latitude": -35.7752426,
-          "taxon": "42983"
         },
         {
           "longitude": 153.1856305897,
@@ -108250,11 +106707,6 @@
           "taxon": "40262"
         },
         {
-          "longitude": 113.6883962858,
-          "latitude": -25.7894369534,
-          "taxon": "41481"
-        },
-        {
           "longitude": 151.1355583333,
           "latitude": -33.836555,
           "taxon": "40905"
@@ -108263,11 +106715,6 @@
           "longitude": 151.2940326069,
           "latitude": -33.6939831556,
           "taxon": "40905"
-        },
-        {
-          "longitude": 145.7709529,
-          "latitude": -16.9203476,
-          "taxon": "40911"
         },
         {
           "longitude": 151.1591324955,
@@ -108405,11 +106852,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.33101378,
-          "latitude": -38.5223043825,
-          "taxon": "43151"
-        },
-        {
           "longitude": 152.2111666667,
           "latitude": -32.4090116667,
           "taxon": "43151"
@@ -108468,11 +106910,6 @@
           "longitude": 145.4397221433,
           "latitude": -37.6739191626,
           "taxon": "42783"
-        },
-        {
-          "longitude": 152.904448,
-          "latitude": -26.3178426,
-          "taxon": "74874"
         },
         {
           "longitude": 138.6007455736,
@@ -108660,11 +107097,6 @@
           "taxon": "41481"
         },
         {
-          "longitude": 148.9061318002,
-          "latitude": -35.4604350662,
-          "taxon": "42983"
-        },
-        {
           "longitude": 143.852012354,
           "latitude": -38.6719051734,
           "taxon": "42729"
@@ -108685,11 +107117,6 @@
           "taxon": "42955"
         },
         {
-          "longitude": 137.3189505562,
-          "latitude": -35.9946130839,
-          "taxon": "41759"
-        },
-        {
           "longitude": 145.757325,
           "latitude": -37.776945,
           "taxon": "42729"
@@ -108698,11 +107125,6 @@
           "longitude": 151.5194846998,
           "latitude": -27.7187266241,
           "taxon": "42983"
-        },
-        {
-          "longitude": 145.5778367804,
-          "latitude": -17.266417432,
-          "taxon": "42909"
         },
         {
           "longitude": 138.8269329071,
@@ -108790,11 +107212,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 128.0852706999,
-          "latitude": -15.8632250963,
-          "taxon": "42860"
-        },
-        {
           "longitude": 152.9943333333,
           "latitude": -27.540835,
           "taxon": "40905"
@@ -108830,11 +107247,6 @@
           "taxon": "41752"
         },
         {
-          "longitude": 138.7503418,
-          "latitude": -34.6077641,
-          "taxon": "43151"
-        },
-        {
           "longitude": 116.9376059583,
           "latitude": -32.6080364095,
           "taxon": "40262"
@@ -108868,11 +107280,6 @@
           "longitude": 151.3691785373,
           "latitude": -33.4656197184,
           "taxon": "42795"
-        },
-        {
-          "longitude": 152.8826687886,
-          "latitude": -27.4884951626,
-          "taxon": "43236"
         },
         {
           "longitude": 151.2002878017,
@@ -109003,11 +107410,6 @@
           "longitude": 145.5238791316,
           "latitude": -41.1889722207,
           "taxon": "43236"
-        },
-        {
-          "longitude": 115.5871529582,
-          "latitude": -32.0574859816,
-          "taxon": "42955"
         },
         {
           "longitude": 152.9022222222,
@@ -109275,11 +107677,6 @@
           "taxon": "42909"
         },
         {
-          "longitude": 145.5183291295,
-          "latitude": -17.6030359886,
-          "taxon": "42771"
-        },
-        {
           "longitude": 153.1038423237,
           "latitude": -27.5306482712,
           "taxon": "42983"
@@ -109298,16 +107695,6 @@
           "longitude": 146.3876442037,
           "latitude": -38.3541202613,
           "taxon": "42983"
-        },
-        {
-          "longitude": 145.3040686484,
-          "latitude": -41.4048123229,
-          "taxon": "40232"
-        },
-        {
-          "longitude": 127.2230348439,
-          "latitude": -13.999620757,
-          "taxon": "74813"
         },
         {
           "longitude": 152.9676052995,
@@ -109352,11 +107739,6 @@
         {
           "longitude": 153.0930931703,
           "latitude": -27.5242397728,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 143.5361201427,
-          "latitude": -38.7882708209,
           "taxon": "42983"
         },
         {
@@ -109465,11 +107847,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.3421628169,
-          "latitude": -37.1102850391,
-          "taxon": "42983"
-        },
-        {
           "longitude": 152.8520283333,
           "latitude": -27.69198,
           "taxon": "40179"
@@ -109538,11 +107915,6 @@
           "longitude": 145.480594933,
           "latitude": -36.8579067281,
           "taxon": "75053"
-        },
-        {
-          "longitude": 145.4118730556,
-          "latitude": -16.1653597222,
-          "taxon": "40911"
         },
         {
           "longitude": 151.1680916667,
@@ -109645,11 +108017,6 @@
           "taxon": "40262"
         },
         {
-          "longitude": 145.4771778785,
-          "latitude": -17.4630269687,
-          "taxon": "1582994"
-        },
-        {
           "longitude": 153.2492991997,
           "latitude": -27.4898704997,
           "taxon": "42983"
@@ -109738,11 +108105,6 @@
           "longitude": 145.5970008188,
           "latitude": -17.3469796281,
           "taxon": "42909"
-        },
-        {
-          "longitude": 141.1507319924,
-          "latitude": -33.2091476667,
-          "taxon": "43325"
         },
         {
           "longitude": 148.5051719,
@@ -109878,11 +108240,6 @@
           "longitude": 152.672641279,
           "latitude": -28.3623811349,
           "taxon": "42783"
-        },
-        {
-          "longitude": 115.4216728403,
-          "latitude": -31.979387614,
-          "taxon": "42955"
         },
         {
           "longitude": 147.3029984418,
@@ -110090,11 +108447,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 115.4535050013,
-          "latitude": -32.1389082731,
-          "taxon": "42955"
-        },
-        {
           "longitude": 152.9863133333,
           "latitude": -27.3608433333,
           "taxon": "43236"
@@ -110240,11 +108592,6 @@
           "taxon": "75052"
         },
         {
-          "longitude": 145.5738527778,
-          "latitude": -17.2859972222,
-          "taxon": "42909"
-        },
-        {
           "longitude": 152.7432784819,
           "latitude": -26.5067014194,
           "taxon": "43236"
@@ -110343,11 +108690,6 @@
           "longitude": 145.4954953282,
           "latitude": -17.2245697409,
           "taxon": "43236"
-        },
-        {
-          "longitude": 151.2156470899,
-          "latitude": -33.8616366299,
-          "taxon": "40905"
         },
         {
           "longitude": 145.3687133333,
@@ -110468,21 +108810,6 @@
           "longitude": 150.0890683333,
           "latitude": -36.4155,
           "taxon": "41566"
-        },
-        {
-          "longitude": 151.2165708,
-          "latitude": -33.8641859,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 151.2165708,
-          "latitude": -33.8641859,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 151.2165708,
-          "latitude": -33.8641859,
-          "taxon": "40905"
         },
         {
           "longitude": 145.2943125743,
@@ -110690,11 +109017,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 152.3305630258,
-          "latitude": -28.3091140725,
-          "taxon": "1583005"
-        },
-        {
           "longitude": 115.0438200406,
           "latitude": -33.5510100204,
           "taxon": "41566"
@@ -110747,11 +109069,6 @@
         {
           "longitude": 145.0896300216,
           "latitude": -37.7277403536,
-          "taxon": "40905"
-        },
-        {
-          "longitude": 151.2163999777,
-          "latitude": -33.8631151184,
           "taxon": "40905"
         },
         {
@@ -111075,11 +109392,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 141.3273408443,
-          "latitude": -35.5233315855,
-          "taxon": "40205"
-        },
-        {
           "longitude": 145.26767488,
           "latitude": -38.04180959,
           "taxon": "40905"
@@ -111110,11 +109422,6 @@
           "taxon": "43151"
         },
         {
-          "longitude": 136.7358134,
-          "latitude": -35.9549232,
-          "taxon": "42808"
-        },
-        {
           "longitude": 153.089764246,
           "latitude": -27.5238501952,
           "taxon": "42983"
@@ -111123,11 +109430,6 @@
           "longitude": 116.8825382467,
           "latitude": -32.7605674801,
           "taxon": "40262"
-        },
-        {
-          "longitude": 138.5511179094,
-          "latitude": -35.4170450356,
-          "taxon": "40187"
         },
         {
           "longitude": 152.6511864255,
@@ -111152,11 +109454,6 @@
         {
           "longitude": 153.1027014562,
           "latitude": -27.5292973197,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 138.652031418,
-          "latitude": -35.0086979594,
           "taxon": "42983"
         },
         {
@@ -111955,11 +110252,6 @@
           "taxon": "41759"
         },
         {
-          "longitude": 145.4341122083,
-          "latitude": -17.013803106,
-          "taxon": "40170"
-        },
-        {
           "longitude": 145.2684831619,
           "latitude": -38.1306751061,
           "taxon": "42983"
@@ -112093,26 +110385,6 @@
           "longitude": 153.0387012877,
           "latitude": -27.8652263895,
           "taxon": "42783"
-        },
-        {
-          "longitude": 133.8848530556,
-          "latitude": -23.7047030556,
-          "taxon": "42921"
-        },
-        {
-          "longitude": 133.8833813889,
-          "latitude": -23.6831580556,
-          "taxon": "42921"
-        },
-        {
-          "longitude": 145.6669830556,
-          "latitude": -17.3842147222,
-          "taxon": "42909"
-        },
-        {
-          "longitude": 145.6670797154,
-          "latitude": -17.3843444485,
-          "taxon": "42909"
         },
         {
           "longitude": 146.0809678584,
@@ -112320,44 +110592,9 @@
           "taxon": "40232"
         },
         {
-          "longitude": 151.652276431,
-          "latitude": -30.5090235107,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 151.636894833,
-          "latitude": -30.5033836373,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 151.7664945488,
-          "latitude": -30.4954658212,
-          "taxon": "42983"
-        },
-        {
           "longitude": 151.6483035037,
           "latitude": -30.5168049994,
           "taxon": "42983"
-        },
-        {
-          "longitude": 148.5452751159,
-          "latitude": -21.025965884,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 151.6486017038,
-          "latitude": -30.4803006747,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.6287626602,
-          "latitude": -17.3724325303,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 145.9438304999,
-          "latitude": -17.4423931784,
-          "taxon": "42909"
         },
         {
           "longitude": 136.8100695763,
@@ -112620,11 +110857,6 @@
           "taxon": "43305"
         },
         {
-          "longitude": 143.7447728,
-          "latitude": -38.5499718,
-          "taxon": "43236"
-        },
-        {
           "longitude": 147.2343938112,
           "latitude": -41.2603103084,
           "taxon": "40232"
@@ -112638,16 +110870,6 @@
           "longitude": 148.0366891273,
           "latitude": -42.6640919425,
           "taxon": "40232"
-        },
-        {
-          "longitude": 143.8753165,
-          "latitude": -37.5490678,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 143.8753165,
-          "latitude": -37.5490678,
-          "taxon": "42983"
         },
         {
           "longitude": 145.3512883333,
@@ -112800,11 +111022,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.300985,
-          "latitude": -38.379114,
-          "taxon": "42983"
-        },
-        {
           "longitude": 153.1902333154,
           "latitude": -28.1733910221,
           "taxon": "42983"
@@ -112818,11 +111035,6 @@
           "longitude": 146.430398,
           "latitude": -38.231051,
           "taxon": "40905"
-        },
-        {
-          "longitude": 149.9651143322,
-          "latitude": -36.8601416079,
-          "taxon": "46311"
         },
         {
           "longitude": 158.93425,
@@ -112968,11 +111180,6 @@
           "longitude": 145.2621819167,
           "latitude": -38.4845785833,
           "taxon": "42983"
-        },
-        {
-          "longitude": 113.76727915,
-          "latitude": -25.6033744571,
-          "taxon": "41481"
         },
         {
           "longitude": 145.3278872312,
@@ -113268,11 +111475,6 @@
           "longitude": 150.9917494,
           "latitude": -29.1476627997,
           "taxon": "1583005"
-        },
-        {
-          "longitude": 145.0181978,
-          "latitude": -37.7963151,
-          "taxon": "40905"
         },
         {
           "longitude": 151.9747805,
@@ -113710,11 +111912,6 @@
           "taxon": "1407675"
         },
         {
-          "longitude": 151.6151692265,
-          "latitude": -26.8771174817,
-          "taxon": "43236"
-        },
-        {
           "longitude": 150.785418,
           "latitude": -31.901958,
           "taxon": "40166"
@@ -113763,11 +111960,6 @@
           "longitude": 149.1598,
           "latitude": -35.18068,
           "taxon": "40167"
-        },
-        {
-          "longitude": 138.6872106045,
-          "latitude": -35.0091010979,
-          "taxon": "42983"
         },
         {
           "longitude": 144.013833828,
@@ -114210,18 +112402,8 @@
           "taxon": "40167"
         },
         {
-          "longitude": 153.4278876487,
-          "latitude": -27.4546750824,
-          "taxon": "575103"
-        },
-        {
           "longitude": 137.2580421131,
           "latitude": -35.9459809822,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 143.8941848304,
-          "latitude": -38.6248453076,
           "taxon": "42983"
         },
         {
@@ -114440,19 +112622,9 @@
           "taxon": "43236"
         },
         {
-          "longitude": 147.2622798135,
-          "latitude": -42.9214971828,
-          "taxon": "74801"
-        },
-        {
           "longitude": 152.9049573319,
           "latitude": -26.5900766921,
           "taxon": "43236"
-        },
-        {
-          "longitude": 153.3565982759,
-          "latitude": -27.9387445324,
-          "taxon": "42983"
         },
         {
           "longitude": 153.1111261906,
@@ -114568,11 +112740,6 @@
           "longitude": 147.7376011798,
           "latitude": -41.1702482752,
           "taxon": "43236"
-        },
-        {
-          "longitude": 146.3867068816,
-          "latitude": -38.3543868673,
-          "taxon": "42983"
         },
         {
           "longitude": 144.2793716745,
@@ -114830,11 +112997,6 @@
           "taxon": "705331"
         },
         {
-          "longitude": 146.3871823727,
-          "latitude": -38.3547056283,
-          "taxon": "42983"
-        },
-        {
           "longitude": 153.1037735756,
           "latitude": -27.529704663,
           "taxon": "42983"
@@ -114893,11 +113055,6 @@
           "longitude": 145.5266785667,
           "latitude": -17.1171478926,
           "taxon": "40170"
-        },
-        {
-          "longitude": 145.7750639928,
-          "latitude": -16.9201100709,
-          "taxon": "40911"
         },
         {
           "longitude": 145.0163996997,
@@ -115095,11 +113252,6 @@
           "taxon": "41481"
         },
         {
-          "longitude": 147.7308004872,
-          "latitude": -37.9242884544,
-          "taxon": "42983"
-        },
-        {
           "longitude": 153.3759892159,
           "latitude": -27.9174780739,
           "taxon": "42983"
@@ -115108,11 +113260,6 @@
           "longitude": 153.3740071085,
           "latitude": -27.9049967326,
           "taxon": "42983"
-        },
-        {
-          "longitude": 152.0858104016,
-          "latitude": -28.4432445162,
-          "taxon": "1583005"
         },
         {
           "longitude": 153.1033901669,
@@ -116040,11 +114187,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 153.2566502,
-          "latitude": -27.5120736,
-          "taxon": "42983"
-        },
-        {
           "longitude": 152.9546923795,
           "latitude": -26.6299159895,
           "taxon": "43236"
@@ -116253,11 +114395,6 @@
           "longitude": 145.1488638333,
           "latitude": -38.50613,
           "taxon": "43305"
-        },
-        {
-          "longitude": 151.7314761421,
-          "latitude": -30.4979955231,
-          "taxon": "42722"
         },
         {
           "longitude": 115.4716894535,
@@ -116710,11 +114847,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 148.4940849106,
-          "latitude": -21.1720463976,
-          "taxon": "43236"
-        },
-        {
           "longitude": 151.0604252678,
           "latitude": -34.1751932568,
           "taxon": "75052"
@@ -116772,11 +114904,6 @@
         {
           "longitude": 153.1043072141,
           "latitude": -27.5298799623,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.2522003088,
-          "latitude": -38.4870666765,
           "taxon": "42983"
         },
         {
@@ -116888,11 +115015,6 @@
           "longitude": 150.91446843,
           "latitude": -34.2449982406,
           "taxon": "42795"
-        },
-        {
-          "longitude": 144.1859975,
-          "latitude": -38.4073164,
-          "taxon": "42983"
         },
         {
           "longitude": 153.1034354603,
@@ -117267,11 +115389,6 @@
         {
           "longitude": 153.0905320092,
           "latitude": -27.5268498552,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.2038278,
-          "latitude": -38.4898703,
           "taxon": "42983"
         },
         {
@@ -117760,11 +115877,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 142.3701183333,
-          "latitude": -38.32455,
-          "taxon": "42983"
-        },
-        {
           "longitude": 138.593445,
           "latitude": -31.53765,
           "taxon": "40169"
@@ -117895,11 +116007,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.946214905,
-          "latitude": -41.675693006,
-          "taxon": "40167"
-        },
-        {
           "longitude": 152.8475139973,
           "latitude": -26.761579731,
           "taxon": "43236"
@@ -117943,11 +116050,6 @@
           "longitude": 151.2496543566,
           "latitude": -33.9874754986,
           "taxon": "40267"
-        },
-        {
-          "longitude": 152.3833333,
-          "latitude": -30.4833333,
-          "taxon": "40166"
         },
         {
           "longitude": 158.9167584818,
@@ -118105,11 +116207,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 137.5910766043,
-          "latitude": -33.0399976952,
-          "taxon": "41481"
-        },
-        {
           "longitude": 151.1889373997,
           "latitude": -33.8982345,
           "taxon": "40905"
@@ -118148,11 +116245,6 @@
           "longitude": 148.1866932224,
           "latitude": -41.5791971982,
           "taxon": "43236"
-        },
-        {
-          "longitude": 146.1240334652,
-          "latitude": -38.7198163968,
-          "taxon": "40905"
         },
         {
           "longitude": 152.3596333333,
@@ -118397,11 +116489,6 @@
         {
           "longitude": 152.0617789775,
           "latitude": -27.2696021975,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 144.1881111892,
-          "latitude": -38.4065282187,
           "taxon": "42983"
         },
         {
@@ -118780,11 +116867,6 @@
           "taxon": "42783"
         },
         {
-          "longitude": 151.2149614576,
-          "latitude": -33.8566459704,
-          "taxon": "41752"
-        },
-        {
           "longitude": 151.1280701029,
           "latitude": -34.0754842092,
           "taxon": "75052"
@@ -118870,16 +116952,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.727573343,
-          "latitude": -37.5806611717,
-          "taxon": "924041"
-        },
-        {
-          "longitude": 146.2279710176,
-          "latitude": -37.6075708376,
-          "taxon": "75053"
-        },
-        {
           "longitude": 147.0863195,
           "latitude": -42.39875,
           "taxon": "40232"
@@ -118898,11 +116970,6 @@
           "longitude": 152.1651592936,
           "latitude": -28.7961654334,
           "taxon": "42937"
-        },
-        {
-          "longitude": 146.1185613879,
-          "latitude": -37.7390063746,
-          "taxon": "43151"
         },
         {
           "longitude": 150.4824216667,
@@ -118948,11 +117015,6 @@
           "longitude": 148.6917715697,
           "latitude": -21.6925561994,
           "taxon": "40170"
-        },
-        {
-          "longitude": 133.7024853553,
-          "latitude": -27.3646849099,
-          "taxon": "42951"
         },
         {
           "longitude": 145.5915384998,
@@ -119020,19 +117082,9 @@
           "taxon": "42983"
         },
         {
-          "longitude": 116.9617376602,
-          "latitude": -32.6692751146,
-          "taxon": "40262"
-        },
-        {
           "longitude": 152.8831334091,
           "latitude": -27.4617024003,
           "taxon": "43236"
-        },
-        {
-          "longitude": 115.5748902106,
-          "latitude": -32.0720614146,
-          "taxon": "42955"
         },
         {
           "longitude": 147.2438342,
@@ -119057,11 +117109,6 @@
         {
           "longitude": 153.0936250554,
           "latitude": -27.5284288105,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.3531,
-          "latitude": -38.5525,
           "taxon": "42983"
         },
         {
@@ -119420,31 +117467,6 @@
           "taxon": "40187"
         },
         {
-          "longitude": 149.3123492448,
-          "latitude": -23.5918844062,
-          "taxon": "42783"
-        },
-        {
-          "longitude": 149.2274635371,
-          "latitude": -23.5380775465,
-          "taxon": "1473775"
-        },
-        {
-          "longitude": 149.2274635371,
-          "latitude": -23.5380775465,
-          "taxon": "1473775"
-        },
-        {
-          "longitude": 149.2274635371,
-          "latitude": -23.5380775465,
-          "taxon": "1473775"
-        },
-        {
-          "longitude": 144.6738318116,
-          "latitude": -24.949004665,
-          "taxon": "1257956"
-        },
-        {
           "longitude": 147.2953688369,
           "latitude": -42.8953291262,
           "taxon": "43236"
@@ -119540,11 +117562,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 145.3493744262,
-          "latitude": -17.0401023178,
-          "taxon": "42917"
-        },
-        {
           "longitude": 139.4730083272,
           "latitude": -34.514502565,
           "taxon": "43325"
@@ -119575,11 +117592,6 @@
           "taxon": "575103"
         },
         {
-          "longitude": 153.1885852201,
-          "latitude": -28.0492927518,
-          "taxon": "43236"
-        },
-        {
           "longitude": 115.5909330659,
           "latitude": -31.8141511141,
           "taxon": "42955"
@@ -119588,16 +117600,6 @@
           "longitude": 138.6696437403,
           "latitude": -31.4235713798,
           "taxon": "40169"
-        },
-        {
-          "longitude": 147.4815837768,
-          "latitude": -28.0312951456,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.2223675065,
-          "latitude": -38.4936318405,
-          "taxon": "42983"
         },
         {
           "longitude": 137.3190821707,
@@ -119628,16 +117630,6 @@
           "longitude": 145.3130262718,
           "latitude": -38.3821392199,
           "taxon": "42983"
-        },
-        {
-          "longitude": 113.872315364,
-          "latitude": -22.2226095054,
-          "taxon": "42921"
-        },
-        {
-          "longitude": 133.8807471,
-          "latitude": -23.698042,
-          "taxon": "43325"
         },
         {
           "longitude": 153.1116026613,
@@ -119930,16 +117922,6 @@
           "taxon": "75052"
         },
         {
-          "longitude": 132.7273143,
-          "latitude": -23.6282593,
-          "taxon": "42921"
-        },
-        {
-          "longitude": 132.7273143,
-          "latitude": -23.6282593,
-          "taxon": "42921"
-        },
-        {
           "longitude": 115.2693184553,
           "latitude": -33.6683535727,
           "taxon": "74968"
@@ -120185,16 +118167,6 @@
           "taxon": "1583005"
         },
         {
-          "longitude": 146.3353480957,
-          "latitude": -41.5146321344,
-          "taxon": "43236"
-        },
-        {
-          "longitude": 147.3903130789,
-          "latitude": -43.1630768501,
-          "taxon": "40167"
-        },
-        {
           "longitude": 149.8988808319,
           "latitude": -33.8221971621,
           "taxon": "43236"
@@ -120347,11 +118319,6 @@
         {
           "longitude": 153.1050030123,
           "latitude": -27.530431463,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 152.0652410052,
-          "latitude": -25.5526632012,
           "taxon": "42983"
         },
         {
@@ -120800,24 +118767,9 @@
           "taxon": "41759"
         },
         {
-          "longitude": 152.9157778,
-          "latitude": -27.6325619,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 152.9157778,
-          "latitude": -27.6325619,
-          "taxon": "40905"
-        },
-        {
           "longitude": 144.1598856077,
           "latitude": -28.1020887382,
           "taxon": "43151"
-        },
-        {
-          "longitude": 152.9157778,
-          "latitude": -27.6325619,
-          "taxon": "42983"
         },
         {
           "longitude": 152.640305,
@@ -121110,11 +119062,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 158.8556149,
-          "latitude": -54.6208115,
-          "taxon": "41729"
-        },
-        {
           "longitude": 153.0133129404,
           "latitude": -25.9017808584,
           "taxon": "575103"
@@ -121290,11 +119237,6 @@
           "taxon": "41566"
         },
         {
-          "longitude": 152.2462,
-          "latitude": -27.49297,
-          "taxon": "42983"
-        },
-        {
           "longitude": 145.7927193016,
           "latitude": -41.1690386462,
           "taxon": "43236"
@@ -121455,11 +119397,6 @@
           "taxon": "42783"
         },
         {
-          "longitude": 148.906243891,
-          "latitude": -35.4670562127,
-          "taxon": "43236"
-        },
-        {
           "longitude": 145.5830306,
           "latitude": -17.2709033,
           "taxon": "42909"
@@ -121577,11 +119514,6 @@
         {
           "longitude": 153.1123648626,
           "latitude": -27.5295801838,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 145.7543648401,
-          "latitude": -20.5862305026,
           "taxon": "42983"
         },
         {
@@ -121758,11 +119690,6 @@
           "longitude": 153.5443568779,
           "latitude": -27.4348235073,
           "taxon": "575103"
-        },
-        {
-          "longitude": 145.3506082566,
-          "latitude": -17.0408977791,
-          "taxon": "42917"
         },
         {
           "longitude": 153.0928745413,
@@ -121955,11 +119882,6 @@
           "taxon": "40166"
         },
         {
-          "longitude": 115.4278985572,
-          "latitude": -32.1524034134,
-          "taxon": "42955"
-        },
-        {
           "longitude": 150.337793,
           "latitude": -33.546663,
           "taxon": "1583005"
@@ -122100,11 +120022,6 @@
           "taxon": "1583005"
         },
         {
-          "longitude": 131.1553349098,
-          "latitude": -31.4964791965,
-          "taxon": "41571"
-        },
-        {
           "longitude": 145.5443930904,
           "latitude": -17.2654527528,
           "taxon": "43236"
@@ -122113,11 +120030,6 @@
           "longitude": 147.1137046649,
           "latitude": -43.0432103861,
           "taxon": "40232"
-        },
-        {
-          "longitude": 115.1281750678,
-          "latitude": -30.3639443912,
-          "taxon": "41759"
         },
         {
           "longitude": 116.1223073434,
@@ -122798,11 +120710,6 @@
           "longitude": 145.1281516626,
           "latitude": -38.1690769693,
           "taxon": "42983"
-        },
-        {
-          "longitude": 115.4555389756,
-          "latitude": -31.8942224673,
-          "taxon": "42955"
         },
         {
           "longitude": 151.2319067206,
@@ -123685,11 +121592,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 147.3164442727,
-          "latitude": -43.5267537218,
-          "taxon": "41752"
-        },
-        {
           "longitude": 150.8376789,
           "latitude": -34.4451841,
           "taxon": "75052"
@@ -124045,11 +121947,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 137.348263,
-          "latitude": -35.993424,
-          "taxon": "41759"
-        },
-        {
           "longitude": 142.5093104997,
           "latitude": -38.4001493997,
           "taxon": "43151"
@@ -124173,11 +122070,6 @@
           "longitude": 149.93425,
           "latitude": -36.7599133333,
           "taxon": "75053"
-        },
-        {
-          "longitude": 146.1411323,
-          "latitude": -37.7094044,
-          "taxon": "42783"
         },
         {
           "longitude": 153.0923684054,
@@ -124595,11 +122487,6 @@
           "taxon": "75067"
         },
         {
-          "longitude": 145.9199565788,
-          "latitude": -41.6423824003,
-          "taxon": "40232"
-        },
-        {
           "longitude": 116.8551701237,
           "latitude": -32.8417103418,
           "taxon": "40262"
@@ -124728,11 +122615,6 @@
           "longitude": 145.69226395,
           "latitude": -16.79114675,
           "taxon": "40911"
-        },
-        {
-          "longitude": 142.519099962,
-          "latitude": -38.4056830075,
-          "taxon": "41571"
         },
         {
           "longitude": 152.9085451784,
@@ -124908,11 +122790,6 @@
           "longitude": 153.3465209031,
           "latitude": -27.6674223731,
           "taxon": "42783"
-        },
-        {
-          "longitude": 137.31922,
-          "latitude": -35.99437,
-          "taxon": "41566"
         },
         {
           "longitude": 116.8526546541,
@@ -125175,11 +123052,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 153.3768408496,
-          "latitude": -28.5919118346,
-          "taxon": "42983"
-        },
-        {
           "longitude": 145.1173889637,
           "latitude": -37.7528119809,
           "taxon": "43236"
@@ -125280,11 +123152,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 146.1645770044,
-          "latitude": -43.4199490261,
-          "taxon": "1583005"
-        },
-        {
           "longitude": 115.6487486447,
           "latitude": -32.5961448031,
           "taxon": "1407675"
@@ -125343,11 +123210,6 @@
           "longitude": 150.5985351374,
           "latitude": -34.8728529085,
           "taxon": "40905"
-        },
-        {
-          "longitude": 150.0832570227,
-          "latitude": -33.9420772759,
-          "taxon": "42783"
         },
         {
           "longitude": 116.725270876,
@@ -125498,11 +123360,6 @@
           "longitude": 146.871995,
           "latitude": -36.1478388333,
           "taxon": "43236"
-        },
-        {
-          "longitude": 152.1855613936,
-          "latitude": -25.7976321941,
-          "taxon": "42983"
         },
         {
           "longitude": 115.0988347013,
@@ -125760,11 +123617,6 @@
           "taxon": "1582993"
         },
         {
-          "longitude": 151.5650997285,
-          "latitude": -24.2081754217,
-          "taxon": "42783"
-        },
-        {
           "longitude": 143.83432,
           "latitude": -37.7175916667,
           "taxon": "40219"
@@ -125895,11 +123747,6 @@
           "taxon": "42955"
         },
         {
-          "longitude": 140.7530874587,
-          "latitude": -34.1754933195,
-          "taxon": "42808"
-        },
-        {
           "longitude": 151.0543361667,
           "latitude": -34.1841383333,
           "taxon": "74890"
@@ -125923,11 +123770,6 @@
           "longitude": 152.1466801911,
           "latitude": -26.7658575909,
           "taxon": "42783"
-        },
-        {
-          "longitude": 141.1133860484,
-          "latitude": -34.0868250779,
-          "taxon": "40163"
         },
         {
           "longitude": 145.513287631,
@@ -126135,11 +123977,6 @@
           "taxon": "40232"
         },
         {
-          "longitude": 125.1529230698,
-          "latitude": -17.7813589972,
-          "taxon": "41326"
-        },
-        {
           "longitude": 151.627070775,
           "latitude": -27.209124095,
           "taxon": "42983"
@@ -126180,19 +124017,9 @@
           "taxon": "575103"
         },
         {
-          "longitude": 158.8556149,
-          "latitude": -54.6208115,
-          "taxon": "41729"
-        },
-        {
           "longitude": 136.0625166667,
           "latitude": -34.9571383333,
           "taxon": "41759"
-        },
-        {
-          "longitude": 143.9265250666,
-          "latitude": -37.6525477002,
-          "taxon": "42983"
         },
         {
           "longitude": 153.0854096019,
@@ -126373,11 +124200,6 @@
           "longitude": 153.3865476756,
           "latitude": -27.9552720986,
           "taxon": "42983"
-        },
-        {
-          "longitude": 153.0140118605,
-          "latitude": -30.7446037152,
-          "taxon": "41566"
         },
         {
           "longitude": 145.4561944993,
@@ -126600,16 +124422,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 115.6838115971,
-          "latitude": -31.5466079603,
-          "taxon": "42983"
-        },
-        {
-          "longitude": 115.6837725868,
-          "latitude": -31.5465893166,
-          "taxon": "42983"
-        },
-        {
           "longitude": 153.4378326684,
           "latitude": -27.4017098662,
           "taxon": "575103"
@@ -126703,11 +124515,6 @@
           "longitude": 115.4762216497,
           "latitude": -31.8555380829,
           "taxon": "42955"
-        },
-        {
-          "longitude": 148.0566528826,
-          "latitude": -37.3070336261,
-          "taxon": "74341"
         },
         {
           "longitude": 151.1345933,
@@ -126840,11 +124647,6 @@
           "taxon": "42983"
         },
         {
-          "longitude": 113.6005989897,
-          "latitude": -25.7599505795,
-          "taxon": "41481"
-        },
-        {
           "longitude": 153.3999783333,
           "latitude": -27.4983166667,
           "taxon": "42983"
@@ -126903,11 +124705,6 @@
           "longitude": 118.406665509,
           "latitude": -34.8274368528,
           "taxon": "41571"
-        },
-        {
-          "longitude": 153.1724943318,
-          "latitude": -30.102394114,
-          "taxon": "42783"
         },
         {
           "longitude": 153.4652513304,
@@ -127395,16 +125192,6 @@
           "taxon": "43236"
         },
         {
-          "longitude": 116.9989908559,
-          "latitude": -32.6703459177,
-          "taxon": "43325"
-        },
-        {
-          "longitude": 116.930734,
-          "latitude": -32.7639137,
-          "taxon": "1670729"
-        },
-        {
           "longitude": 152.5819149613,
           "latitude": -26.6706910952,
           "taxon": "42983"
@@ -127495,11 +125282,6 @@
           "taxon": "40905"
         },
         {
-          "longitude": 114.3197015805,
-          "latitude": -21.7022213262,
-          "taxon": "41521"
-        },
-        {
           "longitude": 137.31723,
           "latitude": -35.994295,
           "taxon": "41759"
@@ -127573,11 +125355,6 @@
           "longitude": 115.5835015867,
           "latitude": -31.9312572454,
           "taxon": "42955"
-        },
-        {
-          "longitude": 137.2142417,
-          "latitude": -35.7752426,
-          "taxon": "41759"
         },
         {
           "longitude": 153.0904498597,
@@ -128280,8 +126057,8 @@
           "latitude": -27.7,
           "labelLongitude": 157,
           "labelLatitude": -14,
-          "count": 1275,
-          "share": 0.1973378733942114,
+          "count": 1260,
+          "share": 0.20944148936170212,
           "bounds": "152.5–153.5° E; 28–27° S"
         },
         {
@@ -128290,8 +126067,8 @@
           "latitude": -37.8,
           "labelLongitude": 128,
           "labelLatitude": -41,
-          "count": 431,
-          "share": 0.06670793994737657,
+          "count": 408,
+          "share": 0.0678191489361702,
           "bounds": "144.5–145.5° E; 38.5–37° S"
         }
       ],
@@ -129062,5 +126839,25 @@
       }
     }
   },
-  "width": 850
+  "width": 850,
+  "usermeta": {
+    "observationWindow": {
+      "source": "Dataset/observations-794195.csv",
+      "dateField": "observed_on",
+      "years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "yearCount": 10,
+      "includesPartialLatestYear": true
+    }
+  }
 }
