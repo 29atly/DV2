@@ -2,14 +2,14 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Zoomable sunburst using exactly the 4,034 observations for the 10 species embedded in DotMap.vg.json. Broad mammal group → taxonomic order → species. Species counts are aggregated directly from DotMap observations, including its coordinate and species selection. Higher taxonomy matched by genus to the Mammal Diversity Database, https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/master/_data/mdd.csv (retrieved 2026-10-10); input scientific names retained. Internal counts are zero to avoid double counting. Counts reflect recording activity, not animal abundance. Click groups or orders to focus; click centre to return to parent; Escape resets. All data embedded. Species leaves use the shared BumpChart species colours; internal rings retain broad-group colours. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
   "width": 960,
-  "height": 680,
+  "height": 614,
   "padding": 16,
   "background": "#f7fafc",
   "title": {
     "text": "How Are Mammal Observations Distributed?",
     "subtitle": [
       "Broad groups → taxonomic orders → species",
-      "2017–2026 · 4,034 observations · 10 selected species · Click a group or order to zoom · Click centre to go back"
+      "2017–2026 · 4,034 observations · 10 selected species"
     ],
     "anchor": "start",
     "fontSize": 22,
@@ -22,20 +22,26 @@
   },
   "signals": [
     {
-      "name": "focus",
+      "name": "persistentFocus",
       "value": "all",
       "on": [
         {
           "events": "@segments:click, @childLabels:click",
-          "update": "datum.children > 0 ? datum.id : focus"
+          "update": "datum.children > 0 ? datum.id : persistentFocus"
         },
         {
           "events": "@centre:click",
-          "update": "focus === 'all' ? 'all' : data('focusNode')[0].parent"
+          "update": "persistentFocus === 'all' ? 'all' : data('focusNode')[0].parent"
         },
         {
           "events": "view:keydown[event.key === 'Escape']",
           "update": "'all'"
+        },
+        {
+          "events": {
+            "signal": "selectedMammalGroup"
+          },
+          "update": "selectedMammalGroup || 'all'"
         }
       ]
     },
@@ -78,6 +84,42 @@
     {
       "name": "detail",
       "update": "hovered ? data('hoverNode')[0] : current"
+    },
+    {
+      "name": "legendColumnWidth",
+      "value": 280
+    },
+    {
+      "name": "legendSymbolSize",
+      "value": 100
+    },
+    {
+      "name": "selectedMammalGroup",
+      "value": null,
+      "on": [
+        {
+          "events": "@groupLegendSymbols:click, @groupLegendLabels:click",
+          "update": "selectedMammalGroup === datum.group ? null : datum.group"
+        }
+      ]
+    },
+    {
+      "name": "hoveredMammalGroup",
+      "value": null,
+      "on": [
+        {
+          "events": "@groupLegendSymbols:mouseover, @groupLegendLabels:mouseover",
+          "update": "datum.group"
+        },
+        {
+          "events": "@groupLegendSymbols:mouseout, @groupLegendLabels:mouseout",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "focus",
+      "update": "hoveredMammalGroup != null ? hoveredMammalGroup : persistentFocus"
     }
   ],
   "data": [
@@ -490,33 +532,6 @@
   ],
   "marks": [
     {
-      "name": "breadcrumb",
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 16
-          },
-          "y": {
-            "value": 24
-          },
-          "text": {
-            "signal": "current.path"
-          },
-          "fontSize": {
-            "value": 13
-          },
-          "fill": {
-            "value": "#52606d"
-          },
-          "limit": {
-            "value": 920
-          }
-        }
-      }
-    },
-    {
       "name": "segments",
       "type": "arc",
       "from": {
@@ -561,7 +576,7 @@
             "signal": "datum.children > 0 ? 'pointer' : 'default'"
           },
           "tooltip": {
-            "signal": "{'Name': datum.label, 'Level': datum.level, 'Scientific name': datum.scientific || '—', 'Observations': format(datum.total, ',d'), 'Share of current view': format(datum.total / current.total, '.1%'), 'Species': datum.speciesCount, 'Action': datum.children > 0 ? 'Click to zoom' : 'Species observation records'}"
+            "signal": "{'Name': datum.label, 'Level': datum.level, 'Scientific name': datum.scientific || '—', 'Observations': format(datum.total, ',d'), 'Share of current view': format(datum.total / current.total, '.1%'), 'Species': datum.speciesCount}"
           },
           "description": {
             "signal": "datum.path + ': ' + format(datum.total, ',d') + ' observations'"
@@ -653,7 +668,7 @@
             "signal": "focus === 'all' ? 'default' : 'pointer'"
           },
           "tooltip": {
-            "signal": "focus === 'all' ? 'All selected mammal observations' : 'Return to ' + current.parent"
+            "signal": "{'Current group': current.label}"
           }
         }
       }
@@ -947,105 +962,6 @@
       }
     },
     {
-      "name": "listNote",
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 615
-          },
-          "y": {
-            "value": 564
-          },
-          "text": {
-            "value": "Up to 12 largest entries shown; hover arcs for all species."
-          },
-          "fontSize": {
-            "value": 10
-          },
-          "fill": {
-            "value": "#52606d"
-          },
-          "limit": {
-            "value": 330
-          }
-        }
-      }
-    },
-    {
-      "name": "instructions",
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 16
-          },
-          "y": {
-            "value": 632
-          },
-          "text": {
-            "value": "Click a broad group, order, or list entry to zoom. Click the centre to go up one level; Escape resets."
-          },
-          "fontSize": {
-            "value": 12
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      }
-    },
-    {
-      "name": "footnote",
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 16
-          },
-          "y": {
-            "value": 655
-          },
-          "text": {
-            "value": "Colour families identify mammal groups; lighter shades show orders and species. Counts reflect recording activity."
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      }
-    },
-    {
-      "name": "source",
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 16
-          },
-          "y": {
-            "value": 675
-          },
-          "text": {
-            "value": "Source: DotMap.vg.json embedded observations · Higher taxonomy: Mammal Diversity Database (matched by genus)."
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      }
-    },
-    {
       "name": "groupLegendSymbols",
       "type": "symbol",
       "from": {
@@ -1054,23 +970,30 @@
       "encode": {
         "update": {
           "x": {
-            "field": "x"
+            "signal": "8 + (datum.group === 'Marsupials' ? 0 : datum.group === 'Placental mammals' ? 1 : 2) * legendColumnWidth"
           },
           "y": {
-            "value": 48
+            "value": 24
           },
           "shape": {
             "value": "square"
           },
           "size": {
-            "value": 100
+            "signal": "legendSymbolSize"
           },
           "fill": {
             "scale": "groupColor",
             "field": "group"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "opacity": {
+            "signal": "focus === 'all' || current.group === datum.group ? 1 : 0.3"
           }
         }
-      }
+      },
+      "interactive": true
     },
     {
       "name": "groupLegendLabels",
@@ -1081,10 +1004,10 @@
       "encode": {
         "update": {
           "x": {
-            "signal": "datum.x + 12"
+            "signal": "22 + (datum.group === 'Marsupials' ? 0 : datum.group === 'Placental mammals' ? 1 : 2) * legendColumnWidth"
           },
           "y": {
-            "value": 48
+            "value": 24
           },
           "baseline": {
             "value": "middle"
@@ -1096,14 +1019,71 @@
             "value": 12
           },
           "fill": {
-            "value": "#243447"
+            "value": "#6a5b49"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "opacity": {
+            "signal": "focus === 'all' || current.group === datum.group ? 1 : 0.3"
+          },
+          "fontWeight": {
+            "signal": "focus !== 'all' && current.group === datum.group ? 'bold' : 'normal'"
+          }
+        }
+      },
+      "interactive": true
+    },
+    {
+      "name": "groupLegendTitle",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": 0
+          },
+          "text": {
+            "value": "Mammal groups"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#634320"
           }
         }
       }
     }
   ],
   "config": {
-    "font": "Arial"
+    "font": "Arial",
+    "legend": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "titleFontWeight": "bold",
+      "labelColor": "#6a5b49",
+      "titleColor": "#634320",
+      "symbolType": "square",
+      "symbolSize": 100,
+      "rowPadding": 8,
+      "columnPadding": 24,
+      "labelOffset": 8
+    }
   },
   "usermeta": {
     "observationWindow": {

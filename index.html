@@ -4,21 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Australia’s wildlife through citizen science</title>
-  <link rel="stylesheet" href="styles.css?v=20261011-plain-legend">
+  <link rel="stylesheet" href="styles.css?v=20261014-waffle-third-column">
   <script defer src="https://cdn.jsdelivr.net/npm/vega@5.33.0/build/vega.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
-  <script defer src="prose.js"></script>
-  <script defer src="charts.js?v=20261011-plain-legend"></script>
 </head>
 <body>
   <header class="hero">
+    <div class="hero-content">
     <p class="eyebrow">Australia · Citizen science · Wildlife observations</p>
-    <h1>Every sighting tells<br>a bigger story.</h1>
-    <p class="intro">
-      <span class="intro-line">Explore where Australia’s wildlife is recorded, which species</span>
-      <span class="intro-line">attract attention, and how observation patterns change through</span>
-      <span class="intro-line">the years and seasons.</span>
-    </p>
+    <h1>Every sighting tells a bigger story.</h1>
+    <p class="hero-subtitle">Explore Australian wildlife records and discover which species attract attention.</p>
+    </div>
   </header>
 
   <div class="toolbar">
@@ -26,12 +22,10 @@
       <a href="#geography">Where</a><a href="#species">What</a><a href="#time">When</a><a href="#seasons">Seasons</a><a href="#parrot">Parrot case study</a><a href="#networks">Connections</a><a href="#diversity">Diversity</a>
     </nav>
     <label class="menu-toggle"><input id="show-actions" type="checkbox" checked> Show chart menus <span aria-hidden="true">•••</span></label>
-    <div class="species-selection"><span id="species-highlight" role="status">Species highlight: All species</span><button id="clear-species" type="button" hidden>Clear species highlight</button></div>
   </div>
 
   <main>
     <p id="page-status" class="page-status" role="status">Loading 11 interactive charts…</p>
-    <p class="notice">Mammal charts use the dataset’s 10 most recent available observation years (2017–2026); the bump chart uses 5 years (2022–2026). Both include partial 2026 records. The parrot case study uses a separate dataset.</p>
     <noscript><p class="notice">Enable JavaScript to view the interactive charts.</p></noscript>
 
     <section id="geography" aria-labelledby="geography-title">
@@ -41,12 +35,6 @@
       </header>
       <div class="story-columns"><p class="story">Wildlife recording activity is heavily concentrated along Australia’s eastern and south-eastern coasts. The Brisbane–Gold Coast region alone contains <strong>1,260 records (20.9%)</strong>, while Melbourne forms another visible cluster.</p><p class="story">Among the 10 selected mammals, <strong>Queensland records the most observations (1,878)</strong>, followed by Victoria and New South Wales. These hotspots reflect both wildlife presence and where citizen scientists are most active; they do not necessarily indicate more animals.</p></div>
       <article class="chart-card"><h3>Binned map <span>Recording hotspots</span></h3><div class="chart-scroll"><div class="chart" id="bin-map" data-spec="BinMap.vg.json" aria-label="Binned map of wildlife observations"></div></div></article>
-      <div class="shared-species-legend" role="group" aria-labelledby="shared-species-title">
-        <h3 id="shared-species-title">Species selection across the page</h3>
-        <p>Choose a species to highlight matching charts.</p>
-        <div id="species-legend-buttons" class="species-legend-buttons"></div>
-        <button id="show-all-species" type="button">Show all species</button>
-      </div>
       <article class="chart-card"><h3>Dot map <span>Individual observations</span></h3><div class="chart-scroll"><div class="chart" id="dot-map" data-spec="DotMap.vg.json" aria-label="Map of mammal observation locations"></div></div></article>
     </section>
 
@@ -58,7 +46,6 @@
       <div class="story-columns"><p class="story">Observation activity is highly uneven between species. <strong>Koalas lead with 1,896 records</strong>, far ahead of Platypus (642) and Grey-headed Flying-fox (494).</p><p class="story">Among the top 10 species, <strong>Koalas alone account for 45.8% of observations</strong>, showing how strongly a single species can dominate the citizen-science record.</p></div>
       <article class="chart-card"><h3>Lollipop chart <span>Species rankings</span></h3><div class="chart-scroll"><div class="chart" id="lollipop" data-spec="Lollipop.vg.json" aria-label="Ranking of mammal observation counts"></div></div></article>
       <article class="chart-card"><h3>Waffle chart <span>Share among the top ten mammals</span></h3><div class="chart-scroll"><div class="chart" id="waffle" data-spec="Waffle.vg.json" aria-label="Share of observations among top ten mammals"></div></div></article>
-      <div class="story-columns"><p class="notice">Frequently recorded does not necessarily mean most abundant in the wild.</p><p class="notice">These records reflect both wildlife presence and human recording activity.</p></div>
     </section>
 
     <section id="time" aria-labelledby="time-title">
@@ -85,8 +72,8 @@
         <p class="eyebrow">05 / A seasonal case study</p>
         <h2 id="parrot-title">Following the Orange-bellied Parrot through the seasons</h2>
       </header>
-      <div class="story-columns"><p class="story">Orange-bellied Parrot records show a striking seasonal geographic shift. In summer, <strong>71.4% of records are from Tasmania</strong>, but by winter Tasmania contributes only a small share, while <strong>Victoria accounts for 64.2%</strong> and <strong>South Australia for 28.5%</strong>.</p><p class="story">In spring, Victoria remains dominant at <strong>60.8%</strong>, while Tasmania’s share rises again to <strong>26.0%</strong>.</p></div>
-      <article class="chart-card"><h3>Choropleth map <span>Monthly distribution across LGAs</span></h3><div class="story-columns"><p class="story">Highlight a range on the line graph, then slide the highlighted window through different months. Watch how recorded locations shift from Tasmania towards South Australia and Victoria, with some observations in New South Wales—a pattern consistent with the parrot’s seasonal migration.</p><p class="story">Choose a state or local government area from the selector, or click an LGA on the map, to zoom in and explore its monthly records. Choose “All recorded states” to return to the full view.</p></div><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Monthly geographic distribution of Orange-bellied Parrot observations"></div></div></article>
+      <div class="story-columns"><p class="story">Orange-bellied Parrot records show a striking seasonal geographic shift. In summer, <strong>93.0% of records are from Tasmania</strong>, but by winter Tasmania contributes only a small share, while <strong>Victoria accounts for 79.2%</strong> and <strong>South Australia for 20.8%</strong>.</p><p class="story">In spring, <strong>Tasmania contributes 72.6%</strong> of records, followed by <strong>Victoria at 24.2%</strong>. These seasonal shares use 206 records from 2017–2026 with a usable month and state.</p></div>
+      <article class="chart-card"><h3>Choropleth map <span>Monthly distribution across LGAs</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Monthly geographic distribution of Orange-bellied Parrot observations"></div></div></article>
       <article class="chart-card"><h3>100% stacked bar chart <span>Seasonal share by state</span></h3><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="Seasonal state shares of Orange-bellied Parrot observations"></div></div></article>
       <div class="story-columns"><p class="story">Together with the monthly choropleth, these seasonal shares reveal a clear redistribution of recorded locations between Tasmania and mainland Australia, showing <strong>movement patterns consistent with seasonal migration</strong>.</p><p class="story">Citizen-science observations can help reveal these patterns over time, although the records alone do not prove that individual birds migrated.</p></div>
     </section>
@@ -111,5 +98,416 @@
 
     <footer><h2>From individual sightings to a broader picture.</h2><div class="story-columns"><p>From individual sightings to national patterns, citizen science reveals where Australian wildlife is recorded, which species dominate, and how observations change across years and seasons.</p><p>However, recording frequency reflects both wildlife presence and human participation, so these patterns should not be interpreted as direct measures of animal abundance.</p></div><a href="#">Back to top ↑</a></footer>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fill each paragraph line greedily, stopping at ten words or the column edge.
+      const textMeasure = document.createElement('canvas').getContext('2d');
+      const paragraphs = [...document.querySelectorAll('.story-columns > p')].map(paragraph => {
+        const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT);
+        let text = '';
+        const emphasis = [];
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          if (node.parentElement.closest('strong')) {
+            emphasis.push([text.length, text.length + node.textContent.length]);
+          }
+          text += node.textContent;
+        }
+        const words = [...text.matchAll(/\S+/g)].map(match => ({
+          text: match[0],
+          bold: emphasis.some(([start, end]) => start < match.index + match[0].length && end > match.index)
+        }));
+        return { paragraph, words, width: null };
+      });
+      function fillParagraph(layout, force = false) {
+        const { paragraph, words } = layout;
+        const width = paragraph.getBoundingClientRect().width;
+        if (width <= 0 || (!force && layout.width === width)) return;
+        layout.width = width;
+        const style = getComputedStyle(paragraph);
+        textMeasure.font = `400 ${style.fontSize} ${style.fontFamily}`;
+        const space = textMeasure.measureText(' ').width;
+        const fragment = document.createDocumentFragment();
+        let line, lineWidth = 0, count = 0;
+        for (const word of words) {
+          textMeasure.font = `${word.bold ? 700 : 400} ${style.fontSize} ${style.fontFamily}`;
+          const wordWidth = textMeasure.measureText(word.text).width;
+          if (!line || count === 10 || lineWidth + space + wordWidth > width - 2) {
+            if (line) fragment.append(document.createTextNode(' '));
+            line = document.createElement('span');
+            line.className = 'analysis-line';
+            fragment.append(line);
+            lineWidth = 0;
+            count = 0;
+          }
+          if (count) { line.append(' '); lineWidth += space; }
+          if (word.bold) {
+            const strong = document.createElement('strong');
+            strong.textContent = word.text;
+            line.append(strong);
+          } else line.append(word.text);
+          lineWidth += wordWidth;
+          count++;
+        }
+        paragraph.replaceChildren(fragment);
+      }
+      paragraphs.forEach(layout => fillParagraph(layout));
+      const paragraphObserver = new ResizeObserver(() => paragraphs.forEach(layout => fillParagraph(layout)));
+      paragraphs.forEach(({ paragraph }) => paragraphObserver.observe(paragraph));
+      document.fonts.ready.then(() => paragraphs.forEach(layout => fillParagraph(layout, true)));
+
+      /* All chart specifications remain in their original .vg.json files. */
+      const actionToggle = document.querySelector('#show-actions');
+      const statusMessage = document.querySelector('#page-status');
+      const preferenceKey = 'wildlife-show-chart-actions';
+      const linkedViews = [];
+      const highlightViews = [];
+      let highlightedSpecies = null;
+      let speciesUpdates = Promise.resolve();
+
+      const linkedCharts = {
+        'DotMap.vg.json': {},
+        'Lollipop.vg.json': { events: '@stems:click, @dots:click, @counts:click', data: ['topSpecies'] },
+        'BumpChart.vg.json': { events: '@trajectories:click, @points:click, @speciesLabels:click', data: ['series', 'ranked', 'endpoints', 'highlight'] },
+        'Streamgraph.vg.json': { data: ['seriesData', 'focusedCounts', 'legendEntries'] },
+        'Ridgeline.vg.json': { data: ['ridge', 'monthly', 'species'] },
+        'Waffle.vg.json': { events: '@speciesLabels:click, @speciesShares:click', data: ['topSpecies'] },
+        'Sankey.vg.json': { events: '@nodes:click, @labels:click, @ribbons:click', data: ['links', 'nodeData'] },
+        'Sunburst.vg.json': { events: '@segments:click, @childLabels:click', data: ['visible', 'children'] }
+      };
+
+      // Add website-wide selection to the embedded specs without changing their data.
+      function linkSpecies(spec, file) {
+        if (spec.title && typeof spec.title === 'object') {
+          spec.title.anchor = 'middle';
+          spec.title.align = 'center';
+          if (spec.title.subtitle) {
+            spec.title.subtitle = [spec.title.subtitle].flat().flatMap(line =>
+              String(line).split(/(?<=[.!?])\s+(?=[A-Z])/)
+            );
+          }
+        }
+        if (file === 'ChoroplethMap.vg.json') {
+          // Also suppress the summary if an older copy of the spec is loaded.
+          spec.marks = spec.marks.filter(mark => mark.name !== 'monthHeading');
+
+        }
+        const config = linkedCharts[file];
+        if (!config) return spec;
+        spec.signals ??= [];
+        let selected = spec.signals.find(signal => signal.name === 'selectedSpecies');
+        if (!selected) {
+          let species = 'datum.species';
+          if (file === 'Sankey.vg.json') species = "datum.species || (datum.column === 0 ? datum.name : null)";
+          if (file === 'Sunburst.vg.json') species = "datum.level === 'Species' ? datum.label : null";
+          selected = {
+            name: 'selectedSpecies', value: null,
+            on: [{ events: config.events, update: `(${species}) ? (selectedSpecies === (${species}) ? null : (${species})) : selectedSpecies` }]
+          };
+          selected.on.push({ events: "window:keydown[event.key === 'Escape']", update: 'null' });
+          spec.signals.push(selected);
+        }
+
+        const active = spec.signals.find(signal => signal.name === 'activeSpecies');
+        if (active) active.update = 'selectedSpecies != null ? selectedSpecies : hoveredSpecies';
+        if (file === 'Sankey.vg.json') {
+          spec.signals.find(signal => signal.name === 'active').update = "selectedSpecies ? 'species:' + selectedSpecies : selected || hovered";
+          // Species use the shared selection; state selections remain local to this chart.
+          spec.signals.find(signal => signal.name === 'selected').on[0].update = 'datum.column === 1 ? (selected === datum.key ? null : datum.key) : null';
+        }
+        if (file === 'BumpChart.vg.json') {
+          spec.data.push({ name: 'selectedAnnual', source: 'annualCounts', transform: [{ type: 'filter', expr: 'datum.species === selectedSpecies' }] });
+          spec.signals.push({ name: 'activeScientific', update: "length(data('selectedAnnual')) ? data('selectedAnnual')[0].scientific_name : hoveredSpecies" });
+        }
+
+        if (file === 'Sunburst.vg.json') {
+          spec.data.push({ name: 'selectedNode', source: 'taxonomy', transform: [{ type: 'filter', expr: "datum.level === 'Species' && datum.label === selectedSpecies" }] });
+        }
+
+        function patchMarks(marks) {
+          for (const mark of marks || []) {
+            if (config.data?.includes(mark.from?.data)) {
+              let matches = 'datum.species === selectedSpecies';
+              if (file === 'Sankey.vg.json') matches = "indexof(datum.keys, 'species:' + selectedSpecies) >= 0";
+              if (file === 'Sunburst.vg.json') matches = "length(data('selectedNode')) && (datum.id === data('selectedNode')[0].id || datum.id === data('selectedNode')[0].parent || datum.id === data('selectedNode')[0].group)";
+              const update = mark.encode.update ??= {};
+              if (file === 'BumpChart.vg.json') {
+                for (const encoding of Object.values(update)) {
+                  if (encoding.signal) encoding.signal = encoding.signal.replaceAll('hoveredSpecies', 'activeScientific');
+                }
+              }
+              const opacity = update.opacity;
+              const base = opacity?.signal ?? opacity?.value ?? 1;
+              update.opacity = { signal: `(${base}) * (selectedSpecies == null || (${matches}) ? 1 : 0.16)` };
+              // Labels double as click targets, even in charts that previously only hovered.
+              if (mark.name && config.events?.includes(`@${mark.name}:click`)) update.cursor = { value: 'pointer' };
+            }
+            patchMarks(mark.marks);
+          }
+        }
+        patchMarks(spec.marks);
+        return spec;
+      }
+
+      function positionLegendControls(chart, selector, controlsClass, label, column = null) {
+        const wrapper = chart.querySelector('.chart-wrapper');
+        const legend = wrapper?.querySelector(selector);
+        const bindings = chart.querySelector('.vega-bindings');
+        if (!wrapper || !legend || !bindings) return;
+        let controls = wrapper.querySelector(`.${controlsClass}`);
+        if (!controls) {
+          controls = document.createElement('div');
+          controls.className = `legend-inline-controls ${controlsClass}`;
+          controls.setAttribute('aria-label', label);
+          controls.append(bindings);
+          wrapper.append(controls);
+        }
+        const frame = legend.getBoundingClientRect();
+        const box = wrapper.getBoundingClientRect();
+        controls.style.left = `${frame.right - box.left + 24}px`;
+        if (column === 'frame-right') {
+          const mapFrame = wrapper.querySelector('.mapFrame');
+          if (mapFrame) {
+            controls.style.left = 'auto';
+            controls.style.right = `${box.right - mapFrame.getBoundingClientRect().right}px`;
+          }
+        } else if (column === 'right') {
+          controls.style.left = 'auto';
+          controls.style.right = '24px';
+        } else if (column != null) {
+          const title = wrapper.querySelector('.legendTitle');
+          const left = title ? title.getBoundingClientRect().left - box.left : 0;
+          controls.style.left = `${left + column * box.width / 3}px`;
+        }
+        controls.style.top = `${frame.top - box.top + frame.height / 2}px`;
+      }
+
+      function positionTopChartControls(chart, selector, controlsClass) {
+        const wrapper = chart.querySelector('.chart-wrapper');
+        const anchor = wrapper?.querySelector(selector);
+        const bindings = chart.querySelector('.vega-bindings');
+        if (!wrapper || !anchor || !bindings) return;
+        let controls = wrapper.querySelector(`.${controlsClass}`);
+        if (!controls) {
+          controls = document.createElement('div');
+          controls.className = `top-chart-controls ${controlsClass}`;
+          controls.append(bindings);
+          wrapper.append(controls);
+        }
+        const box = wrapper.getBoundingClientRect();
+        const frame = anchor.getBoundingClientRect();
+        const legendTitle = wrapper.querySelector('.binLegendTitle, .legendTitle, .speciesLegendTitle');
+        controls.style.left = `${legendTitle ? legendTitle.getBoundingClientRect().left - box.left : 24}px`;
+        controls.style.top = `${frame.bottom - box.top + 24}px`;
+      }
+
+      function selectSpecies(species) {
+        highlightedSpecies = species;
+        // Queue updates outside signal listeners, so the originating Vega pulse finishes first.
+        speciesUpdates = speciesUpdates.then(async () => {
+          for (const { view, speciesNames } of linkedViews) {
+            const value = speciesNames.has(highlightedSpecies) ? highlightedSpecies : null;
+            if (view.signal('selectedSpecies') !== value) {
+              await view.signal('selectedSpecies', value).runAsync();
+            }
+          }
+        }).catch(error => console.error('Could not synchronize species highlights', error));
+      }
+
+      document.addEventListener('click', event => {
+        if (event.target.closest('.chart')) return;
+        selectSpecies(null);
+        speciesUpdates = speciesUpdates.then(async () => {
+          for (const { view, signals } of highlightViews) {
+            let changed = false;
+            for (const name of signals) {
+              if (view.signal(name) != null) {
+                view.signal(name, null);
+                changed = true;
+              }
+            }
+            if (changed) await view.runAsync();
+          }
+        }).catch(error => console.error('Could not clear chart highlights', error));
+      });
+
+      try {
+        actionToggle.checked = localStorage.getItem(preferenceKey) !== 'false';
+      } catch {
+        // The toggle also works when browser storage is unavailable.
+      }
+
+      function updateActionVisibility() {
+        document.body.classList.toggle('hide-chart-actions', !actionToggle.checked);
+        if (!actionToggle.checked) {
+          document.querySelectorAll('.vega-embed > details[open]').forEach(menu => {
+            menu.open = false;
+          });
+        }
+      }
+
+      updateActionVisibility();
+      actionToggle.addEventListener('change', () => {
+        updateActionVisibility();
+        try {
+          localStorage.setItem(preferenceKey, String(actionToggle.checked));
+        } catch {
+          // Saving a preference is optional; chart interaction remains available.
+        }
+      });
+
+      async function loadCharts() {
+        const charts = [...document.querySelectorAll('[data-spec]')];
+        if (location.protocol === 'file:') {
+          statusMessage.textContent = 'Open this page using VS Code Live Server or run python3 -m http.server 8000 and visit http://localhost:8000. Chart files need an HTTP server.';
+          return;
+        }
+        if (typeof vegaEmbed !== 'function') {
+          statusMessage.textContent = 'The chart library could not load. Check your internet connection and refresh the page.';
+          return;
+        }
+
+        let loaded = 0;
+        let failed = 0;
+        for (const chart of charts) {
+          const file = chart.dataset.spec;
+          try {
+            const response = await fetch(file, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`Could not fetch ${file}: ${response.status}`);
+            const spec = await response.json();
+            const result = await vegaEmbed(chart, spec, {
+              mode: 'vega',
+              renderer: 'svg',
+              actions: { export: { svg: true, png: true }, source: true, editor: true },
+              editorUrl: 'https://vega.github.io/editor/',
+              downloadFileName: file.replace('.vg.json', ''),
+              defaultStyle: true,
+              patch: spec => linkSpecies(spec, file)
+            });
+            // Fit every chart to the shared content columns without stretching its shapes.
+            const svg = chart.querySelector('.chart-wrapper > svg');
+            if (svg) {
+              const hasLegendLayout = (result.spec.signals || []).some(signal => signal.name === 'legendColumnWidth');
+              let legendLayoutPending = false;
+              const fitChart = () => {
+                svg.setAttribute('viewBox', `0 0 ${svg.getAttribute('width')} ${svg.getAttribute('height')}`);
+                const scale = svg.getBoundingClientRect().width / Number(svg.getAttribute('width'));
+                if (!Number.isFinite(scale) || scale <= 0) return;
+                if (hasLegendLayout && !legendLayoutPending) {
+                  const columnWidth = Number(svg.getAttribute('width')) / 3;
+                  const symbolSize = 100 / (scale * scale);
+                  if (Math.abs(result.view.signal('legendColumnWidth') - columnWidth) > 0.1 ||
+                      Math.abs(result.view.signal('legendSymbolSize') - symbolSize) > 0.1) {
+                    legendLayoutPending = true;
+                    result.view.signal('legendColumnWidth', columnWidth)
+                      .signal('legendSymbolSize', symbolSize).runAsync().then(() => {
+                        legendLayoutPending = false;
+                        fitChart();
+                      }).catch(error => {
+                        legendLayoutPending = false;
+                        console.error('Could not align chart legends', error);
+                      });
+                  }
+                }
+                // Keep legend fonts equal on screen even when SVGs scale by different amounts.
+                for (const group of svg.querySelectorAll('g.mark-text')) {
+                  const classes = [...group.classList];
+                  const title = classes.some(name => /legend.*title/i.test(name));
+                  const label = classes.some(name => /legend.*labels?/i.test(name));
+                  if (!title && !label) continue;
+                  for (const text of group.querySelectorAll('text')) {
+                    text.style.fontFamily = 'Arial, sans-serif';
+                    text.style.fontSize = `${(title ? 13 : 12) / scale}px`;
+                  }
+                }
+                if (file === 'ChoroplethMap.vg.json') {
+                  positionLegendControls(chart, '.densityLegendFrame', 'choropleth-inline-controls', 'Map location and zoom controls', 'frame-right');
+                }
+                if (file === 'Waffle.vg.json') {
+                  positionLegendControls(chart, '.headline', 'waffle-inline-controls', 'Dominant species selector', 'right');
+                }
+                if (file === 'BinMap.vg.json') {
+                  positionTopChartControls(chart, '.binLegendLabels', 'bin-top-controls');
+                }
+                if (file === 'DotMap.vg.json') {
+                  positionTopChartControls(chart, '.speciesLegendLabels', 'dot-top-controls');
+                }
+                if (file === 'Lollipop.vg.json') {
+                  positionTopChartControls(chart, '.role-title', 'lollipop-top-controls');
+                }
+              };
+              fitChart();
+              // Keep the frame fitted when selections change the rendered chart dimensions.
+              const sizeObserver = new MutationObserver(fitChart);
+              sizeObserver.observe(svg, {
+                attributes: true, attributeFilter: ['width', 'height'],
+                childList: true, subtree: true
+              });
+              const legendResizeObserver = new ResizeObserver(fitChart);
+              legendResizeObserver.observe(chart.querySelector('.chart-wrapper'));
+              svg.setAttribute('preserveAspectRatio', 'xMidYMin meet');
+              if (file === 'StackedBar.vg.json') {
+                const season = [...svg.querySelectorAll('.role-axis-label text')]
+                  .find(text => text.textContent.startsWith('Summer'));
+                const legendTitle = svg.querySelector('.legendTitle text');
+                if (season && legendTitle) {
+                  const scale = svg.getBoundingClientRect().width / Number(svg.getAttribute('width'));
+                  const shift = (season.getBoundingClientRect().left - legendTitle.getBoundingClientRect().left) / scale;
+                  await result.view.signal('legendOffset', result.view.signal('legendOffset') + shift).runAsync();
+                }
+              }
+            }
+            const highlightSignals = new Set([
+              'selectedSpecies', 'selectedRegion', 'selected', 'selectedAreaRegion', 'selectedMammalGroup',
+              'hoveredSpecies', 'hoveredRegion', 'hovered', 'hoveredAreaRegion', 'hoveredMammalGroup'
+            ]);
+            highlightViews.push({
+              view: result.view,
+              signals: (result.spec.signals || []).map(signal => signal.name)
+                .filter(name => highlightSignals.has(name))
+            });
+            if (linkedCharts[file]) {
+              const speciesNames = new Set();
+              for (const dataset of result.spec.data || []) {
+                for (const row of dataset.values || []) {
+                  if (row.species) speciesNames.add(row.species);
+                  if (row.level === 'Species') speciesNames.add(row.label || row.name);
+                }
+              }
+              const view = result.view;
+              linkedViews.push({ view, speciesNames });
+              // Apply earlier selections to charts that finish loading later.
+              await view.signal('selectedSpecies', speciesNames.has(highlightedSpecies) ? highlightedSpecies : null).runAsync();
+              view.addSignalListener('selectedSpecies', (_, value) => {
+                const expected = speciesNames.has(highlightedSpecies) ? highlightedSpecies : null;
+                if (value !== expected) selectSpecies(value);
+              });
+            }
+            const summary = chart.querySelector('summary');
+            if (summary) {
+              summary.setAttribute('aria-label', `Chart actions for ${chart.getAttribute('aria-label')}`);
+              summary.title = 'Click to view actions';
+            }
+            loaded++;
+          } catch (error) {
+            failed++;
+            chart.replaceChildren();
+            const message = document.createElement('p');
+            message.className = 'chart-error';
+            message.textContent = `Could not load ${file}. Refresh the page to try again.`;
+            chart.append(message);
+            console.error(`Could not render ${file}`, error);
+          }
+          statusMessage.textContent = `Loaded ${loaded} of ${charts.length} charts${failed ? ` · ${failed} could not load` : '…'}`;
+        }
+        statusMessage.textContent = failed
+          ? `Loaded ${loaded} of ${charts.length} charts · ${failed} could not load. See the affected chart for details.`
+          : '';
+        statusMessage.hidden = failed === 0;
+      }
+
+      loadCharts();
+    });
+  </script>
 </body>
 </html>

@@ -8,8 +8,7 @@
   "title": {
     "text": "Which species rise or fall in observation ranking?",
     "subtitle": [
-      "Top 10 mammals by total observations, 2022–2026 · Rank within these 10 species",
-      "Hover over a path, point or species label to follow its ranking across years."
+      "Top 10 mammals by total observations, 2022–2026 · Rank within these 10 species"
     ],
     "anchor": "start",
     "font": "Arial",
@@ -749,52 +748,6 @@
           },
           "tooltip": {
             "signal": "{'Species': datum.species, 'Scientific name': datum.scientific_name, 'Year': datum.year, 'Rank among selected 10': datum.rank, 'Observations': datum.count}"
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 0
-          },
-          "y": {
-            "value": 510
-          },
-          "text": {
-            "value": "Ranks compare the selected 10 species each year. Equal counts are ordered by scientific name."
-          },
-          "fontSize": {
-            "value": 12
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 0
-          },
-          "y": {
-            "value": 531
-          },
-          "text": {
-            "value": "Hollow point = zero observations. Counts reflect recording activity, not animal abundance."
-          },
-          "fontSize": {
-            "value": 12
-          },
-          "fill": {
-            "value": "#52606d"
           }
         }
       }

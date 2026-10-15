@@ -10,8 +10,7 @@
   "title": {
     "text": "Which species are recorded most often?",
     "subtitle": [
-      "6,015 mammal observations · 146 species · 2017–2026",
-      "Choose Top 5 or 10; sort changes the display order of those species."
+      "6,015 mammal observations · 146 species · 2017–2026"
     ],
     "anchor": "start",
     "font": "Arial",
@@ -20,7 +19,7 @@
     "subtitleFont": "Arial",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
-    "offset": 16,
+    "offset": 80,
     "subtitlePadding": 6,
     "subtitleLineHeight": 16
   },
@@ -1188,72 +1187,6 @@
           },
           "text": {
             "signal": "'The top ' + topN + ' of 146 species account for ' + format(datum.shownCount / 6015, '.1%') + ' of all records.'"
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 0
-          },
-          "align": {
-            "value": "left"
-          },
-          "baseline": {
-            "value": "top"
-          },
-          "font": {
-            "value": "Arial"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        },
-        "update": {
-          "y": {
-            "signal": "height + 90"
-          },
-          "text": {
-            "value": "Observation counts reflect recording activity, not animal abundance."
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 0
-          },
-          "align": {
-            "value": "left"
-          },
-          "baseline": {
-            "value": "top"
-          },
-          "font": {
-            "value": "Arial"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        },
-        "update": {
-          "y": {
-            "signal": "height + 107"
-          },
-          "text": {
-            "value": "Source: observations-794195.csv · Subspecies combined · 1 genus-only record excluded"
           }
         }
       }

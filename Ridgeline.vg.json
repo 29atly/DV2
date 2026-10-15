@@ -8,8 +8,7 @@
   "title": {
     "text": "When Are Australia's Mammals Most Frequently Observed?",
     "subtitle": [
-      "Top 10 recorded species · 4,139 observations · 2017–2026 pooled",
-      "Hover for monthly counts and shares; click a species to keep it highlighted."
+      "Top 10 recorded species · 4,139 observations · 2017–2026 pooled"
     ],
     "anchor": "start",
     "font": "Arial",
@@ -44,10 +43,6 @@
         {
           "events": "@monthTargets:click, @speciesLabels:click",
           "update": "selectedSpecies == datum.species ? null : datum.species"
-        },
-        {
-          "events": "@resetHighlight:click",
-          "update": "null"
         }
       ]
     },
@@ -1895,84 +1890,6 @@
         }
       },
       "interactive": false
-    },
-    {
-      "type": "text",
-      "encode": {
-        "update": {
-          "x": {
-            "value": 0
-          },
-          "y": {
-            "signal": "height + 76"
-          },
-          "text": {
-            "value": "Height = monthly share of each species’ records, on a shared scale. Dots mark peak months."
-          },
-          "fontSize": {
-            "value": 12
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      },
-      "interactive": false
-    },
-    {
-      "type": "text",
-      "encode": {
-        "update": {
-          "x": {
-            "value": 0
-          },
-          "y": {
-            "signal": "height + 96"
-          },
-          "text": {
-            "value": "Source: supplied mammal observations · Ten available years pooled · Recording activity, not animal abundance."
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      },
-      "interactive": false
-    },
-    {
-      "type": "text",
-      "encode": {
-        "update": {
-          "x": {
-            "signal": "width"
-          },
-          "y": {
-            "value": -20
-          },
-          "text": {
-            "value": "Clear highlight"
-          },
-          "align": {
-            "value": "right"
-          },
-          "fill": {
-            "value": "#365B85"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "cursor": {
-            "value": "pointer"
-          },
-          "opacity": {
-            "signal": "selectedSpecies != null ? 1 : 0"
-          }
-        }
-      },
-      "name": "resetHighlight"
     }
   ],
   "config": {

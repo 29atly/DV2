@@ -1,15 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Readability rationale: Charts involving multiple lines or flows use a limited selection of the most observed species (typically 5–6), while ranking and hierarchical charts can accommodate larger selections (typically 10–15). Maps can retain all species within their selected dataset where aggregation or filtering prevents clutter. This Sankey shows the top five species by observation count among the ten mammals selected in DotMap.vg.json. Sankey showing only the five most recorded species among the 10 selected mammals in DotMap.vg.json: Koala, Platypus, Grey-headed Flying-fox, Greater Glider, European Rabbit. Species ranked by 2017–2026 geolocated observation count, not conservation importance. Both stages sum to 3,429 observations. State assignments copied from DotMap, including Offshore / unspecified. State totals and connections include only these five species. Ribbon and node heights use a uniform 0.15456401283172938 pixels per observation. Species colours match DotMap. All data and layout embedded. Hover or click to highlight; click again, Reset highlight, or Escape to clear. Counts reflect recording activity, not migration or animal abundance. Species colours match the ten-species palette in BumpChart.vg.json; species selection is retained; counts use the selected observation years. ACT, Western Australia, Northern Territory and Offshore / unspecified are combined as Others (55 observations); their species flows are summed. Grouped-location breakdowns are retained in tooltips. Totals and the shared ribbon-height scale are preserved. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
-  "width": 1100,
-  "height": 788,
+  "width": 1000,
+  "height": 680,
   "padding": 16,
   "background": "#f7fafc",
   "title": {
     "text": "Where Are the Five Most Recorded Mammal Species Observed?",
     "subtitle": [
-      "Species → state / territory · Top 5 most observed species in the DotMap selection · 2017–2026",
-      "To maintain readability, this flow chart shows five species · 3,429 observations · Ribbon width shows observation count"
+      "Species → state / territory · Top 5 most observed species · 2017–2026",
+      "3,429 observations · Ribbon width shows observation count"
     ],
     "anchor": "start",
     "fontSize": 22,
@@ -30,7 +30,7 @@
           "update": "selected === datum.key ? null : datum.key"
         },
         {
-          "events": "@reset:click, view:keydown[event.key === 'Escape'], view:dblclick",
+          "events": "view:keydown[event.key === 'Escape'], view:dblclick",
           "update": "null"
         }
       ]
@@ -731,7 +731,7 @@
       "encode": {
         "update": {
           "x": {
-            "field": "x"
+            "signal": "datum.x - 100"
           },
           "y": {
             "value": 24
@@ -784,6 +784,12 @@
           },
           "description": {
             "signal": "datum.source + ' → ' + datum.target + ': ' + datum.count + ' observations'"
+          },
+          "x": {
+            "value": -100
+          },
+          "y": {
+            "value": -48
           }
         }
       }
@@ -797,16 +803,16 @@
       "encode": {
         "update": {
           "x": {
-            "field": "x"
+            "signal": "datum.x - 100"
           },
           "width": {
             "value": 18
           },
           "y": {
-            "field": "y"
+            "signal": "datum.y - 48"
           },
           "y2": {
-            "field": "y2"
+            "signal": "datum.y2 - 48"
           },
           "fill": {
             "signal": "datum.column === 1 ? '#52606d' : scale('color', datum.name)"
@@ -818,7 +824,7 @@
             "value": "pointer"
           },
           "tooltip": {
-            "signal": "merge({'Name': datum.name, 'Stage': datum.level, 'Observations': format(datum.count, ',d'), 'Share of top-five records': format(datum.count / 3429, '.1%'), 'Action': 'Click to highlight connections'}, datum.members ? {'Includes': datum.members} : {})"
+            "signal": "merge({'Name': datum.name, 'Stage': datum.level, 'Observations': format(datum.count, ',d'), 'Share of top-five records': format(datum.count / 3429, '.1%')}, datum.members ? {'Includes': datum.members} : {})"
           },
           "description": {
             "signal": "datum.name + ': ' + datum.count + ' observations'"
@@ -835,10 +841,10 @@
       "encode": {
         "update": {
           "x": {
-            "signal": "datum.column === 1 ? datum.x + 28 : datum.x - 12"
+            "signal": "(datum.column === 1 ? datum.x + 28 : datum.x - 12) - 100"
           },
           "y": {
-            "signal": "(datum.y + datum.y2) / 2"
+            "signal": "((datum.y + datum.y2) / 2) - 48"
           },
           "text": {
             "signal": "datum.label + '  ' + format(datum.count, ',d')"
@@ -866,61 +872,6 @@
           },
           "tooltip": {
             "signal": "merge({'Name': datum.name, 'Observations': format(datum.count, ',d'), 'Share of top-five records': format(datum.count / 3429, '.1%')}, datum.members ? {'Includes': datum.members} : {})"
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 0
-          },
-          "y": {
-            "value": 784
-          },
-          "text": {
-            "value": "Hover to trace a species · Click a species or state to keep its connections highlighted"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      }
-    },
-    {
-      "name": "reset",
-      "type": "text",
-      "encode": {
-        "update": {
-          "x": {
-            "value": 1100
-          },
-          "y": {
-            "value": 784
-          },
-          "align": {
-            "value": "right"
-          },
-          "text": {
-            "value": "Reset highlight"
-          },
-          "fontSize": {
-            "value": 12
-          },
-          "fontWeight": {
-            "value": "bold"
-          },
-          "fill": {
-            "value": "#365B85"
-          },
-          "cursor": {
-            "value": "pointer"
           }
         }
       }
