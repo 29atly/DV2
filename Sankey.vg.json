@@ -7,10 +7,7 @@
   "background": "#f7fafc",
   "title": {
     "text": "Where Are the Five Most Recorded Mammal Species Observed?",
-    "subtitle": [
-      "Species → state / territory · Top 5 most observed species · 2017–2026",
-      "3,429 observations · Ribbon width shows observation count"
-    ],
+    "subtitle": ["Species → state / territory · 2017–2026"],
     "anchor": "start",
     "fontSize": 22,
     "color": "#243447",
@@ -847,7 +844,7 @@
             "signal": "((datum.y + datum.y2) / 2) - 48"
           },
           "text": {
-            "signal": "datum.label + '  ' + format(datum.count, ',d')"
+            "signal": "datum.label"
           },
           "align": {
             "signal": "datum.column === 1 ? 'left' : 'right'"

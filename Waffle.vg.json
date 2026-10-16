@@ -9,9 +9,7 @@
   "background": "#f7fafc",
   "title": {
     "text": "How much do dominant species contribute?",
-    "subtitle": [
-      "Share of records among the top 10 mammal species · 2017–2026"
-    ],
+    "subtitle": ["Relative recording activity among selected mammals · 2017–2026"],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 22,
@@ -1141,7 +1139,7 @@
             "value": 98
           },
           "text": {
-            "signal": "format(totals.total, ',d') + ' observations across the top ' + totals.speciesCount + ' species'"
+            "value": ""
           },
           "fontSize": {
             "value": 12
@@ -1301,7 +1299,7 @@
             "signal": "(253 + (datum.rank - 1) * 19) - 30"
           },
           "text": {
-            "signal": "format(datum.count / totals.total, '.1%') + '  (' + format(datum.count, ',d') + ')'"
+            "signal": "format(datum.count / totals.total, '.1%')"
           },
           "fontSize": {
             "value": 12

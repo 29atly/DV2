@@ -9,9 +9,7 @@
   "background": "#f7fafc",
   "title": {
     "text": "Which species are recorded most often?",
-    "subtitle": [
-      "6,015 mammal observations · 146 species · 2017–2026"
-    ],
+    "subtitle": ["Mammal species rankings · 2017–2026"],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 22,
@@ -1145,7 +1143,7 @@
             "signal": "datum.rank === 1 ? 'bottom' : 'middle'"
           },
           "text": {
-            "signal": "datum.rank === 1 ? 'Koalas dominate: ' + format(datum.count / 6015, '.1%') + ' of all records' : datum.rank === 2 ? 'Koalas have ' + format(data('speciesCounts')[0].count / datum.count, '.1f') + '× as many records as Platypus' : 'Near tie: just 5 records ahead of Spotted-tailed Quoll'"
+            "signal": "datum.rank === 1 ? 'Koalas dominate recording activity' : datum.rank === 2 ? 'Platypus follows Koalas' : 'Similar recording activity to Spotted-tailed Quoll'"
           }
         }
       }
@@ -1186,7 +1184,7 @@
             "signal": "height + 66"
           },
           "text": {
-            "signal": "'The top ' + topN + ' of 146 species account for ' + format(datum.shownCount / 6015, '.1%') + ' of all records.'"
+            "value": ""
           }
         }
       }

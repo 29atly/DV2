@@ -6,9 +6,7 @@
   "height": 650,
   "title": {
     "text": "Where is recording activity concentrated?",
-    "subtitle": [
-      "All 6,016 wildlife records · 2017–2026"
-    ],
+    "subtitle": ["Wildlife recording hotspots · 2017–2026"],
     "anchor": "start",
     "color": "#243447",
     "fontSize": 22,
@@ -6679,7 +6677,7 @@
                 "value": "center"
               },
               "text": {
-                "signal": "format(datum.count, ',d') + ' records · ' + format(datum.share, '.1%') + ' of dataset'"
+                "value": ""
               },
               "font": {
                 "value": "Arial"
@@ -6713,7 +6711,7 @@
                 "value": "center"
               },
               "text": {
-                "value": "Fixed regional totals; reflects recording effort"
+                "value": ""
               },
               "font": {
                 "value": "Arial"

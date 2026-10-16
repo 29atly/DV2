@@ -7,9 +7,7 @@
   "background": "#f7fafc",
   "title": {
     "text": "Which species rise or fall in observation ranking?",
-    "subtitle": [
-      "Top 10 mammals by total observations, 2022–2026 · Rank within these 10 species"
-    ],
+    "subtitle": ["Changing mammal species ranks · 2022–2026"],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 22,

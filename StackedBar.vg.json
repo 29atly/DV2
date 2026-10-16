@@ -7,10 +7,7 @@
   "background": "#f7fafc",
   "title": {
     "text": "How does the parrot’s geographic distribution change by season?",
-    "subtitle": [
-      "Orange-bellied Parrot · 206 month-known, state-assigned records · 2017–2026",
-      "Each season totals 100%."
-    ],
+    "subtitle": ["Orange-bellied Parrot · Seasonal distribution · 2017–2026", "Each season totals 100%."],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 21,
@@ -504,7 +501,7 @@
             "value": "#52606d"
           },
           "text": {
-            "signal": "'n = ' + format(datum.total, ',d')"
+            "value": ""
           }
         }
       }

@@ -7,10 +7,7 @@
   "background": "#f7fafc",
   "title": {
     "text": "How does wildlife observation composition change over the years?",
-    "subtitle": [
-      "Streamgraph · 4,139 observations · 2017–2026 · Top 10 species",
-      "Band thickness shows observation counts."
-    ],
+    "subtitle": ["Changing species composition · 2017–2026", "Band thickness shows relative recording activity."],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 21,
@@ -846,12 +843,12 @@
         },
         {
           "type": "formula",
-          "expr": "datum.year == 2022 ? '110 → 322 records from 2021–2022;' : datum.year == 2024 ? '927 records across the top 10;' : '686 records across the top 10;'",
+          "expr": "datum.year == 2022 ? 'Koala recording activity rises.' : datum.year == 2024 ? 'Recording activity reaches a peak.' : 'Recording activity eases.'",
           "as": "detail"
         },
         {
           "type": "formula",
-          "expr": "datum.year == 2022 ? '59.5% of the top 10 in 2022.' : datum.year == 2024 ? 'Koalas contribute 451 (48.7%).' : '26% fewer than in 2024.'",
+          "expr": "datum.year == 2022 ? 'A shift in species composition.' : datum.year == 2024 ? 'Koalas remain prominent.' : 'Species contributions continue to change.'",
           "as": "detail2"
         },
         {

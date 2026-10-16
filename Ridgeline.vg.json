@@ -7,9 +7,7 @@
   "background": "#f7fafc",
   "title": {
     "text": "When Are Australia's Mammals Most Frequently Observed?",
-    "subtitle": [
-      "Top 10 recorded species · 4,139 observations · 2017–2026 pooled"
-    ],
+    "subtitle": ["Seasonal patterns of selected mammals · 2017–2026"],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 22,
@@ -1815,7 +1813,7 @@
             "signal": "74 + datum.order * 55 - 8"
           },
           "text": {
-            "signal": "format(datum.total, ',') + ' observations · ' + datum.peakMonths"
+            "signal": "datum.peakMonths"
           },
           "baseline": {
             "value": "middle"
@@ -1879,7 +1877,7 @@
             "value": 6
           },
           "text": {
-            "value": "TOTAL · PEAK MONTH"
+            "value": "PEAK MONTH"
           },
           "fontSize": {
             "value": 10
