@@ -1,10 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs and pooled by calendar month. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers an overview and 3 recorded states; selecting a state or clicking a recorded LGA filters the charts to that state and fits the map. The line chart is a single unstacked series. Without a timeframe highlight, each calendar month shows average observations across distinct recorded years in the selected state, including zero months within those years. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per 1,000 km². With a month highlight, fills show pooled records in those months per 1,000 km². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6371.0088 km), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for raw counts, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. The area chart shows the largest seven LGAs and Other areas. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded year-month allocations and pooled monthly counts both use this window. Location options include only states and LGAs with mapped records in this window.",
+  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs and pooled by calendar month. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers an overview and 3 recorded states; selecting a state or clicking a recorded LGA filters the charts to that state and fits the map. The line chart is a single unstacked series. Without a timeframe highlight, each calendar month shows average observations across distinct recorded years in the selected state, including zero months within those years. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per 1,000 km². With a month highlight, fills show pooled records in those months per 1,000 km². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6371.0088 km), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for raw counts, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded year-month allocations and pooled monthly counts both use this window. Location options include only states and LGAs with mapped records in this window.",
   "width": 850,
-  "height": {
-    "signal": "areaPlotY + 160"
-  },
+  "height": 530,
   "padding": 16,
   "background": "#f7fafc",
   "title": {
@@ -246,72 +244,12 @@
         {
           "events": "@lineHit:dblclick, @brushBody:dblclick, @brushLeftHandle:dblclick, @brushRightHandle:dblclick, @clearBrush:click",
           "update": "null"
-        },
-        {
-          "events": "@areaHit:click",
-          "update": "[max(0,(datum.month-1)*800/11-22),min(800,(datum.month-1)*800/11+22)]"
         }
       ]
     },
     {
       "name": "brushRange",
       "update": "brushPixels ? [clamp(round(1+brushPixels[0]*11/800),1,12),clamp(round(1+brushPixels[1]*11/800),1,12)] : null"
-    },
-    {
-      "name": "regionLegendRows",
-      "update": "max(1, ceil(length(data('regionLegendEntries')) / 3))"
-    },
-    {
-      "name": "areaPlotY",
-      "update": "628 + (regionLegendRows - 1) * 24"
-    },
-    {
-      "name": "legendColumnWidth",
-      "value": 280
-    },
-    {
-      "name": "legendSymbolSize",
-      "value": 100
-    },
-    {
-      "name": "selectedAreaRegion",
-      "value": null,
-      "on": [
-        {
-          "events": "@regionLegendSymbols:click, @regionLegendLabels:click",
-          "update": "selectedAreaRegion === datum.areaRegion ? null : datum.areaRegion"
-        },
-        {
-          "events": {
-            "signal": "selectedLocation"
-          },
-          "update": "null"
-        }
-      ]
-    },
-    {
-      "name": "hoveredAreaRegion",
-      "value": null,
-      "on": [
-        {
-          "events": "@regionLegendSymbols:mouseover, @regionLegendLabels:mouseover",
-          "update": "datum.areaRegion"
-        },
-        {
-          "events": "@regionLegendSymbols:mouseout, @regionLegendLabels:mouseout",
-          "update": "null"
-        },
-        {
-          "events": {
-            "signal": "selectedLocation"
-          },
-          "update": "null"
-        }
-      ]
-    },
-    {
-      "name": "activeAreaRegion",
-      "update": "hoveredAreaRegion != null ? hoveredAreaRegion : selectedAreaRegion"
     }
   ],
   "data": [
@@ -618,31 +556,6 @@
       ]
     },
     {
-      "name": "areaRegionRanking",
-      "source": "activeRegions",
-      "transform": [
-        {
-          "type": "window",
-          "sort": {
-            "field": [
-              "total",
-              "region"
-            ],
-            "order": [
-              "descending",
-              "ascending"
-            ]
-          },
-          "ops": [
-            "row_number"
-          ],
-          "as": [
-            "areaRank"
-          ]
-        }
-      ]
-    },
-    {
       "name": "datedMonthly",
       "source": "yearMonthly",
       "transform": [
@@ -929,102 +842,7 @@
         }
       ]
     },
-    {
-      "name": "areaMonthly",
-      "source": "chartMonthly",
-      "transform": [
-        {
-          "type": "lookup",
-          "from": "areaRegionRanking",
-          "key": "regionCode",
-          "fields": [
-            "regionCode"
-          ],
-          "values": [
-            "areaRank"
-          ],
-          "as": [
-            "areaRank"
-          ]
-        },
-        {
-          "type": "formula",
-          "expr": "datum.areaRank <= 7 ? datum.region : 'Other areas'",
-          "as": "areaRegion"
-        },
-        {
-          "type": "aggregate",
-          "groupby": [
-            "areaRegion",
-            "month",
-            "monthLabel"
-          ],
-          "ops": [
-            "sum"
-          ],
-          "fields": [
-            "count"
-          ],
-          "as": [
-            "count"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "stacked",
-      "source": "areaMonthly",
-      "transform": [
-        {
-          "type": "stack",
-          "groupby": [
-            "month"
-          ],
-          "sort": {
-            "field": "areaRegion",
-            "order": "ascending"
-          },
-          "field": "count",
-          "as": [
-            "y0",
-            "y1"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "regionLegendEntries",
-      "source": "areaMonthly",
-      "transform": [
-        {
-          "type": "aggregate",
-          "groupby": [
-            "areaRegion"
-          ]
-        },
-        {
-          "type": "collect",
-          "sort": {
-            "field": "areaRegion",
-            "order": "ascending"
-          }
-        },
-        {
-          "type": "window",
-          "ops": [
-            "row_number"
-          ],
-          "as": [
-            "rank"
-          ]
-        },
-        {
-          "type": "formula",
-          "expr": "datum.rank - 1",
-          "as": "order"
-        }
-      ]
-    },
+
     {
       "name": "densityLegendSteps",
       "transform": [
@@ -1046,16 +864,6 @@
           "stop": 6,
           "step": 1,
           "as": "index"
-        }
-      ]
-    },
-    {
-      "name": "topAreaRegions",
-      "source": "areaRegionRanking",
-      "transform": [
-        {
-          "type": "filter",
-          "expr": "datum.areaRank <= 7"
         }
       ]
     }
@@ -1097,17 +905,6 @@
       },
       "zero": true,
       "clamp": true
-    },
-    {
-      "name": "regionColor",
-      "type": "ordinal",
-      "domain": {
-        "data": "areaMonthly",
-        "field": "areaRegion"
-      },
-      "range": {
-        "scheme": "tableau10"
-      }
     }
   ],
   "marks": [
@@ -1207,7 +1004,7 @@
                 "signal": "{'Local government area': datum.region, 'State': datum.state, 'Timeframe': brushRange ? periodLabel : 'All calendar months', 'Records per 1,000 km²': format(datum.density, ',.3f'), 'Local government area (km², approximate)': format(datum.areaKm2, ',.1f'), 'Observation records': format(datum.count, brushRange ? ',d' : ',.3f'), 'Measure': brushRange ? 'Pooled records in selected months per 1,000 km²' : 'Monthly average per recorded year per 1,000 km²', 'Recorded years': recordedYearCount}"
               },
               "opacity": {
-                "signal": "(indata('activeRegions', 'regionCode', datum.regionCode) ? 1 : 0.25) * (activeAreaRegion == null || activeAreaRegion === datum.region || (activeAreaRegion === 'Other areas' && !indata('topAreaRegions', 'regionCode', datum.regionCode)) ? 1 : 0.2)"
+                "signal": "indata('activeRegions', 'regionCode', datum.regionCode) ? 1 : 0.25"
               }
             },
             "hover": {
@@ -1695,243 +1492,7 @@
         }
       ]
     },
-    {
-      "name": "areaHeading",
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 0
-          },
-          "y": {
-            "value": 548
-          },
-          "text": {
-            "signal": "'Local government area contributions · ' + (brushRange ? 'Observation counts · ' : 'Calendar-month averages · ') + regionLabel"
-          },
-          "fontSize": {
-            "value": 15
-          },
-          "font": {
-            "value": "Arial"
-          },
-          "fill": {
-            "value": "#243447"
-          }
-        }
-      }
-    },
-    {
-      "name": "monthlyArea",
-      "type": "group",
-      "encode": {
-        "update": {
-          "x": {
-            "value": 50
-          },
-          "y": {
-            "signal": "areaPlotY"
-          },
-          "width": {
-            "value": 800
-          },
-          "height": {
-            "value": 130
-          }
-        }
-      },
-      "scales": [
-        {
-          "name": "monthX",
-          "type": "linear",
-          "domain": [
-            1,
-            12
-          ],
-          "range": [
-            0,
-            800
-          ],
-          "zero": false
-        },
-        {
-          "name": "countY",
-          "type": "linear",
-          "domain": {
-            "data": "totals",
-            "field": "count"
-          },
-          "range": [
-            130,
-            0
-          ],
-          "zero": true,
-          "nice": true
-        }
-      ],
-      "axes": [
-        {
-          "orient": "bottom",
-          "scale": "monthX",
-          "values": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12
-          ],
-          "encode": {
-            "labels": {
-              "update": {
-                "text": {
-                  "signal": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value-1]"
-                }
-              }
-            }
-          }
-        },
-        {
-          "orient": "left",
-          "scale": "countY",
-          "title": {
-            "signal": "brushRange ? 'Observations' : 'Average observations per year'"
-          },
-          "grid": true,
-          "gridScale": "monthX",
-          "tickCount": 4,
-          "format": ",~f"
-        }
-      ],
-      "marks": [
-        {
-          "name": "monthlyAreaHighlight",
-          "type": "rect",
-          "interactive": false,
-          "encode": {
-            "update": {
-              "x": {
-                "signal": "brushPixels ? brushPixels[0] : 0"
-              },
-              "x2": {
-                "signal": "brushPixels ? brushPixels[1] : 0"
-              },
-              "y": {
-                "value": 0
-              },
-              "height": {
-                "value": 130
-              },
-              "fill": {
-                "value": "#3366a6"
-              },
-              "fillOpacity": {
-                "value": 0.12
-              },
-              "stroke": {
-                "value": "#3366a6"
-              },
-              "strokeOpacity": {
-                "value": 0.4
-              },
-              "opacity": {
-                "signal": "brushRange ? 1 : 0"
-              }
-            }
-          }
-        },
-        {
-          "type": "group",
-          "from": {
-            "facet": {
-              "name": "regionSeries",
-              "data": "stacked",
-              "groupby": "areaRegion"
-            }
-          },
-          "marks": [
-            {
-              "name": "areaHit",
-              "type": "area",
-              "from": {
-                "data": "regionSeries"
-              },
-              "sort": {
-                "field": "month"
-              },
-              "encode": {
-                "update": {
-                  "x": {
-                    "scale": "monthX",
-                    "field": "month"
-                  },
-                  "y": {
-                    "scale": "countY",
-                    "field": "y1"
-                  },
-                  "y2": {
-                    "scale": "countY",
-                    "field": "y0"
-                  },
-                  "fill": {
-                    "scale": "regionColor",
-                    "field": "areaRegion"
-                  },
-                  "fillOpacity": {
-                    "signal": "activeAreaRegion == null || activeAreaRegion === datum.areaRegion ? 0.8 : 0.15"
-                  },
-                  "cursor": {
-                    "value": "pointer"
-                  },
-                  "tooltip": {
-                    "signal": "{'Local government area': datum.areaRegion, 'Selected place': regionLabel, 'Month': datum.monthLabel, 'Value': format(datum.count, brushRange ? ',d' : ',.2f'), 'Measure': brushRange ? 'Observation count' : 'Average observations per recorded year', 'Recorded years': recordedYearCount}"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "type": "rule",
-          "interactive": false,
-          "encode": {
-            "update": {
-              "x": {
-                "value": 0
-              },
-              "y": {
-                "value": 0
-              },
-              "y2": {
-                "value": 130
-              },
-              "stroke": {
-                "value": "#243447"
-              },
-              "strokeDash": {
-                "value": [
-                  4,
-                  4
-                ]
-              },
-              "strokeOpacity": {
-                "signal": "brushRange ? 0 : 0.65"
-              },
-              "opacity": {
-                "value": 0
-              }
-            }
-          }
-        }
-      ]
-    },
+
     {
       "name": "clearBrush",
       "type": "text",
@@ -1963,146 +1524,6 @@
           }
         }
       }
-    },
-    {
-      "name": "regionLegend",
-      "type": "group",
-      "interactive": true,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 0
-          },
-          "y": {
-            "value": 574
-          },
-          "width": {
-            "value": 850
-          },
-          "height": {
-            "signal": "6 + regionLegendRows * 24"
-          }
-        }
-      },
-      "marks": [
-        {
-          "name": "regionLegendTitle",
-          "type": "text",
-          "encode": {
-            "update": {
-              "x": {
-                "value": 0
-              },
-              "y": {
-                "value": 0
-              },
-              "text": {
-                "value": "Local government area"
-              },
-              "font": {
-                "value": "Arial"
-              },
-              "fontSize": {
-                "value": 13
-              },
-              "fontWeight": {
-                "value": "bold"
-              },
-              "fill": {
-                "value": "#634320"
-              }
-            }
-          }
-        },
-        {
-          "name": "regionLegendSymbols",
-          "type": "symbol",
-          "from": {
-            "data": "regionLegendEntries"
-          },
-          "encode": {
-            "update": {
-              "x": {
-                "signal": "8 + (datum.order % 3) * legendColumnWidth"
-              },
-              "y": {
-                "signal": "24 + floor(datum.order / 3) * 24"
-              },
-              "shape": {
-                "value": "square"
-              },
-              "size": {
-                "signal": "legendSymbolSize"
-              },
-              "fill": {
-                "scale": "regionColor",
-                "field": "areaRegion"
-              },
-              "stroke": {
-                "value": "#ffffff"
-              },
-              "strokeWidth": {
-                "value": 0.5
-              },
-              "cursor": {
-                "value": "pointer"
-              },
-              "opacity": {
-                "signal": "activeAreaRegion == null || activeAreaRegion === datum.areaRegion ? 1 : 0.3"
-              }
-            }
-          },
-          "interactive": true
-        },
-        {
-          "name": "regionLegendLabels",
-          "type": "text",
-          "from": {
-            "data": "regionLegendEntries"
-          },
-          "encode": {
-            "update": {
-              "x": {
-                "signal": "22 + (datum.order % 3) * legendColumnWidth"
-              },
-              "y": {
-                "signal": "24 + floor(datum.order / 3) * 24"
-              },
-              "baseline": {
-                "value": "middle"
-              },
-              "text": {
-                "field": "areaRegion"
-              },
-              "font": {
-                "value": "Arial"
-              },
-              "fontSize": {
-                "value": 12
-              },
-              "fontWeight": {
-                "signal": "activeAreaRegion === datum.areaRegion ? 'bold' : 'normal'"
-              },
-              "fill": {
-                "value": "#6a5b49"
-              },
-              "limit": {
-                "value": 254
-              },
-              "tooltip": {
-                "field": "areaRegion"
-              },
-              "cursor": {
-                "value": "pointer"
-              },
-              "opacity": {
-                "signal": "activeAreaRegion == null || activeAreaRegion === datum.areaRegion ? 1 : 0.3"
-              }
-            }
-          },
-          "interactive": true
-        }
-      ]
     },
     {
       "name": "densityLegend",
