@@ -6283,23 +6283,7 @@
     },
     {
       "name": "bin_size",
-      "value": 0.5,
-      "bind": {
-        "input": "select",
-        "options": [
-          0.25,
-          0.5,
-          1,
-          2
-        ],
-        "labels": [
-          "0.25° × 0.25°",
-          "0.5° × 0.5°",
-          "1° × 1°",
-          "2° × 2°"
-        ],
-        "name": "Bin size: "
-      }
+      "value": 0.5
     },
     {
       "name": "zoom_level",
