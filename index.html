@@ -388,25 +388,42 @@
             const svg = chart.querySelector('.chart-wrapper > svg');
             if (svg) {
               const hasLegendLayout = (result.spec.signals || []).some(signal => signal.name === 'legendColumnWidth');
+              const hasPointerLayout = (result.spec.signals || []).some(signal => signal.name === 'pointerScale');
               let legendLayoutPending = false;
               const fitChart = () => {
                 svg.setAttribute('viewBox', `0 0 ${svg.getAttribute('width')} ${svg.getAttribute('height')}`);
                 const scale = svg.getBoundingClientRect().width / Number(svg.getAttribute('width'));
                 if (!Number.isFinite(scale) || scale <= 0) return;
-                if (hasLegendLayout && !legendLayoutPending) {
-                  const columnWidth = Number(svg.getAttribute('width')) / 3;
-                  const symbolSize = 100 / (scale * scale);
-                  if (Math.abs(result.view.signal('legendColumnWidth') - columnWidth) > 0.1 ||
-                      Math.abs(result.view.signal('legendSymbolSize') - symbolSize) > 0.1) {
+                if (!legendLayoutPending) {
+                  let layoutChanged = false;
+                  if (hasLegendLayout) {
+                    const columnWidth = Number(svg.getAttribute('width')) / 3;
+                    const symbolSize = 100 / (scale * scale);
+                    if (Math.abs(result.view.signal('legendColumnWidth') - columnWidth) > 0.1 ||
+                        Math.abs(result.view.signal('legendSymbolSize') - symbolSize) > 0.1) {
+                      result.view.signal('legendColumnWidth', columnWidth)
+                        .signal('legendSymbolSize', symbolSize);
+                      layoutChanged = true;
+                    }
+                  }
+                  if (hasPointerLayout) {
+                    // Vega reports pointer positions in displayed pixels, while scales use chart units.
+                    const offset = result.view.origin()[0] + result.view.padding().left;
+                    if (Math.abs(result.view.signal('pointerScale') - scale) > 0.0001 ||
+                        Math.abs(result.view.signal('pointerOffset') - offset) > 0.01) {
+                      result.view.signal('pointerScale', scale).signal('pointerOffset', offset);
+                      layoutChanged = true;
+                    }
+                  }
+                  if (layoutChanged) {
                     legendLayoutPending = true;
-                    result.view.signal('legendColumnWidth', columnWidth)
-                      .signal('legendSymbolSize', symbolSize).runAsync().then(() => {
-                        legendLayoutPending = false;
-                        fitChart();
-                      }).catch(error => {
-                        legendLayoutPending = false;
-                        console.error('Could not align chart legends', error);
-                      });
+                    result.view.runAsync().then(() => {
+                      legendLayoutPending = false;
+                      fitChart();
+                    }).catch(error => {
+                      legendLayoutPending = false;
+                      console.error('Could not fit chart layout', error);
+                    });
                   }
                 }
                 // Keep legend fonts equal on screen even when SVGs scale by different amounts.
