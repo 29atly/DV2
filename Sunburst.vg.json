@@ -516,17 +516,35 @@
       ]
     },
     {
-      "name": "leafColor",
+      "name": "speciesColor",
       "type": "ordinal",
       "domain": [
-        "Marsupials",
-        "Placental mammals",
-        "Monotremes"
+        "Koala",
+        "Platypus",
+        "Grey-headed Flying-fox",
+        "Greater Glider",
+        "Spotted-tailed Quoll",
+        "European Rabbit",
+        "Quokka",
+        "Tasmanian Devil",
+        "Eastern Barred Bandicoot",
+        "Numbat",
+        "Australian Sea Lion",
+        "Eastern Quoll"
       ],
       "range": [
-        "#B5E4F2",
-        "#EEC6EC",
-        "#F3E4A1"
+        "#365B85",
+        "#B65C30",
+        "#2A8576",
+        "#885BA6",
+        "#AD4770",
+        "#86701D",
+        "#397FAD",
+        "#6D6B70",
+        "#C17A24",
+        "#5146A0",
+        "#4D7A24",
+        "#bab0ab"
       ]
     }
   ],
@@ -558,7 +576,7 @@
             "field": "outer"
           },
           "fill": {
-            "signal": "scale(datum.depth === 1 ? 'groupColor' : datum.depth === 2 ? 'orderColor' : 'leafColor', datum.group)"
+            "signal": "datum.level === 'Species' ? scale('speciesColor', datum.label) : scale(datum.depth === 1 ? 'groupColor' : 'orderColor', datum.group)"
           },
           "fillOpacity": {
             "value": 1

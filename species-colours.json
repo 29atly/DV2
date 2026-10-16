@@ -48,5 +48,15 @@
     "scientific_name": "Myrmecobius fasciatus",
     "species": "Numbat",
     "colour": "#5146A0"
+  },
+  {
+    "scientific_name": "Neophoca cinerea",
+    "species": "Australian Sea Lion",
+    "colour": "#4D7A24"
+  },
+  {
+    "scientific_name": "Dasyurus viverrinus",
+    "species": "Eastern Quoll",
+    "colour": "#bab0ab"
   }
 ]
