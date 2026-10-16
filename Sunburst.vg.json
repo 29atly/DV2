@@ -615,7 +615,7 @@
             "value": "middle"
           },
           "text": {
-            "field": "label"
+            "signal": "datum.id === 'order:Dasyuromorphia' ? '' : datum.label"
           },
           "fontSize": {
             "value": 11
