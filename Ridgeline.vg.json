@@ -1815,7 +1815,7 @@
             "signal": "74 + datum.order * 55 - 8"
           },
           "text": {
-            "signal": "format(datum.total, ',') + ' obs. · ' + datum.peakMonths"
+            "signal": "format(datum.total, ',') + ' observations · ' + datum.peakMonths"
           },
           "baseline": {
             "value": "middle"
