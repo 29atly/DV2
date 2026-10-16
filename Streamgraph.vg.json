@@ -43,7 +43,7 @@
       "on": [
         {
           "events": "@brushSelection:mousedown, @brushHandle0:mousedown, @brushHandle1:mousedown",
-          "update": "{year: invert('overviewX', x()), range: slice(yearRange)}"
+          "update": "{year: invert('overviewX', x()), range: slice(yearRange), mode: (yearRange[0] === minYear && yearRange[1] === maxYear) || event.shiftKey ? 'new' : 'move'}"
         }
       ]
     },
@@ -59,12 +59,16 @@
           "update": "[round(clamp(invert('overviewX', x()), minYear, maxYear)), round(clamp(invert('overviewX', x()), minYear, maxYear))]"
         },
         {
+          "events": "@brushSelection:mousedown",
+          "update": "(yearRange[0] === minYear && yearRange[1] === maxYear) || event.shiftKey ? [round(clamp(invert('overviewX', x()), minYear, maxYear)), round(clamp(invert('overviewX', x()), minYear, maxYear))] : yearRange"
+        },
+        {
           "events": "[@brushTarget:mousedown, window:mouseup] > window:mousemove!",
           "update": "[min(brushAnchor, round(clamp(invert('overviewX', x()), minYear, maxYear))), max(brushAnchor, round(clamp(invert('overviewX', x()), minYear, maxYear)))]"
         },
         {
           "events": "[@brushSelection:mousedown, window:mouseup] > window:mousemove!",
-          "update": "[brushDragStart.range[0] + clamp(round(invert('overviewX', x()) - brushDragStart.year), minYear - brushDragStart.range[0], maxYear - brushDragStart.range[1]), brushDragStart.range[1] + clamp(round(invert('overviewX', x()) - brushDragStart.year), minYear - brushDragStart.range[0], maxYear - brushDragStart.range[1])]"
+          "update": "brushDragStart.mode === 'new' ? [min(round(brushDragStart.year), round(clamp(invert('overviewX', x()), minYear, maxYear))), max(round(brushDragStart.year), round(clamp(invert('overviewX', x()), minYear, maxYear)))] : [brushDragStart.range[0] + clamp(round(invert('overviewX', x()) - brushDragStart.year), minYear - brushDragStart.range[0], maxYear - brushDragStart.range[1]), brushDragStart.range[1] + clamp(round(invert('overviewX', x()) - brushDragStart.year), minYear - brushDragStart.range[0], maxYear - brushDragStart.range[1])]"
         },
         {
           "events": "[@brushHandle0:mousedown, window:mouseup] > window:mousemove!",
@@ -1513,7 +1517,7 @@
             "value": "#3366a6"
           },
           "cursor": {
-            "value": "move"
+            "signal": "yearRange[0] === minYear && yearRange[1] === maxYear ? 'crosshair' : 'move'"
           }
         }
       },
@@ -1647,6 +1651,30 @@
           },
           "baseline": {
             "value": "alphabetic"
+          }
+        }
+      }
+    },
+    {
+      "name": "brushInstructions",
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "height + 185"
+          },
+          "text": {
+            "value": "Drag to select years; drag the highlight to move it, or its edges to resize."
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#52606d"
           }
         }
       }
