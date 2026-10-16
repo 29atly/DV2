@@ -1,13 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Streamgraph of wildlife observation composition in 2017–2026, showing the top ten species selected within the selected observation years, with 4,139 records in the displayed ten available years. Source: Dataset/observations-794195.csv. Species selected by observation count in the selected years; subspecies combined by the first two scientific-name components. Includes records without coordinates. Zero-count species-years retained. Annual counts use observation dates. A centered stack gives a streamgraph: band thickness represents observation count; vertical band position has no numeric meaning. Monotone interpolation smoothly connects the recorded annual values; curves between years are visual interpolation, not additional observations. Tooltip shares use the total of the displayed ten species in the given year. Hover or click bands or legend to highlight; click again, Clear highlight, or Escape clears selection. Counts reflect recording activity, not animal abundance. Drag the annual-total overview below the chart to select an inclusive observation-year range; use Reset to restore 2017–2026. Legend totals cover the full period. Species colours match the ten-species palette in BumpChart.vg.json; species selection uses the selected years; annual counts and legend totals cover 2017–2026. Three in-chart annotations highlight the 2022 Koala increase, the 2024 annual-total peak, and the 2025 decline; anchors use the current centered stack and annotations hide when their year is outside the focus range. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
+  "description": "Streamgraph of wildlife observation composition in 2017–2026, showing the top ten species selected within the selected observation years, with 4,139 records in the displayed ten available years. Source: Dataset/observations-794195.csv. Species selected by observation count in the selected years; subspecies combined by the first two scientific-name components. Includes records without coordinates. Zero-count species-years retained. Annual counts use observation dates. A centered stack gives a streamgraph: band thickness represents observation count; vertical band position has no numeric meaning. Monotone interpolation smoothly connects the recorded annual values; curves between years are visual interpolation, not additional observations. Tooltip shares use the total of the displayed ten species in the given year. Hover or click bands or legend to highlight; click again, Clear highlight, or Escape clears selection. Counts reflect recording activity, not animal abundance. Drag outside the highlighted overview range to select years; drag the highlight to move the range, or drag either edge to resize it. Use Reset to restore 2017–2026. Legend totals cover the full period. Species colours match the ten-species palette in BumpChart.vg.json; species selection uses the selected years; annual counts and legend totals cover 2017–2026. Three in-chart annotations highlight the 2022 Koala increase, the 2024 annual-total peak, and the 2025 decline; anchors use the current centered stack and annotations hide when their year is outside the focus range. Uses the 10 most recent available observation years (2017–2026), including partial 2026.",
   "width": 800,
   "height": 400,
   "padding": 16,
   "background": "#f7fafc",
   "title": {
     "text": "How does wildlife observation composition change over the years?",
-    "subtitle": ["Changing species composition · 2017–2026", "Band thickness shows relative recording activity."],
+    "subtitle": [
+      "Changing species composition · 2017–2026",
+      "Band thickness shows relative recording activity."
+    ],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 21,
@@ -29,6 +32,22 @@
       "value": 2026
     },
     {
+      "name": "brushDragStart",
+      "value": {
+        "year": 2017,
+        "range": [
+          2017,
+          2026
+        ]
+      },
+      "on": [
+        {
+          "events": "@brushSelection:mousedown, @brushHandle0:mousedown, @brushHandle1:mousedown",
+          "update": "{year: invert('overviewX', x()), range: slice(yearRange)}"
+        }
+      ]
+    },
+    {
       "name": "yearRange",
       "value": [
         2017,
@@ -42,6 +61,18 @@
         {
           "events": "[@brushTarget:mousedown, window:mouseup] > window:mousemove!",
           "update": "[min(brushAnchor, round(clamp(invert('overviewX', x()), minYear, maxYear))), max(brushAnchor, round(clamp(invert('overviewX', x()), minYear, maxYear)))]"
+        },
+        {
+          "events": "[@brushSelection:mousedown, window:mouseup] > window:mousemove!",
+          "update": "[brushDragStart.range[0] + clamp(round(invert('overviewX', x()) - brushDragStart.year), minYear - brushDragStart.range[0], maxYear - brushDragStart.range[1]), brushDragStart.range[1] + clamp(round(invert('overviewX', x()) - brushDragStart.year), minYear - brushDragStart.range[0], maxYear - brushDragStart.range[1])]"
+        },
+        {
+          "events": "[@brushHandle0:mousedown, window:mouseup] > window:mousemove!",
+          "update": "[round(clamp(invert('overviewX', x()), minYear, brushDragStart.range[1])), brushDragStart.range[1]]"
+        },
+        {
+          "events": "[@brushHandle1:mousedown, window:mouseup] > window:mousemove!",
+          "update": "[brushDragStart.range[0], round(clamp(invert('overviewX', x()), brushDragStart.range[0], maxYear))]"
         },
         {
           "events": "@resetYears:click",
@@ -1430,15 +1461,41 @@
       }
     },
     {
+      "name": "brushTarget",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "width": {
+            "signal": "width"
+          },
+          "y": {
+            "signal": "height + 90"
+          },
+          "height": {
+            "value": 50
+          },
+          "fill": {
+            "value": "transparent"
+          },
+          "cursor": {
+            "value": "crosshair"
+          }
+        }
+      }
+    },
+    {
       "name": "brushSelection",
       "type": "rect",
       "encode": {
         "update": {
           "x": {
-            "signal": "scale('overviewX', yearRange[0])"
+            "signal": "max(0, scale('overviewX', yearRange[0]) - (yearRange[0] === yearRange[1] ? 8 : 0))"
           },
           "x2": {
-            "signal": "scale('overviewX', yearRange[1])"
+            "signal": "min(width, scale('overviewX', yearRange[1]) + (yearRange[0] === yearRange[1] ? 8 : 0))"
           },
           "y": {
             "signal": "height + 90"
@@ -1454,10 +1511,13 @@
           },
           "stroke": {
             "value": "#3366a6"
+          },
+          "cursor": {
+            "value": "move"
           }
         }
       },
-      "interactive": false
+      "interactive": true
     },
     {
       "name": "brushEdge0",
@@ -1508,15 +1568,15 @@
       "interactive": false
     },
     {
-      "name": "brushTarget",
+      "name": "brushHandle0",
       "type": "rect",
       "encode": {
         "update": {
           "x": {
-            "value": 0
+            "signal": "scale('overviewX', yearRange[0]) - 5"
           },
           "width": {
-            "signal": "width"
+            "value": 10
           },
           "y": {
             "signal": "height + 90"
@@ -1528,7 +1588,33 @@
             "value": "transparent"
           },
           "cursor": {
-            "value": "crosshair"
+            "value": "ew-resize"
+          }
+        }
+      }
+    },
+    {
+      "name": "brushHandle1",
+      "type": "rect",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('overviewX', yearRange[1]) - 5"
+          },
+          "width": {
+            "value": 10
+          },
+          "y": {
+            "signal": "height + 90"
+          },
+          "height": {
+            "value": 50
+          },
+          "fill": {
+            "value": "transparent"
+          },
+          "cursor": {
+            "value": "ew-resize"
           }
         }
       }
