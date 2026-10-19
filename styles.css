@@ -15,7 +15,7 @@ nav a:hover { text-decoration: underline; }
 .menu-toggle { display: flex; align-items: center; gap: 9px; cursor: pointer; font-size: 14px; font-weight: 700; }
 .menu-toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
 .menu-toggle span { letter-spacing: 2px; }
-main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--layout-gap); width: calc(100% - 48px); max-width: var(--content-width); margin: auto; padding: 20px 0 64px; }
+main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--layout-gap); width: calc(100% - 48px); max-width: var(--content-width); margin: auto; padding: 20px 0 0; }
 main > * { grid-column: 1 / -1; min-width: 0; }
 .page-status { margin-inline: 24px; color: var(--muted); font-size: 14px; }
 section { --section-tint: var(--tint); --section-accent: var(--heading-accent); padding-top: 48px; scroll-margin-top: 24px; }
@@ -63,7 +63,7 @@ body.hide-chart-actions .vega-embed > details { display: none !important; }
 .chart-error { margin: 0; color: #9c3327; }
 footer { margin-top: 56px; padding: 24px; background: var(--tint); border-radius: 12px; }
 footer .story-columns { padding-inline: 0; }
-.page-metadata { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px 28px; margin: 24px 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+.page-metadata { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px 28px; margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
 .page-metadata > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 5px; min-width: 0; }
 .page-metadata dt { margin: 0; color: var(--heading-accent); font-weight: 700; }
 .page-metadata dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
