@@ -63,6 +63,10 @@ body.hide-chart-actions .vega-embed > details { display: none !important; }
 .chart-error { margin: 0; color: #9c3327; }
 footer { margin-top: 56px; padding: 24px; background: var(--tint); border-radius: 12px; }
 footer .story-columns { padding-inline: 0; }
+.page-metadata { display: flex; flex-wrap: wrap; gap: 20px 40px; margin: 24px 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+.page-metadata > div { min-width: 0; }
+.page-metadata dt { margin-bottom: 4px; color: var(--heading-accent); font-weight: 700; }
+.page-metadata dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
 .chart-card > .story-columns:has(.chart-note) { margin-top: 12px; margin-bottom: 0; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media (max-width: 760px) { .story-columns { grid-template-columns: 1fr; } }
