@@ -67,6 +67,8 @@ footer .story-columns { padding-inline: 0; }
 .page-metadata > div { min-width: 0; }
 .page-metadata dt { margin-bottom: 4px; color: var(--heading-accent); font-weight: 700; }
 .page-metadata dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+.page-metadata .data-credit { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0 5px; }
+.page-metadata .data-credit dt { margin-bottom: 0; }
 .chart-card > .story-columns:has(.chart-note) { margin-top: 12px; margin-bottom: 0; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media (max-width: 760px) { .story-columns { grid-template-columns: 1fr; } }
