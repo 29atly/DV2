@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs, with daily dates retained for exact date-range filtering. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers All regions and 3 recorded states; selecting a state filters the charts to that state and fits the map. Local government areas remain visible with tooltips and cannot be used as location filters. The line chart shows daily observation counts on a continuous UTC date timeline, including zero days. Without a timeframe highlight, map averages retain the original monthly average across distinct recorded years in the selected state. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per 1,000 km². With a date highlight, fills show records on or between the selected start and end dates per 1,000 km². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6371.0088 km), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for an inclusive date range, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded daily allocations, year-month allocations and pooled monthly counts use this window. Daily allocations reproduce all 187 previously mapped dated records. One Huon Valley point 30 m outside the simplified display boundary retains its existing region allocation. Date filtering uses the calendar date supplied in eventDate; no dates are inferred for undated records. State options include only states with mapped records in this window.",
+  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs, with daily dates retained for exact date-range filtering. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers All regions and 3 recorded states; selecting a state filters the charts to that state and fits the map. Local government areas remain visible with tooltips and cannot be used as location filters. The line chart shows daily observation counts on a continuous UTC date timeline, including zero days. Without a timeframe highlight, map averages retain the original monthly average across distinct recorded years in the selected state. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per m². With a date highlight, fills show records on or between the selected start and end dates per m². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6,371,008.8 m), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for an inclusive date range, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded daily allocations, year-month allocations and pooled monthly counts use this window. Daily allocations reproduce all 187 previously mapped dated records. One Huon Valley point 30 m outside the simplified display boundary retains its existing region allocation. Date filtering uses the calendar date supplied in eventDate; no dates are inferred for undated records. State options include only states with mapped records in this window.",
   "width": 850,
   "height": 580,
   "padding": 16,
@@ -8,7 +8,7 @@
   "title": {
     "text": "How does parrot distribution change over time?",
     "subtitle": [
-      "Orange-bellied Parrot · Local government area records per 1,000 km² · 2017–2026",
+      "Orange-bellied Parrot · Local government area records per m² · 2017–2026",
       "Daily timeline · Drag a date range to filter the map"
     ],
     "anchor": "start",
@@ -862,8 +862,8 @@
         },
         {
           "type": "formula",
-          "expr": "geoArea(null, datum) * 6371.0088 * 6371.0088",
-          "as": "areaKm2"
+          "expr": "geoArea(null, datum) * 6371008.8 * 6371008.8",
+          "as": "areaM2"
         },
         {
           "type": "lookup",
@@ -882,7 +882,7 @@
         },
         {
           "type": "formula",
-          "expr": "datum.areaKm2 > 0 ? datum.total * 1000 / datum.areaKm2 : 0",
+          "expr": "datum.areaM2 > 0 ? datum.total / datum.areaM2 : 0",
           "as": "totalDensity"
         }
       ]
@@ -941,7 +941,7 @@
         },
         {
           "type": "formula",
-          "expr": "datum.areaKm2 > 0 ? datum.count * 1000 / datum.areaKm2 : 0",
+          "expr": "datum.areaM2 > 0 ? datum.count / datum.areaM2 : 0",
           "as": "density"
         }
       ]
@@ -991,7 +991,7 @@
         {
           "type": "sequence",
           "start": 0,
-          "stop": 6,
+          "stop": 4,
           "step": 1,
           "as": "index"
         }
@@ -1028,7 +1028,7 @@
       "name": "observationColor",
       "type": "sqrt",
       "domain": {
-        "signal": "[0, max(0.001, data('densityExtent')[0].maxDensity) / (brushRange ? 1 : 12 * recordedYearCount)]"
+        "signal": "[0, max(1e-12, data('densityExtent')[0].maxDensity) / (brushRange ? 1 : 12 * recordedYearCount)]"
       },
       "range": {
         "scheme": "oranges"
@@ -1131,7 +1131,7 @@
                 "value": "grab"
               },
               "tooltip": {
-                "signal": "{'Local government area': datum.region, 'State': datum.state, 'Timeframe': brushRange ? periodLabel : 'All dates', 'Records per 1,000 km²': format(datum.density, ',.3f'), 'Local government area (km², approximate)': format(datum.areaKm2, ',.1f'), 'Observation records': format(datum.count, brushRange ? ',d' : ',.3f'), 'Measure': brushRange ? 'Pooled records in selected dates per 1,000 km²' : 'Monthly average per recorded year per 1,000 km²', 'Recorded years': recordedYearCount}"
+                "signal": "{'Local government area': datum.region, 'State': datum.state, 'Timeframe': brushRange ? periodLabel : 'All dates', 'Records per m²': format(datum.density, '.3e'), 'Local government area (m², approximate)': format(datum.areaM2, ',.0f'), 'Observation records': format(datum.count, brushRange ? ',d' : ',.3f'), 'Measure': brushRange ? 'Pooled records in selected dates per m²' : 'Monthly average per recorded year per m²', 'Recorded years': recordedYearCount}"
               },
               "opacity": {
                 "signal": "indata('activeRegions', 'regionCode', datum.regionCode) ? 1 : 0.25"
@@ -1671,7 +1671,7 @@
                 "value": 13
               },
               "text": {
-                "signal": "brushRange ? 'Records / 1,000 km² · selected dates' : 'Average records per month per 1,000 km²'"
+                "signal": "brushRange ? 'Records / m² · selected dates' : 'Average records per month per m²'"
               },
               "font": {
                 "value": "Arial"
@@ -1752,16 +1752,16 @@
           "encode": {
             "update": {
               "x": {
-                "signal": "360 * sqrt(datum.index / 5)"
+                "signal": "360 * sqrt(datum.index / 3)"
               },
               "y": {
                 "value": 63
               },
               "text": {
-                "signal": "format(datum.index / 5 * domain('observationColor')[1], ',.2~f')"
+                "signal": "datum.index === 0 ? '0' : format(datum.index / 3 * domain('observationColor')[1], '.1e')"
               },
               "align": {
-                "signal": "datum.index === 0 ? 'left' : datum.index === 5 ? 'right' : 'center'"
+                "signal": "datum.index === 0 ? 'left' : datum.index === 3 ? 'right' : 'center'"
               },
               "font": {
                 "value": "Arial"
@@ -1849,8 +1849,8 @@
     },
     "normalization": {
       "field": "density",
-      "formula": "count / areaKm2 * 1000",
-      "areaMethod": "Spherical area of embedded simplified LGA geometry; mean Earth radius 6371.0088 km",
+      "formula": "count / areaM2",
+      "areaMethod": "Spherical area of embedded simplified LGA geometry; mean Earth radius 6,371,008.8 m",
       "averageMode": "count = pooled dated records / recordedYearCount / 12",
       "highlightMode": "count = pooled records between selected start and end dates, inclusive",
       "interpretation": "Observation record density; does not adjust for survey effort or estimate bird abundance"
