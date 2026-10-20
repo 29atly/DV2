@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Australia’s wildlife through citizen science</title>
-  <link rel="stylesheet" href="styles.css?v=20261019-footer-spacing">
+  <link rel="stylesheet" href="styles.css?v=20261020-chart-padding">
   <script defer src="https://cdn.jsdelivr.net/npm/vega@5.33.0/build/vega.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
 </head>
@@ -186,6 +186,8 @@
 
       // Add website-wide selection to the embedded specs without changing their data.
       function linkSpecies(spec, file) {
+        // Use the same CSS inset for every chart, independent of SVG scaling.
+        spec.padding = 0;
         if (spec.title && typeof spec.title === 'object') {
           spec.title.anchor = 'start';
           spec.title.align = 'left';

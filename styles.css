@@ -38,7 +38,7 @@ h3 span { font-size: 13px; font-weight: 400; color: var(--muted); }
 /* Keep menus in the card heading instead of reserving an empty chart column. */
 .chart-card .chart.vega-embed { position: static; display: block; width: 100%; min-width: 760px; margin-inline: auto; padding: 0; }
 .chart.vega-embed > details { position: absolute; top: 24px; right: 24px; }
-.chart.vega-embed .chart-wrapper { width: 100%; }
+.chart.vega-embed .chart-wrapper { width: 100%; padding: 16px; background: #f7fafc; }
 .chart.vega-embed .chart-wrapper > svg { display: block; width: 100%; height: auto; }
 .chart.vega-embed .chart-wrapper > canvas { display: block; }
 .vega-embed summary { opacity: 1 !important; }
