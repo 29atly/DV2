@@ -170,6 +170,7 @@
       const preferenceKey = 'wildlife-show-chart-actions';
       const linkedViews = [];
       const highlightViews = [];
+      const rangeViews = [];
       let highlightedSpecies = null;
       let speciesUpdates = Promise.resolve();
 
@@ -324,10 +325,34 @@
         }).catch(error => console.error('Could not synchronize species highlights', error));
       }
 
+      let pointerStart = null;
+      document.addEventListener('pointerdown', event => {
+        pointerStart = { x: event.clientX, y: event.clientY };
+      });
       document.addEventListener('click', event => {
-        if (event.target.closest('.chart')) return;
-        selectSpecies(null);
+        // A drag released outside its chart should keep the range it just selected.
+        const start = pointerStart;
+        pointerStart = null;
+        if (event.detail > 0 && start && Math.hypot(event.clientX - start.x, event.clientY - start.y) > 5) return;
+        const clickedChart = event.target.closest('.chart');
+        if (!clickedChart) selectSpecies(null);
         speciesUpdates = speciesUpdates.then(async () => {
+          for (const { chart, view, signals } of rangeViews) {
+            if (chart === clickedChart) continue;
+            let changed = false;
+            for (const { name, value } of signals) {
+              const current = view.signal(name);
+              const unchanged = Array.isArray(value)
+                ? Array.isArray(current) && current.length === value.length && current.every((item, index) => item === value[index])
+                : current === value;
+              if (!unchanged) {
+                view.signal(name, Array.isArray(value) ? [...value] : value);
+                changed = true;
+              }
+            }
+            if (changed) await view.runAsync();
+          }
+          if (clickedChart) return;
           for (const { view, signals } of highlightViews) {
             let changed = false;
             for (const name of signals) {
@@ -338,7 +363,7 @@
             }
             if (changed) await view.runAsync();
           }
-        }).catch(error => console.error('Could not clear chart highlights', error));
+        }).catch(error => console.error('Could not reset chart selections', error));
       });
 
       try {
@@ -493,6 +518,10 @@
               signals: (result.spec.signals || []).map(signal => signal.name)
                 .filter(name => highlightSignals.has(name))
             });
+            const rangeSignals = (result.spec.signals || [])
+              .filter(signal => ['brushPixels', 'brushGesture', 'yearRange'].includes(signal.name))
+              .map(({ name, value }) => ({ name, value }));
+            if (rangeSignals.length) rangeViews.push({ chart, view: result.view, signals: rangeSignals });
             if (linkedCharts[file]) {
               const speciesNames = new Set();
               for (const dataset of result.spec.data || []) {
