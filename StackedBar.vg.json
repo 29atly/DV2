@@ -1,13 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "100% stacked seasonal bars showing geographic distribution of Orange-bellied Parrot occurrence records by state. Source: Dataset/orange_bellied_parrot_cleaned.csv (5,942 PRESENT records in the full source; 2,154 in 2017–2026). Use month when present; recover missing months from complete eventDate (0 records recovered; no conflicting months). Exclude 1,948 records without a usable month and 0 additional month-known records without stateProvince. The remaining 206 records have reported years spanning 2017–2026. No coordinate filter or deduplication is applied. Each bar is normalized by its own seasonal total, using stateProvince as supplied. Australian seasons: Summer Dec–Feb, Autumn Mar–May, Winter Jun–Aug, Spring Sep–Nov. Seasonal shares describe occurrence recording, not abundance or tracked migration. Highlighting does not change counts or denominators. Interpretation notes below the axis relate the observed summer-to-winter shift to the documented Orange-bellied Parrot migration cycle; occurrence records alone do not track individual birds. Ecological context: NRE Tasmania, About Orange-bellied Parrots. Uses the 10 most recent available observation years (2017–2026), using year with eventDate fallback, including partial 2026. Year filtering occurs before month/state inclusion and seasonal aggregation.",
-  "width": 850,
+  "description": "100% stacked seasonal bars showing geographic distribution of Orange-bellied Parrot occurrence records by state. Source: Dataset/orange_bellied_parrot_cleaned.csv (5,942 PRESENT records in the full source; 2,154 in 2017–2026). Use month when present; recover missing months from complete eventDate (0 records recovered; no conflicting months). Exclude 1,948 records without a usable month and 0 additional month-known records without stateProvince. The remaining 206 records have reported years spanning 2017–2026. No coordinate filter or deduplication is applied. Each bar is normalized by its own seasonal total, using stateProvince as supplied. Australian seasons: Summer Dec–Feb, Autumn Mar–May, Winter Jun–Aug, Spring Sep–Nov. Seasonal shares describe occurrence recording, not abundance or tracked migration. Highlighting does not change counts or denominators. Pointing annotations beside the seasonal bars relate the observed summer-to-winter shift to the documented Orange-bellied Parrot migration cycle; occurrence records alone do not track individual birds. Ecological context: NRE Tasmania, About Orange-bellied Parrots. Uses the 10 most recent available observation years (2017–2026), using year with eventDate fallback, including partial 2026. Year filtering occurs before month/state inclusion and seasonal aggregation.",
+  "width": 1050,
   "height": 280,
   "padding": 16,
   "background": "#f7fafc",
   "title": {
     "text": "How does the parrot’s geographic distribution change by season?",
-    "subtitle": ["Orange-bellied Parrot · Seasonal distribution · 2017–2026", "Each season totals 100%."],
+    "subtitle": [
+      "Orange-bellied Parrot · Seasonal distribution · 2017–2026",
+      "Each season totals 100%."
+    ],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 21,
@@ -62,6 +65,14 @@
     {
       "name": "legendSymbolSize",
       "value": 100
+    },
+    {
+      "name": "plotWidth",
+      "update": "width - 300"
+    },
+    {
+      "name": "annotationX",
+      "update": "plotWidth + 32"
     }
   ],
   "data": [
@@ -267,34 +278,41 @@
       "name": "seasonInsights",
       "values": [
         {
-          "column": 0,
+          "season": "Summer",
           "heading": "Summer: breeding season",
           "lines": [
-            "Tasmania leads the summer",
-            "records, consistent with",
-            "breeding in the island’s",
-            "south-west."
+            "Tasmania leads records,",
+            "consistent with breeding",
+            "in the island’s south-west."
           ]
         },
         {
-          "column": 1,
+          "season": "Autumn",
           "heading": "Autumn: migration",
           "lines": [
-            "Records span Tasmania and",
-            "the mainland, consistent",
-            "with the parrot’s autumn",
-            "crossing of Bass Strait."
+            "Records span Tasmania",
+            "and the mainland, consistent",
+            "with crossing Bass Strait."
           ]
         },
         {
-          "column": 2,
+          "season": "Winter",
           "heading": "Winter: coastal feeding",
           "lines": [
-            "Victoria and South",
-            "Australia lead winter",
-            "records, matching coastal",
+            "Victoria and South Australia",
+            "lead records from coastal",
             "saltmarsh feeding grounds."
           ]
+        }
+      ]
+    },
+    {
+      "name": "annotationTargets",
+      "source": "regionCounts",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.count > 0 && ((datum.season === 'Summer' && datum.region === 'Tasmania') || (datum.season === 'Autumn' && datum.region === 'Victoria') || (datum.season === 'Winter' && (datum.region === 'Victoria' || datum.region === 'South Australia')))"
         }
       ]
     }
@@ -307,7 +325,12 @@
         0,
         1
       ],
-      "range": "width",
+      "range": [
+        0,
+        {
+          "signal": "plotWidth"
+        }
+      ],
       "zero": true,
       "nice": false
     },
@@ -593,6 +616,69 @@
       }
     },
     {
+      "name": "annotationLeaders",
+      "type": "path",
+      "interactive": false,
+      "from": {
+        "data": "annotationTargets"
+      },
+      "encode": {
+        "update": {
+          "path": {
+            "signal": "'M' + scale('x', (datum.x0 + datum.x1) / 2) + ',' + (scale('y', datum.season) + 3) + ' V' + (scale('y', datum.season) - 6) + ' H' + (annotationX - 14) + ' V' + (scale('y', datum.season) + bandwidth('y') / 2) + ' H' + (annotationX - 6)"
+          },
+          "stroke": {
+            "value": "#52606d"
+          },
+          "strokeWidth": {
+            "value": 1.2
+          },
+          "fill": {
+            "value": null
+          },
+          "opacity": {
+            "signal": "activeRegion == null || activeRegion === datum.region ? 1 : 0.25"
+          }
+        }
+      }
+    },
+    {
+      "name": "annotationArrowheads",
+      "type": "symbol",
+      "interactive": false,
+      "from": {
+        "data": "annotationTargets"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('x', (datum.x0 + datum.x1) / 2)"
+          },
+          "y": {
+            "signal": "scale('y', datum.season) + 3"
+          },
+          "shape": {
+            "value": "triangle-down"
+          },
+          "size": {
+            "value": 38
+          },
+          "fill": {
+            "value": "#243447"
+          },
+          "stroke": {
+            "value": "#f7fafc"
+          },
+          "strokeWidth": {
+            "value": 0.7
+          },
+          "opacity": {
+            "signal": "activeRegion == null || activeRegion === datum.region ? 1 : 0.25"
+          }
+        }
+      }
+    },
+    {
       "name": "insightHeadings",
       "type": "text",
       "interactive": false,
@@ -602,10 +688,10 @@
       "encode": {
         "update": {
           "x": {
-            "signal": "(datum.column + 0.5) * width / 3"
+            "signal": "annotationX"
           },
           "y": {
-            "signal": "height + 65"
+            "signal": "scale('y', datum.season) + 0"
           },
           "baseline": {
             "value": "top"
@@ -623,7 +709,7 @@
             "value": "#243447"
           },
           "align": {
-            "value": "center"
+            "value": "left"
           }
         }
       }
@@ -638,10 +724,10 @@
       "encode": {
         "update": {
           "x": {
-            "signal": "(datum.column + 0.5) * width / 3"
+            "signal": "annotationX"
           },
           "y": {
-            "signal": "height + 86"
+            "signal": "scale('y', datum.season) + 19"
           },
           "baseline": {
             "value": "top"
@@ -650,7 +736,7 @@
             "field": "lines"
           },
           "lineHeight": {
-            "value": 16
+            "value": 14
           },
           "fontSize": {
             "value": 11
@@ -659,7 +745,7 @@
             "value": "#52606d"
           },
           "align": {
-            "value": "center"
+            "value": "left"
           }
         }
       }
