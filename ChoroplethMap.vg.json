@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs and pooled by calendar month. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers an overview and 3 recorded states; selecting a state or clicking a recorded LGA filters the charts to that state and fits the map. The line chart is a single unstacked series. Without a timeframe highlight, each calendar month shows average observations across distinct recorded years in the selected state, including zero months within those years. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per 1,000 km². With a month highlight, fills show pooled records in those months per 1,000 km². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6371.0088 km), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for raw counts, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded year-month allocations and pooled monthly counts both use this window. Location options include only states and LGAs with mapped records in this window.",
+  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs and pooled by calendar month. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers All regions and 3 recorded states; selecting a state filters the charts to that state and fits the map. Local government areas remain visible with tooltips and cannot be used as location filters. The line chart is a single unstacked series. Without a timeframe highlight, each calendar month shows average observations across distinct recorded years in the selected state, including zero months within those years. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per 1,000 km². With a month highlight, fills show pooled records in those months per 1,000 km². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6371.0088 km), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for raw counts, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded year-month allocations and pooled monthly counts both use this window. State options include only states with mapped records in this window.",
   "width": 850,
   "height": 530,
   "padding": 16,
@@ -30,38 +30,16 @@
           "all|southern",
           "state|South Australia",
           "state|Tasmania",
-          "state|Victoria",
-          "lga|40220",
-          "lga|61210",
-          "lga|47800",
-          "lga|22410",
-          "lga|22750",
-          "lga|63010",
-          "lga|65610",
-          "lga|27260"
+          "state|Victoria"
         ],
         "labels": [
-          "All recorded states",
-          "State: South Australia",
-          "State: Tasmania",
-          "State: Victoria",
-          "Alexandrina · South Australia",
-          "Circular Head · Tasmania",
-          "Coorong · South Australia",
-          "Glenelg · Victoria",
-          "Greater Geelong · Victoria",
-          "Huon Valley · Tasmania",
-          "West Coast · Tasmania",
-          "Wyndham · Victoria"
+          "All regions",
+          "South Australia",
+          "Tasmania",
+          "Victoria"
         ],
-        "name": "Location: "
-      },
-      "on": [
-        {
-          "events": "@stateShapes:click",
-          "update": "!mapMoved && indata('regionRanking', 'regionCode', datum.regionCode) ? (selectedLocation === 'lga|' + datum.regionCode ? 'all|southern' : 'lga|' + datum.regionCode) : selectedLocation"
-        }
-      ]
+        "name": "State: "
+      }
     },
     {
       "name": "focus",
@@ -351,15 +329,7 @@
         {"key":"all|southern","label":"Southern Australia · All recorded regions","center":[142.86588,-39.56059],"zoom":1900},
         {"key":"state|South Australia","label":"South Australia","center":[135.00215,-32.22873],"zoom":1350},
         {"key":"state|Tasmania","label":"Tasmania","center":[146.15055,-41.47034],"zoom":3300},
-        {"key":"state|Victoria","label":"Victoria","center":[145.46989,-36.60721],"zoom":3050},
-        {"key":"lga|40220","label":"Alexandrina · South Australia","center":[138.83703,-35.33798],"zoom":31814},
-        {"key":"lga|61210","label":"Circular Head · Tasmania","center":[145.08366,-41.02311],"zoom":10194},
-        {"key":"lga|47800","label":"Coorong · South Australia","center":[139.69924,-35.72024],"zoom":13291},
-        {"key":"lga|22410","label":"Glenelg · Victoria","center":[141.4424,-37.89284],"zoom":12761},
-        {"key":"lga|22750","label":"Greater Geelong · Victoria","center":[144.46136,-38.05219],"zoom":27520},
-        {"key":"lga|63010","label":"Huon Valley · Tasmania","center":[146.56556,-43.29547],"zoom":14288},
-        {"key":"lga|65610","label":"West Coast · Tasmania","center":[145.52271,-42.45849],"zoom":7432},
-        {"key":"lga|27260","label":"Wyndham · Victoria","center":[144.63574,-37.89288],"zoom":61886}
+        {"key":"state|Victoria","label":"Victoria","center":[145.46989,-36.60721],"zoom":3050}
       ]
     },
     {
@@ -551,7 +521,7 @@
       "transform": [
         {
           "type": "filter",
-          "expr": "selectedLocation == 'all|southern' || (split(selectedLocation, '|')[0] === 'lga' ? datum.regionCode === split(selectedLocation, '|')[1] : datum.state === split(selectedLocation, '|')[1])"
+          "expr": "selectedLocation == 'all|southern' || datum.state === split(selectedLocation, '|')[1]"
         }
       ]
     },
@@ -992,10 +962,10 @@
                 "signal": "datum.count == 0 ? '#dce2e6' : scale('observationColor', datum.density)"
               },
               "stroke": {
-                "signal": "selectedLocation === 'lga|' + datum.regionCode ? '#243447' : 'white'"
+                "value": "white"
               },
               "strokeWidth": {
-                "signal": "selectedLocation === 'lga|' + datum.regionCode ? 2 : (zoom >= 2500 ? 0.7 : 0.35)"
+                "signal": "zoom >= 2500 ? 0.7 : 0.35"
               },
               "cursor": {
                 "value": "grab"
