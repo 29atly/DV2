@@ -1164,7 +1164,7 @@
             "field": "anchorY"
           },
           "stroke": {
-            "value": "#52606d"
+            "value": "#243447"
           },
           "strokeWidth": {
             "value": 1.5
@@ -1176,7 +1176,7 @@
             ]
           },
           "opacity": {
-            "value": 0.85
+            "value": 1
           }
         }
       }
