@@ -70,5 +70,5 @@ footer .story-columns { padding-inline: 0; }
 .chart-card > .story-columns:has(.chart-note) { margin-top: 12px; margin-bottom: 0; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media (max-width: 760px) { .story-columns { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .hero { padding: 42px 0; } .hero-content { width: calc(100% - 24px); padding-inline: 16px; } main { width: calc(100% - 24px); } .story-columns { padding-inline: 16px; } .toolbar { padding: 16px 28px; } .page-status { margin-inline: 16px; } .section-heading { padding-inline: 16px; } footer { padding: 16px; } .chart-card { padding: 16px; } section { padding-top: 36px; } }
+@media (max-width: 600px) { .hero { padding: 42px 0; } .hero-content { width: calc(100% - 24px); padding-inline: 16px; } main { width: calc(100% - 24px); } .story-columns { padding-inline: 16px; } .toolbar { padding: 16px 28px; } .page-status { margin-inline: 16px; } .section-heading { padding-inline: 16px; } footer { padding: 16px; } .chart-card { padding: 16px; } .chart.vega-embed > details { top: 16px; right: 16px; } section { padding-top: 36px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
