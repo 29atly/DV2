@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Australia’s wildlife through citizen science</title>
-  <link rel="stylesheet" href="styles.css?v=20261020-chart-padding">
+  <link rel="stylesheet" href="styles.css?v=20261022-no-chart-actions">
   <script defer src="https://cdn.jsdelivr.net/npm/vega@5.33.0/build/vega.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
 </head>
@@ -21,7 +21,6 @@
     <nav aria-label="Story sections">
       <a href="#geography">Where</a><a href="#species">What</a><a href="#time">When</a><a href="#seasons">Seasons</a><a href="#parrot">Parrot case study</a><a href="#networks">Connections</a><a href="#diversity">Diversity</a>
     </nav>
-    <label class="menu-toggle"><input id="show-actions" type="checkbox" checked> Show chart menus <span aria-hidden="true">•••</span></label>
   </div>
 
   <main>
@@ -165,9 +164,7 @@
       document.fonts.ready.then(() => paragraphs.forEach(layout => fillParagraph(layout, true)));
 
       /* All chart specifications remain in their original .vg.json files. */
-      const actionToggle = document.querySelector('#show-actions');
       const statusMessage = document.querySelector('#page-status');
-      const preferenceKey = 'wildlife-show-chart-actions';
       const linkedViews = [];
       const highlightViews = [];
       const rangeViews = [];
@@ -366,31 +363,6 @@
         }).catch(error => console.error('Could not reset chart selections', error));
       });
 
-      try {
-        actionToggle.checked = localStorage.getItem(preferenceKey) !== 'false';
-      } catch {
-        // The toggle also works when browser storage is unavailable.
-      }
-
-      function updateActionVisibility() {
-        document.body.classList.toggle('hide-chart-actions', !actionToggle.checked);
-        if (!actionToggle.checked) {
-          document.querySelectorAll('.vega-embed > details[open]').forEach(menu => {
-            menu.open = false;
-          });
-        }
-      }
-
-      updateActionVisibility();
-      actionToggle.addEventListener('change', () => {
-        updateActionVisibility();
-        try {
-          localStorage.setItem(preferenceKey, String(actionToggle.checked));
-        } catch {
-          // Saving a preference is optional; chart interaction remains available.
-        }
-      });
-
       async function loadCharts() {
         const charts = [...document.querySelectorAll('[data-spec]')];
         if (location.protocol === 'file:') {
@@ -413,9 +385,7 @@
             const result = await vegaEmbed(chart, spec, {
               mode: 'vega',
               renderer: 'svg',
-              actions: { export: { svg: true, png: true }, source: true, editor: true },
-              editorUrl: 'https://vega.github.io/editor/',
-              downloadFileName: file.replace('.vg.json', ''),
+              actions: false,
               defaultStyle: true,
               patch: spec => linkSpecies(spec, file)
             });
@@ -538,11 +508,6 @@
                 const expected = speciesNames.has(highlightedSpecies) ? highlightedSpecies : null;
                 if (value !== expected) selectSpecies(value);
               });
-            }
-            const summary = chart.querySelector('summary');
-            if (summary) {
-              summary.setAttribute('aria-label', `Chart actions for ${chart.getAttribute('aria-label')}`);
-              summary.title = 'Click to view actions';
             }
             loaded++;
           } catch (error) {
