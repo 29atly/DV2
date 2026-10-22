@@ -1167,7 +1167,7 @@
             "value": "#52606d"
           },
           "strokeWidth": {
-            "value": 1
+            "value": 1.5
           },
           "strokeDash": {
             "value": [
@@ -1176,7 +1176,7 @@
             ]
           },
           "opacity": {
-            "value": 0.6
+            "value": 0.85
           }
         }
       }
