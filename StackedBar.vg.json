@@ -8,18 +8,19 @@
   "title": {
     "text": "How does the parrot’s geographic distribution change by season?",
     "subtitle": [
-      "Orange-bellied Parrot · Seasonal distribution · 2017–2026",
-      "Each season totals 100%."
+      "Orange-bellied Parrot · Seasonal distribution · 2017–2026"
     ],
     "anchor": "start",
     "font": "Arial",
-    "fontSize": 21,
+    "fontSize": 22,
     "color": "#243447",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
     "offset": 16,
     "subtitlePadding": 6,
-    "subtitleLineHeight": 16
+    "subtitleLineHeight": 16,
+    "fontWeight": "bold",
+    "subtitleFont": "Arial"
   },
   "signals": [
     {

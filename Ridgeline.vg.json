@@ -7,7 +7,9 @@
   "background": "#f7fafc",
   "title": {
     "text": "When Are Australia's Mammals Most Frequently Observed?",
-    "subtitle": ["Seasonal patterns of selected mammals · 2017–2026"],
+    "subtitle": [
+      "Seasonal patterns of selected mammals · 2017–2026"
+    ],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 22,
@@ -17,7 +19,8 @@
     "subtitleColor": "#52606d",
     "offset": 16,
     "subtitlePadding": 6,
-    "subtitleLineHeight": 16
+    "subtitleLineHeight": 16,
+    "fontWeight": "bold"
   },
   "signals": [
     {

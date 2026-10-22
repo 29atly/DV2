@@ -8,8 +8,7 @@
   "title": {
     "text": "How Are Mammal Observations Distributed?",
     "subtitle": [
-      "Broad groups → taxonomic orders → species",
-      "Selected mammals · 2017–2026"
+      "Broad groups → taxonomic orders → species"
     ],
     "anchor": "start",
     "fontSize": 22,
@@ -18,7 +17,10 @@
     "subtitleColor": "#52606d",
     "offset": 16,
     "subtitlePadding": 6,
-    "subtitleLineHeight": 16
+    "subtitleLineHeight": 16,
+    "font": "Arial",
+    "fontWeight": "bold",
+    "subtitleFont": "Arial"
   },
   "signals": [
     {

@@ -6,7 +6,9 @@
   "height": 650,
   "title": {
     "text": "Where is recording activity concentrated?",
-    "subtitle": ["Wildlife recording hotspots · 2017–2026"],
+    "subtitle": [
+      "Wildlife recording hotspots · 2017–2026"
+    ],
     "anchor": "start",
     "color": "#243447",
     "fontSize": 22,
@@ -14,7 +16,10 @@
     "subtitleColor": "#52606d",
     "offset": 16,
     "subtitlePadding": 6,
-    "subtitleLineHeight": 16
+    "subtitleLineHeight": 16,
+    "font": "Arial",
+    "fontWeight": "bold",
+    "subtitleFont": "Arial"
   },
   "style": "view",
   "data": [

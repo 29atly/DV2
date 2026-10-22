@@ -8,19 +8,19 @@
   "title": {
     "text": "How does wildlife observation composition change over the years?",
     "subtitle": [
-      "Changing species composition · 2017–2026",
-      "Band thickness shows relative recording activity."
+      "Changing species composition · 2017–2026"
     ],
     "anchor": "start",
     "font": "Arial",
-    "fontSize": 21,
+    "fontSize": 22,
     "color": "#243447",
     "subtitleFont": "Arial",
     "subtitleFontSize": 12,
     "subtitleColor": "#52606d",
     "offset": 16,
     "subtitlePadding": 6,
-    "subtitleLineHeight": 16
+    "subtitleLineHeight": 16,
+    "fontWeight": "bold"
   },
   "signals": [
     {

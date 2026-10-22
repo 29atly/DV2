@@ -9,7 +9,9 @@
   "background": "#f7fafc",
   "title": {
     "text": "Which species are recorded most often?",
-    "subtitle": ["Mammal species rankings · 2017–2026"],
+    "subtitle": [
+      "Mammal species rankings · 2017–2026"
+    ],
     "anchor": "start",
     "font": "Arial",
     "fontSize": 22,
@@ -19,7 +21,8 @@
     "subtitleColor": "#52606d",
     "offset": 80,
     "subtitlePadding": 6,
-    "subtitleLineHeight": 16
+    "subtitleLineHeight": 16,
+    "fontWeight": "bold"
   },
   "signals": [
     {
