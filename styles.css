@@ -12,6 +12,9 @@ nav { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 18px; }
 a { color: var(--accent); text-underline-offset: 4px; }
 nav a { font-size: 14px; text-decoration: none; }
 nav a:hover { text-decoration: underline; }
+.menu-toggle { display: flex; align-items: center; gap: 9px; cursor: pointer; font-size: 14px; font-weight: 700; }
+.menu-toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+.menu-toggle span { letter-spacing: 2px; }
 main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--layout-gap); width: calc(100% - 48px); max-width: var(--content-width); margin: auto; padding: 20px 0 0; }
 main > * { grid-column: 1 / -1; min-width: 0; }
 .page-status { margin-inline: 24px; color: var(--muted); font-size: 14px; }
@@ -28,14 +31,19 @@ h2 { margin: 0 0 16px; font-family: Georgia, serif; font-size: clamp(26px, 3vw, 
 .analysis-line { display: block; text-wrap: initial; }
 .story-columns:has(.chart-note) { grid-template-columns: 1fr; }
 .chart-card { position: relative; margin: 0 0 24px; padding: 24px; background: white; border: 1px solid var(--line); border-radius: 12px; }
-h3 { display: flex; justify-content: flex-start; flex-wrap: wrap; align-items: baseline; gap: 12px; margin: 0 0 22px; font-size: 15px; color: var(--heading-accent); }
+h3 { display: flex; justify-content: flex-start; flex-wrap: wrap; align-items: baseline; gap: 12px; margin: 0 0 22px; padding: 0 40px 0 0; font-size: 15px; color: var(--heading-accent); }
 h3 span { font-size: 13px; font-weight: 400; color: var(--muted); }
 .chart-scroll { overflow-x: auto; padding: 0; }
 .chart { min-height: 100px; }
+/* Keep menus in the card heading instead of reserving an empty chart column. */
 .chart-card .chart.vega-embed { position: static; display: block; width: 100%; min-width: 760px; margin-inline: auto; padding: 0; }
+.chart.vega-embed > details { position: absolute; top: 24px; right: 24px; }
 .chart.vega-embed .chart-wrapper { width: 100%; padding: 16px; background: #f7fafc; }
 .chart.vega-embed .chart-wrapper > svg { display: block; width: 100%; height: auto; }
 .chart.vega-embed .chart-wrapper > canvas { display: block; }
+.vega-embed summary { opacity: 1 !important; }
+/* Hide menus without recreating views or resetting interactive signals. */
+body.hide-chart-actions .vega-embed > details { display: none !important; }
 .vega-bindings { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 24px; padding-top: 24px; font: 12px Arial, sans-serif; }
 .vega-bindings:empty { display: none; }
 .vega-bind { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
