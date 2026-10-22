@@ -1,15 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs, with daily dates retained for exact date-range filtering. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers All regions and 3 recorded states; selecting a state filters the charts to that state and fits the map. Local government areas remain visible with tooltips and cannot be used as location filters. The line chart shows daily observation counts on a continuous UTC date timeline, including zero days. Without a timeframe highlight, map averages retain the original monthly average across distinct recorded years in the selected state. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per m². With a date highlight, fills show records on or between the selected start and end dates per m². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6,371,008.8 m), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for an inclusive date range, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded daily allocations, year-month allocations and pooled monthly counts use this window. Daily allocations reproduce all 187 previously mapped dated records. One Huon Valley point 30 m outside the simplified display boundary retains its existing region allocation. Date filtering uses the calendar date supplied in eventDate; no dates are inferred for undated records. State options include only states with mapped records in this window.",
+  "description": "Orange-bellied Parrot observations allocated to ABS 2024 LGAs and pooled by calendar month. Boundary source: https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0 (ABS, CC BY 4.0); display geometry simplified approximately 200 m. All 2017–2026 observations use the same 2024 boundaries. Records lacking a usable date or coordinates, or outside the polygons, are excluded consistently. The default view is cropped around the recorded LGAs along southern mainland Australia and Tasmania, reducing the visible area of states without records while keeping all recorded LGA geometry in view. The State dropdown offers All regions and 3 recorded states; selecting a state filters the charts to that state and fits the map. Local government areas remain visible with tooltips and cannot be used as location filters. The line chart is a single unstacked series. Without a timeframe highlight, each calendar month shows average observations across distinct recorded years in the selected state, including zero months within those years. Map fills show the mean of the twelve monthly averages divided by LGA area, expressed per m². With a month highlight, fills show pooled records in those months per m². Areas are approximate spherical areas from the embedded simplified boundaries (mean Earth radius 6,371,008.8 m), independent of zoom. The colour scale uses a fixed all-period density maximum in count mode and its time-averaged equivalent in average mode. One collinear island triangle introduced by coordinate rounding in Circular Head is omitted to avoid a globe-spanning geometry artefact. Draw a highlight for raw counts, drag its body to move it, or resize either edge. Double-click or Show averages restores the average view. Reset view fits the selected state without changing filters. Counts are observation records, not bird abundance. State backdrop: https://github.com/rowanhogan/australian-states. Uses the 10 most recent available years in Dataset/orange_bellied_parrot_cleaned.csv (2017–2026), including partial 2026. Embedded year-month allocations and pooled monthly counts both use this window. State options include only states with mapped records in this window.",
   "width": 850,
-  "height": 580,
+  "height": 530,
   "padding": 16,
   "background": "#f7fafc",
   "title": {
-    "text": "How does parrot distribution change over time?",
+    "text": "How does parrot distribution change through the year?",
     "subtitle": [
-      "Orange-bellied Parrot · Local government area records per m² · 2017–2026",
-      "Daily timeline · Drag a date range to filter the map"
+      "Orange-bellied Parrot · Local government area records per m² · 2017–2026"
     ],
     "anchor": "start",
     "fontSize": 22,
@@ -18,7 +17,10 @@
     "offset": 16,
     "subtitlePadding": 6,
     "subtitleFontSize": 12,
-    "subtitleLineHeight": 16
+    "subtitleLineHeight": 16,
+    "font": "Arial",
+    "fontWeight": "bold",
+    "subtitleFont": "Arial"
   },
   "signals": [
     {
@@ -151,7 +153,7 @@
     },
     {
       "name": "periodLabel",
-      "update": "brushRange ? utcFormat(brushRange[0], '%d %b %Y') + (brushRange[0] === brushRange[1] ? '' : ' – ' + utcFormat(brushRange[1], '%d %b %Y')) : 'Monthly average · all dates'"
+      "update": "brushRange ? (['January','February','March','April','May','June','July','August','September','October','November','December'][brushRange[0]-1] + (brushRange[0] == brushRange[1] ? '' : '–' + ['January','February','March','April','May','June','July','August','September','October','November','December'][brushRange[1]-1])) : 'Monthly average'"
     },
     {
       "name": "regionLabel",
@@ -183,19 +185,19 @@
       "on": [
         {
           "events": "@lineHit:pointerdown",
-          "update": "{mode:'new',anchor:clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),range:[clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800)]}"
+          "update": "{mode:'new',anchor:clamp(x()-50, 0, 800),range:[clamp(x()-50, 0, 800),clamp(x()-50, 0, 800)]}"
         },
         {
           "events": "@brushBody:pointerdown",
-          "update": "{mode:'move',anchor:clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),range:[brushPixels[0],brushPixels[1]]}"
+          "update": "{mode:'move',anchor:clamp(x()-50, 0, 800),range:[brushPixels[0],brushPixels[1]]}"
         },
         {
           "events": "@brushLeftHandle:pointerdown",
-          "update": "{mode:'left',anchor:clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),range:[brushPixels[0],brushPixels[1]]}"
+          "update": "{mode:'left',anchor:clamp(x()-50, 0, 800),range:[brushPixels[0],brushPixels[1]]}"
         },
         {
           "events": "@brushRightHandle:pointerdown",
-          "update": "{mode:'right',anchor:clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),range:[brushPixels[0],brushPixels[1]]}"
+          "update": "{mode:'right',anchor:clamp(x()-50, 0, 800),range:[brushPixels[0],brushPixels[1]]}"
         },
         {
           "events": "window:pointerup",
@@ -209,7 +211,7 @@
       "on": [
         {
           "events": "@lineHit:pointerdown",
-          "update": "[clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800)]"
+          "update": "[clamp(x()-50, 0, 800),clamp(x()-50, 0, 800)]"
         },
         {
           "events": {
@@ -217,7 +219,7 @@
             "type": "pointermove",
             "consume": true
           },
-          "update": "!brushGesture ? brushPixels : brushGesture.mode == 'new' ? [min(brushGesture.anchor,clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800)),max(brushGesture.anchor,clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800))] : brushGesture.mode == 'move' ? [brushGesture.range[0]+(clamp((clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800))-brushGesture.anchor, -brushGesture.range[0], 800-brushGesture.range[1])),brushGesture.range[1]+(clamp((clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800))-brushGesture.anchor, -brushGesture.range[0], 800-brushGesture.range[1]))] : brushGesture.mode == 'left' ? [min(clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),brushGesture.range[1]),brushGesture.range[1]] : [brushGesture.range[0],max(clamp(((x()+pointerOffset)/pointerScale-pointerOffset)-50, 0, 800),brushGesture.range[0])]"
+          "update": "!brushGesture ? brushPixels : brushGesture.mode == 'new' ? [min(brushGesture.anchor,clamp(x()-50, 0, 800)),max(brushGesture.anchor,clamp(x()-50, 0, 800))] : brushGesture.mode == 'move' ? [brushGesture.range[0]+(clamp((clamp(x()-50, 0, 800))-brushGesture.anchor, -brushGesture.range[0], 800-brushGesture.range[1])),brushGesture.range[1]+(clamp((clamp(x()-50, 0, 800))-brushGesture.anchor, -brushGesture.range[0], 800-brushGesture.range[1]))] : brushGesture.mode == 'left' ? [min(clamp(x()-50, 0, 800),brushGesture.range[1]),brushGesture.range[1]] : [brushGesture.range[0],max(clamp(x()-50, 0, 800),brushGesture.range[0])]"
         },
         {
           "events": "@lineHit:dblclick, @brushBody:dblclick, @brushLeftHandle:dblclick, @brushRightHandle:dblclick, @clearBrush:click",
@@ -227,33 +229,7 @@
     },
     {
       "name": "brushRange",
-      "update": "brushPixels ? [minDate + round(brushPixels[0] / 800 * ((maxDate - minDate) / 86400000)) * 86400000, minDate + round(brushPixels[1] / 800 * ((maxDate - minDate) / 86400000)) * 86400000] : null"
-    },
-    {
-      "name": "minDate",
-      "update": "data('dateExtent')[0].start"
-    },
-    {
-      "name": "maxDate",
-      "update": "data('dateExtent')[0].end"
-    },
-    {
-      "name": "pointerScale",
-      "value": 1
-    },
-    {
-      "name": "pointerOffset",
-      "value": 0
-    },
-    {
-      "name": "hoveredDay",
-      "value": 0,
-      "on": [
-        {
-          "events": "@lineHit:pointermove",
-          "update": "round(clamp((((x()+pointerOffset)/pointerScale-pointerOffset)-50)/800, 0, 1) * ((maxDate-minDate)/86400000))"
-        }
-      ]
+      "update": "brushPixels ? [clamp(round(1+brushPixels[0]*11/800),1,12),clamp(round(1+brushPixels[1]*11/800),1,12)] : null"
     }
   ],
   "data": [
@@ -347,186 +323,6 @@
         {"regionCode":"63010","year":2026,"month":1,"count":1},
         {"regionCode":"63010","year":2026,"month":3,"count":1},
         {"regionCode":"65610","year":2020,"month":3,"count":1}
-      ]
-    },
-    {
-      "name": "dailyRecords",
-      "values": [
-        {"regionCode":"63010","date":"2017-01-02","count":3},
-        {"regionCode":"63010","date":"2017-01-22","count":1},
-        {"regionCode":"63010","date":"2017-02-19","count":1},
-        {"regionCode":"61210","date":"2017-04-05","count":1},
-        {"regionCode":"63010","date":"2017-04-25","count":1},
-        {"regionCode":"27260","date":"2017-05-18","count":1},
-        {"regionCode":"22750","date":"2017-05-31","count":1},
-        {"regionCode":"63010","date":"2017-11-17","count":1},
-        {"regionCode":"63010","date":"2017-11-18","count":2},
-        {"regionCode":"63010","date":"2017-11-19","count":2},
-        {"regionCode":"27260","date":"2017-12-09","count":1},
-        {"regionCode":"63010","date":"2018-01-30","count":1},
-        {"regionCode":"22750","date":"2018-03-23","count":1},
-        {"regionCode":"22750","date":"2018-04-20","count":1},
-        {"regionCode":"63010","date":"2018-09-24","count":1},
-        {"regionCode":"63010","date":"2018-09-26","count":2},
-        {"regionCode":"63010","date":"2018-09-28","count":3},
-        {"regionCode":"63010","date":"2018-09-29","count":1},
-        {"regionCode":"63010","date":"2018-10-02","count":1},
-        {"regionCode":"63010","date":"2018-10-07","count":1},
-        {"regionCode":"63010","date":"2018-10-09","count":1},
-        {"regionCode":"63010","date":"2018-10-10","count":1},
-        {"regionCode":"63010","date":"2018-10-12","count":1},
-        {"regionCode":"63010","date":"2018-10-13","count":1},
-        {"regionCode":"63010","date":"2018-10-14","count":1},
-        {"regionCode":"63010","date":"2018-11-16","count":1},
-        {"regionCode":"63010","date":"2018-12-04","count":2},
-        {"regionCode":"63010","date":"2018-12-05","count":2},
-        {"regionCode":"63010","date":"2018-12-07","count":2},
-        {"regionCode":"63010","date":"2018-12-08","count":2},
-        {"regionCode":"63010","date":"2019-01-13","count":2},
-        {"regionCode":"63010","date":"2019-02-24","count":1},
-        {"regionCode":"27260","date":"2019-03-17","count":1},
-        {"regionCode":"63010","date":"2019-04-29","count":2},
-        {"regionCode":"22750","date":"2019-05-26","count":1},
-        {"regionCode":"27260","date":"2019-06-13","count":1},
-        {"regionCode":"22750","date":"2019-06-16","count":2},
-        {"regionCode":"22750","date":"2019-06-26","count":1},
-        {"regionCode":"63010","date":"2019-11-04","count":1},
-        {"regionCode":"63010","date":"2019-11-20","count":1},
-        {"regionCode":"63010","date":"2019-11-25","count":1},
-        {"regionCode":"22750","date":"2020-01-03","count":1},
-        {"regionCode":"63010","date":"2020-01-31","count":3},
-        {"regionCode":"63010","date":"2020-02-01","count":2},
-        {"regionCode":"63010","date":"2020-02-03","count":1},
-        {"regionCode":"63010","date":"2020-02-04","count":1},
-        {"regionCode":"63010","date":"2020-02-05","count":4},
-        {"regionCode":"63010","date":"2020-02-24","count":2},
-        {"regionCode":"63010","date":"2020-03-09","count":1},
-        {"regionCode":"63010","date":"2020-03-23","count":1},
-        {"regionCode":"65610","date":"2020-03-23","count":1},
-        {"regionCode":"63010","date":"2020-11-28","count":1},
-        {"regionCode":"63010","date":"2021-02-16","count":1},
-        {"regionCode":"63010","date":"2021-02-17","count":1},
-        {"regionCode":"63010","date":"2021-03-18","count":1},
-        {"regionCode":"22750","date":"2021-04-04","count":1},
-        {"regionCode":"40220","date":"2021-05-29","count":2},
-        {"regionCode":"40220","date":"2021-06-13","count":1},
-        {"regionCode":"40220","date":"2021-06-14","count":1},
-        {"regionCode":"27260","date":"2021-10-06","count":1},
-        {"regionCode":"22410","date":"2021-10-23","count":1},
-        {"regionCode":"63010","date":"2021-12-18","count":1},
-        {"regionCode":"63010","date":"2021-12-22","count":1},
-        {"regionCode":"63010","date":"2022-01-02","count":1},
-        {"regionCode":"63010","date":"2022-02-26","count":1},
-        {"regionCode":"22750","date":"2022-05-06","count":1},
-        {"regionCode":"27260","date":"2022-05-13","count":1},
-        {"regionCode":"27260","date":"2022-05-24","count":1},
-        {"regionCode":"22750","date":"2022-05-29","count":1},
-        {"regionCode":"22750","date":"2022-06-06","count":1},
-        {"regionCode":"63010","date":"2022-11-09","count":1},
-        {"regionCode":"63010","date":"2022-11-24","count":5},
-        {"regionCode":"63010","date":"2023-02-26","count":1},
-        {"regionCode":"22750","date":"2023-03-22","count":1},
-        {"regionCode":"22750","date":"2023-04-14","count":1},
-        {"regionCode":"27260","date":"2023-04-19","count":2},
-        {"regionCode":"27260","date":"2023-04-20","count":1},
-        {"regionCode":"40220","date":"2023-06-18","count":1},
-        {"regionCode":"27260","date":"2023-10-06","count":1},
-        {"regionCode":"63010","date":"2023-11-01","count":1},
-        {"regionCode":"63010","date":"2023-11-10","count":2},
-        {"regionCode":"63010","date":"2023-11-16","count":1},
-        {"regionCode":"63010","date":"2023-11-19","count":1},
-        {"regionCode":"63010","date":"2023-11-22","count":2},
-        {"regionCode":"63010","date":"2023-11-24","count":1},
-        {"regionCode":"63010","date":"2023-11-28","count":1},
-        {"regionCode":"63010","date":"2024-01-09","count":1},
-        {"regionCode":"63010","date":"2024-02-03","count":1},
-        {"regionCode":"63010","date":"2024-02-26","count":1},
-        {"regionCode":"63010","date":"2024-03-06","count":3},
-        {"regionCode":"63010","date":"2024-03-14","count":1},
-        {"regionCode":"27260","date":"2024-04-20","count":1},
-        {"regionCode":"27260","date":"2024-04-26","count":1},
-        {"regionCode":"22750","date":"2024-04-29","count":1},
-        {"regionCode":"27260","date":"2024-04-30","count":1},
-        {"regionCode":"47800","date":"2024-09-14","count":1},
-        {"regionCode":"22750","date":"2024-09-19","count":1},
-        {"regionCode":"63010","date":"2024-10-14","count":1},
-        {"regionCode":"63010","date":"2024-11-02","count":2},
-        {"regionCode":"27260","date":"2024-12-10","count":1},
-        {"regionCode":"63010","date":"2024-12-18","count":1},
-        {"regionCode":"63010","date":"2024-12-26","count":1},
-        {"regionCode":"63010","date":"2024-12-29","count":1},
-        {"regionCode":"63010","date":"2025-01-13","count":1},
-        {"regionCode":"63010","date":"2025-01-29","count":1},
-        {"regionCode":"63010","date":"2025-02-01","count":1},
-        {"regionCode":"63010","date":"2025-02-02","count":3},
-        {"regionCode":"63010","date":"2025-02-03","count":1},
-        {"regionCode":"63010","date":"2025-02-17","count":1},
-        {"regionCode":"63010","date":"2025-02-20","count":1},
-        {"regionCode":"63010","date":"2025-03-04","count":1},
-        {"regionCode":"27260","date":"2025-04-21","count":1},
-        {"regionCode":"27260","date":"2025-04-28","count":2},
-        {"regionCode":"27260","date":"2025-05-04","count":2},
-        {"regionCode":"27260","date":"2025-05-07","count":1},
-        {"regionCode":"47800","date":"2025-05-16","count":1},
-        {"regionCode":"22750","date":"2025-05-17","count":1},
-        {"regionCode":"27260","date":"2025-05-17","count":1},
-        {"regionCode":"22750","date":"2025-05-22","count":1},
-        {"regionCode":"22750","date":"2025-05-28","count":1},
-        {"regionCode":"27260","date":"2025-05-28","count":1},
-        {"regionCode":"22750","date":"2025-06-22","count":1},
-        {"regionCode":"22750","date":"2025-07-23","count":2},
-        {"regionCode":"27260","date":"2025-08-21","count":1},
-        {"regionCode":"27260","date":"2025-09-03","count":1},
-        {"regionCode":"27260","date":"2025-09-05","count":1},
-        {"regionCode":"22750","date":"2025-09-13","count":1},
-        {"regionCode":"22750","date":"2025-09-30","count":1},
-        {"regionCode":"22750","date":"2025-10-18","count":1},
-        {"regionCode":"22750","date":"2025-10-20","count":1},
-        {"regionCode":"63010","date":"2025-10-20","count":1},
-        {"regionCode":"63010","date":"2025-10-29","count":1},
-        {"regionCode":"63010","date":"2025-11-01","count":1},
-        {"regionCode":"22750","date":"2025-11-05","count":1},
-        {"regionCode":"27260","date":"2025-11-05","count":1},
-        {"regionCode":"63010","date":"2026-01-13","count":1},
-        {"regionCode":"63010","date":"2026-03-27","count":1},
-        {"regionCode":"27260","date":"2026-05-23","count":1},
-        {"regionCode":"27260","date":"2026-05-28","count":3},
-        {"regionCode":"22750","date":"2026-06-21","count":1},
-        {"regionCode":"27260","date":"2026-07-08","count":1},
-        {"regionCode":"22750","date":"2026-07-13","count":1},
-        {"regionCode":"22750","date":"2026-07-17","count":1},
-        {"regionCode":"22750","date":"2026-08-01","count":2},
-        {"regionCode":"27260","date":"2026-08-09","count":1},
-        {"regionCode":"40220","date":"2026-08-26","count":1},
-        {"regionCode":"40220","date":"2026-08-28","count":1}
-      ],
-      "transform": [
-        {
-          "type": "formula",
-          "expr": "toNumber(utcParse(datum.date, '%Y-%m-%d'))",
-          "as": "timestamp"
-        }
-      ]
-    },
-    {
-      "name": "dateExtent",
-      "source": "dailyRecords",
-      "transform": [
-        {
-          "type": "aggregate",
-          "fields": [
-            "timestamp",
-            "timestamp"
-          ],
-          "ops": [
-            "min",
-            "max"
-          ],
-          "as": [
-            "start",
-            "end"
-          ]
-        }
       ]
     },
     {
@@ -732,6 +528,33 @@
       ]
     },
     {
+      "name": "datedMonthly",
+      "source": "yearMonthly",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "regionCode",
+            "month"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "fields": [
+            "count"
+          ],
+          "as": [
+            "datedCount"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.regionCode + '-' + datum.month",
+          "as": "monthKey"
+        }
+      ]
+    },
+    {
       "name": "recordedYears",
       "source": "yearMonthly",
       "transform": [
@@ -766,87 +589,77 @@
       ]
     },
     {
-      "name": "dailyTotals",
-      "source": "dailyRecords",
+      "name": "mapMonthly",
+      "source": "monthly",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.regionCode + '-' + datum.month",
+          "as": "monthKey"
+        },
+        {
+          "type": "lookup",
+          "from": "datedMonthly",
+          "key": "monthKey",
+          "fields": [
+            "monthKey"
+          ],
+          "values": [
+            "datedCount"
+          ],
+          "as": [
+            "datedCount"
+          ],
+          "default": 0
+        },
+        {
+          "type": "formula",
+          "expr": "brushRange ? datum.count : datum.datedCount / recordedYearCount",
+          "as": "displayCount"
+        }
+      ]
+    },
+    {
+      "name": "chartMonthly",
+      "source": "mapMonthly",
       "transform": [
         {
           "type": "filter",
           "expr": "indata('activeRegions', 'regionCode', datum.regionCode)"
         },
         {
-          "type": "aggregate",
-          "groupby": [
-            "timestamp"
-          ],
-          "fields": [
-            "count"
-          ],
-          "ops": [
-            "sum"
-          ],
-          "as": [
-            "count"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "totals",
-      "transform": [
-        {
-          "type": "sequence",
-          "start": {
-            "signal": "minDate"
-          },
-          "stop": {
-            "signal": "maxDate + 86400000"
-          },
-          "step": 86400000,
-          "as": "timestamp"
-        },
-        {
-          "type": "lookup",
-          "from": "dailyTotals",
-          "key": "timestamp",
-          "fields": [
-            "timestamp"
-          ],
-          "values": [
-            "count"
-          ],
-          "as": [
-            "count"
-          ],
-          "default": 0
+          "type": "formula",
+          "expr": "datum.displayCount",
+          "as": "count"
         }
       ]
     },
     {
       "name": "selectedCounts",
-      "source": "dailyRecords",
+      "source": "mapMonthly",
       "transform": [
         {
           "type": "filter",
-          "expr": "!brushRange || (datum.timestamp >= brushRange[0] && datum.timestamp <= brushRange[1])"
+          "expr": "!brushRange || (datum.month >= brushRange[0] && datum.month <= brushRange[1])"
         },
         {
           "type": "aggregate",
           "groupby": [
             "regionCode"
           ],
-          "fields": [
-            "count"
-          ],
           "ops": [
             "sum"
           ],
+          "fields": [
+            "displayCount"
+          ],
           "as": [
-            "rawCount"
+            "count"
           ]
         },
         {
           "type": "formula",
-          "expr": "brushRange ? datum.rawCount : datum.rawCount / (12 * recordedYearCount)",
+          "expr": "brushRange ? datum.count : datum.count / 12",
           "as": "count"
         }
       ]
@@ -947,12 +760,40 @@
       ]
     },
     {
+      "name": "totals",
+      "source": "chartMonthly",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "month",
+            "monthLabel"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "fields": [
+            "count"
+          ],
+          "as": [
+            "count"
+          ]
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": "month"
+          }
+        }
+      ]
+    },
+    {
       "name": "selectedTotal",
       "source": "totals",
       "transform": [
         {
           "type": "filter",
-          "expr": "!brushRange || (datum.timestamp >= brushRange[0] && datum.timestamp <= brushRange[1])"
+          "expr": "!brushRange || (datum.month >= brushRange[0] && datum.month <= brushRange[1])"
         },
         {
           "type": "aggregate",
@@ -963,12 +804,12 @@
             "count"
           ],
           "as": [
-            "rawCount"
+            "count"
           ]
         },
         {
           "type": "formula",
-          "expr": "brushRange ? datum.rawCount : datum.rawCount / (12 * recordedYearCount)",
+          "expr": "brushRange ? datum.count : datum.count / 12",
           "as": "count"
         }
       ]
@@ -1131,7 +972,7 @@
                 "value": "grab"
               },
               "tooltip": {
-                "signal": "{'Local government area': datum.region, 'State': datum.state, 'Timeframe': brushRange ? periodLabel : 'All dates', 'Records per m²': format(datum.density, '.3e'), 'Local government area (m², approximate)': format(datum.areaM2, ',.0f'), 'Observation records': format(datum.count, brushRange ? ',d' : ',.3f'), 'Measure': brushRange ? 'Pooled records in selected dates per m²' : 'Monthly average per recorded year per m²', 'Recorded years': recordedYearCount}"
+                "signal": "{'Local government area': datum.region, 'State': datum.state, 'Timeframe': brushRange ? periodLabel : 'All calendar months', 'Records per m²': format(datum.density, '.3e'), 'Local government area (m², approximate)': format(datum.areaM2, ',.0f'), 'Observation records': format(datum.count, brushRange ? ',d' : ',.3f'), 'Measure': brushRange ? 'Pooled records in selected months per m²' : 'Monthly average per recorded year per m²', 'Recorded years': recordedYearCount}"
               },
               "opacity": {
                 "signal": "indata('activeRegions', 'regionCode', datum.regionCode) ? 1 : 0.25"
@@ -1256,7 +1097,7 @@
             "value": 360
           },
           "text": {
-            "signal": "'Daily observation records · ' + regionLabel"
+            "signal": "(brushRange ? 'Monthly observation counts · ' : 'Average observations by calendar month · ') + regionLabel"
           },
           "fontSize": {
             "value": 15
@@ -1285,21 +1126,17 @@
             "value": 800
           },
           "height": {
-            "value": 140
+            "value": 100
           }
         }
       },
       "scales": [
         {
           "name": "monthX",
-          "type": "utc",
+          "type": "linear",
           "domain": [
-            {
-              "signal": "minDate"
-            },
-            {
-              "signal": "maxDate"
-            }
+            1,
+            12
           ],
           "range": [
             0,
@@ -1315,7 +1152,7 @@
             "field": "count"
           },
           "range": [
-            140,
+            100,
             0
           ],
           "zero": true,
@@ -1326,20 +1163,40 @@
         {
           "orient": "bottom",
           "scale": "monthX",
-          "format": "%Y",
-          "tickCount": 10,
-          "labelOverlap": true,
-          "title": "Observation date",
-          "titlePadding": 10
+          "values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "encode": {
+            "labels": {
+              "update": {
+                "text": {
+                  "signal": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value-1]"
+                }
+              }
+            }
+          }
         },
         {
           "orient": "left",
           "scale": "countY",
-          "title": "Observations per day",
+          "title": {
+            "signal": "brushRange ? 'Observations' : 'Average monthly observations'"
+          },
           "grid": true,
           "gridScale": "monthX",
           "tickCount": 4,
-          "format": "d"
+          "format": ",~f"
         }
       ],
       "marks": [
@@ -1359,7 +1216,7 @@
                 "value": 0
               },
               "height": {
-                "value": 140
+                "value": 100
               },
               "fill": {
                 "value": "#3366a6"
@@ -1391,7 +1248,7 @@
                 "value": 0
               },
               "y2": {
-                "value": 140
+                "value": 100
               },
               "stroke": {
                 "value": "#243447"
@@ -1418,13 +1275,13 @@
             "data": "totals"
           },
           "sort": {
-            "field": "timestamp"
+            "field": "month"
           },
           "encode": {
             "update": {
               "x": {
                 "scale": "monthX",
-                "field": "timestamp"
+                "field": "month"
               },
               "y": {
                 "scale": "countY",
@@ -1443,29 +1300,26 @@
           "name": "locationPoints",
           "type": "symbol",
           "from": {
-            "data": "dailyTotals"
+            "data": "totals"
           },
           "encode": {
             "update": {
               "x": {
                 "scale": "monthX",
-                "field": "timestamp"
+                "field": "month"
               },
               "y": {
                 "scale": "countY",
                 "field": "count"
               },
               "size": {
-                "signal": "brushRange && datum.timestamp >= brushRange[0] && datum.timestamp <= brushRange[1] ? 80 : 30"
+                "signal": "brushRange && datum.month >= brushRange[0] && datum.month <= brushRange[1] ? 80 : 30"
               },
               "fill": {
-                "signal": "brushRange && datum.timestamp >= brushRange[0] && datum.timestamp <= brushRange[1] ? '#a63603' : '#3366a6'"
+                "signal": "brushRange && datum.month >= brushRange[0] && datum.month <= brushRange[1] ? '#a63603' : '#3366a6'"
               },
               "stroke": {
                 "value": "white"
-              },
-              "tooltip": {
-                "signal": "{'Date': utcFormat(datum.timestamp, '%d %b %Y'), 'Location': regionLabel, 'Observations': datum.count}"
               }
             }
           }
@@ -1473,19 +1327,22 @@
         {
           "name": "lineHit",
           "type": "rect",
+          "from": {
+            "data": "totals"
+          },
           "encode": {
             "update": {
               "x": {
-                "value": 0
+                "signal": "max(0, scale('monthX', datum.month)-27)"
               },
               "x2": {
-                "value": 800
+                "signal": "min(800, scale('monthX', datum.month)+27)"
               },
               "y": {
                 "value": 0
               },
               "height": {
-                "value": 140
+                "value": 100
               },
               "fill": {
                 "value": "transparent"
@@ -1494,7 +1351,7 @@
                 "value": "crosshair"
               },
               "tooltip": {
-                "signal": "{'Date': utcFormat(minDate + hoveredDay * 86400000, '%d %b %Y'), 'Observations': data('totals')[hoveredDay].count, 'Location': regionLabel}"
+                "signal": "{'Location': regionLabel, 'Month': datum.monthLabel, 'Value': format(datum.count, brushRange ? ',d' : ',.2f'), 'Measure': brushRange ? 'Observation count' : 'Average observations per recorded year'}"
               }
             }
           }
@@ -1514,7 +1371,7 @@
                 "value": 0
               },
               "height": {
-                "signal": "brushPixels ? 140 : 0"
+                "signal": "brushPixels ? 100 : 0"
               },
               "fill": {
                 "value": "transparent"
@@ -1549,7 +1406,7 @@
                 "signal": "brushPixels ? 8 : 0"
               },
               "height": {
-                "signal": "brushPixels ? 140 : 0"
+                "signal": "brushPixels ? 100 : 0"
               },
               "fill": {
                 "value": "#3366a6"
@@ -1584,7 +1441,7 @@
                 "signal": "brushPixels ? 8 : 0"
               },
               "height": {
-                "signal": "brushPixels ? 140 : 0"
+                "signal": "brushPixels ? 100 : 0"
               },
               "fill": {
                 "value": "#3366a6"
@@ -1671,7 +1528,7 @@
                 "value": 13
               },
               "text": {
-                "signal": "brushRange ? 'Records / m² · selected dates' : 'Average records per month per m²'"
+                "signal": "brushRange ? 'Records / m² · selected months' : 'Average records per month per m²'"
               },
               "font": {
                 "value": "Arial"
@@ -1776,33 +1633,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "dateSelectionLabel",
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "update": {
-          "x": {
-            "value": 50
-          },
-          "y": {
-            "value": 578
-          },
-          "text": {
-            "signal": "brushRange ? 'Selected dates: ' + periodLabel + ' (inclusive)' : 'Drag to select exact dates · Click outside to restore map averages.'"
-          },
-          "font": {
-            "value": "Arial"
-          },
-          "fontSize": {
-            "value": 12
-          },
-          "fill": {
-            "value": "#52606d"
-          }
-        }
-      }
     }
   ],
   "config": {
@@ -1852,15 +1682,8 @@
       "formula": "count / areaM2",
       "areaMethod": "Spherical area of embedded simplified LGA geometry; mean Earth radius 6,371,008.8 m",
       "averageMode": "count = pooled dated records / recordedYearCount / 12",
-      "highlightMode": "count = pooled records between selected start and end dates, inclusive",
+      "highlightMode": "count = pooled records in selected calendar months",
       "interpretation": "Observation record density; does not adjust for survey effort or estimate bird abundance"
-    },
-    "dailyDates": {
-      "source": "Dataset/orange_bellied_parrot_cleaned.csv",
-      "dateField": "eventDate (calendar date as supplied)",
-      "mappedRecords": 187,
-      "dateRangeInclusive": true,
-      "simplifiedBoundaryException": "2026-01-13 at 146.160694, -43.417491 retains existing Huon Valley allocation (30 m beyond simplified display boundary)."
     }
   }
 }

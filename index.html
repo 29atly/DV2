@@ -73,7 +73,7 @@
         <h2 id="parrot-title">Following the Orange-bellied Parrot through the seasons</h2>
       </header>
       <div class="story-columns"><p class="story">Orange-bellied Parrot records show a striking seasonal geographic shift. <strong>Tasmania dominates in summer</strong>, while winter recording activity shifts toward <strong>Victoria and South Australia</strong>.</p><p class="story">In spring, recording activity returns toward <strong>Tasmania</strong>, with Victoria also represented. The seasonal patterns cover <strong>2017–2026</strong>.</p></div>
-      <article class="chart-card"><h3>Choropleth map <span>Distribution across local government areas</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with date-range selection"></div></div></article>
+      <article class="chart-card"><h3>Choropleth map <span>Distribution across local government areas</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with month-range selection"></div></div></article>
       <article class="chart-card"><h3>100% stacked bar chart <span>Seasonal share by state</span></h3><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="Seasonal state shares of Orange-bellied Parrot observations"></div></div></article>
       <div class="story-columns"><p class="story">Together with the monthly choropleth, these seasonal shares reveal a clear redistribution of recorded locations between Tasmania and mainland Australia, showing <strong>movement patterns consistent with seasonal migration</strong>.</p><p class="story">Citizen-science observations can help reveal these patterns over time, although the records alone do not prove that individual birds migrated.</p></div>
     </section>
@@ -193,9 +193,7 @@
           spec.title.anchor = 'start';
           spec.title.align = 'left';
           if (spec.title.subtitle) {
-            spec.title.subtitle = [spec.title.subtitle].flat().flatMap(line =>
-              String(line).split(/(?<=[.!?])\s+(?=[A-Z])/)
-            );
+            spec.title.subtitle = [spec.title.subtitle].flat().slice(0, 1);
           }
         }
         if (file === 'ChoroplethMap.vg.json') {
@@ -407,7 +405,10 @@
         for (const chart of charts) {
           const file = chart.dataset.spec;
           try {
-            const response = await fetch(file, { cache: 'no-store' });
+            const specUrl = file === 'ChoroplethMap.vg.json'
+              ? `${file}?v=20261022-calendar-months`
+              : file;
+            const response = await fetch(specUrl, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Could not fetch ${file}: ${response.status}`);
             const spec = await response.json();
             const result = await vegaEmbed(chart, spec, {
@@ -460,6 +461,13 @@
                       console.error('Could not fit chart layout', error);
                     });
                   }
+                }
+                // Chart headings use the same displayed typography across SVG scales.
+                for (const text of svg.querySelectorAll('.role-title-text text, .role-title-subtitle text')) {
+                  const isSubtitle = Boolean(text.closest('.role-title-subtitle'));
+                  text.style.fontFamily = 'Arial, sans-serif';
+                  text.style.fontSize = `${(isSubtitle ? 12 : 22) / scale}px`;
+                  text.style.fontWeight = isSubtitle ? '400' : '700';
                 }
                 // Keep legend fonts equal on screen even when SVGs scale by different amounts.
                 for (const group of svg.querySelectorAll('g.mark-text')) {
