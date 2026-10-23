@@ -4355,8 +4355,8 @@
       "name": "stateAnnotationAnchors",
       "values": [
         {"state":"Queensland","longitude":144,"latitude":-23,"dx":70,"dy":-45},
-        {"state":"New South Wales","longitude":147,"latitude":-32,"dx":85,"dy":0},
-        {"state":"Victoria","longitude":144.5,"latitude":-37,"dx":-230,"dy":20},
+        {"state":"New South Wales","longitude":143.5,"latitude":-32,"dx":0,"dy":0},
+        {"state":"Victoria","longitude":142.5,"latitude":-35.4,"dx":0,"dy":0},
         {"state":"Tasmania","longitude":146.5,"latitude":-42,"dx":35,"dy":25},
         {"state":"Western Australia","longitude":122,"latitude":-26,"dx":-220,"dy":-35},
         {"state":"South Australia","longitude":134,"latitude":-30,"dx":-230,"dy":35},
@@ -4451,12 +4451,12 @@
         },
         {
           "type": "formula",
-          "expr": "18",
+          "expr": "datum.anchorX",
           "as": "labelX"
         },
         {
           "type": "formula",
-          "expr": "44 + (datum.rank - 1) * 46",
+          "expr": "datum.anchorY",
           "as": "labelY"
         }
       ]
@@ -4794,14 +4794,16 @@
           "encode": {
             "update": {
               "x": {
-                "signal": "datum.labelX + 9"
+                "field": "labelX"
               },
               "y": {
-                "signal": "datum.labelY + 15"
+                "field": "labelY"
               },
               "text": {
                 "field": "state"
               },
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"},
               "font": {
                 "value": "Arial"
               },
