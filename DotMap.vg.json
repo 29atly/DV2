@@ -4788,42 +4788,6 @@
           }
         },
         {
-          "name": "annotationLeaders",
-          "type": "rule",
-          "interactive": false,
-          "encode": {
-            "update": {
-              "x": {
-                "field": "anchorX"
-              },
-              "y": {
-                "field": "anchorY"
-              },
-              "x2": {
-                "signal": "datum.labelX + 190"
-              },
-              "y2": {
-                "signal": "datum.labelY + 11"
-              },
-              "stroke": {
-                "value": "#52606d"
-              },
-              "strokeWidth": {
-                "value": 0.9
-              },
-              "strokeDash": {
-                "value": [
-                  3,
-                  3
-                ]
-              }
-            }
-          },
-          "from": {
-            "data": "mapAnnotations"
-          }
-        },
-        {
           "name": "annotationStateLabels",
           "type": "text",
           "interactive": false,
