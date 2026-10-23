@@ -4451,12 +4451,12 @@
         },
         {
           "type": "formula",
-          "expr": "clamp(datum.anchorX + datum.dx, 5, 625)",
+          "expr": "18",
           "as": "labelX"
         },
         {
           "type": "formula",
-          "expr": "clamp(datum.anchorY + datum.dy, 30, 590)",
+          "expr": "44 + (datum.rank - 1) * 46",
           "as": "labelY"
         }
       ]
@@ -4800,10 +4800,10 @@
                 "field": "anchorY"
               },
               "x2": {
-                "signal": "datum.labelX + (datum.dx < 0 ? 220 : 0)"
+                "signal": "datum.labelX + 190"
               },
               "y2": {
-                "signal": "datum.labelY + 21"
+                "signal": "datum.labelY + 11"
               },
               "stroke": {
                 "value": "#52606d"
@@ -4816,45 +4816,6 @@
                   3,
                   3
                 ]
-              }
-            }
-          },
-          "from": {
-            "data": "mapAnnotations"
-          }
-        },
-        {
-          "name": "annotationBackgrounds",
-          "type": "rect",
-          "interactive": false,
-          "encode": {
-            "update": {
-              "x": {
-                "field": "labelX"
-              },
-              "y": {
-                "field": "labelY"
-              },
-              "width": {
-                "value": 220
-              },
-              "height": {
-                "value": 42
-              },
-              "cornerRadius": {
-                "value": 4
-              },
-              "fill": {
-                "value": "#ffffff"
-              },
-              "fillOpacity": {
-                "value": 0.94
-              },
-              "stroke": {
-                "value": "#bdc7d3"
-              },
-              "strokeWidth": {
-                "value": 0.7
               }
             }
           },
@@ -4888,36 +4849,6 @@
               },
               "fill": {
                 "value": "#243447"
-              }
-            }
-          },
-          "from": {
-            "data": "mapAnnotations"
-          }
-        },
-        {
-          "name": "annotationCountLabels",
-          "type": "text",
-          "interactive": false,
-          "encode": {
-            "update": {
-              "x": {
-                "signal": "datum.labelX + 9"
-              },
-              "y": {
-                "signal": "datum.labelY + 31"
-              },
-              "text": {
-                "value": ""
-              },
-              "font": {
-                "value": "Arial"
-              },
-              "fontSize": {
-                "value": 11
-              },
-              "fill": {
-                "value": "#52606d"
               }
             }
           },
