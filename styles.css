@@ -23,16 +23,15 @@ h2 { margin: 0 0 16px; font-family: Georgia, serif; font-size: clamp(26px, 3vw, 
 .section-heading { margin-bottom: 24px; padding: 22px 24px; background: var(--section-tint); border-top: 4px solid var(--section-accent); border-radius: 12px; }
 .section-heading .eyebrow { margin-bottom: 10px; color: var(--section-accent); }
 .section-heading h2 { margin: 0; color: var(--section-accent); }
+.section-subtitle { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
 .story { margin: 0; color: var(--muted); font-size: 17px; }
 .story-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--layout-gap); width: 100%; padding-inline: 24px; margin: 0 auto 24px; }
 .story-columns p { margin: 0; text-align: left; word-break: normal; overflow-wrap: normal; hyphens: none; }
 .hero-subtitle { width: 100%; margin: 0; font-family: Arial, sans-serif; font-size: 19px; color: var(--muted); }
-.analysis-text { display: block; width: 100%; text-align: left; }
-.analysis-line { display: block; text-wrap: initial; }
 .story-columns:has(.chart-note) { grid-template-columns: 1fr; }
 .chart-card { position: relative; margin: 0 0 24px; padding: 24px; background: white; border: 1px solid var(--line); border-radius: 12px; }
-h3 { display: flex; justify-content: flex-start; flex-wrap: wrap; align-items: baseline; gap: 12px; margin: 0 0 22px; padding: 0 40px 0 0; font-size: 15px; color: var(--heading-accent); }
-h3 span { font-size: 13px; font-weight: 400; color: var(--muted); }
+h3 { display: block; margin: 0 0 22px; padding: 0 40px 0 0; font-size: 15px; color: var(--heading-accent); }
+h3 span { display: block; margin-top: 4px; font-size: 13px; font-weight: 400; color: var(--muted); }
 .chart-scroll { overflow-x: auto; padding: 0; }
 .chart { min-height: 100px; }
 /* Keep menus in the card heading instead of reserving an empty chart column. */
@@ -53,8 +52,10 @@ body.hide-chart-actions .vega-embed > details { display: none !important; }
 .legend-inline-controls { position: absolute; transform: translateY(-50%); }
 .legend-inline-controls .vega-bindings, .top-chart-controls .vega-bindings { justify-content: flex-start; flex-wrap: nowrap; gap: 24px; padding: 0; }
 .legend-inline-controls .vega-bind, .top-chart-controls .vega-bind { flex-wrap: nowrap; gap: 8px; white-space: nowrap; }
-.choropleth-inline-controls select { width: 220px; }
-.choropleth-inline-controls input[type="range"] { width: 80px; }
+.choropleth-top-controls select { width: 220px; }
+.choropleth-top-controls input[type="range"] { width: 120px; }
+/* Zoom is also changed by wheel gestures, which can produce long decimal values. */
+.choropleth-top-controls .vega-bind input[type="range"] ~ span { display: none; }
 .waffle-inline-controls select { width: 140px; }
 .dot-top-controls select { width: 220px; }
 .top-chart-controls { position: absolute; }
