@@ -103,13 +103,9 @@
         <div><dt>Credits updated</dt><dd><time datetime="2026-10-24">24 October 2026</time></dd></div>
       </dl>
       <div class="source-credits">
-        <h2 id="credits-title">Sources &amp; methods</h2>
-        <h3>Observation datasets</h3>
-        <ol class="source-list">
-          <li><strong>iNaturalist contributors — Australian mammal observations.</strong> <a href="https://www.inaturalist.org/observations?quality_grade=any&amp;identifications=any&amp;iconic_taxa%5B%5D=Mammalia&amp;place_id=6744&amp;threatened=true&amp;popular=true&amp;d1=2020&amp;d2=2025&amp;spam=false">Supplied observation search</a> · <a href="Dataset/observations-794195.csv" download>Download the CSV used</a> (6,016 records). Supplies the mammal maps, rankings, time series, seasonal chart, Sankey and sunburst. <strong>Original download date: not recorded.</strong> The supplied search requests 2020–2025; the local file contains observations from 1 January 2017 to 6 October 2026. The visualisations use the local file, so this search is not an exact reproduction of the export. Export filters and record-level licences were not preserved in this CSV.</li>
-          <li><strong>Atlas of Living Australia (ALA) — Orange-bellied Parrot (<i>Neophema chrysogaster</i>) occurrence records.</strong> <a href="https://biocache.ala.org.au/occurrences/search?q=lsid:https://biodiversity.org.au/afd/taxa/88653999-1e2f-47d1-87fa-1f6d3e47ffb8">Species occurrence search</a> · <a href="Dataset/orange_bellied_parrot_cleaned.csv" download>Download the cleaned CSV used</a> (5,942 records; 2,154 in 2017–2026). Supplies the council-area map and seasonal state shares. <strong>Original download date: not recorded.</strong> ALA aggregates contributing datasets; providers in the analysis window include the Victorian Biodiversity Atlas, BirdLife Australia (Birdata) and iNaturalist Australia. Provider attribution and varying record licences are retained in the CSV’s <code>dataResourceName</code>, <code>datasetName</code> and <code>dcterms:license</code> fields. No additional deduplication is applied to the seasonal bars.</li>
-        </ol>
-        <p>Mammal and parrot datasets support separate comparisons; counts represent observations.</p>
+        <h2 id="credits-title">Data sources</h2>
+        <p>iNaturalist. (n.d.). <i>Threatened Mammal Observations in Australia.</i> <a href="https://www.inaturalist.org/observations?quality_grade=any&amp;identifications=any&amp;iconic_taxa%5B%5D=Mammalia&amp;place_id=6744&amp;threatened=true&amp;popular=true&amp;d1=2020&amp;d2=2025&amp;spam=false">quality_grade=any&amp;identifications=any&amp;iconic_taxa[]=Mammalia&amp;place_id=6744&amp;threatened=true&amp;popular=true&amp;d1=2020&amp;d2=2025&amp;spam=false</a></p>
+        <p>Atlas of Living Australia. (n.d.). <i>Australia Wildlife Occurrence Record.</i> <a href="https://biocache.ala.org.au/occurrences/search?q=lsid:https://biodiversity.org.au/afd/taxa/88653999-1e2f-47d1-87fa-1f6d3e47ffb8">https://biocache.ala.org.au/occurrences/search?q=lsid:https://biodiversity.org.au/afd/taxa/88653999-1e2f-47d1-87fa-1f6d3e47ffb8</a></p>
 
         <h3>AI Declaration</h3>
         <p>I used ChatGPT 6.1 to refine wording, improve visualisation layouts, assist with writing and refining Vega chart code and CSS styling, and troubleshoot and debug code.</p>
