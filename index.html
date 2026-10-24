@@ -19,7 +19,7 @@
 
   <div class="toolbar">
     <nav aria-label="Story sections">
-      <a href="#geography">Where</a><a href="#species">What</a><a href="#time">When</a><a href="#seasons">Seasons</a><a href="#parrot">Parrot case study</a><a href="#networks">Connections</a><a href="#diversity">Diversity</a>
+      <a href="#geography">Where</a><a href="#species">What</a><a href="#time">When</a><a href="#seasons">Seasons</a><a href="#networks">Connections</a><a href="#diversity">Diversity</a><a href="#parrot">Parrot case study</a>
     </nav>
     <label class="menu-toggle"><input id="show-actions" type="checkbox" checked> Show chart menus <span aria-hidden="true">•••</span></label>
   </div>
@@ -67,20 +67,9 @@
       <article class="chart-card"><h3>Ridgeline chart <span>Monthly recording patterns</span></h3><div class="chart-scroll"><div class="chart" id="ridgeline" data-spec="Ridgeline.vg.json" aria-label="Monthly recording patterns for mammal species"></div></div></article>
     </section>
 
-    <section id="parrot" aria-labelledby="parrot-title">
-      <header class="section-heading">
-        <p class="eyebrow">05 / A seasonal case study</p>
-        <h2 id="parrot-title">Following the Orange-bellied Parrot through the seasons</h2>
-      </header>
-      <div class="story-columns"><p class="story">Orange-bellied Parrot records show a striking seasonal geographic shift. <strong>Tasmania dominates in summer</strong>, while winter recording activity shifts toward <strong>Victoria and South Australia</strong>.</p><p class="story">In spring, recording activity returns toward <strong>Tasmania</strong>, with Victoria also represented. The seasonal patterns cover <strong>2017–2026</strong>.</p></div>
-      <article class="chart-card"><h3>Choropleth map <span>Distribution across local government areas</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with month-range selection"></div></div></article>
-      <article class="chart-card"><h3>100% stacked bar chart <span>Seasonal share by state</span></h3><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="Seasonal state shares of Orange-bellied Parrot observations"></div></div></article>
-      <div class="story-columns"><p class="story">Together with the monthly choropleth, these seasonal shares reveal a clear redistribution of recorded locations between Tasmania and mainland Australia, showing <strong>movement patterns consistent with seasonal migration</strong>.</p><p class="story">Citizen-science observations can help reveal these patterns over time, although the records alone do not prove that individual birds migrated.</p></div>
-    </section>
-
     <section id="networks" aria-labelledby="networks-title">
       <header class="section-heading">
-        <p class="eyebrow">06 / Connections</p>
+        <p class="eyebrow">05 / Connections</p>
         <h2 id="networks-title">Different species tell different geographic stories</h2>
       </header>
       <div class="story-columns"><p class="story">The selected mammals have very different geographic footprints. <strong>Queensland is the strongest geographic connection</strong>, followed by Victoria and New South Wales.</p><p class="story">Koala records dominate the Queensland flow, while other species are distributed more broadly across multiple states, showing that Australia’s citizen-science record varies substantially by both species and location.</p></div>
@@ -89,11 +78,23 @@
 
     <section id="diversity" aria-labelledby="diversity-title">
       <header class="section-heading">
-        <p class="eyebrow">07 / Diversity</p>
+        <p class="eyebrow">06 / Diversity</p>
         <h2 id="diversity-title">What does the citizen-science record contain?</h2>
       </header>
       <div class="story-columns"><p class="story">The taxonomic structure of the selected mammals is also uneven. <strong>Marsupials dominate the recording activity</strong>, followed by placental mammals and monotremes.</p><p class="story">Much of this dominance is driven by the prominence of Koalas, showing how individual species can strongly influence the apparent composition of citizen-science datasets.</p></div>
       <article class="chart-card"><h3>Sunburst chart <span>Groups → orders → species</span></h3><div class="chart-scroll"><div class="chart" id="sunburst" data-spec="Sunburst.vg.json" aria-label="Taxonomic structure of selected mammal observations"></div></div></article>
+    </section>
+
+    <section id="parrot" aria-labelledby="parrot-title">
+      <header class="section-heading">
+        <p class="eyebrow">07 / A seasonal case study</p>
+        <h2 id="parrot-title">Following the Orange-bellied Parrot through the seasons</h2>
+      </header>
+      <div class="story-columns"><p class="story">Mammal records reveal seasonal peaks, but can observation records also reveal changes in location?</p><p class="story">The Orange-bellied Parrot provides a focused case study.</p></div>
+      <div class="story-columns"><p class="story">Orange-bellied Parrot records show a striking seasonal geographic shift. <strong>Tasmania dominates in summer</strong>, while winter recording activity shifts toward <strong>Victoria and South Australia</strong>.</p><p class="story">In spring, recording activity returns toward <strong>Tasmania</strong>, with Victoria also represented. The seasonal patterns cover <strong>2017–2026</strong>.</p></div>
+      <article class="chart-card"><h3>Choropleth map <span>Distribution across local government areas</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with month-range selection"></div></div></article>
+      <article class="chart-card"><h3>100% stacked bar chart <span>Seasonal share by state</span></h3><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="Seasonal state shares of Orange-bellied Parrot observations"></div></div></article>
+      <div class="story-columns"><p class="story">Together with the monthly choropleth, these seasonal shares reveal a clear redistribution of recorded locations between Tasmania and mainland Australia, showing <strong>movement patterns consistent with seasonal migration</strong>.</p><p class="story">Citizen-science observations can help reveal these patterns over time, although the records alone do not prove that individual birds migrated.</p></div>
     </section>
 
     <footer>
