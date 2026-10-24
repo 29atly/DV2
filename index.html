@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Australia’s wildlife through citizen science</title>
+  <title>Wildlife Photography Records in Australia</title>
   <link rel="stylesheet" href="styles.css?v=20261024-short-subtitles">
   <script defer src="https://cdn.jsdelivr.net/npm/vega@5.33.0/build/vega.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
@@ -11,9 +11,9 @@
 <body>
   <header class="hero">
     <div class="hero-content">
-    <p class="eyebrow">Australia · Citizen science · Wildlife observations</p>
-    <h1>Every sighting tells a bigger story.</h1>
-    <p class="hero-subtitle">Explore Australian wildlife records and discover which species attract attention.</p>
+    <p class="eyebrow">Citizen science · Species · Seasons · Years</p>
+    <h1>Wildlife Photography Records in Australia</h1>
+    <p class="hero-subtitle">Every sighting tells a bigger story.</p>
     </div>
   </header>
 
@@ -32,7 +32,7 @@
       <header class="section-heading">
         <p class="eyebrow">01 / Where</p>
         <h2 id="geography-title">Where is Australia’s wildlife being recorded?</h2>
-        <p class="section-subtitle">Explore where wildlife observations cluster across Australia.</p>
+        <p class="section-subtitle">Citizen-science records reveal where wildlife recording is concentrated.</p>
       </header>
       <article class="chart-card"><h3>Binned map <span>Recording hotspots</span></h3><div class="chart-scroll"><div class="chart" id="bin-map" data-spec="BinMap.vg.json" aria-label="Binned map of wildlife observations"></div></div></article>
       <article class="chart-card"><h3>Dot map <span>Individual observations</span></h3><div class="chart-scroll"><div class="chart" id="dot-map" data-spec="DotMap.vg.json" aria-label="Map of mammal observation locations"></div></div></article>
@@ -41,8 +41,8 @@
     <section id="species" aria-labelledby="species-title">
       <header class="section-heading">
         <p class="eyebrow">02 / What</p>
-        <h2 id="species-title">Which species dominate the records?</h2>
-        <p class="section-subtitle">Compare the mammals most frequently recorded.</p>
+        <h2 id="species-title">Which mammals attract the most recording activity?</h2>
+        <p class="section-subtitle">Koalas lead the records; compare other frequently recorded mammals.</p>
       </header>
       <article class="chart-card"><h3>Lollipop chart <span>Species rankings</span></h3><div class="chart-scroll"><div class="chart" id="lollipop" data-spec="Lollipop.vg.json" aria-label="Ranking of mammal observation counts"></div></div></article>
       <article class="chart-card"><h3>Waffle chart <span>Share among the top ten mammals</span></h3><div class="chart-scroll"><div class="chart" id="waffle" data-spec="Waffle.vg.json" aria-label="Share of observations among top ten mammals"></div></div></article>
@@ -51,8 +51,8 @@
     <section id="time" aria-labelledby="time-title">
       <header class="section-heading">
         <p class="eyebrow">03 / When</p>
-        <h2 id="time-title">Have the same species always dominated?</h2>
-        <p class="section-subtitle">Track changing species rankings and recording activity.</p>
+        <h2 id="time-title">How do wildlife records change across years?</h2>
+        <p class="section-subtitle">Compare annual rankings and record totals; 2026 is incomplete.</p>
       </header>
       <article class="chart-card"><h3>Bump chart <span>Changing ranks · 2022–2026</span></h3><div class="chart-scroll"><div class="chart" id="bump" data-spec="BumpChart.vg.json" aria-label="Annual mammal species rankings"></div></div></article>
       <article class="chart-card"><h3>Streamgraph <span>Changing composition · 2017–2026</span></h3><div class="chart-scroll"><div class="chart" id="streamgraph" data-spec="Streamgraph.vg.json" aria-label="Composition of mammal observations over time"></div></div></article>
@@ -62,7 +62,7 @@
       <header class="section-heading">
         <p class="eyebrow">04 / Seasons</p>
         <h2 id="seasons-title">Does wildlife recording change with the seasons?</h2>
-        <p class="section-subtitle">Explore monthly patterns in mammal observations.</p>
+        <p class="section-subtitle">Monthly peaks show when different mammals are recorded.</p>
       </header>
       <article class="chart-card"><h3>Ridgeline chart <span>Monthly recording patterns</span></h3><div class="chart-scroll"><div class="chart" id="ridgeline" data-spec="Ridgeline.vg.json" aria-label="Monthly recording patterns for mammal species"></div></div></article>
     </section>
@@ -70,8 +70,8 @@
     <section id="networks" aria-labelledby="networks-title">
       <header class="section-heading">
         <p class="eyebrow">05 / Connections</p>
-        <h2 id="networks-title">Different species tell different geographic stories</h2>
-        <p class="section-subtitle">Follow connections between mammal species and states.</p>
+        <h2 id="networks-title">Where are different mammals recorded?</h2>
+        <p class="section-subtitle">Connect five selected mammals with their recorded states.</p>
       </header>
       <article class="chart-card"><h3>Sankey diagram <span>Species → states and territories</span></h3><div class="chart-scroll"><div class="chart" id="sankey" data-spec="Sankey.vg.json" aria-label="Connections between mammal species and Australian states"></div></div></article>
     </section>
@@ -79,8 +79,8 @@
     <section id="diversity" aria-labelledby="diversity-title">
       <header class="section-heading">
         <p class="eyebrow">06 / Diversity</p>
-        <h2 id="diversity-title">What does the citizen-science record contain?</h2>
-        <p class="section-subtitle">Explore the taxonomic groups behind the records.</p>
+        <h2 id="diversity-title">Which mammal groups appear in these records?</h2>
+        <p class="section-subtitle">Compare recording activity across selected mammal groups and species.</p>
       </header>
       <article class="chart-card"><h3>Sunburst chart <span>Groups → orders → species</span></h3><div class="chart-scroll"><div class="chart" id="sunburst" data-spec="Sunburst.vg.json" aria-label="Taxonomic structure of selected mammal observations"></div></div></article>
     </section>
@@ -88,15 +88,17 @@
     <section id="parrot" aria-labelledby="parrot-title">
       <header class="section-heading">
         <p class="eyebrow">07 / A seasonal case study</p>
-        <h2 id="parrot-title">Following the Orange-bellied Parrot through the seasons</h2>
-        <p class="section-subtitle">Follow seasonal shifts between Tasmania and mainland Australia.</p>
+        <h2 id="parrot-title">Can records reveal the parrot’s seasonal movements?</h2>
+        <p class="section-subtitle">Compare seasonal records from Tasmania and mainland Australia.</p>
       </header>
-      <article class="chart-card"><h3>Choropleth map <span>Distribution across local council areas</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with month-range selection"></div></div></article>
+      <article class="chart-card"><h3>Choropleth map <span>Recorded locations across local council areas</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with month-range selection"></div></div></article>
       <article class="chart-card"><h3>100% stacked bar chart <span>States’ shares within each season</span></h3><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="States’ shares of Orange-bellied Parrot observations within each season"></div></div></article>
     </section>
 
     <footer id="credits" aria-labelledby="credits-title">
-      <h2>From individual sightings to a broader picture.</h2>
+      <h2>Every record contributes to wildlife monitoring.</h2>
+      <p>Citizen-science records help track species across places and seasons.</p>
+      <p>Recording effort varies; records do not measure animal abundance.</p>
       <dl class="page-metadata" aria-label="Author and publication dates">
         <div><dt>Author name</dt><dd>Natalie Loke</dd></div>
         <div><dt>Author date</dt><dd><time datetime="2026-10-19">19 October 2026</time></dd></div>
