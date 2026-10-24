@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Australia’s wildlife through citizen science</title>
-  <link rel="stylesheet" href="styles.css?v=20261022-restored-chart-layout">
+  <link rel="stylesheet" href="styles.css?v=20261024-source-credits">
   <script defer src="https://cdn.jsdelivr.net/npm/vega@5.33.0/build/vega.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
 </head>
@@ -19,7 +19,7 @@
 
   <div class="toolbar">
     <nav aria-label="Story sections">
-      <a href="#geography">Where</a><a href="#species">What</a><a href="#time">When</a><a href="#seasons">Seasons</a><a href="#networks">Connections</a><a href="#diversity">Diversity</a><a href="#parrot">Parrot case study</a>
+      <a href="#geography">Where</a><a href="#species">What</a><a href="#time">When</a><a href="#seasons">Seasons</a><a href="#networks">Connections</a><a href="#diversity">Diversity</a><a href="#parrot">Parrot case study</a><a href="#credits">Sources &amp; credits</a>
     </nav>
     <label class="menu-toggle"><input id="show-actions" type="checkbox" checked> Show chart menus <span aria-hidden="true">•••</span></label>
   </div>
@@ -34,8 +34,8 @@
         <h2 id="geography-title">Where is Australia’s wildlife being recorded?</h2>
       </header>
       <div class="story-columns"><p class="story">Wildlife recording activity is heavily concentrated along Australia’s eastern and south-eastern coasts. The <strong>Brisbane–Gold Coast region</strong> and Melbourne form visible clusters.</p><p class="story">Among the selected mammals, recording activity is strongest in <strong>Queensland</strong>, followed by Victoria and New South Wales. These hotspots reflect both wildlife presence and where citizen scientists are most active; they do not necessarily indicate more animals.</p></div>
-      <article class="chart-card"><h3>Binned map <span>Recording hotspots</span></h3><div class="chart-scroll"><div class="chart" id="bin-map" data-spec="BinMap.vg.json" aria-label="Binned map of wildlife observations"></div></div></article>
-      <article class="chart-card"><h3>Dot map <span>Individual observations</span></h3><div class="chart-scroll"><div class="chart" id="dot-map" data-spec="DotMap.vg.json" aria-label="Map of mammal observation locations"></div></div></article>
+      <article class="chart-card"><h3>Binned map <span>Recording hotspots</span></h3><p class="chart-note" id="bin-map-note"><strong>Coverage:</strong> All 6,016 valid geolocated mammal records in 2017–2026, across all recorded mammal taxa.</p><div class="chart-scroll"><div class="chart" id="bin-map" data-spec="BinMap.vg.json" aria-label="Binned map of wildlife observations" aria-describedby="bin-map-note"></div></div></article>
+      <article class="chart-card"><h3>Dot map <span>Individual observations</span></h3><p class="chart-note" id="dot-map-note"><strong>Coverage:</strong> 4,034 geolocated records for ten selected mammal species in 2017–2026. This selected group differs from the top ten used in the ranking charts.</p><div class="chart-scroll"><div class="chart" id="dot-map" data-spec="DotMap.vg.json" aria-label="Map of mammal observation locations" aria-describedby="dot-map-note"></div></div></article>
     </section>
 
     <section id="species" aria-labelledby="species-title">
@@ -43,9 +43,9 @@
         <p class="eyebrow">02 / What</p>
         <h2 id="species-title">Which species dominate the records?</h2>
       </header>
-      <div class="story-columns"><p class="story">Observation activity is highly uneven between species. <strong>Koalas dominate the recording activity</strong>, followed by Platypus and Grey-headed Flying-fox.</p><p class="story">The prominence of <strong>Koalas</strong> shows how strongly a single species can shape the citizen-science record.</p></div>
-      <article class="chart-card"><h3>Lollipop chart <span>Species rankings</span></h3><div class="chart-scroll"><div class="chart" id="lollipop" data-spec="Lollipop.vg.json" aria-label="Ranking of mammal observation counts"></div></div></article>
-      <article class="chart-card"><h3>Waffle chart <span>Share among the top ten mammals</span></h3><div class="chart-scroll"><div class="chart" id="waffle" data-spec="Waffle.vg.json" aria-label="Share of observations among top ten mammals"></div></div></article>
+      <div class="story-columns"><p class="story">Observation activity is highly uneven between species. <strong>Koalas account for 31.5%</strong> of all 6,015 species-level mammal observations in the dataset for 2017–2026 (1,896 records), followed by Platypus and Grey-headed Flying-fox.</p><p class="story">The prominence of <strong>Koalas</strong> shows how strongly a single species can shape the citizen-science record.</p></div>
+      <article class="chart-card"><h3>Lollipop chart <span>Species rankings</span></h3><p class="chart-note" id="lollipop-note"><strong>Ranking population:</strong> All 6,015 species-level mammal records across 146 species in 2017–2026, including records without coordinates. The Top N control limits the species displayed.</p><div class="chart-scroll"><div class="chart" id="lollipop" data-spec="Lollipop.vg.json" aria-label="Ranking of mammal observation counts" aria-describedby="lollipop-note"></div></div></article>
+      <article class="chart-card"><h3>Waffle chart <span>Share among the top ten mammals</span></h3><p class="chart-note" id="waffle-note"><strong>Percentage denominator:</strong> Only the ten most recorded mammal species in 2017–2026 (4,139 records), including records without coordinates. Shares are within this top ten, rather than all 6,015 mammal records.</p><div class="chart-scroll"><div class="chart" id="waffle" data-spec="Waffle.vg.json" aria-label="Share of observations among top ten mammals" aria-describedby="waffle-note"></div></div></article>
     </section>
 
     <section id="time" aria-labelledby="time-title">
@@ -53,9 +53,9 @@
         <p class="eyebrow">03 / When</p>
         <h2 id="time-title">Have the same species always dominated?</h2>
       </header>
-      <div class="story-columns"><p class="story">The bump chart compares selected species across <strong>2022–2026</strong>, revealing shifts in their relative recording activity. Annual rankings show changes in recording activity, with partial 2026 records included in the latest year.</p><p class="story">The 2017–2026 streamgraph also shows recording activity expanding strongly toward <strong>2024</strong>, while the relative contribution of individual species changes across years.</p></div>
-      <article class="chart-card"><h3>Bump chart <span>Changing ranks · 2022–2026</span></h3><div class="chart-scroll"><div class="chart" id="bump" data-spec="BumpChart.vg.json" aria-label="Annual mammal species rankings"></div></div></article>
-      <article class="chart-card"><h3>Streamgraph <span>Changing composition · 2017–2026</span></h3><div class="chart-scroll"><div class="chart" id="streamgraph" data-spec="Streamgraph.vg.json" aria-label="Composition of mammal observations over time"></div></div></article>
+      <div class="story-columns"><p class="story">Among the ten species in the <strong>2022–2026</strong> bump chart, European Rabbit shows the largest year-to-year ranking change: <strong>fifth in 2025 to ninth in 2026</strong>, a fall of four places. The latest year contains partial records, so this comparison does not cover two complete years.</p><p class="story">The 2017–2026 streamgraph also shows recording activity expanding strongly toward <strong>2024</strong>, while the relative contribution of individual species changes across years.</p></div>
+      <article class="chart-card"><h3>Bump chart <span>Changing ranks · 2022–2026</span></h3><p class="chart-note notice" id="bump-note"><strong>2026 is incomplete.</strong> Rankings use partial-year records for 2026, so changes from 2025 do not compare two complete years. This chart ranks the ten most recorded mammal species selected over 2022–2026.</p><div class="chart-scroll"><div class="chart" id="bump" data-spec="BumpChart.vg.json" aria-label="Annual mammal species rankings" aria-describedby="bump-note"></div></div></article>
+      <article class="chart-card"><h3>Streamgraph <span>Changing composition · 2017–2026</span></h3><p class="chart-note notice" id="streamgraph-note"><strong>2026 is incomplete.</strong> A lower count in 2026 must not be read as a full-year decline. Bands cover the ten most recorded mammal species in 2017–2026 (4,139 records), including records without coordinates; annual shares use only these ten species.</p><div class="chart-scroll"><div class="chart" id="streamgraph" data-spec="Streamgraph.vg.json" aria-label="Composition of mammal observations over time" aria-describedby="streamgraph-note"></div></div></article>
     </section>
 
     <section id="seasons" aria-labelledby="seasons-title">
@@ -64,7 +64,7 @@
         <h2 id="seasons-title">Does wildlife recording change with the seasons?</h2>
       </header>
       <div class="story-columns"><p class="story">Different mammals show distinct seasonal recording patterns. Koala observations peak around <strong>September</strong>, Platypus in <strong>August</strong>, Grey-headed Flying-fox in <strong>November</strong>, while the Spotted-tailed Quoll peaks earlier in <strong>April</strong>.</p><p class="story">These differences suggest that when species are recorded depends strongly on season, although the patterns may reflect both animal behaviour and changes in human observation activity.</p></div>
-      <article class="chart-card"><h3>Ridgeline chart <span>Monthly recording patterns</span></h3><div class="chart-scroll"><div class="chart" id="ridgeline" data-spec="Ridgeline.vg.json" aria-label="Monthly recording patterns for mammal species"></div></div></article>
+      <article class="chart-card"><h3>Ridgeline chart <span>Monthly recording patterns</span></h3><p class="chart-note" id="ridgeline-note"><strong>Coverage:</strong> The ten most recorded mammal species in 2017–2026, including records without coordinates. Months are pooled across years, including incomplete 2026; each species’ monthly shares use its own total.</p><div class="chart-scroll"><div class="chart" id="ridgeline" data-spec="Ridgeline.vg.json" aria-label="Monthly recording patterns for mammal species" aria-describedby="ridgeline-note"></div></div></article>
     </section>
 
     <section id="networks" aria-labelledby="networks-title">
@@ -72,8 +72,8 @@
         <p class="eyebrow">05 / Connections</p>
         <h2 id="networks-title">Different species tell different geographic stories</h2>
       </header>
-      <div class="story-columns"><p class="story">The selected mammals have very different geographic footprints. <strong>Queensland is the strongest geographic connection</strong>, followed by Victoria and New South Wales.</p><p class="story">Koala records dominate the Queensland flow, while other species are distributed more broadly across multiple states, showing that Australia’s citizen-science record varies substantially by both species and location.</p></div>
-      <article class="chart-card"><h3>Sankey diagram <span>Species → states and territories</span></h3><div class="chart-scroll"><div class="chart" id="sankey" data-spec="Sankey.vg.json" aria-label="Connections between mammal species and Australian states"></div></div></article>
+      <div class="story-columns"><p class="story">The selected mammals have very different geographic footprints. <strong>Queensland is the strongest geographic connection</strong>, followed by Victoria and New South Wales.</p><p class="story">In the Sankey’s 2017–2026 records, Queensland accounts for <strong>69.3% of Koala observations</strong>, compared with <strong>14.4% of Grey-headed Flying-fox observations</strong>. Each percentage uses that species’ total geolocated records, showing how differently the two species contribute to the Queensland flow.</p></div>
+      <article class="chart-card"><h3>Sankey diagram <span>Species → states and territories</span></h3><p class="chart-note" id="sankey-note"><strong>Coverage:</strong> Only five species from the dot map’s selected ten: Koala, Platypus, Grey-headed Flying-fox, Greater Glider and European Rabbit (3,429 geolocated records in 2017–2026). State totals include only these five species, so they differ from totals for all mammals or the top ten.</p><div class="chart-scroll"><div class="chart" id="sankey" data-spec="Sankey.vg.json" aria-label="Connections between mammal species and Australian states" aria-describedby="sankey-note"></div></div></article>
     </section>
 
     <section id="diversity" aria-labelledby="diversity-title">
@@ -82,7 +82,7 @@
         <h2 id="diversity-title">What does the citizen-science record contain?</h2>
       </header>
       <div class="story-columns"><p class="story">The taxonomic structure of the selected mammals is also uneven. <strong>Marsupials dominate the recording activity</strong>, followed by placental mammals and monotremes.</p><p class="story">Much of this dominance is driven by the prominence of Koalas, showing how individual species can strongly influence the apparent composition of citizen-science datasets.</p></div>
-      <article class="chart-card"><h3>Sunburst chart <span>Groups → orders → species</span></h3><div class="chart-scroll"><div class="chart" id="sunburst" data-spec="Sunburst.vg.json" aria-label="Taxonomic structure of selected mammal observations"></div></div></article>
+      <article class="chart-card"><h3>Sunburst chart <span>Groups → orders → species</span></h3><p class="chart-note" id="sunburst-note"><strong>Coverage:</strong> The same 4,034 geolocated records and ten selected species as the dot map, rather than all mammals or the ranking charts’ top ten.</p><div class="chart-scroll"><div class="chart" id="sunburst" data-spec="Sunburst.vg.json" aria-label="Taxonomic structure of selected mammal observations" aria-describedby="sunburst-note"></div></div></article>
     </section>
 
     <section id="parrot" aria-labelledby="parrot-title">
@@ -90,20 +90,48 @@
         <p class="eyebrow">07 / A seasonal case study</p>
         <h2 id="parrot-title">Following the Orange-bellied Parrot through the seasons</h2>
       </header>
-      <div class="story-columns"><p class="story">Mammal records reveal seasonal peaks, but can observation records also reveal changes in location? The Orange-bellied Parrot provides a focused case study. Its records show a striking seasonal geographic shift.</p><p class="story"><strong>Tasmania dominates in summer</strong>, while winter recording activity shifts toward <strong>Victoria and South Australia</strong>. In spring, recording activity returns toward <strong>Tasmania</strong>, with Victoria also represented. The seasonal patterns cover <strong>2017–2026</strong>.</p></div>
-      <article class="chart-card"><h3>Choropleth map <span>Distribution across local government areas</span></h3><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with month-range selection"></div></div></article>
-      <article class="chart-card"><h3>100% stacked bar chart <span>Seasonal share by state</span></h3><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="Seasonal state shares of Orange-bellied Parrot observations"></div></div></article>
+      <div class="story-columns"><p class="story">Mammal records reveal seasonal peaks, but can observation records also reveal changes in location? The Orange-bellied Parrot provides a focused case study. Its records show a striking seasonal geographic shift.</p><p class="story">Across <strong>2017–2026</strong>, Tasmania accounts for <strong>93.0% of summer records</strong> (53 of 57), compared with <strong>0% of winter records</strong> (0 of 24). These shares use parrot records with a usable month and state in each season. Winter records come from Victoria and South Australia; spring records shift back toward Tasmania.</p></div>
+      <p class="chart-note source-comparison"><strong>Combining two datasets:</strong> The iNaturalist mammal dataset establishes broad recording patterns; the ALA parrot dataset tests the seasonal geography question for a migratory bird. Both use 2017–2026, but usable months are available for <strong>6,016 of 6,016 mammal records (100%)</strong> versus <strong>206 of 2,154 parrot records (9.6%)</strong>. The parrot seasonal results therefore describe a much smaller share of the available records. These datasets are compared within one story; their records are not pooled into a shared total.</p>
+      <article class="chart-card"><h3>Choropleth map <span>Distribution across local council areas</span></h3><p class="chart-note" id="choropleth-note"><strong>How to read this map:</strong> Local government areas are areas managed by local councils. Colour shows observation records per 1,000 km², so council areas of different sizes can be compared. The default shows a monthly average across recorded years; selecting months shows pooled records for those months. Grey means <strong>no records</strong> in that timeframe; pale purple means <strong>missing data</strong> where council-area detail is unavailable. Neither means birds are absent, and recording effort can vary. <strong>Coverage:</strong> Parrot records from 2017–2026 with usable dates and coordinates within eight mapped council areas. These map filters differ from the seasonal bar chart’s month-and-state requirements.</p><div class="chart-scroll"><div class="chart" id="choropleth" data-spec="ChoroplethMap.vg.json" aria-label="Geographic distribution of Orange-bellied Parrot observations with month-range selection" aria-describedby="choropleth-note"></div></div></article>
+      <article class="chart-card"><h3>100% stacked bar chart <span>States’ shares within each season</span></h3><p class="chart-note notice" id="stacked-bar-note"><strong>Seasonal sample:</strong> 206 usable records out of 2,154 Orange-bellied Parrot records in 2017–2026. The other 1,948 records are excluded because they lack usable month information; no additional month-known records were excluded for missing state. Each bar totals 100% and shows <strong>states’ shares within that season</strong>. The window includes incomplete 2026.</p><div class="chart-scroll"><div class="chart" id="stacked-bar" data-spec="StackedBar.vg.json" aria-label="States’ shares of Orange-bellied Parrot observations within each season" aria-describedby="stacked-bar-note"></div></div></article>
       <div class="story-columns"><p class="story">Together with the monthly choropleth, these seasonal shares reveal a clear redistribution of recorded locations between Tasmania and mainland Australia, showing <strong>movement patterns consistent with seasonal migration</strong>.</p><p class="story">Citizen-science observations can help reveal these patterns over time, although the records alone do not prove that individual birds migrated.</p></div>
     </section>
 
-    <footer>
+    <footer id="credits" aria-labelledby="credits-title">
       <h2>From individual sightings to a broader picture.</h2>
       <div class="story-columns"><p>From individual sightings to national patterns, citizen science reveals where Australian wildlife is recorded, which species dominate, and how observations change across years and seasons.</p><p>However, recording frequency reflects both wildlife presence and human participation, so these patterns should not be interpreted as direct measures of animal abundance.</p></div>
-      <dl class="page-metadata" aria-label="Author and data sources">
+      <dl class="page-metadata" aria-label="Author and publication dates">
         <div><dt>Author name</dt><dd>Natalie Loke</dd></div>
         <div><dt>Author date</dt><dd><time datetime="2026-10-19">19 October 2026</time></dd></div>
-        <div class="data-credit"><dt>Data Provided by</dt><dd>inaturalist.org and ala.org.au</dd></div>
+        <div><dt>Credits updated</dt><dd><time datetime="2026-10-24">24 October 2026</time></dd></div>
       </dl>
+      <div class="source-credits">
+        <h2 id="credits-title">Sources &amp; methods</h2>
+        <h3>Observation datasets</h3>
+        <ol class="source-list">
+          <li><strong>iNaturalist contributors — Australian mammal observations.</strong> <a href="https://www.inaturalist.org/observations?quality_grade=any&amp;identifications=any&amp;iconic_taxa%5B%5D=Mammalia&amp;place_id=6744&amp;threatened=true&amp;popular=true&amp;d1=2020&amp;d2=2025&amp;spam=false">Supplied observation search</a> · <a href="Dataset/observations-794195.csv" download>Download the CSV used</a> (6,016 records). Supplies the mammal maps, rankings, time series, seasonal chart, Sankey and sunburst. <strong>Original download date: not recorded.</strong> The supplied search requests 2020–2025; the local file contains observations from 1 January 2017 to 6 October 2026. The visualisations use the local file, so this search is not an exact reproduction of the export. Export filters and record-level licences were not preserved in this CSV.</li>
+          <li><strong>Atlas of Living Australia (ALA) — Orange-bellied Parrot (<i>Neophema chrysogaster</i>) occurrence records.</strong> <a href="https://biocache.ala.org.au/occurrences/search?q=lsid:https://biodiversity.org.au/afd/taxa/88653999-1e2f-47d1-87fa-1f6d3e47ffb8">Species occurrence search</a> · <a href="Dataset/orange_bellied_parrot_cleaned.csv" download>Download the cleaned CSV used</a> (5,942 records; 2,154 in 2017–2026). Supplies the council-area map and seasonal state shares. <strong>Original download date: not recorded.</strong> ALA aggregates contributing datasets; providers in the analysis window include the Victorian Biodiversity Atlas, BirdLife Australia (Birdata) and iNaturalist Australia. Provider attribution and varying record licences are retained in the CSV’s <code>dataResourceName</code>, <code>datasetName</code> and <code>dcterms:license</code> fields. No additional deduplication is applied to the seasonal bars.</li>
+        </ol>
+        <p>Both datasets contribute observations to the analysis, rather than serving only as website references. ALA also carries iNaturalist records, so the platforms are not wholly independent. Here, the extracts cover different taxa: mammals and one bird species. Counts represent records, not unique animals or comparable population estimates; ALA records also include sources beyond citizen science.</p>
+
+        <h3>Boundaries &amp; taxonomy</h3>
+        <ul class="source-list">
+          <li><strong>State and territory boundaries:</strong> Rowan Hogan’s <a href="https://github.com/rowanhogan/australian-states">Australian States GeoJSON</a>, used in the maps and coordinate-based mammal state assignments; the local copy is <a href="australia-states.json">australia-states.json</a>. Original retrieval date: not recorded.</li>
+          <li><strong>Local government areas:</strong> Australian Bureau of Statistics, <a href="https://geo.abs.gov.au/arcgis/rest/services/ASGS2024/LGA/MapServer/0">ASGS 2024 LGA boundaries</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>). Eight council boundaries are embedded in the parrot map, simplified by approximately 200 metres. The same 2024 geography is applied to all 2017–2026 records; area estimates use the simplified polygons. Original retrieval date: not recorded.</li>
+          <li><strong>Mammal classification:</strong> American Society of Mammalogists, <a href="https://www.mammaldiversity.org/">Mammal Diversity Database</a> (<a href="https://raw.githubusercontent.com/mammaldiversity/mammaldiversity.github.io/master/_data/mdd.csv">taxonomy CSV</a>), retrieved <time datetime="2026-10-10">10 October 2026</time>, as recorded in the sunburst metadata. Higher taxonomy was matched by genus; source scientific names were retained. Parrot identification follows the <a href="https://biodiversity.org.au/afd/taxa/88653999-1e2f-47d1-87fa-1f6d3e47ffb8">Australian Faunal Directory taxon</a> used in the ALA query.</li>
+        </ul>
+
+        <h3>Ecological context &amp; interpretation</h3>
+        <ul class="source-list">
+          <li>NRE Tasmania, <a href="https://nre.tas.gov.au/conservation/threatened-species-and-communities/lists-of-threatened-species/threatened-species-vertebrates/orange-bellied-parrot/about-orange-bellied-parrots">About Orange-bellied Parrots</a>: documents summer breeding in south-west Tasmania and winter migration to mainland coastal habitats, supporting the case study’s interpretation.</li>
+          <li>DCCEEW, <a href="https://www.dcceew.gov.au/environment/biodiversity/threatened/action-plan/orange-bellied-parrot">Orange-bellied parrot species profile</a>: provides conservation, habitat and migration context.</li>
+          <li>Isaac et al. (2014), <a href="https://doi.org/10.1111/2041-210X.12254">Statistics for citizen science: extracting signals of change from noisy ecological data</a>: supports caution about changing recording effort and spatial coverage when interpreting observation trends.</li>
+        </ul>
+        <p>Reference pages checked on <time datetime="2026-10-24">24 October 2026</time>; this is not the datasets’ original download date. Source search pages are live and may return different records over time.</p>
+
+        <h3>Submission status</h3>
+        <p class="notice"><strong>Still to verify before submission:</strong> Original dataset download dates and the iNaturalist export filters are unavailable. Recover these from the original exports or download history if possible. Check the assignment’s definition of “combining two data sources”: this site compares two datasets within a common story and time window, without joining their records.</p>
+      </div>
     </footer>
   </main>
   <script>
@@ -406,7 +434,7 @@
           const file = chart.dataset.spec;
           try {
             const specUrl = file === 'ChoroplethMap.vg.json'
-              ? `${file}?v=20261022-calendar-months`
+              ? `${file}?v=20261024-readable-density`
               : file;
             const response = await fetch(specUrl, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Could not fetch ${file}: ${response.status}`);
