@@ -58,7 +58,6 @@ body.hide-chart-actions .vega-embed > details { display: none !important; }
 .choropleth-top-controls input[type="range"] { width: 80px; }
 /* Zoom is also changed by wheel gestures, which can produce long decimal values. */
 .choropleth-top-controls .vega-bind input[type="range"] ~ span { display: none; }
-.waffle-inline-controls select { width: 140px; }
 .dot-top-controls select { width: 220px; }
 .top-chart-controls { position: absolute; }
 .chart-note { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
