@@ -52,8 +52,10 @@ body.hide-chart-actions .vega-embed > details { display: none !important; }
 .legend-inline-controls { position: absolute; transform: translateY(-50%); }
 .legend-inline-controls .vega-bindings, .top-chart-controls .vega-bindings { justify-content: flex-start; flex-wrap: nowrap; gap: 24px; padding: 0; }
 .legend-inline-controls .vega-bind, .top-chart-controls .vega-bind { flex-wrap: nowrap; gap: 8px; white-space: nowrap; }
-.choropleth-top-controls select { width: 220px; }
-.choropleth-top-controls input[type="range"] { width: 120px; }
+.choropleth-top-controls .vega-bindings { gap: 16px; }
+.choropleth-top-controls .vega-bind { gap: 6px; }
+.choropleth-top-controls select { width: 130px; }
+.choropleth-top-controls input[type="range"] { width: 80px; }
 /* Zoom is also changed by wheel gestures, which can produce long decimal values. */
 .choropleth-top-controls .vega-bind input[type="range"] ~ span { display: none; }
 .waffle-inline-controls select { width: 140px; }
