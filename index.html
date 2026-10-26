@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wildlife Photography Records in Australia</title>
-  <link rel="stylesheet" href="styles.css?v=20261026-ten-word-paragraphs">
+  <link rel="stylesheet" href="styles.css?v=20261026-natural-paragraph-wrap">
   <script defer src="https://cdn.jsdelivr.net/npm/vega@5.33.0/build/vega.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0/build/vega-embed.min.js"></script>
 </head>
@@ -126,47 +126,6 @@
   </main>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Limit paragraph lines to ten words while preserving links and emphasis.
-      // Each group can wrap into shorter lines on smaller screens.
-      for (const paragraph of document.querySelectorAll('p:not(#page-status)')) {
-        const words = [...paragraph.textContent.matchAll(/\S+/g)];
-        if (words.length <= 10) continue;
-        const nodes = [];
-        const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT);
-        let offset = 0;
-        while (walker.nextNode()) {
-          const node = walker.currentNode;
-          nodes.push({ node, start: offset, end: offset + node.length });
-          offset += node.length;
-        }
-        const fragment = document.createDocumentFragment();
-        for (let index = 0; index < words.length; index += 10) {
-          const first = words[index];
-          const last = words[Math.min(index + 9, words.length - 1)];
-          const start = first.index;
-          const end = last.index + last[0].length;
-          const firstNode = nodes.find(entry => entry.start <= start && entry.end > start);
-          const lastNode = nodes.find(entry => entry.start < end && entry.end >= end);
-          const range = document.createRange();
-          range.setStart(firstNode.node, start - firstNode.start);
-          range.setEnd(lastNode.node, end - lastNode.start);
-          const line = document.createElement('span');
-          line.className = 'paragraph-line';
-          let contents = range.cloneContents();
-          let ancestor = range.commonAncestorContainer;
-          if (ancestor.nodeType === Node.TEXT_NODE) ancestor = ancestor.parentElement;
-          while (ancestor !== paragraph) {
-            const wrapper = ancestor.cloneNode(false);
-            wrapper.append(contents);
-            contents = wrapper;
-            ancestor = ancestor.parentElement;
-          }
-          line.append(contents);
-          if (index) fragment.append(document.createTextNode(' '));
-          fragment.append(line);
-        }
-        paragraph.replaceChildren(fragment);
-      }
       /* All chart specifications remain in their original .vg.json files. */
       const actionToggle = document.querySelector('#show-actions');
       const statusMessage = document.querySelector('#page-status');
