@@ -260,7 +260,7 @@
         const frame = anchor.getBoundingClientRect();
         const legendTitle = wrapper.querySelector('.binLegendTitle, .legendTitle, .speciesLegendTitle');
         controls.style.left = `${legendTitle ? legendTitle.getBoundingClientRect().left - box.left : 24}px`;
-        controls.style.top = `${frame.bottom - box.top + 24}px`;
+        controls.style.top = `${frame.bottom - box.top + 16}px`;
       }
 
       function selectSpecies(species) {
@@ -378,6 +378,7 @@
             if (svg) {
               const hasLegendLayout = (result.spec.signals || []).some(signal => signal.name === 'legendColumnWidth');
               const hasPointerLayout = (result.spec.signals || []).some(signal => signal.name === 'pointerScale');
+              const hasControlHeader = (result.spec.signals || []).some(signal => signal.name === 'controlHeaderSpace');
               let legendLayoutPending = false;
               const fitChart = () => {
                 svg.setAttribute('viewBox', `0 0 ${svg.getAttribute('width')} ${svg.getAttribute('height')}`);
@@ -385,6 +386,15 @@
                 if (!Number.isFinite(scale) || scale <= 0) return;
                 if (!legendLayoutPending) {
                   let layoutChanged = false;
+                  if (hasControlHeader) {
+                    // Reserve the controls' displayed height plus 16px above and below them.
+                    const bindings = chart.querySelector('.vega-bindings');
+                    const headerSpace = ((bindings?.getBoundingClientRect().height || 30) + 32) / scale;
+                    if (Math.abs(result.view.signal('controlHeaderSpace') - headerSpace) > 0.1) {
+                      result.view.signal('controlHeaderSpace', headerSpace);
+                      layoutChanged = true;
+                    }
+                  }
                   if (hasLegendLayout) {
                     const columnWidth = Number(svg.getAttribute('width')) / 3;
                     const symbolSize = 100 / (scale * scale);
