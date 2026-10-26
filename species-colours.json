@@ -30,33 +30,23 @@
     "colour": "#86701D"
   },
   {
-    "scientific_name": "Setonix brachyurus",
-    "species": "Quokka",
-    "colour": "#397FAD"
-  },
-  {
     "scientific_name": "Sarcophilus harrisii",
     "species": "Tasmanian Devil",
     "colour": "#6D6B70"
   },
   {
-    "scientific_name": "Perameles gunnii",
-    "species": "Eastern Barred Bandicoot",
-    "colour": "#C17A24"
-  },
-  {
-    "scientific_name": "Myrmecobius fasciatus",
-    "species": "Numbat",
-    "colour": "#5146A0"
-  },
-  {
-    "scientific_name": "Neophoca cinerea",
-    "species": "Australian Sea Lion",
-    "colour": "#4D7A24"
+    "scientific_name": "Setonix brachyurus",
+    "species": "Quokka",
+    "colour": "#397FAD"
   },
   {
     "scientific_name": "Dasyurus viverrinus",
     "species": "Eastern Quoll",
     "colour": "#bab0ab"
+  },
+  {
+    "scientific_name": "Neophoca cinerea",
+    "species": "Australian Sea Lion",
+    "colour": "#4D7A24"
   }
 ]
