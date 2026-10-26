@@ -2,6 +2,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--page-bg); color: var(--ink); font-family: Arial, sans-serif; line-height: 1.6; text-align: left; }
+.paragraph-line { display: block; }
 .hero { padding: 72px 0; background: var(--tint); border-bottom: 1px solid var(--line); }
 .hero-content { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--layout-gap); width: calc(100% - 48px); max-width: var(--content-width); margin: auto; padding-inline: 24px; }
 .hero-content > * { grid-column: 1 / -1; min-width: 0; }
