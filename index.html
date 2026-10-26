@@ -364,6 +364,7 @@
 
         let loaded = 0;
         let failed = 0;
+        let stateBoundaries;
         for (const chart of charts) {
           const file = chart.dataset.spec;
           try {
@@ -373,6 +374,18 @@
             const response = await fetch(specUrl, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Could not fetch ${file}: ${response.status}`);
             const spec = await response.json();
+            // Keep View Source and Open in Vega Editor independent of local file URLs.
+            for (const data of spec.data || []) {
+              if (data.url === 'australia-states.json') {
+                if (!stateBoundaries) {
+                  const boundariesResponse = await fetch('australia-states.json');
+                  if (!boundariesResponse.ok) throw new Error('Could not fetch state boundaries');
+                  stateBoundaries = await boundariesResponse.json();
+                }
+                data.values = stateBoundaries;
+                delete data.url;
+              }
+            }
             const result = await vegaEmbed(chart, spec, {
               mode: 'vega',
               renderer: 'svg',
